@@ -32,3 +32,4 @@ public class Pokedex {
     }
 
 }
+dhbdqhjfcbb fiuhnhjfkuqsfn lgqerjghq 

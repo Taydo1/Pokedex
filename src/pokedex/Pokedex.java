@@ -31,5 +31,4 @@ public class Pokedex {
         System.out.println("Opened database successfully NOOOOOOO");
     }
 
-}
-dhbdqhjfcbb fiuhnhjfkuqsfn lgqerjghq 
+} 

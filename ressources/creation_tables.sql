@@ -56,7 +56,7 @@ CREATE TABLE pokemon(
 	name varchar(20),
 	level int,
 	health int,
-	id_trainer int,
+	id_trainer int REFERENCES trainer(id),
 	id_attack0 int REFERENCES attack(id),
 	id_attack1 int REFERENCES attack(id),
 	id_attack2 int REFERENCES attack(id),

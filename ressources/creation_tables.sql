@@ -38,30 +38,30 @@ CREATE TABLE ability(
 	name varchar(20)
 );
 
+CREATE TABLE pokedex(
+	id serial PRIMARY KEY,
+    name varchar(20),
+	name_en varchar(20),
+	id_type1 int REFERENCES type(id),
+	id_type2 int REFERENCES type(id),
+	category varchar(20),
+	height numeric,
+	weight numeric,
+	id_lower_evolution int REFERENCES pokedex(id),
+	id_evolution int REFERENCES pokedex(id)
+);
+
 CREATE TABLE pokemon(
 	id serial PRIMARY KEY,
 	name varchar(20),
 	level int,
 	health int,
 	id_trainer int,
-	id_attack0 int,
-	id_attack1 int,
-	id_attack2 int,
-	id_attack3 int,
-	id_pokedex int
-);
-
-CREATE TABLE pokedex(
-	id serial PRIMARY KEY,
-    name varchar(20),
-	name_en varchar(20),
-	id_type1 int,
-	id_type2 int,
-	category varchar(20),
-	height numeric,
-	weight numeric,
-	id_lower_evolution int,
-	id_evolution int
+	id_attack0 int REFERENCES attack(id),
+	id_attack1 int REFERENCES attack(id),
+	id_attack2 int REFERENCES attack(id),
+	id_attack3 int REFERENCES attack(id),
+	id_pokedex int REFERENCES pokedex(id)
 );
 
 INSERT INTO type VALUES (default, 1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 1, 0.5, 1);

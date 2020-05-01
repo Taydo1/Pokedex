@@ -74,7 +74,7 @@ public class Pokedex {
         String[] commands = fichier.split(";");
         for (int i = 0; i < commands.length; i++) {
             commands[i] = commands[i].replaceAll("\\$[^\\$]*\\$", replace);
-            //System.out.println(commands[i]);
+            System.out.println(commands[i]);
             st.executeUpdate(commands[i]);
         }
     }

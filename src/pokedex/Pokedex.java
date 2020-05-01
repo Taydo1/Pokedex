@@ -28,13 +28,20 @@ public class Pokedex {
         // TODO code application logic here
         String dbName = "pokedex";
         String schemaName = "pokedex";
-        String[] tables = {"test1", " test2"};
+        
+        
         Database db = new Database();
         db.createDB(dbName);
         //Class.forName("org.postgresql.Driver");
         db.executeFile("ressources/creation_tables.sql", schemaName);
         db.printTable("pokedex");
-        System.out.println("Fini");
+        db.printTable("pokemon");
+        
+        
+        Pokemon pikachu = new Pokemon("Pikachu", 3, 25, 1, 3, 2, 5, 36, 25);
+        pikachu.addToDB(db);
+        
+        db.printTable("pokemon");
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

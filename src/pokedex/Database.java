@@ -25,11 +25,12 @@ import net.efabrika.util.DBTablePrinter;
 public class Database {
 
     private Statement st;
+    private Connection conn;
 
     public void connectDB(String dbName){
         try {
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, "postgres", "hugoquentinleon");
-            st = c.createStatement();
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, "postgres", "hugoquentinleon");
+            st = conn.createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,7 +60,7 @@ public class Database {
             String[] commands = fichier.split(";");
             for (int i = 0; i < commands.length; i++) {
                 commands[i] = commands[i].replaceAll("\\$[^\\$]*\\$", replace);
-                System.out.println(commands[i]);
+                //System.out.println(commands[i]);
                 st.executeUpdate(commands[i]);
             }
         } catch (FileNotFoundException ex) {
@@ -79,5 +80,13 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    public void executeUpdate(String request){
+        System.out.println(request);
+        try {
+            st.executeUpdate(request);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -13,6 +13,7 @@ import java.sql.*;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.efabrika.util.DBTablePrinter;
 
 /**
  *
@@ -37,14 +38,7 @@ public class Pokedex {
             st = connectDB(dbName);
             executeFile(st, "ressources/creation_tables.sql", schemaName);
 
-            ResultSet rs = st.executeQuery("SELECT * FROM pokedex");
-            while (rs.next()) {
-                System.out.print("Row : ");
-                System.out.print(rs.getString("name") + " ");
-                System.out.print(rs.getDouble("poids") + " ");
-                System.out.println(rs.getInt("id"));
-            }
-            rs.close();
+            printTable("pokedex", st);
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -76,13 +70,28 @@ public class Pokedex {
         } catch (IOException ex) {
             Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(fichier + "\n");
 
         String[] commands = fichier.split(";");
         for (int i = 0; i < commands.length; i++) {
             commands[i] = commands[i].replaceAll("\\$[^\\$]*\\$", replace);
-            System.out.println(commands[i]);
+            //System.out.println(commands[i]);
             st.executeUpdate(commands[i]);
         }
+    }
+
+    public static void printTable(String tableName, Statement st) throws SQLException {
+        ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
+        DBTablePrinter.printResultSet(rs);
+        /*ResultSetMetaData rsmd = rs.getMetaData();
+
+        
+        int columnsNumber = rsmd.getColumnCount();
+        while (rs.next()) {
+            for (int i = 1; i <= columnsNumber; i++) {
+                System.out.print(rs.getString(i) + " ");
+            }
+            System.out.println();        
+        }
+        rs.close();*/
     }
 }

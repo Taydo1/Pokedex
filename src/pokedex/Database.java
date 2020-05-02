@@ -71,6 +71,22 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void importAll(){
+        String ligne;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
+            br.readLine();
+            while ((ligne = br.readLine()) != null) {
+                new Type(ligne).addToDB(this);
+            }
+            br.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void printTable(String tableName){
         try {

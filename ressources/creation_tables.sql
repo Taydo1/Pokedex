@@ -3,6 +3,7 @@ SET search_path TO $schemaName$;
 
 CREATE TABLE type(
 	id serial PRIMARY KEY,
+	name varchar(10),
 	vs_bug numeric,
 	vs_dark numeric,
 	vs_dragon numeric,
@@ -63,8 +64,3 @@ CREATE TABLE pokemon(
 	id_attack3 int REFERENCES attack(id),
 	id_pokedex int REFERENCES pokedex(id)
 );
-
-INSERT INTO type VALUES (default, 1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 1, 0.5, 1);
-INSERT INTO pokedex VALUES (172, 'Pichu', 'Pichu', 1, NULL, 'Pokémon Minisouris',  0.2, 2, NULL, 25),
-						   (25, 'Pikachu', 'Pikachu', 1, NULL, 'Pokémon Souris',  0.4, 6, 172, 26),
-						   (26, 'Raichu', 'Raichu', 1, NULL, 'Pokémon Souris',  0.8, 30, 25, NULL);

@@ -13,6 +13,7 @@ import java.util.Locale;
  * @author Leon
  */
 public class Type {
+    static int idCounter=1;
     String name, en_name;
     int id;
     float[] vs;
@@ -54,6 +55,7 @@ public class Type {
     
     public Type(String cvsLign, Map<String, Integer> type2id){
         String[] infos = cvsLign.split(";");
+        this.id = idCounter++;
         this.name = infos[0];
         this.en_name = infos[1];
         this.vs = new float[18];

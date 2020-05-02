@@ -30,10 +30,10 @@ CREATE TABlE trainer(
 	name varchar(20)
 );
 
-CREATE TABLE attack(
+CREATE TABLE move(
 	id serial PRIMARY KEY,
-	name varchar(20),
-	en_name varchar(20),
+	name varchar(30),
+	en_name varchar(30),
 	id_type int,
 	category varchar(10),
 	pp int,
@@ -68,9 +68,9 @@ CREATE TABLE pokemon(
 	level int,
 	health int,
 	id_trainer int REFERENCES trainer(id),
-	id_attack0 int REFERENCES attack(id),
-	id_attack1 int REFERENCES attack(id),
-	id_attack2 int REFERENCES attack(id),
-	id_attack3 int REFERENCES attack(id),
+	id_move0 int REFERENCES move(id),
+	id_move1 int REFERENCES move(id),
+	id_move2 int REFERENCES move(id),
+	id_move3 int REFERENCES move(id),
 	id_pokedex int REFERENCES pokedex(id)
 );

@@ -96,7 +96,7 @@ public class Database {
             executeUpdate(request.substring(0, request.length()-1));
             br.close();
             
-            request = "INSERT INTO ability VALUES ";
+            request = "INSERT INTO move VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_moves.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {

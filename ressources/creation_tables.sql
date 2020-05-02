@@ -4,6 +4,7 @@ SET search_path TO $schemaName$;
 CREATE TABLE type(
 	id serial PRIMARY KEY,
 	name varchar(10),
+	en_name varchar(10),
 	vs_bug numeric,
 	vs_dark numeric,
 	vs_dragon numeric,
@@ -31,18 +32,22 @@ CREATE TABlE trainer(
 
 CREATE TABLE attack(
 	id serial PRIMARY KEY,
-	name varchar(20)
+	name varchar(20),
+	en_name varchar(20)
 );
 
 CREATE TABLE ability(
 	id serial PRIMARY KEY,
-	name varchar(20)
+	name varchar(20),
+	en_name varchar(20),
+	description1 text,
+	description2 text
 );
 
 CREATE TABLE pokedex(
 	id serial PRIMARY KEY,
     name varchar(20),
-	name_en varchar(20),
+	en_name varchar(20),
 	id_type1 int REFERENCES type(id),
 	id_type2 int REFERENCES type(id),
 	category varchar(20),

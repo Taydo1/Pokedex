@@ -27,7 +27,7 @@ public class Database {
     private Statement st;
     private Connection conn;
 
-    public void connectDB(String dbName){
+    public void connectDB(String dbName) {
         try {
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, "postgres", "hugoquentinleon");
             st = conn.createStatement();
@@ -71,14 +71,21 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void importAll(){
+
+    public void importAll() {
         String ligne;
         try {
             BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
                 new Type(ligne).addToDB(this);
+            }
+            br.close();
+            
+            br = new BufferedReader(new FileReader("ressources/liste_abilities.csv"));
+            br.readLine();
+            while ((ligne = br.readLine()) != null) {
+                new Ability(ligne).addToDB(this);
             }
             br.close();
         } catch (FileNotFoundException ex) {
@@ -88,7 +95,7 @@ public class Database {
         }
     }
 
-    public void printTable(String tableName){
+    public void printTable(String tableName) {
         try {
             ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
             DBTablePrinter.printResultSet(rs);
@@ -96,8 +103,8 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void executeUpdate(String request){
+
+    public void executeUpdate(String request) {
         System.out.println(request);
         try {
             st.executeUpdate(request);

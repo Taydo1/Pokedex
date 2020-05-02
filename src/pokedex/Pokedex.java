@@ -5,15 +5,7 @@
  */
 package pokedex;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.*;
-import java.sql.DriverManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import net.efabrika.util.DBTablePrinter;
 
 /**
  *
@@ -42,6 +34,7 @@ public class Pokedex {
         db.importAll();
         
         db.printTable("type");
+        //db.printTable("ability");
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

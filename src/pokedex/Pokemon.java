@@ -29,6 +29,6 @@ public class Pokemon {
     
     public void addToDB(Database db){
         db.executeUpdate(String.format("INSERT INTO pokemon VALUES (default, '%s', %d, %d, %d, %d,  %d, %d, %d, %d)",
-                name, level, health, id_trainer, id_attack0, id_attack1, id_attack2, id_attack3, id_pokedex));
+                name.replace("'", "''"), level, health, id_trainer, id_attack0, id_attack1, id_attack2, id_attack3, id_pokedex));
     }
 }

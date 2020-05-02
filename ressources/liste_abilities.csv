@@ -1,0 +1,236 @@
+name;englisch_name;Effet en combat;Effet sur le terrain
+Absentéisme;Truant;Le Pokémon n'attaque qu'un tour sur deux.;—
+Absorb Eau;Water Absorb;Les attaques de type Eau reçues par le Pokémon régénèrent 1/4 de ses PV.;—
+Absorb Volt;Volt Absorb;Les attaques de type Électrik reçues par le Pokémon régénèrent 1/4 de ses PV.;—
+Acharné;Defiant;Statistiques : Monte l'Attaque du Pokémon de deux niveaux si l'une de ses statistiques est baissée par l'adversaire.;—
+Adaptabilité;Adaptability;STAB : Si ce Pokémon utilise une attaque de son type, la puissance de l'attaque est multipliée par 2 au lieu de 1.5.;—
+Agitation;Hustle;Statistiques : Augmente l'attaque de 50% mais baisse la précision de 20%.;Augmente de 50% les chances de rencontrer un Pokémon sauvage de haut niveau.É
+Ailes Bourrasque;Gale Wings;Augmente la priorité des capacités de type Vol.;—
+Air Lock;Air Lock;Annule les effets du climat.;—
+Alerte Neige;Snow Warning;Le Pokémon déclenche une grêle lorsqu'il est envoyé au combat.;—
+Amour Filial;Parental Bond;Permet au lanceur de porter deux coups par tour au lieu d'un, le deuxième coup fera deux fois moins de dégâts que le premier.;—
+Analyste;Analytic;Si le Pokémon frappe en dernier durant le tour, la puissance de son attaque est augmentée de 30%.;—
+Animacœur;Soul-Heart;Augmente l'Attaque Spéciale lorsqu'un Pokémon est mis hors combat.;—
+Annule Garde;No Guard;Toutes les attaques du Pokémon et de son adversaire ont une précision de 100%.;Augmente les chances de rencontrer un Pokémon sauvage.
+Anti-Bruit;Soundproof;Annule les effets dus à une attaque sonore.;—
+Anticipation;Anticipation;Alerte et protège lorsque le Pokémon adverse possède certaines attaques.;—
+Aquabulle;Water Bubble;Réduit la puissance des capacités Feu subies, immunise contre les brûlures et double la puissance des capacités Eau;—
+Armumagma;Magma Armor;Immunise contre le gel.;Divise par deux le nombre de pas nécessaire à l'éclosion d'un œuf.É
+Armurbaston;Battle Armor;Annule les chances de coups critiques du Pokémon ennemi.;—
+Armurouillée;Weak Armor;Statistiques : Le Pokémon touché par une attaque physique voit sa défense diminuée d'un niveau et sa vitesse augmentée d'un niveau.;—
+Aroma-Voile;Aroma Veil;Protège les Pokémon alliés des capacités ayant un effet sur l'état mental tels que Attraction ou Tourmente.;—
+Attention;Inner Focus;Immunise contre la peur.;—
+Aura Féérique;Fairy Aura;Augmente la puissance des attaques de type Fée des Pokémon présents sur le terrain.;—
+Aura Inversée;Aura Break;Inverse les effets des talents Aura.;—
+Aura Ténébreuse;Dark Aura;Augmente la puissance des attaques de type Ténèbres des Pokémon présents sur le terrain.;—
+Baigne Sable;Sand Rush;Statistiques : Double la Vitesse du Pokémon lors d'une tempête de sable. Immunise contre les dégâts de la tempête.;—
+Bajoues;Cheek Pouch;Lorsque le Pokémon mange une Baie, il obtient ses effets et regagne des PV en plus.;—
+Banc;Schooling;Permet de changer de forme (sous certaines conditions).;—
+Battant;Competitive;Augmente l'Attaque Spéciale par deux niveaux lorsque n'importe quelle stat est baissée par un Pokémon adverse.;—
+Batterie;Battery;Augmente la puissance des capacités spéciales des alliés.;—
+Benêt;Oblivious;Immunise contre l'attraction. À partir de la 6ème génération, ce talent immunise aussi contre la provocation.;—
+Boom Final;Aftermath;Enlève 1/4 des PV totaux du Pokémon ennemi mettant K.O. par contact.;—
+Boost Chimère;Beast Boost;Augmente la stat la plus élevée du Pokémon quand il met K.O. un autre Pokémon.;—
+Bouclier-Carcan;Shields Down;Confère une bonne défense et protège des altérations de statuts tant que les PV sont au-dessus de la moitié.;—
+Boule de Poils;Fluffy;Divise par 2 les dégâts des capacités directes mais les multiplie par 2 si elles sont de type Feu.;—
+Brasier;Blaze;Augmente la puissance des attaques de type Feu de 50% lorsque le Pokémon a moins d'1/3 de ses PV totaux.;—
+Brise Moule;Mold Breaker;Peut toucher un Pokémon adverse malgré son talent.;—
+Cacophonie*;Cacophony;Annule les effets dus à une attaque sonore.;—
+Calque;Trace;Copie le talent du Pokémon adverse.;—
+Cérébro-Force;Neuroforce;Augmente la puissance des capacités super efficaces.;—
+Chanceux;Super Luck;Double les chance de porter un coup critique.;—
+Chasse-Neige;Slush Rush;Double la Vitesse sous la Grêle.;—
+Cherche Miel;Honey Gather;—;Le Pokémon peut trouver du Miel après un combat.
+Chlorophylle;Chlorophyll;Statistiques : Augmente la vitesse au soleil.;—
+Ciel Gris;Cloud Nine;Annule les effets du climat.;—
+Cœur de Coq;Big Pecks;Empêche la défense du Pokémon d'être baissée par les attaques adverses.;—
+Cœur Noble;Justified;Statistiques : Si le Pokémon est touché par une attaque de type Ténèbres, son attaque augmente d'un niveau.;—
+Cœur Soin;Healer;À la fin de chaque tour, le Pokémon a 30% de chance de guérir ses alliés d'une altération d'état en Combat Double ou triple.;—
+Colérique;Anger Point;Statistiques : L'attaque du Pokémon est fortement augmentée lorsqu'il subit un coup critique.;—
+Coloforce;Huge Power;Statistiques : Double l'attaque du Pokémon.;—
+Contestation;Contrary;Statistiques : Inverse les effets des attaques modifiant les statistiques.;—
+Coque Armure;Shell Armor;Annule les chances de coups critiques du Pokémon ennemi.;—
+Corps Ardent;Flame Body;30% de chance de provoquer une brûlure sur le Pokémon adverse ayant attaqué.;Divise par deux le nombre de pas nécessaire à l'éclosion d'un œuf.É
+Corps Coloré;Dazzling;Empêche l'adversaire d'utiliser des attaques de priorité.;—
+Corps Gel;Ice Body;Régénère 1/16ème des PV par temps de grêle. Immunise les Pokémon n'ayant pas le type Glace contre la grêle.;—
+Corps Maudit;Cursed Body;Toute attaque portée par l'adversaire a 30% de chance de s'entraver.;—
+Corps Sain;Clear Body;Statistiques : Empêche la diminution de statistiques par le Pokémon adverse.;—
+Corrosion;Corrosion;Permet d'empoisonner n'importe quel Pokémon quel que soit son type.;—
+Crachin;Drizzle;Fait tomber la pluie tant que le Pokémon est en jeu.;—
+Cran;Guts;Statistiques : Augmente de 50% l'attaque du Pokémon s'il subit un changement de statut.;—
+Créa-Brume;Misty Surge;Pose un Champ Brumeux qui diminue la puissance des attaques Dragon et empêche les altérations de statuts.;—
+Créa-Élec;Electric Surge;Pose un Champ Électrifié qui augmente la puissance des attaques Électrik et empêche le sommeil.;—
+Créa-Herbe;Grassy Surge;Pose un Champ Herbu qui restaure 1/16 des PV max.;—
+Créa-Psy;Psychic Surge;Pose un champ psychique qui bloque toute attaque de priorité.;—
+Cruauté;Merciless;Inflige toujours des coups critiques à un ennemi empoisonné.;—
+Cuvette;Rain Dish;Régénère 1/16ème des PV par temps de pluie.;—
+Danseuse;Dancer;Le Pokémon reproduit les capacités de danse de l'adversaire.;—
+Début Calme;Slow Start;Statistiques : Divise par deux l'attaque et la vitesse du Pokémon pendant 5 tours.;—
+Déclic Tactique;Stance Change;Change la forme du Pokémon selon le combat.;—
+Défaitiste;Defeatist;Statistiques : Divise par deux l'attaque et l'attaque spéciale du Pokémon s'il a moins de la moitié de ses PV totaux.;—
+Déguisement;Color Change;Change le type du Pokémon en celui de la dernière attaque subie.;—
+Délestage;Unburden;Statistiques : Augmente la vitesse lorsqu'un objet tenu est utilisé, lancé ou perdu.;—
+Don Floral;Flower Gift;Statistiques : Augmente l'attaque et la défense spéciale de 50% par temps ensoleillé.;—
+Dracolère;Berserk;Augmente l'Attaque Spéciale du Pokémon lorsqu'il perd plus de la moitié de ses PV.;—
+Écaille Spéciale;Marvel Scale;Statistiques : Augmente la défense de 50% lorsque le Pokémon subit un changement de statut.;—
+Échauffement;Limber;Immunise contre la paralysie.;—
+Écran Fumée;White Smoke;Empêche la diminution de statistiques par le Pokémon adverse.;Réduit de 50% les chances d'être attaqué par un Pokémon sauvage.É
+Écran Poudre;Shield Dust;Empêche les effets secondaires des attaques subies.;—
+Endurance;Stamina;Augmente la Défense lorsque le Pokémon est touché par une attaque.;—
+Engrais;Overgrow;Augmente la puissance des attaques de type Plante de 50% lorsque le Pokémon a moins d'1/3 de ses PV totaux.;—
+Envelocape;Overcoat;Immunise contre les dégâts causés par la grêle et les tempêtes de sable.;—
+Épine de Fer;Iron Barbs;Retire 1/8ème de ses PV à l'adversaire lorsque celui-ci porte une attaque physique.;—
+Escampette;Wimp Out;Force la fuite ou le switch si le Pokémon perd plus de la moitié de ses PV.;—
+Esprit Vital;Vital Spirit;Empêche le Pokémon d'être endormi.;Augmente de 50% les chances de rencontrer un Pokémon sauvage de haut niveau.É
+Essaim;Swarm;Augmente la puissance des attaques de type Insecte de 50% lorsque le Pokémon a moins d'1/3 de ses PV totaux.;Augmente les chances d'entendre le cri d'un Pokémon sauvage.É
+Expert Acier;Steelworker;Augmente la puissance des capacités de type Acier.;—
+Expuls'Organes;Innards Out;Inflige des dégâts équivalents aux PV restants avant le coup de grâce.;—
+Fantômasque;Disguise;Le premier coup porté au lanceur est absorbé par le déguisement.;—
+Farceur;Prankster;Augmente la priorité des attaques de statut d'un niveau.;—
+Fermeté;Sturdy;Immunise contre les attaques OHKO. À partir de la 5ème génération, ce talent fait aussi conserver 1 PV au Pokémon même après une attaque qui aurait dû le terrasser, s'il a tous ses PV.;—
+Feuille Garde;Leaf Guard;Soigne les altérations d'état par temps ensoleillé.;—
+Filature;Stakeout;Inflige le double de dégâts aux Pokémon arrivant au milieu d'un combat.;—
+Filtre;Filter;Retire 1/4 des dégâts subits lors d'une attaque super efficace.;—
+Flora-Voile;Flower Veil;Empêche la diminution des statistiques des alliés de type Plante par les Pokémon adverses.;—
+Force Pure;Pure Power;Statistiques : Double l'attaque du Pokémon.;—
+Force Sable;Sand Force;Lors d'une tempête de sable, la puissance des attaques de type Acier, Roche et Sol augmente de 30 %.;—
+Force Soleil;Solar Power;Statistiques : Augmente l'attaque spéciale de 50% par temps ensoleillé, mais diminue les PV de 1/8ème par tour.;—
+Fouille;Frisk;Permet de connaitre l'objet tenu d'un Pokémon adverse.;—
+Frein;Stall;Le Pokémon attaque toujours en second pour deux attaques de même priorité.;—
+Fuite;Run Away;Assure la fuite contre les Pokémon sauvages.;—
+Garde Amie;Friend Guard;Réduire de 25% les dégâts infligés aux alliés en Combat Double ou triple.;—
+Garde Magik;Magic Guard;Le Pokémon ne subit de dégâts que lors d'attaques directes.;—
+Garde Mystik;Wonder Guard;Ne subit que les dégâts d'attaques super efficaces.;—
+Glissade;Swift Swim;Statistiques : Double la vitesse par temps de pluie.;—
+Gloutonnerie;Gluttony;Le Pokémon utilise la baie portée lorsque les PV descendent en dessous de 50%.;—
+Gluco-Voile;Sweet Veil;Empêche les Pokémon alliés de s'endormir.;—
+Glue;Sticky Hold;Empêche la perte de l'objet tenu.;Facilite la capture des Pokémon pêchés.É
+Griffe Dure;Tough Claws;Augmente d'un tiers la puissance des attaques directes.;—
+Heavy Metal;Heavy Metal;Double la masse du Pokémon.;—
+Herbivore;Sap Sipper;Statistiques : Si le Pokémon est touché par une attaque de type Plante, son attaque augmente d'un niveau.;—
+Hydrata-Son;Liquid Voice;Toutes les attaques sonores du Pokémon prennent le type Eau.;—
+Hydratation;Hydration;Soigne les altérations d'état par temps de pluie.;—
+Hyper Cutter;Hyper Cutter;Statistiques : Empêche la diminution d'attaque du Pokémon.;—
+Hypersommeil;Comatose;Empêche de subir toute altération de statut autres que le sommeil.;—
+Ignifuge;Heatproof;Divise par 2 les dégâts des attaques de type Feu et les effets de brûlure subis par le Pokémon.;—
+Ignifu-Voile;Water Veil;Immunise contre la brûlure.;—
+Illusion;Illusion;Lorsqu'il entre en combat, le Pokémon prend l'apparence du dernier Pokémon de l'équipe.;—
+Impassible;Steadfast;Statistiques : Augmente d'un niveau la vitesse du Pokémon lorsqu'il est apeuré.;—
+Imposteur;Imposter;Le Pokémon entrant en combat prend automatiquement l'apparence du Pokémon adverse.;—
+Impudence;Moxie;Statistiques : Monte l'attaque du Pokémon d'un niveau lorsqu'il met un adversaire K.O.;—
+Inconscient;Unaware;Ignore les améliorations de statistiques du Pokémon adverse, à l'exception de sa Vitesse.;—
+Infiltration;Infiltrator;Empêche les attaques de protection adverses tels que Protection ou Mur Lumière de fonctionner. N'influe pas sur Détection et Abri.;—
+Insomnia;Insomnia;Empêche le Pokémon d'être endormi.;—
+Intimidation;Intimidate;Statistiques : Diminue d'un niveau l'attaque du Pokémon adverse.;Réduit de 50% les chances d'être attaqué par un Pokémon sauvage de bas niveau.É
+Isograisse;Thick Fat;Les dégâts provoqués par les attaques des types Feu ou Glace sont divisés par 2.;—
+Joli Sourire;Cute Charm;A 30% de chance de provoquer l'attirance du Pokémon adverse ayant attaqué.;Augmente de 50% les chances d'être attaqué par un Pokémon sauvage du sexe opposé.É
+Lavabo;Storm Drain;Attire toutes les attaques de type Eau. À partir de la 5ème génération, ce talent augmente aussi l'Attaque Spéciale du Pokémon recevant l'attaque.;—
+Lentiteintée;Tinted Lens;Double les dégâts des attaques peu efficaces portées au Pokémon adverse.;—
+Lévitation;Levitate;Immunise contre les attaques de type Sol.;—
+Light Metal;Light Metal;Divise par deux la masse du Pokémon.;—
+Longue Portée;Long Reach;Toutes les capacités du Pokémon sont considérées comme sans contact.;—
+Lumiattirance;Illuminate;—;Augmente les chances de rencontrer des Pokémon sauvages.RS
+Lunatique;Moody;Statistiques : Aléatoirement, à la fin de chaque tour, une statistique du Pokémon augmente de deux niveaux, et une autre baisse d'un niveau (précision et esquive comprises).;—
+Magicien;Magician;Vole l'objet d'une cible après l'avoir touché avec une attaque directe.;—
+Magnépiège;Magnet Pull;Empêche la fuite et le changement des Pokémon de type Acier.;Augmente de 50% les chances de rencontrer un Pokémon sauvage de type Acier.É
+Maladresse;Klutz;Empêche l'utilisation et/ou ignore l'effet des objets tenus en combat.;—
+Marque Ombre;Shadow Tag;Empêche la fuite des Pokémon sauvage et le changement du Pokémon adverse.;—
+Matinal;Early Bird;Réduit le nombre de tours de sommeil du Pokémon.;—
+Mauvais Rêve;Bad Dreams;Fait perdre 1/8ème de ses PV au Pokémon adverse s'il est endormi.;—
+Mèche Rebelle;Tangling Hair;Baisse la Vitesse de l'attaquant lorsque le Pokémon subit une attaque directe.;—
+Médic Nature;Natural Cure;Le Pokémon est soigné de toute altération d'état lorsqu'il est changé ou en fin de combat.;—
+Méga Blaster;Mega Launcher;Un Pokémon doté de ce talent verra la puissance de ses capacités d'aura augmentée.;—
+Mer PrimaireROSA;Primordial Sea;Fait tomber une Pluie ne pouvant être annulée par capacité ou talent tant que le Pokémon est en jeu. Annule toutes les capacités de type Feu.;—
+Métallo-Garde;Full Metal Body;Empêche la réduction de statistiques imposées par l'adversaire (que ce soit par capacités ou talents).;—
+Météo;Forecast;Change le type et la forme du Pokémon selon le climat.;—
+Minus;Minus;Statistiques : Augmente l'attaque spéciale de 50% en Match Double, si le partenaire à le talent Plus.;—
+Miroir Magik;Magic Bounce;Retourne les attaques de statut contre l'adversaire.;—
+Mode Transe;Zen Mode;Le Pokémon change de forme et modifie la répartition de ses statistiques lorsque ses PV sont inférieurs à 50%.;—
+Moiteur;Damp;Émpêche l'utilisation d'attaques auto-destructrices par le Pokémon adverse.;—
+Momie;Mummy;Si le Pokémon subit une attaque de contact, le talent de l'adversaire devient Momie. Ce talent est sans effet en lui-même.;—
+Motorisé;Motor Drive;Immunise le Pokémon contre les attaques de type Électrik et augmente la vitesse du Pokémon d'un niveau par attaque Électrik subie.;—
+Mue;Shed Skin;À chaque tour, le Pokémon a 33% de chance d'être soigné d'une altération d'état.;—
+Multi-Coups;Skill Link;Utilise toujours le nombre de coups maximum d'une attaque.;—
+Multiécaille;Multiscale;Si le Pokémon possède 100% de ses PV, alors les dégâts infligés par l'adversaire sont divisés par deux.;—
+Multitype;Multitype;Le type et la forme du Pokémon changent en fonction de la plaque qu'il porte.;—
+Nom français;Nom anglais;Effet en combat;—
+Normalise;Normalize;Toutes les attaques du Pokémon sont considérées comme étant de type Normal.;—
+Œil Composé;Compoundeye;Statistiques : Double la précision du Pokémon.;Augmente les chances de rencontrer un Pokémon sauvage tenant un objet.É
+Osmose;Power of Alchemy;Obtient le Talent du Pokémon allié tombé K.O.;—
+Paratonnerre;Lightningrod;Attire toutes les attaques de type Électrik. À partir de la 5ème génération, ce talent augmente aussi l'Attaque Spéciale du Pokémon recevant l'attaque.;Augmente les chances de recevoir un appel sur le PokéNav.É
+Pare-Balles;Bulletproof;Protège contre les capacités balles et bombes, par exemple Balle Graine ou Canon Graine.;—
+Peau Céleste;Aerilate;Transforme les capacités de type Normal en type Vol et augmente leur puissance de 20% (30% dans la sixième génération).;—
+Peau Dure;Rough Skin;Fait perdre 1/16è des PV du Pokémon adverse ayant lancé une attaque de contact.;—
+Peau Électrique;Galvanize;Transforme les capacités de type Normal en type Électrik et augmente leur puissance de 20%.;—
+Peau Féérique;Pixilate;Transforme les capacités de type Normal en type Fée et augmente leur puissance de 20% (30% dans la sixième génération).;—
+Peau Gelée;Refrigerate;Transforme les capacités de type Normal en type Glace et augmente leur puissance de 20% (30% dans la sixième génération).;—
+Peau Miracle;Wonder Skin;50% de chance de faire échouer les attaques de statut portées par l'adversaire.;—
+Peau Sèche;Dry Skin;Les attaques de type Eau soignent le Pokémon, qui regagne 1/4 de ses PV totaux. Par temps de pluie, il gagne 1/8ème de ses PV par tour. Les attaques de type Feu infligent 25% de dégâts en plus. Par temps ensoleillé, il perd 1/8ème de ses PV par tour.;—
+Phobique;Rattled;Statistiques : Si le Pokémon est touché par une attaque de type Insecte, Spectre ou Ténèbres, sa vitesse augmente d'un niveau.;—
+Pickpocket;Pickpocket;Si le Pokémon subit une attaque physique, il récupère l'objet tenu par son adversaire.;—
+Pied Confus;Tangled Feet;Statistiques : Augmente l'esquive de 20% lorsque le Pokémon est confus.;—
+Pied Véloce;Quick Feet;Statistiques : Augmente la vitesse de 50% lorsque le Pokémon subit une altération d'état.;—
+Piège;Arena Trap;Empêche la fuite et le changement du Pokémon adverse, s'il est au sol.;Augmente de 50% les chances d'être attaqué par un Pokémon sauvage.É
+Plus;Plus;Statistiques : Augmente l'attaque spéciale de 50% en Match Double, si le partenaire à le talent Minus.;—
+Poing de Fer;Iron Fist;"Augmente de 20% la puissance des attaques de ""Poing"".";—
+Point Poison;Poison Point;30% de chance de provoquer l'empoisonnement du Pokémon adverse ayant lancé une attaque de contact.;—
+Poisseux;Gooey;Baisse la Vitesse des Pokémon qui touchent ce Pokémon avec une attaque directe.;—
+Pose Spore;Effect Spore;30% de chance de provoquer l'empoisonnement, le sommeil ou la paralysie du Pokémon adverse ayant lancé une attaque de contact.;—
+Prédiction;Forewarn;Alerte le Pokémon de l'attaque la plus puissante du Pokémon adverse.;—
+Pression;Pressure;Double l'utilisation de PP des attaques offensives du Pokémon adverse.;Augmente de 50% les chances d'être attaqué par un Pokémon sauvage.É
+Prestance Royale;Queenly Majesty;Empêche l'adversaire d'utiliser des attaques de priorité.;—
+Prioguérison;Triage;Donne la priorité aux capacités de soin.;—
+Prisme-Armure;Prism Armor;Réduit de 1/4 les dégâts subis lorsque le Pokémon est touché par une capacité super efficace.;—
+Prognathe;Strong Jaw;Augmente la puissance des attaques à base de morsures.;—
+Protéen;Protean;Change le type du Pokémon en celui de toute capacité qu'il utilise.;—
+Puanteur;Stench;Les attaques physiques ont 10% d'apeurer la cible. Uniquement à partir de la 5ème génération.;Diminue les chances de rencontrer des Pokémon sauvages.
+Querelleur;Scrappy;Permet de toucher les Pokémon de type Spectre avec des attaques de type Normal ou Combat.;—
+Rage Brûlure;Flare Boost;Statistiques : Augmente l'attaque spéciale du Pokémon de 50% en cas de brûlure.;—
+Rage Poison;Toxic Boost;Statistiques : Augmente l'attaque du Pokémon de 50% en cas d'empoisonnement.;—
+Ramassage;Pickup;Donne une chance au Pokémon de ramasser un objet après un combat.;—
+Rassemblement;Power Construct;Lorsque Zygarde possède moins de la moitié de ses PV, il peut accéder à la Forme Parfaite.;—
+Receveur;Receiver;Obtient le Talent du Pokémon allié tombé K.O.;—
+Récolte;Harvest;Une baie consommée par le Pokémon a 50% de chances d'être récupérée à la fin de chaque tour.;—
+Regard Vif;Keen Eye;Statistiques : Empêche la perte de précision.;Réduit de 50% les chances d'être attaqué par un Pokémon sauvage de bas niveau.É
+Régé-Force;Regenerator;Restaure 1/3 des PV totaux si le Pokémon est retiré du combat.;—
+Repli Tactique;Emergency Exit;Fuit le combat ou échange sa place avec un autre Pokémon de l'équipe si le Pokémon perd plus de la moitié de ses PV.;—
+Rideau Neige;Snow Cloak;Statistiques : Augmente l'esquive de 20% par temps de grêle. Immunise les Pokémon n'ayant pas le type Glace contre la grêle.;—
+Rivalité;Rivalry;Statistiques : Augmente l'attaque et l'attaque spéciale de 25% si le Pokémon adverse est de même sexe. Les diminue s'il est de sexe opposé.;—
+Sable Humide;Water Compaction;Augmente la défense du Pokémon de deux crans s'il est touché par une attaque de type Eau.;—
+Sable Volant;Sand Stream;Déclenche une tempête de sable tant que le Pokémon est en jeu.;—
+Sans Limite;Sheer Force;Augmente de 30% la puissance des attaques pouvant avoir un effet secondaire. L'effet secondaire est annulé.;—
+Sécheresse;Drought;Crée un temps ensoleillé tant que le Pokémon est en jeu.;—
+Sérénité;Serene Grace;Double les chances de réussite des effets secondaires des attaques.;—
+Simple;Simple;Double les effets des modifications de statistiques, positives ou négatives.;—
+Sniper;Sniper;Triple la puissance des coups critiques.;—
+Soin Poison;Poison Heal;Le Pokémon récupère 1/8è de ses PV par tour lors d'un empoisonnement.;Le Pokémon empoisonné perd tout de même ses PV lorsque son dresseur se déplace. Cette perte de PV n'a plus lieu à partir de la 5ème génération.
+Solide Roc;Solid Rock;Retire 1/4 des dégâts subits si le Pokémon reçoit une attaque super efficace.;—
+Souffle DeltaROSA;Delta Stream;Annule tout effet de climat, même Mer Primaire et Terre Finale. Annule les faiblesses du type Vol.;—
+Spectro-Bouclier;Shadow Shield;Réduit les dégâts infligés par une capacité si les PV sont au maximum.;—
+Statik;Static;30% de chance de provoquer la paralysie du Pokémon adverse ayant lancé une attaque de contact.;Augmente de 50% les chances de rencontrer un Pokémon sauvage de type Électrik.É
+Suintement;Liquid Ooze;Les attaques absorbantes du Pokémon adverse lui font perdre des PV.;—
+Surf Caudal;Surge Surfer;Double la vitesse du Pokémon lorsqu'il y a un Champ Électrifié.;—
+Symbiose;Symbiosis;Passe un objet tenu à un Pokémon allié lorsque l'allié utilise son objet.;—
+Synchro;Synchronize;Toute altération d'état subie est transmise au Pokémon adverse.;Augmente les chances de rencontrer un Pokémon sauvage ayant la même nature.É
+Synergie;Battle Bond;Le Pokémon change de forme et la puissance de l'attaque Sheauriken augmente après avoir mis K.O. un Pokémon adverse.;—
+Système Alpha;RKS System;Permet de changer de type selon l'objet tenu.;—
+Technicien;Technician;Augmente de 50% la puissance des attaques dont la puissance est inférieure ou égale à 60.;—
+Télécharge;Download;Statistiques : Augmente l'attaque ou l'attaque spéciale du Pokémon, selon la statistique de défense la plus faible du Pokémon adverse.;—
+Télépathe;Telepathy;Anticipe et évite les attaques des alliés en Combat Double ou triple.;—
+Téméraire;Reckless;Augmente de 20% la puissance des attaques infligeant des dégâts de recul.;—
+Tempo Perso;Own Tempo;Immunise contre la confusion.;—
+Tension;Unnerve;Empêche l'adversaire de consommer sa baie.;—
+Téra-Voltage;Teravolt;Peut toucher un Pokémon adverse malgré son talent.;—
+Terre FinaleROSA;Desolate Land;Crée un temps ensoleillé ne pouvant être annulé par capacité ou talent tant que le Pokémon est en jeu. Annule toutes les capacités de type Eau.;—
+Tête de Roc;Rock Head;Le Pokémon ne subit pas de dégâts de contrecoup.;—
+Toison Épaisse;Fur Coat;Divise par deux les dégâts reçus lors d'une attaque physique.;—
+Toison Herbue;Grass Pelt;Augmente la Défense lorsque Champ Herbu est en vigueur.;—
+Torche;Flash Fire;Annule les dégâts des attaques de type Feu subies et augmente de 50% la puissance des attaques de type Feu lancées.;—
+Torrent;Torrent;Augmente la puissance des attaques de type Eau de 50% lorsque le Pokémon a moins d'1/3 de ses PV totaux.;—
+Toxitouche;Poison Touch;Peut empoisonner l'adversaire après lui avoir porté une attaque physique.;—
+Turbo;Speed Boost;Statistiques : La vitesse du Pokémon augmente à chaque tour.;—
+TurboBrasier;Turboblaze;Peut toucher un Pokémon adverse malgré son talent.;—
+Vaccin;Immunity;Immunise contre l'empoisonnement.;—
+Ventouse;Suction Cups;Empêche d'être changé de force par une attaque adverse.;Augmente les chances qu'un Pokémon pêché morde à l'hameçon.É
+Victorieux;Victory Star;Statistiques : Monte de 10% la précision des alliés en Combat Double ou triple.;—
+Voile Sable;Sand Veil;Statistiques : Augmente l'esquive de 20% lors d'une tempête de sable et immunise contre ses dégâts.;Réduit de 50% les chances d'être attaqué par un Pokémon sauvage lors d'une tempête de sable.É

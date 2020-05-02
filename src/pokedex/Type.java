@@ -12,11 +12,11 @@ import java.util.Locale;
  * @author Leon
  */
 public class Type {
-    String name;
+    String name, en_name;
     int id;
     float[] vs;
 
-    public Type(String name,
+    public Type(String name, String en_name,
             float vs_bug, float vs_dark, 
             float vs_dragon, float vs_electric, 
             float vs_fairy, float vs_fight, 
@@ -27,6 +27,7 @@ public class Type {
             float vs_psychic, float vs_rock, 
             float vs_steel, float vs_water) {
         this.name = name;
+        this.en_name = en_name;
         this.id = -1;
         this.vs = new float[18];
         
@@ -53,14 +54,15 @@ public class Type {
     public Type(String cvsLign){
         String[] infos = cvsLign.split(";");
         this.name = infos[0];
+        this.en_name = infos[1];
         this.vs = new float[18];
-        for (int i = 1; i < infos.length; i++) {
-            vs[i-1] = Float.parseFloat(infos[i]);
+        for (int i = 2; i < infos.length; i++) {
+            vs[i-2] = Float.parseFloat(infos[i]);
         }
     }
     
     public void addToDB(Database db){
-        db.executeUpdate(String.format(Locale.ROOT, "INSERT INTO type VALUES (default, '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
-                name, vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]));
+        db.executeUpdate(String.format(Locale.ROOT, "INSERT INTO type VALUES (default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
+                name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]));
     }
 }

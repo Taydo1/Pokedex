@@ -27,8 +27,8 @@ public class Ability {
         this.description = new String[]{infos[2], infos[3]};
     }
     
-    public void addToDB(Database db){
-        db.executeUpdate(String.format("INSERT INTO ability VALUES (default, '%s', '%s', '%s', '%s')",
-                name.replace("'", "''"), en_name.replace("'", "''"), description[0].replace("'", "''"), description[1].replace("'", "''")));
+    public String  getRequest(){
+        return String.format("(default, '%s', '%s', '%s', '%s')",
+                name.replace("'", "''"), en_name.replace("'", "''"), description[0].replace("'", "''"), description[1].replace("'", "''"));
     }
 }

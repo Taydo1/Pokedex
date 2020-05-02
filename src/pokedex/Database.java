@@ -14,6 +14,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.efabrika.util.DBTablePrinter;
@@ -75,18 +77,32 @@ public class Database {
     public void importAll() {
         String ligne;
         try {
+            Map<String, Integer> type2id = new HashMap<>();
             BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
             br.readLine();
+            String request = "INSERT INTO type VALUES ";
             while ((ligne = br.readLine()) != null) {
-                new Type(ligne).addToDB(this);
+                request += new Type(ligne, type2id).getRequest() + ",";
             }
+            executeUpdate(request.substring(0, request.length()-1));
             br.close();
             
+            request = "INSERT INTO ability VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_abilities.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                new Ability(ligne).addToDB(this);
+                request += new Ability(ligne).getRequest() + ",";
             }
+            executeUpdate(request.substring(0, request.length()-1));
+            br.close();
+            
+            request = "INSERT INTO ability VALUES ";
+            br = new BufferedReader(new FileReader("ressources/liste_moves.csv"));
+            br.readLine();
+            while ((ligne = br.readLine()) != null) {
+                request += new Move(ligne, type2id).getRequest() + ",";
+            }
+            executeUpdate(request.substring(0, request.length()-1));
             br.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);

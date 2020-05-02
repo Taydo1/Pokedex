@@ -33,7 +33,12 @@ CREATE TABlE trainer(
 CREATE TABLE attack(
 	id serial PRIMARY KEY,
 	name varchar(20),
-	en_name varchar(20)
+	en_name varchar(20),
+	id_type int,
+	category varchar(10),
+	pp int,
+	power int,
+	accuracy int
 );
 
 CREATE TABLE ability(

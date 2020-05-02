@@ -5,6 +5,7 @@
  */
 package pokedex;
 
+import java.util.Map;
 import java.util.Locale;
 
 /**
@@ -51,7 +52,7 @@ public class Type {
         vs[17] = vs_water;
     }
     
-    public Type(String cvsLign){
+    public Type(String cvsLign, Map<String, Integer> type2id){
         String[] infos = cvsLign.split(";");
         this.name = infos[0];
         this.en_name = infos[1];
@@ -59,10 +60,11 @@ public class Type {
         for (int i = 2; i < infos.length; i++) {
             vs[i-2] = Float.parseFloat(infos[i]);
         }
+        type2id.put(en_name, id);
     }
     
-    public void addToDB(Database db){
-        db.executeUpdate(String.format(Locale.ROOT, "INSERT INTO type VALUES (default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
-                name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]));
+    public String getRequest(){
+        return String.format(Locale.ROOT, "(default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
+                name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]);
     }
 }

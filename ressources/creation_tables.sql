@@ -25,11 +25,6 @@ CREATE TABLE type(
 	vs_water numeric
 );
 
-CREATE TABlE trainer(
-	id serial PRIMARY KEY,
-	name varchar(20)
-);
-
 CREATE TABLE move(
 	id serial PRIMARY KEY,
 	name varchar(30),
@@ -60,6 +55,11 @@ CREATE TABLE pokedex(
 	weight numeric,
 	id_lower_evolution int REFERENCES pokedex(id),
 	id_evolution int REFERENCES pokedex(id)
+);
+
+CREATE TABlE trainer(
+	id serial PRIMARY KEY,
+	name varchar(20)
 );
 
 CREATE TABLE pokemon(

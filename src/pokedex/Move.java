@@ -31,13 +31,13 @@ public class Move {
         String[] infos = cvsLign.split(";");
         System.out.println(""+cvsLign);
         this.id = -1;
-        this.name = infos[1];
-        this.en_name = infos[2];
-        this.id_type = type2id.get(infos[3]);
-        this.category = infos[4];
-        this.pp = Integer.parseInt(infos[5]);
-        this.power = Integer.parseInt(infos[6]);
-        this.accuracy = Integer.parseInt(infos[7]);
+        this.name = infos[0];
+        this.en_name = infos[1];
+        this.id_type = type2id.get(infos[2]);
+        this.category = infos[3];
+        this.pp = Integer.parseInt(infos[4]);
+        this.power = Integer.parseInt(infos[5]);
+        this.accuracy = Integer.parseInt(infos[6]);
     }
     
     public String  getRequest(){

@@ -5,46 +5,74 @@
  */
 package pokedex;
 
-import java.sql.*;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  *
  * @author Leon
  */
-public class Pokedex {
+public class Pokedex extends DBElement{
+    String name, en_name,classfication;
+    int id, id_type1, id_type2, id_ability1, id_ability2, id_ability3, id_ability4,
+            generation,id_lower_evolution, id_evolution;
+    float height, weight, percentage_male;
+    boolean is_legendary;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        String dbName = "pokedex";
-        String schemaName = "pokedex";
-
-        Database db = new Database();
-        db.createDB(dbName);
-        //Class.forName("org.postgresql.Driver");
-        db.executeFile("ressources/creation_tables.sql", schemaName);
-        db.printTable("pokedex");
-
-        /*Pokemon pikachu = new Pokemon("Pikachu", 3, 25, 1, 3, 2, 5, 36, 25);
-        pikachu.addToDB(db);
-        db.printTable("pokemon");*/
-        
-        db.importAll();
-        
-        db.printTable("type");
-        db.printTable("ability");
-        db.printTable("move");
+    public Pokedex(String name, String en_name, String classfication, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, boolean is_legendary) {
+        this.id = -1;
+        this.name = name;
+        this.en_name = en_name;
+        this.classfication = classfication;
+        this.id_type1 = id_type1;
+        this.id_type2 = id_type2;
+        this.id_ability1 = id_ability1;
+        this.id_ability2 = id_ability2;
+        this.id_ability3 = id_ability3;
+        this.id_ability4 = id_ability4;
+        this.generation = generation;
+        this.id_lower_evolution = id_lower_evolution;
+        this.id_evolution = id_evolution;
+        this.height = height;
+        this.weight = weight;
+        this.percentage_male = percentage_male;
+        this.is_legendary = is_legendary;
     }
 
-    public static void update(Statement st, String cmd) throws SQLException {
-        st.executeUpdate(cmd);
+    
+    public Pokedex(String cvsLign, Map<String, Integer> type2id, Map<String, Integer> ability2id) {
+        String[] infos = cvsLign.split(";");
+        System.out.println(""+cvsLign);
+        this.id = -1;
+        this.name = infos[1];
+        this.en_name = infos[2];
+        this.classfication = infos[3];
+        this.id_type1 = type2id.get(infos[4]);
+        this.id_type2 = type2id.get(infos[5]);
+        this.id_ability1 = ability2id.get(infos[6]);
+        this.id_ability2 = ability2id.get(infos[7]);
+        this.id_ability3 = ability2id.get(infos[8]);
+        this.id_ability4 = ability2id.get(infos[9]);
+        this.height = Float.parseFloat(infos[10]);
+        this.weight = Float.parseFloat(infos[11]);
+        this.percentage_male = StringToFloatParse(infos[12]);
+        this.generation = Integer.parseInt(infos[13]);
+        this.is_legendary = Boolean.parseBoolean(infos[14]);
+        this.id_lower_evolution = StringToIntParse(infos[15]);
+        this.id_evolution = StringToIntParse(infos[16]);
     }
-
-    /*
-INSERT INTO type VALUES (default, "Electrik",1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 1, 0.5, 1);
-INSERT INTO pokedex VALUES (172, 'Pichu', 'Pichu', 1, NULL, 'Pokémon Minisouris',  0.2, 2, NULL, 25),
-						   (25, 'Pikachu', 'Pikachu', 1, NULL, 'Pokémon Souris',  0.4, 6, 172, 26),
-						   (26, 'Raichu', 'Raichu', 1, NULL, 'Pokémon Souris',  0.8, 30, 25, NULL);*/
+    
+    
+    @Override
+    public String getRequest() {
+        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s)",
+                name.replace("'", "''"), en_name.replace("'", "''"), 
+                classfication.replace("'", "''"),
+                id_type1, int2StringRequest(id_type2), 
+                id_ability1, int2StringRequest(id_ability2), int2StringRequest(id_ability3), int2StringRequest(id_ability4),
+                height, weight, float2StringRequest(percentage_male), is_legendary, generation,
+                int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution));
+    }
+    
+    
 }

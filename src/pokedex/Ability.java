@@ -5,12 +5,14 @@
  */
 package pokedex;
 
+import java.util.Map;
+
 /**
  *
  * @author Leon
  */
 public class Ability {
-
+    static int idCounter=1;
     int id;
     String name, en_name, description[];
 
@@ -20,11 +22,13 @@ public class Ability {
         this.description = new String[]{description1, description2};
     }
 
-    public Ability(String cvsLign) {
+    public Ability(String cvsLign, Map<String, Integer> abilityid) {
         String[] infos = cvsLign.split(";");
+        this.id = idCounter++;
         this.name = infos[0];
         this.en_name = infos[1];
         this.description = new String[]{infos[2], infos[3]};
+        abilityid.put(en_name, id);
     }
     
     public String  getRequest(){

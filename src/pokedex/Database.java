@@ -66,9 +66,9 @@ public class Database {
                 st.executeUpdate(commands[i]);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,7 +78,9 @@ public class Database {
         String ligne;
         try {
             Map<String, Integer> type2id = new HashMap<>();
-            //Map<String, Integer> type2id = new HashMap<>();
+            type2id.put(" ", -1);
+            Map<String, Integer> abilityid = new HashMap<>();
+            abilityid.put(" ", -1);
             BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
             br.readLine();
             String request = "INSERT INTO type VALUES ";
@@ -92,7 +94,7 @@ public class Database {
             br = new BufferedReader(new FileReader("ressources/liste_abilities.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                request += new Ability(ligne).getRequest() + ",";
+                request += new Ability(ligne, abilityid).getRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length()-1));
             br.close();
@@ -103,12 +105,23 @@ public class Database {
             while ((ligne = br.readLine()) != null) {
                 request += new Move(ligne, type2id).getRequest() + ",";
             }
+            System.out.println(request);
+            executeUpdate(request.substring(0, request.length()-1));
+            br.close();
+            
+            request = "INSERT INTO pokedex VALUES ";
+            br = new BufferedReader(new FileReader("ressources/liste_pokedex.csv"));
+            br.readLine();
+            while ((ligne = br.readLine()) != null) {
+                request += new Pokedex(ligne, type2id, abilityid).getRequest() + ",";
+            }
+            System.out.println(request);
             executeUpdate(request.substring(0, request.length()-1));
             br.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

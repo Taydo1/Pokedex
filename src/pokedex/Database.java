@@ -78,6 +78,7 @@ public class Database {
         String ligne;
         try {
             Map<String, Integer> type2id = new HashMap<>();
+            //Map<String, Integer> type2id = new HashMap<>();
             BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
             br.readLine();
             String request = "INSERT INTO type VALUES ";

@@ -6,6 +6,8 @@
 package pokedex;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -65,11 +68,7 @@ public class Database {
                 //System.out.println(commands[i]);
                 st.executeUpdate(commands[i]);
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -79,26 +78,26 @@ public class Database {
         try {
             Map<String, Integer> type2id = new HashMap<>();
             type2id.put(" ", -1);
-            Map<String, Integer> abilityid = new HashMap<>();
-            abilityid.put(" ", -1);
+            Map<String, Integer> ability2id = new HashMap<>();
+            ability2id.put(" ", -1);
             BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
             br.readLine();
             String request = "INSERT INTO type VALUES ";
             while ((ligne = br.readLine()) != null) {
                 request += new Type(ligne, type2id).getRequest() + ",";
             }
-            executeUpdate(request.substring(0, request.length()-1));
+            executeUpdate(request.substring(0, request.length() - 1));
             br.close();
-            
+
             request = "INSERT INTO ability VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_abilities.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                request += new Ability(ligne, abilityid).getRequest() + ",";
+                request += new Ability(ligne, ability2id).getRequest() + ",";
             }
-            executeUpdate(request.substring(0, request.length()-1));
+            executeUpdate(request.substring(0, request.length() - 1));
             br.close();
-            
+
             request = "INSERT INTO move VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_moves.csv"));
             br.readLine();
@@ -106,21 +105,46 @@ public class Database {
                 request += new Move(ligne, type2id).getRequest() + ",";
             }
             System.out.println(request);
-            executeUpdate(request.substring(0, request.length()-1));
+            executeUpdate(request.substring(0, request.length() - 1));
             br.close();
-            
+
             request = "INSERT INTO pokedex VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_pokedex.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                request += new Pokedex(ligne, type2id, abilityid).getRequest() + ",";
+                request += new Pokedex(ligne, type2id, ability2id).getRequest() + ",";
             }
             System.out.println(request);
-            executeUpdate(request.substring(0, request.length()-1));
+            executeUpdate(request.substring(0, request.length() - 1));
             br.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+
+            for (int i = 1; i <= 251; i++) {
+                File file = new File(String.format("ressources/images/normal/%03d.png", i));
+                FileInputStream fis = new FileInputStream(file);
+
+                FileInputStream fisShiny = null;
+                PreparedStatement ps;
+                if (i <= 42) {
+                    File fileShiny = new File(String.format("ressources/images/shiny/%03d.png", i));
+                    fisShiny = new FileInputStream(fileShiny);
+                    ps = conn.prepareStatement("UPDATE pokedex SET image=?, image_shiny=? WHERE id=" + i);
+                    ps.setBinaryStream(1, fis, file.length());
+                    ps.setBinaryStream(2, fisShiny, fileShiny.length());
+                } else {
+                    ps = conn.prepareStatement("UPDATE pokedex SET image=? WHERE id=" + i);
+                    ps.setBinaryStream(1, fis, file.length());
+                }
+                ps.executeUpdate();
+                ps.close();
+                fis.close();
+                if (i <= 42) {
+                    fisShiny.close();
+                }
+            }
+
+            ResultSet rs = st.executeQuery("SELECT image, image_shiny FROM pokedex");
+            DBTablePrinter.printResultSet(rs);
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

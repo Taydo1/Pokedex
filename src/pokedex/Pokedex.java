@@ -73,6 +73,4 @@ public class Pokedex extends DBElement{
                 height, weight, float2StringRequest(percentage_male), is_legendary, generation,
                 int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution));
     }
-    
-    
 }

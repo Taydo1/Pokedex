@@ -36,7 +36,7 @@ public class PokedexApp {
         //db.printTable("type");
         //db.printTable("ability");
         //db.printTable("move");
-        db.printTable("pokedex");
+        //db.printTable("pokedex");
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

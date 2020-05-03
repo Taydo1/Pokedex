@@ -61,7 +61,9 @@ CREATE TABLE pokedex(
 	is_legendary BOOLEAN,
 	generation int,
 	id_lower_evolution int REFERENCES pokedex(id),
-	id_evolution int REFERENCES pokedex(id)
+	id_evolution int REFERENCES pokedex(id),
+	image bytea,
+	image_shiny bytea
 );
 
 CREATE TABlE trainer(

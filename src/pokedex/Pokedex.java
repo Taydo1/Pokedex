@@ -42,7 +42,7 @@ public class Pokedex extends DBElement{
     
     public Pokedex(String cvsLign, Map<String, Integer> type2id, Map<String, Integer> ability2id) {
         String[] infos = cvsLign.split(";");
-        System.out.println(""+cvsLign);
+        //System.out.println(""+cvsLign);
         this.id = -1;
         this.name = infos[1];
         this.en_name = infos[2];

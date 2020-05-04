@@ -25,8 +25,6 @@ public class PokedexApp {
         db.createDB(dbName);
         //Class.forName("org.postgresql.Driver");
         db.executeFile("ressources/creation_tables.sql", schemaName);
-        db.printTable("pokedex");
-
         /*Pokemon pikachu = new Pokemon("Pikachu", 3, 25, 1, 3, 2, 5, 36, 25);
         pikachu.addToDB(db);
         db.printTable("pokemon");*/
@@ -37,6 +35,7 @@ public class PokedexApp {
         //db.printTable("ability");
         //db.printTable("move");
         //db.printTable("pokedex");
+        System.out.println("Fini");
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

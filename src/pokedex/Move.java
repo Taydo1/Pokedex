@@ -29,7 +29,7 @@ public class Move {
 
     public Move(String cvsLign, Map<String, Integer> type2id) {
         String[] infos = cvsLign.split(";");
-        System.out.println(""+cvsLign);
+        //System.out.println(""+cvsLign);
         this.id = -1;
         this.name = infos[0];
         this.en_name = infos[1];

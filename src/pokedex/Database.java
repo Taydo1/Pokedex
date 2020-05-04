@@ -104,7 +104,6 @@ public class Database {
             while ((ligne = br.readLine()) != null) {
                 request += new Move(ligne, type2id).getRequest() + ",";
             }
-            System.out.println(request);
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
 
@@ -114,11 +113,11 @@ public class Database {
             while ((ligne = br.readLine()) != null) {
                 request += new Pokedex(ligne, type2id, ability2id).getRequest() + ",";
             }
-            System.out.println(request);
+            //System.out.println(request);
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
 
-            for (int i = 1; i <= 251; i++) {
+            for (int i = 1; i <= 671; i++) {
                 File file = new File(String.format("ressources/images/normal/%03d.png", i));
                 FileInputStream fis = new FileInputStream(file);
 
@@ -140,10 +139,7 @@ public class Database {
                 if (i <= 42) {
                     fisShiny.close();
                 }
-            }
-
-            ResultSet rs = st.executeQuery("SELECT image, image_shiny FROM pokedex");
-            DBTablePrinter.printResultSet(rs);
+            }            
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -159,7 +155,7 @@ public class Database {
     }
 
     public void executeUpdate(String request) {
-        System.out.println(request);
+        //System.out.println(request);
         try {
             st.executeUpdate(request);
         } catch (SQLException ex) {

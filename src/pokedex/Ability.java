@@ -5,16 +5,21 @@
  */
 package pokedex;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Map;
 
 /**
  *
  * @author Leon
  */
-public class Ability {
+public class Ability extends DBElement{
     static int idCounter=1;
     int id;
     String name, en_name, description[];
+
+    public Ability() {}
 
     public Ability(String name, String description1, String description2) {
         this.id = -1;
@@ -30,9 +35,20 @@ public class Ability {
         this.description = new String[]{infos[2], infos[3]};
         abilityid.put(en_name, id);
     }
+
+    @Override
+    public String toString() {
+        return "Ability{" + "id=" + id + ", name=" + name + ", en_name=" + en_name + ", description=" + Arrays.toString(description) + '}';
+    }
     
+    @Override
     public String  getRequest(){
         return String.format("(default, '%s', '%s', '%s', '%s')",
                 name.replace("'", "''"), en_name.replace("'", "''"), description[0].replace("'", "''"), description[1].replace("'", "''"));
+    }
+
+    @Override
+    public void getFromDB(ResultSet rs) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

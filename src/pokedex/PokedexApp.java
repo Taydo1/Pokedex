@@ -6,6 +6,7 @@
 package pokedex;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -36,6 +37,9 @@ public class PokedexApp {
         //db.printTable("move");
         //db.printTable("pokedex");
         System.out.println("Fini");
+        
+        ArrayList<Pokedex> list = db.getFromDB("SELECT * FROM pokedex WHERE id=24", Pokedex.class);
+        System.out.println(""+list.get(0));
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

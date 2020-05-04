@@ -5,6 +5,9 @@
  */
 package pokedex;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Locale;
 
@@ -12,7 +15,7 @@ import java.util.Locale;
  *
  * @author Leon
  */
-public class Type {
+public class Type extends DBElement{
     static int idCounter=1;
     String name, en_name;
     int id;
@@ -64,9 +67,20 @@ public class Type {
         }
         type2id.put(en_name, id);
     }
+
+    @Override
+    public String toString() {
+        return "Type{" + "name=" + name + ", en_name=" + en_name + ", id=" + id + ", vs=" + Arrays.toString(vs) + '}';
+    }
     
+    @Override
     public String getRequest(){
         return String.format(Locale.ROOT, "(default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
                 name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]);
+    }
+
+    @Override
+    public void getFromDB(ResultSet rs) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

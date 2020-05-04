@@ -7,18 +7,23 @@ package pokedex;
 
 import java.util.Locale;
 import java.util.Map;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author Leon
  */
-public class Pokedex extends DBElement{
-    String name, en_name,classfication;
+public class Pokedex extends DBElement {
+
+    String name, en_name, classfication;
     int id, id_type1, id_type2, id_ability1, id_ability2, id_ability3, id_ability4,
-            generation,id_lower_evolution, id_evolution;
+            generation, id_lower_evolution, id_evolution;
     float height, weight, percentage_male;
     boolean is_legendary;
 
+    public Pokedex() {}
+    
     public Pokedex(String name, String en_name, String classfication, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, boolean is_legendary) {
         this.id = -1;
         this.name = name;
@@ -39,7 +44,6 @@ public class Pokedex extends DBElement{
         this.is_legendary = is_legendary;
     }
 
-    
     public Pokedex(String cvsLign, Map<String, Integer> type2id, Map<String, Integer> ability2id) {
         String[] infos = cvsLign.split(";");
         //System.out.println(""+cvsLign);
@@ -61,16 +65,40 @@ public class Pokedex extends DBElement{
         this.id_lower_evolution = StringToIntParse(infos[15]);
         this.id_evolution = StringToIntParse(infos[16]);
     }
-    
+
+    @Override
+    public String toString() {
+        return "Pokedex{" + "name=" + name + ", en_name=" + en_name + ", classfication=" + classfication + ", id=" + id + ", id_type1=" + id_type1 + ", id_type2=" + id_type2 + ", id_ability1=" + id_ability1 + ", id_ability2=" + id_ability2 + ", id_ability3=" + id_ability3 + ", id_ability4=" + id_ability4 + ", generation=" + generation + ", id_lower_evolution=" + id_lower_evolution + ", id_evolution=" + id_evolution + ", height=" + height + ", weight=" + weight + ", percentage_male=" + percentage_male + ", is_legendary=" + is_legendary + '}';
+    }
     
     @Override
     public String getRequest() {
         return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s)",
-                name.replace("'", "''"), en_name.replace("'", "''"), 
+                name.replace("'", "''"), en_name.replace("'", "''"),
                 classfication.replace("'", "''"),
-                id_type1, int2StringRequest(id_type2), 
+                id_type1, int2StringRequest(id_type2),
                 id_ability1, int2StringRequest(id_ability2), int2StringRequest(id_ability3), int2StringRequest(id_ability4),
                 height, weight, float2StringRequest(percentage_male), is_legendary, generation,
                 int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution));
     }
+
+    public void getFromDB(ResultSet rs) throws SQLException {
+        this.id = rs.getInt("id");
+        this.name = rs.getString("name");
+        this.en_name = rs.getString("en_name");
+        this.id_ability1 = rs.getInt("id_ability1");
+        this.id_ability2 = rs.getInt("id_ability2");
+        this.id_ability3 = rs.getInt("id_ability3");
+        this.id_ability4 = rs.getInt("id_ability4");
+        this.id_type1 = rs.getInt("id_type1");
+        this.id_type2 = rs.getInt("id_type2");
+        this.generation = rs.getInt("generation");
+        this.id_lower_evolution = rs.getInt("id_lower_evolution");
+        this.id_evolution = rs.getInt("id_evolution");
+        this.height = rs.getFloat("height");
+        this.weight = rs.getFloat("weight");
+        this.percentage_male = rs.getFloat("percentage_male");
+        this.is_legendary = rs.getBoolean("is_legendary");
+    }
+
 }

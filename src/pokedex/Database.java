@@ -8,15 +8,16 @@ package pokedex;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -139,7 +140,7 @@ public class Database {
                 if (i <= 42) {
                     fisShiny.close();
                 }
-            }            
+            }
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -160,6 +161,33 @@ public class Database {
             st.executeUpdate(request);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public ResultSet executeQuery(String request) {
+        //System.out.println(request);
+        try {
+            return st.executeQuery(request);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public <T extends DBElement> ArrayList<T> getFromDB(String request, Class<T> clazz) {
+        ResultSet rs = executeQuery(request);
+
+        ArrayList<T> list = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                T elem = clazz.getDeclaredConstructor().newInstance();
+                elem.getFromDB(rs);
+                list.add(elem);
+            }
+            return list;
+        } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException | SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }

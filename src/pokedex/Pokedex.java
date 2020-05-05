@@ -92,7 +92,7 @@ public class Pokedex extends DBElement {
     }
     
     @Override
-    public String getRequest() {
+    public String getInsertSubRequest() {
         return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s)",
                 name.replace("'", "''"), en_name.replace("'", "''"),
                 classfication.replace("'", "''"),

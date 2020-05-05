@@ -9,7 +9,7 @@ package pokedex;
  *
  * @author Leon
  */
-public class Pokemon {
+public class Pokemon extends DBElement {
     public String name;
     int id, level, health;
     int id_trainer, id_attack0, id_attack1, id_attack2, id_attack3, id_pokedex;
@@ -30,5 +30,15 @@ public class Pokemon {
     public void addToDB(Database db){
         db.executeUpdate(String.format("INSERT INTO pokemon VALUES (default, '%s', %d, %d, %d, %d,  %d, %d, %d, %d)",
                 name.replace("'", "''"), level, health, id_trainer, id_attack0, id_attack1, id_attack2, id_attack3, id_pokedex));
+    }
+
+    @Override
+    public String getInsertSubRequest() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

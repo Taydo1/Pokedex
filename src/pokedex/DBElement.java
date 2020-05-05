@@ -6,8 +6,6 @@
 package pokedex;
 
 import java.util.Locale;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  *
@@ -52,7 +50,7 @@ public abstract class DBElement {
         }
     }
 
-    public abstract String getRequest();
+    public abstract String getInsertSubRequest();
 
     @Override
     public abstract String toString();

@@ -85,7 +85,7 @@ public class Type extends DBElement {
     }
 
     @Override
-    public String getRequest() {
+    public String getInsertSubRequest() {
         return String.format(Locale.ROOT, "(default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
                 name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]);
     }

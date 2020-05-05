@@ -51,7 +51,7 @@ public class Ability extends DBElement {
     }
 
     @Override
-    public String getRequest() {
+    public String getInsertSubRequest() {
         return String.format("(default, '%s', '%s', '%s', '%s')",
                 name.replace("'", "''"), en_name.replace("'", "''"), description[0].replace("'", "''"), description[1].replace("'", "''"));
     }

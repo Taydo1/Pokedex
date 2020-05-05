@@ -85,7 +85,7 @@ public class Database {
             br.readLine();
             String request = "INSERT INTO type VALUES ";
             while ((ligne = br.readLine()) != null) {
-                request += new Type(ligne, type2id).getRequest() + ",";
+                request += new Type(ligne, type2id).getInsertSubRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
@@ -94,7 +94,7 @@ public class Database {
             br = new BufferedReader(new FileReader("ressources/liste_abilities.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                request += new Ability(ligne, ability2id).getRequest() + ",";
+                request += new Ability(ligne, ability2id).getInsertSubRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
@@ -103,7 +103,7 @@ public class Database {
             br = new BufferedReader(new FileReader("ressources/liste_moves.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                request += new Move(ligne, type2id).getRequest() + ",";
+                request += new Move(ligne, type2id).getInsertSubRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
@@ -112,7 +112,7 @@ public class Database {
             br = new BufferedReader(new FileReader("ressources/liste_pokedex.csv"));
             br.readLine();
             while ((ligne = br.readLine()) != null) {
-                request += new Pokedex(ligne, type2id, ability2id).getRequest() + ",";
+                request += new Pokedex(ligne, type2id, ability2id).getInsertSubRequest() + ",";
             }
             //System.out.println(request);
             executeUpdate(request.substring(0, request.length() - 1));

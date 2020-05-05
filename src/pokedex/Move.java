@@ -62,7 +62,7 @@ public class Move extends DBElement {
     }
 
     @Override
-    public String getRequest() {
+    public String getInsertSubRequest() {
         return String.format("(default, '%s', '%s', %d, '%s', %d, %d, %d)",
                 name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy);
     }

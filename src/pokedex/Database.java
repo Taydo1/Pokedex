@@ -118,7 +118,6 @@ public class Database {
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
 
-            
             int imageNb = 809;
             int shinyImageNb = 151;
             for (int i = 1; i <= imageNb; i++) {
@@ -189,6 +188,13 @@ public class Database {
         } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException | SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+    }
+
+    public void Modify(String liste_a_modif, int[] id_a_modifier, String[] colonnes_a_modifier, Object[] valeurs_modif) {
+        for (int i = 0; i < colonnes_a_modifier.length; i++) {
+             this.executeUpdate("UPDATE " + liste_a_modif + " SET " + colonnes_a_modifier[i].replace("'", "''") + " = '" + valeurs_modif[i].toString().replace("'", "''") 
+                     + "' WHERE id = " + String.valueOf(id_a_modifier[i]));
         }
     }
 }

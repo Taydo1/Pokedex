@@ -118,13 +118,16 @@ public class Database {
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
 
-            for (int i = 1; i <= 671; i++) {
+            
+            int imageNb = 809;
+            int shinyImageNb = 151;
+            for (int i = 1; i <= imageNb; i++) {
                 File file = new File(String.format("ressources/images/normal/%03d.png", i));
                 FileInputStream fis = new FileInputStream(file);
 
                 FileInputStream fisShiny = null;
                 PreparedStatement ps;
-                if (i <= 42) {
+                if (i <= shinyImageNb) {
                     File fileShiny = new File(String.format("ressources/images/shiny/%03d.png", i));
                     fisShiny = new FileInputStream(fileShiny);
                     ps = conn.prepareStatement("UPDATE pokedex SET image=?, image_shiny=? WHERE id=" + i);
@@ -137,7 +140,7 @@ public class Database {
                 ps.executeUpdate();
                 ps.close();
                 fis.close();
-                if (i <= 42) {
+                if (i <= shinyImageNb) {
                     fisShiny.close();
                 }
             }

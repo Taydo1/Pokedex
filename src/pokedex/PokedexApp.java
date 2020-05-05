@@ -60,6 +60,18 @@ public class PokedexApp {
         for (Move attaque : listAttaque) {
             System.out.println(""+attaque);
         }
+        
+        // Test de la fonction modification
+        
+        /*int[] tableau = {1, 1};
+        String[] tableau2 = {"level", "name"};
+        Object[] tableau3 = {4, "Coronovarus"};
+        db.Modify("Pokemon", tableau, tableau2, tableau3);
+        
+        listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
+        for (Pokemon pokemon : listPokemon) {
+            System.out.println(""+pokemon);
+        }*/
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

@@ -36,7 +36,13 @@ public class PokedexApp {
         //db.printTable("ability");
         //db.printTable("move");
         //db.printTable("pokedex");
-        System.out.println("Fini");
+        
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110);
+        db.executeUpdate("INSERT INTO Pokemon VALUES "+ corona.getInsertSubRequest());
+        ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
+        for (Pokemon pokemon : listPokemon) {
+            System.out.println(""+pokemon);
+        }
         
         ArrayList<Pokedex> listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id<=2", Pokedex.class);
         for (Pokedex pokedex : listPokedex) {

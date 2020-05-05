@@ -53,7 +53,6 @@ public abstract class DBElement {
     }
 
     public abstract String getRequest();
-    public abstract void getFromDB(ResultSet rs) throws SQLException ;
 
     @Override
     public abstract String toString();

@@ -38,8 +38,22 @@ public class PokedexApp {
         //db.printTable("pokedex");
         System.out.println("Fini");
         
-        ArrayList<Pokedex> list = db.getFromDB("SELECT * FROM pokedex WHERE id=24", Pokedex.class);
-        System.out.println(""+list.get(0));
+        ArrayList<Pokedex> listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id<=2", Pokedex.class);
+        for (Pokedex pokedex : listPokedex) {
+            System.out.println(""+pokedex);
+        }
+        ArrayList<Type> listType = db.getFromDB("SELECT * FROM type WHERE id<=2", Type.class);
+        for (Type type : listType) {
+            System.out.println(""+type);
+        }
+        ArrayList<Ability> listTalent = db.getFromDB("SELECT * FROM ability WHERE id<=2", Ability.class);
+        for (Ability talent : listTalent) {
+            System.out.println(""+talent);
+        }
+        ArrayList<Move> listAttaque = db.getFromDB("SELECT * FROM move WHERE id<=2", Move.class);
+        for (Move attaque : listAttaque) {
+            System.out.println(""+attaque);
+        }
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

@@ -177,15 +177,13 @@ public class Database {
         }
     }
 
-    public <T extends DBElement> ArrayList<T> getFromDB(String request, Class<T> clazz) {
+    public <T extends DBElement> ArrayList<T> getFromDB(String request, Class<T> className) {
         ResultSet rs = executeQuery(request);
 
         ArrayList<T> list = new ArrayList<>();
         try {
             while (rs.next()) {
-                T elem = clazz.getDeclaredConstructor().newInstance();
-                elem.getFromDB(rs);
-                list.add(elem);
+                list.add(className.getDeclaredConstructor(ResultSet.class).newInstance(rs));
             }
             return list;
         } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException | SQLException ex) {

@@ -65,24 +65,8 @@ public class Pokedex extends DBElement {
         this.id_lower_evolution = StringToIntParse(infos[15]);
         this.id_evolution = StringToIntParse(infos[16]);
     }
-
-    @Override
-    public String toString() {
-        return "Pokedex{" + "name=" + name + ", en_name=" + en_name + ", classfication=" + classfication + ", id=" + id + ", id_type1=" + id_type1 + ", id_type2=" + id_type2 + ", id_ability1=" + id_ability1 + ", id_ability2=" + id_ability2 + ", id_ability3=" + id_ability3 + ", id_ability4=" + id_ability4 + ", generation=" + generation + ", id_lower_evolution=" + id_lower_evolution + ", id_evolution=" + id_evolution + ", height=" + height + ", weight=" + weight + ", percentage_male=" + percentage_male + ", is_legendary=" + is_legendary + '}';
-    }
     
-    @Override
-    public String getRequest() {
-        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s)",
-                name.replace("'", "''"), en_name.replace("'", "''"),
-                classfication.replace("'", "''"),
-                id_type1, int2StringRequest(id_type2),
-                id_ability1, int2StringRequest(id_ability2), int2StringRequest(id_ability3), int2StringRequest(id_ability4),
-                height, weight, float2StringRequest(percentage_male), is_legendary, generation,
-                int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution));
-    }
-
-    public void getFromDB(ResultSet rs) throws SQLException {
+    public Pokedex(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
         this.en_name = rs.getString("en_name");
@@ -101,4 +85,20 @@ public class Pokedex extends DBElement {
         this.is_legendary = rs.getBoolean("is_legendary");
     }
 
+
+    @Override
+    public String toString() {
+        return "Pokedex{" + "name=" + name + ", en_name=" + en_name + ", classfication=" + classfication + ", id=" + id + ", id_type1=" + id_type1 + ", id_type2=" + id_type2 + ", id_ability1=" + id_ability1 + ", id_ability2=" + id_ability2 + ", id_ability3=" + id_ability3 + ", id_ability4=" + id_ability4 + ", generation=" + generation + ", id_lower_evolution=" + id_lower_evolution + ", id_evolution=" + id_evolution + ", height=" + height + ", weight=" + weight + ", percentage_male=" + percentage_male + ", is_legendary=" + is_legendary + '}';
+    }
+    
+    @Override
+    public String getRequest() {
+        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s)",
+                name.replace("'", "''"), en_name.replace("'", "''"),
+                classfication.replace("'", "''"),
+                id_type1, int2StringRequest(id_type2),
+                id_ability1, int2StringRequest(id_ability2), int2StringRequest(id_ability3), int2StringRequest(id_ability4),
+                height, weight, float2StringRequest(percentage_male), is_legendary, generation,
+                int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution));
+    }
 }

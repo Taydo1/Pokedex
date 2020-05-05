@@ -15,27 +15,28 @@ import java.util.Locale;
  *
  * @author Leon
  */
-public class Type extends DBElement{
-    static int idCounter=1;
+public class Type extends DBElement {
+
+    static int idCounter = 1;
     String name, en_name;
     int id;
     float[] vs;
 
     public Type(String name, String en_name,
-            float vs_bug, float vs_dark, 
-            float vs_dragon, float vs_electric, 
-            float vs_fairy, float vs_fight, 
-            float vs_fire, float vs_flying, 
-            float vs_ghost, float vs_grass, 
-            float vs_ground, float vs_ice, 
-            float vs_normal, float vs_poison, 
-            float vs_psychic, float vs_rock, 
+            float vs_bug, float vs_dark,
+            float vs_dragon, float vs_electric,
+            float vs_fairy, float vs_fight,
+            float vs_fire, float vs_flying,
+            float vs_ghost, float vs_grass,
+            float vs_ground, float vs_ice,
+            float vs_normal, float vs_poison,
+            float vs_psychic, float vs_rock,
             float vs_steel, float vs_water) {
         this.name = name;
         this.en_name = en_name;
         this.id = -1;
         this.vs = new float[18];
-        
+
         vs[0] = vs_bug;
         vs[1] = vs_dark;
         vs[2] = vs_dragon;
@@ -55,15 +56,25 @@ public class Type extends DBElement{
         vs[16] = vs_steel;
         vs[17] = vs_water;
     }
-    
-    public Type(String cvsLign, Map<String, Integer> type2id){
+
+    public Type(ResultSet rs) throws SQLException {
+        this.id = rs.getInt("id");
+        this.name = rs.getString("name");
+        this.en_name = rs.getString("en_name");
+        this.vs = new float[18];
+        for (int i = 0; i < 18; i++) {
+            vs[i] = rs.getFloat(i+4);
+        }
+    }
+
+    public Type(String cvsLign, Map<String, Integer> type2id) {
         String[] infos = cvsLign.split(";");
         this.id = idCounter++;
         this.name = infos[0];
         this.en_name = infos[1];
         this.vs = new float[18];
         for (int i = 2; i < infos.length; i++) {
-            vs[i-2] = Float.parseFloat(infos[i]);
+            vs[i - 2] = Float.parseFloat(infos[i]);
         }
         type2id.put(en_name, id);
     }
@@ -72,15 +83,10 @@ public class Type extends DBElement{
     public String toString() {
         return "Type{" + "name=" + name + ", en_name=" + en_name + ", id=" + id + ", vs=" + Arrays.toString(vs) + '}';
     }
-    
-    @Override
-    public String getRequest(){
-        return String.format(Locale.ROOT, "(default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
-                name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]);
-    }
 
     @Override
-    public void getFromDB(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getRequest() {
+        return String.format(Locale.ROOT, "(default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
+                name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]);
     }
 }

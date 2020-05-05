@@ -13,12 +13,13 @@ import java.util.Map;
  *
  * @author Leon
  */
-public class Move extends DBElement{
+public class Move extends DBElement {
 
     String name, en_name, category;
     int id, id_type, pp, power, accuracy;
 
-    public Move() {}
+    public Move() {
+    }
 
     public Move(String name, String en_name, int id_type, String category, int pp, int power, int accuracy) {
         this.id = -1;
@@ -44,19 +45,25 @@ public class Move extends DBElement{
         this.accuracy = Integer.parseInt(infos[6]);
     }
 
+    public Move(ResultSet rs) throws SQLException {
+        this.id = rs.getInt("id");
+        this.name = rs.getString("name");
+        this.en_name = rs.getString("en_name");
+        this.id_type = rs.getInt("id_type");
+        this.category = rs.getString("category");
+        this.pp = rs.getInt("pp");
+        this.power = rs.getInt("power");
+        this.accuracy = rs.getInt("accuracy");
+    }
+
     @Override
     public String toString() {
         return "Move{" + "name=" + name + ", en_name=" + en_name + ", category=" + category + ", id=" + id + ", id_type=" + id_type + ", pp=" + pp + ", power=" + power + ", accuracy=" + accuracy + '}';
     }
-    
-    @Override
-    public String  getRequest(){
-        return String.format("(default, '%s', '%s', %d, '%s', %d, %d, %d)",
-                name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy);
-    }
 
     @Override
-    public void getFromDB(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getRequest() {
+        return String.format("(default, '%s', '%s', %d, '%s', %d, %d, %d)",
+                name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy);
     }
 }

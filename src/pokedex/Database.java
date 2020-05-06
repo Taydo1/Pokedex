@@ -215,8 +215,11 @@ public class Database {
                         case Types.BOOLEAN:
                             list.add(rs.getBoolean(i));
                             break;
+                        case Types.BINARY:
+                            list.add("FAUT GERER LA RECUP DES IMAGES");
+                            break;
                         default:
-                            System.out.println("hjebsv h, " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
+                            System.out.println("NON SUPPORTED TYPE !!! " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
                             break;
                     }
                 }

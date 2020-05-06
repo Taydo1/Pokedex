@@ -7,13 +7,16 @@ package pokedex;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Leon
  */
 public class PokedexApp extends JFrame {
+
     Database db;
+
     public PokedexApp() {
         this.setTitle("Pokedex 4.0");
         this.setSize(400, 500);
@@ -37,7 +40,7 @@ public class PokedexApp extends JFrame {
     private void testRequest() {
         Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110, 188);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest());
-        
+
         ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
@@ -58,6 +61,7 @@ public class PokedexApp extends JFrame {
         for (Move attaque : listAttaque) {
             System.out.println("" + attaque);
         }
+
         ArrayList<Object> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
         System.out.println("" + listPokemonPokedex);
 
@@ -70,6 +74,15 @@ public class PokedexApp extends JFrame {
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
+        }
+
+        while (true) {
+            String result = JOptionPane.showInputDialog(null, "Id du pokedex", "Pokedex Finder", JOptionPane.QUESTION_MESSAGE);
+            if(result.length()==0)break;
+            listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id="+Integer.parseInt(result), Pokedex.class);
+            for (Pokedex pokedex : listPokedex) {
+                System.out.println("" + pokedex);
+            }
         }
     }
 

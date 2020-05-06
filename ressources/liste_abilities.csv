@@ -205,7 +205,7 @@ Simple;Simple;Double les effets des modifications de statistiques, positives ou
 Sniper;Sniper;Triple la puissance des coups critiques.;—
 Soin Poison;Poison Heal;Le Pokémon récupère 1/8è de ses PV par tour lors d'un empoisonnement.;Le Pokémon empoisonné perd tout de même ses PV lorsque son dresseur se déplace. Cette perte de PV n'a plus lieu à partir de la 5ème génération.
 Solide Roc;Solid Rock;Retire 1/4 des dégâts subits si le Pokémon reçoit une attaque super efficace.;—
-Souffle DeltaROSA;Delta Stream;Annule tout effet de climat, même Mer Primaire et Terre Finale. Annule les faiblesses du type Vol.;—
+Souffle Delta;Delta Stream;Annule tout effet de climat, même Mer Primaire et Terre Finale. Annule les faiblesses du type Vol.;—
 Spectro-Bouclier;Shadow Shield;Réduit les dégâts infligés par une capacité si les PV sont au maximum.;—
 Statik;Static;30% de chance de provoquer la paralysie du Pokémon adverse ayant lancé une attaque de contact.;Augmente de 50% les chances de rencontrer un Pokémon sauvage de type Électrik.É
 Suintement;Liquid Ooze;Les attaques absorbantes du Pokémon adverse lui font perdre des PV.;—

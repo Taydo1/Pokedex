@@ -37,7 +37,7 @@ public class PokedexApp {
         //db.printTable("move");
         //db.printTable("pokedex");
         
-        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 188, 110);
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110, 188);
         db.executeUpdate("INSERT INTO Pokemon VALUES "+ corona.getInsertSubRequest());
         ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
@@ -61,9 +61,13 @@ public class PokedexApp {
             System.out.println(""+attaque);
         }
         
+        ArrayList<Object> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
+        System.out.println(""+listPokemonPokedex);
+        
+        
         // Test de la fonction modification
         
-        /*int[] tableau = {1, 1};
+        int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};
         db.Modify("Pokemon", tableau, tableau2, tableau3);
@@ -71,7 +75,7 @@ public class PokedexApp {
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println(""+pokemon);
-        }*/
+        }
     }
 
     public static void update(Statement st, String cmd) throws SQLException {

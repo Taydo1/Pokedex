@@ -14,9 +14,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -191,10 +193,45 @@ public class Database {
         }
     }
 
+    public ArrayList<Object> getFromDB(String request) {
+        ResultSet rs = executeQuery(request);
+
+        ArrayList<Object> list = new ArrayList();
+        try {
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnNumber = rsmd.getColumnCount();
+            while (rs.next()) {
+                for (int i = 1; i <= columnNumber; i++) {
+                    switch (rsmd.getColumnType(i)) {
+                        case Types.VARCHAR:
+                            list.add(rs.getString(i));
+                            break;
+                        case Types.NUMERIC:
+                            list.add(rs.getFloat(i));
+                            break;
+                        case Types.INTEGER:
+                            list.add(rs.getInt(i));
+                            break;
+                        case Types.BOOLEAN:
+                            list.add(rs.getBoolean(i));
+                            break;
+                        default:
+                            System.out.println("hjebsv h, " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
+                            break;
+                    }
+                }
+            }
+            return list;
+        } catch (IllegalArgumentException | SecurityException | SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
     public void Modify(String liste_a_modif, int[] id_a_modifier, String[] colonnes_a_modifier, Object[] valeurs_modif) {
         for (int i = 0; i < colonnes_a_modifier.length; i++) {
-             this.executeUpdate("UPDATE " + liste_a_modif + " SET " + colonnes_a_modifier[i].replace("'", "''") + " = '" + valeurs_modif[i].toString().replace("'", "''") 
-                     + "' WHERE id = " + String.valueOf(id_a_modifier[i]));
+            this.executeUpdate("UPDATE " + liste_a_modif + " SET " + colonnes_a_modifier[i].replace("'", "''") + " = '" + valeurs_modif[i].toString().replace("'", "''")
+                    + "' WHERE id = " + String.valueOf(id_a_modifier[i]));
         }
     }
 }

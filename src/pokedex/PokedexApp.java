@@ -10,9 +10,11 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -27,6 +29,8 @@ public class PokedexApp extends JFrame implements ActionListener {
     JPanel mainPanel;
     ImagePanel imagePanel;
     SelectionPanel selectionPanel;
+    
+    int idActuel;
 
     public PokedexApp() {
 
@@ -35,7 +39,7 @@ public class PokedexApp extends JFrame implements ActionListener {
         db.connectDB(dbName);
         db.executeUpdate("SET search_path TO " + schemaName);
         setupWindow();
-        testRequest();
+        //testRequest();
     }
 
     private void setupWindow() {
@@ -54,6 +58,7 @@ public class PokedexApp extends JFrame implements ActionListener {
         mainPanel.add(imagePanel, BorderLayout.CENTER);
 
         selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur", this);
+        idActuel=1;
         mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
         setVisible(true);
@@ -69,7 +74,7 @@ public class PokedexApp extends JFrame implements ActionListener {
         Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110, 188);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest());
 
-        ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
+        ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
         }
@@ -103,34 +108,27 @@ public class PokedexApp extends JFrame implements ActionListener {
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
         }
-
-        /*while (true) {
-            String result = JOptionPane.showInputDialog(null, "Id du pokedex", "Pokedex Finder", JOptionPane.QUESTION_MESSAGE);
-            if (result == null || result.length() == 0 || result.length() > 3) {
-                break;
-            }
-            listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id=" + Integer.parseInt(result), Pokedex.class);
-            for (Pokedex pokedex : listPokedex) {
-                System.out.println("" + pokedex);
-            }
-
-            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + Integer.parseInt(result));
-            imagePanel.setImage(image);
-            
-            int id = Integer.parseInt(result);
-            selectionPanel.setId(Integer.parseInt(result), db);
-            selectionPanel.repaint();
-            this.repaint();
-        }*/
     }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
+        int goalId=-1;
+        if (arg0.getSource() instanceof JButton) {
+            JButton button = (JButton) (arg0.getSource());
+            if("up".equals(button.getText())){
+                goalId = idActuel + 1;
+            }
+            if("down".equals(button.getText())){
+                goalId = idActuel - 1;
+            }
+        }else{
+            goalId = selectionPanel.getGoId();
+        }
         try {
-            int id = selectionPanel.getId();
-            selectionPanel.setId(id, db);
-            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + id);
+            selectionPanel.setId(goalId, db);
+            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + goalId);
             imagePanel.setImage(image);
+            idActuel = goalId;
         } catch (NumberFormatException ex) {
 
         }

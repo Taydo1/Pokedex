@@ -5,7 +5,10 @@
  */
 package pokedex;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -24,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import net.efabrika.util.DBTablePrinter;
 
 /**
@@ -59,11 +63,11 @@ public class Database {
         String fichier = "";
         String ligne;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            while ((ligne = br.readLine()) != null) {
-                fichier += " " + ligne;
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                while ((ligne = br.readLine()) != null) {
+                    fichier += " " + ligne;
+                }
             }
-            br.close();
 
             String[] commands = fichier.split(";");
             for (int i = 0; i < commands.length; i++) {
@@ -221,7 +225,7 @@ public class Database {
                             //list.add("FAUT GERER LA RECUP DES IMAGES");
                             break;
                         default:
-                            System.out.println("NON SUPPORTED TYPE !!! ("+i+") "+rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
+                            System.out.println("NON SUPPORTED TYPE !!! (" + i + ") " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
                             break;
                     }
                 }
@@ -233,10 +237,21 @@ public class Database {
         }
     }
 
-    public void Modify(String liste_a_modif, int[] id_a_modifier, String[] colonnes_a_modifier, Object[] valeurs_modif) {
+    public void modify(String liste_a_modif, int[] id_a_modifier, String[] colonnes_a_modifier, Object[] valeurs_modif) {
         for (int i = 0; i < colonnes_a_modifier.length; i++) {
             this.executeUpdate("UPDATE " + liste_a_modif + " SET " + colonnes_a_modifier[i].replace("'", "''") + " = '" + valeurs_modif[i].toString().replace("'", "''")
                     + "' WHERE id = " + String.valueOf(id_a_modifier[i]));
+        }
+    }
+
+    public Image getImage(String request) {
+        byte[] imageByte = (byte[]) getFromDB(request).get(0);
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+            return ImageIO.read(bis);
+        } catch (IOException ex) {
+            Logger.getLogger(PokedexApp.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }

@@ -7,18 +7,9 @@ package pokedex;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -26,6 +17,7 @@ import javax.swing.JPanel;
  * @author Leon
  */
 public class PokedexApp extends JFrame {
+
     String dbName = "pokedex";
     String schemaName = "pokedex";
 
@@ -39,7 +31,7 @@ public class PokedexApp extends JFrame {
         db = new Database();
         //createDB();
         db.connectDB(dbName);
-        db.executeUpdate("SET search_path TO "+schemaName);
+        db.executeUpdate("SET search_path TO " + schemaName);
         testRequest();
     }
 
@@ -97,7 +89,7 @@ public class PokedexApp extends JFrame {
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};
-        db.Modify("Pokemon", tableau, tableau2, tableau3);
+        db.modify("Pokemon", tableau, tableau2, tableau3);
 
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
@@ -113,19 +105,11 @@ public class PokedexApp extends JFrame {
             for (Pokedex pokedex : listPokedex) {
                 System.out.println("" + pokedex);
             }
-            listPokemonPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id=" + Integer.parseInt(result));
-            System.out.println("" + listPokemonPokedex);
-            byte[] imageByte = (byte[]) listPokemonPokedex.get(17);
 
-            try {
-                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-                BufferedImage image = ImageIO.read(bis);
-                imagePanel.setImage(image);
-                imagePanel.repaint();
-                this.repaint();
-            } catch (IOException ex) {
-                Logger.getLogger(PokedexApp.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + Integer.parseInt(result));
+            imagePanel.setImage(image);
+            imagePanel.repaint();
+            this.repaint();
         }
     }
 

@@ -5,6 +5,7 @@
  */
 package pokedex;
 
+import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -25,27 +26,40 @@ import javax.swing.JPanel;
  * @author Leon
  */
 public class PokedexApp extends JFrame {
+    String dbName = "pokedex";
+    String schemaName = "pokedex";
 
     Database db;
-    JPanel pan;
+    JPanel mainPanel;
+    ImagePanel imagePanel;
 
     public PokedexApp() {
-        this.setTitle("Pokedex 4.0");
-        this.setSize(400, 500);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pan = new JPanel();
-        this.setContentPane(pan);
-        this.setVisible(true);
-        start();
+        setupWindow();
+
+        db = new Database();
+        //createDB();
+        db.connectDB(dbName);
+        db.executeUpdate("SET search_path TO "+schemaName);
         testRequest();
     }
 
-    public void start() {
-        String dbName = "pokedex";
-        String schemaName = "pokedex";
+    private void setupWindow() {
+        setTitle("Pokedex 4.0");
+        setSize(400, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        db = new Database();
+        mainPanel = new JPanel();
+        setContentPane(mainPanel);
+        setLayout(new BorderLayout());
+
+        imagePanel = new ImagePanel();
+        mainPanel.add(imagePanel, BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+
+    public void createDB() {
         db.createDB(dbName);
         db.executeFile("ressources/creation_tables.sql", schemaName);
         db.importAll();
@@ -92,7 +106,7 @@ public class PokedexApp extends JFrame {
 
         while (true) {
             String result = JOptionPane.showInputDialog(null, "Id du pokedex", "Pokedex Finder", JOptionPane.QUESTION_MESSAGE);
-            if (result==null || result.length() == 0) {
+            if (result == null || result.length() == 0) {
                 break;
             }
             listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id=" + Integer.parseInt(result), Pokedex.class);
@@ -106,19 +120,8 @@ public class PokedexApp extends JFrame {
             try {
                 ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
                 BufferedImage image = ImageIO.read(bis);
-                double widthRatio = ((double)this.getWidth())/ image.getWidth();
-                double heightRatio = ((double)this.getHeight())/ image.getHeight(); 
-                System.out.println("widthRatio = "+widthRatio+ " heightRatio = "+heightRatio);
-                double tmpRatio = Math.min(widthRatio, heightRatio);
-                int destWidth = (int) (image.getWidth()*tmpRatio);
-                int destHeight = (int)(image.getHeight()*tmpRatio);
-                System.out.println("destHeight = "+destHeight+ " destWidth = "+destWidth);
-                Image dimg = image.getScaledInstance(destWidth, destHeight, Image.SCALE_SMOOTH);
-                JLabel imageLabel = new JLabel(new ImageIcon(dimg));
-                pan.removeAll();
-                pan.add(imageLabel);
-                pan.repaint();
-                this.revalidate();
+                imagePanel.setImage(image);
+                imagePanel.repaint();
                 this.repaint();
             } catch (IOException ex) {
                 Logger.getLogger(PokedexApp.class.getName()).log(Level.SEVERE, null, ex);

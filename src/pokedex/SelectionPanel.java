@@ -52,7 +52,6 @@ public class SelectionPanel extends JPanel{
         go = new JButton("GO to ID");
         go.setBackground(Color.gray);
         go.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        go.addActionListener(parent);
         modification = new JButton("Modifier les données sur " + name);
         modification.setBackground(Color.gray);
         modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -69,6 +68,11 @@ public class SelectionPanel extends JPanel{
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);
         goId.setColumns(3);
+
+        go.addActionListener(parent);
+        goId.addActionListener(parent);
+
+        
         utilisateur = user;
 
         gauche.setLayout(new GridLayout(0, 1));

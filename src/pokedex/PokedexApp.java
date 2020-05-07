@@ -27,18 +27,18 @@ public class PokedexApp extends JFrame {
     SelectionPanel selectionPanel;
 
     public PokedexApp() {
-        setupWindow();
 
         db = new Database();
         //createDB();
         db.connectDB(dbName);
         db.executeUpdate("SET search_path TO " + schemaName);
+        setupWindow();
         testRequest();
     }
 
     private void setupWindow() {
         setTitle("Pokedex 4.0");
-        setSize(400, 500);
+        setSize(600, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -47,9 +47,12 @@ public class PokedexApp extends JFrame {
         setLayout(new BorderLayout());
 
         imagePanel = new ImagePanel();
+        Image image = db.getImage("SELECT image FROM pokedex WHERE id=001");
+        imagePanel.setImage(image);
+        imagePanel.repaint();
         mainPanel.add(imagePanel, BorderLayout.CENTER);
         
-        selectionPanel = new SelectionPanel(001, "Bulbizarre", this);
+        selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur");
         mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
         setVisible(true);
@@ -102,7 +105,7 @@ public class PokedexApp extends JFrame {
 
         while (true) {
             String result = JOptionPane.showInputDialog(null, "Id du pokedex", "Pokedex Finder", JOptionPane.QUESTION_MESSAGE);
-            if (result == null || result.length() == 0) {
+            if (result == null || result.length() == 0 || result.length() > 3) {
                 break;
             }
             listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id=" + Integer.parseInt(result), Pokedex.class);

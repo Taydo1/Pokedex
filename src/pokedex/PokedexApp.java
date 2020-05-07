@@ -29,7 +29,7 @@ public class PokedexApp extends JFrame implements ActionListener {
     JPanel mainPanel;
     ImagePanel imagePanel;
     SelectionPanel selectionPanel;
-    
+
     int idActuel;
 
     public PokedexApp() {
@@ -58,7 +58,7 @@ public class PokedexApp extends JFrame implements ActionListener {
         mainPanel.add(imagePanel, BorderLayout.CENTER);
 
         selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur", this);
-        idActuel=1;
+        idActuel = 1;
         mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
         setVisible(true);
@@ -112,16 +112,17 @@ public class PokedexApp extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        int goalId=-1;
+        int goalId = -1;
         if (arg0.getSource() instanceof JButton) {
             JButton button = (JButton) (arg0.getSource());
-            if("up".equals(button.getText())){
+            if ("up".equals(button.getText())) {
                 goalId = idActuel + 1;
-            }
-            if("down".equals(button.getText())){
+            } else if ("down".equals(button.getText())) {
                 goalId = idActuel - 1;
+            } else if ("go".equals(button.getText())) {
+                goalId = selectionPanel.getGoId();
             }
-        }else{
+        } else {
             goalId = selectionPanel.getGoId();
         }
         try {

@@ -112,7 +112,8 @@ public class PokedexApp extends JFrame {
                 double tmpRatio = Math.min(widthRatio, heightRatio);
                 int destWidth = (int) (image.getWidth()*tmpRatio);
                 int destHeight = (int)(image.getHeight()*tmpRatio);
-                Image dimg = image.getScaledInstance(destHeight, destWidth,Image.SCALE_SMOOTH);
+                System.out.println("destHeight = "+destHeight+ " destWidth = "+destWidth);
+                Image dimg = image.getScaledInstance(destWidth, destHeight, Image.SCALE_SMOOTH);
                 JLabel imageLabel = new JLabel(new ImageIcon(dimg));
                 pan.removeAll();
                 pan.add(imageLabel);

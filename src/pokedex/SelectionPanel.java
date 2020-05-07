@@ -25,10 +25,10 @@ public class SelectionPanel extends JPanel{
     JFrame frame;
     JPanel gauche, droite, allerId;
     JLabel idActuel, nom, allerAId;
-    JButton up, down, go;
+    JButton up, down, go, modification, ajout;
     JTextField goId;
     
-    public SelectionPanel(int id, String name, JFrame f){
+    public SelectionPanel(int id, String name, JFrame f, String utilisateur){
         
         frame = f;
         gauche = new JPanel();
@@ -46,6 +46,14 @@ public class SelectionPanel extends JPanel{
         go = new JButton("GO to ID");
         go.setBackground(Color.gray);
         go.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        modification = new JButton("Modifier les données sur " + name);
+        modification.setBackground(Color.gray);
+        modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        modification.setForeground(Color.black);
+        ajout = new JButton("Ajouter un pokémon");
+        ajout.setBackground(Color.gray);
+        ajout.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        ajout.setForeground(Color.black); 
         goId = new JTextField();
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);
@@ -65,12 +73,29 @@ public class SelectionPanel extends JPanel{
         gauche.add(idActuel);
         gauche.add(nom);
         gauche.add(allerId);
+        gauche.add(modification);
+        gauche.add(ajout);
         gauche.setSize(frame.getWidth()/2, frame.getHeight()/2);
         
         droite.add(up, BorderLayout.NORTH);
         droite.add(go, BorderLayout.CENTER);
         droite.add(down, BorderLayout.SOUTH);
         droite.setSize(frame.getWidth()/2, frame.getHeight()/2);
+        
+        switch (utilisateur){
+            case "professeur" :
+                ajout.setEnabled(true);
+                modification.setEnabled(true);                
+                break;
+            case "dresseur" :
+                ajout.setEnabled(true);
+                modification.setEnabled(false);                
+                break;
+            case "visiteur" :
+                ajout.setEnabled(false);
+                modification.setEnabled(false);
+                break;
+        }
         
         add(gauche);
         add(droite);

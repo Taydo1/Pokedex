@@ -38,7 +38,7 @@ public class PokedexApp extends JFrame {
 
     private void setupWindow() {
         setTitle("Pokedex 4.0");
-        setSize(600, 700);
+        setSize(599, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

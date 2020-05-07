@@ -49,7 +49,6 @@ public class PokedexApp extends JFrame {
         imagePanel = new ImagePanel();
         Image image = db.getImage("SELECT image FROM pokedex WHERE id=001");
         imagePanel.setImage(image);
-        imagePanel.repaint();
         mainPanel.add(imagePanel, BorderLayout.CENTER);
         
         selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur");

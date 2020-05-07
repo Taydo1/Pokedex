@@ -38,7 +38,7 @@ public class PokedexApp extends JFrame {
 
     private void setupWindow() {
         setTitle("Pokedex 4.0");
-        setSize(599, 700);
+        setSize(600, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -115,6 +115,10 @@ public class PokedexApp extends JFrame {
             Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + Integer.parseInt(result));
             imagePanel.setImage(image);
             imagePanel.repaint();
+            
+            int id = Integer.parseInt(result);
+            selectionPanel.setId(Integer.parseInt(result), db);
+            selectionPanel.repaint();
             this.repaint();
         }
     }

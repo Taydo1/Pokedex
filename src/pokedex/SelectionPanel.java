@@ -11,6 +11,7 @@ import java.awt.Cursor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,8 +31,9 @@ public class SelectionPanel extends JPanel{
     JLabel idActuel, nom, allerAId;
     JButton up, down, go, modification, ajout, gerer;
     JTextField goId;
+    String utilisateur;
     
-    public SelectionPanel(int id, String name, JFrame f, String utilisateur){
+    public SelectionPanel(int id, String name, JFrame f, String user){
         
         frame = f;
         gauche = new JPanel();
@@ -65,6 +67,7 @@ public class SelectionPanel extends JPanel{
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);
         goId.setColumns(3);
+        utilisateur = user;
         
         gauche.setLayout(new GridLayout(0, 1));
         gauche.setBackground(Color.gray);
@@ -123,5 +126,17 @@ public class SelectionPanel extends JPanel{
         c.gridx = 1;
         c.weightx = 0.3;
         add(droite, c);
+    }
+    
+    public void setUtilisateur(String user){
+        
+    }
+    
+    public void setId(int id, Database db){
+            ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(id), Pokedex.class);
+            String name = listname.get(0).name;
+            idActuel.setText("ID actuel : " + String.valueOf(id));
+            nom.setText("Nom : " + name);
+            this.repaint();
     }
 }

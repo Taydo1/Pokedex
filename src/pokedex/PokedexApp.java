@@ -24,6 +24,7 @@ public class PokedexApp extends JFrame {
     Database db;
     JPanel mainPanel;
     ImagePanel imagePanel;
+    SelectionPanel selectionPanel;
 
     public PokedexApp() {
         setupWindow();
@@ -47,6 +48,9 @@ public class PokedexApp extends JFrame {
 
         imagePanel = new ImagePanel();
         mainPanel.add(imagePanel, BorderLayout.CENTER);
+        
+        selectionPanel = new SelectionPanel(001, "Bulbizarre", this);
+        mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
         setVisible(true);
     }

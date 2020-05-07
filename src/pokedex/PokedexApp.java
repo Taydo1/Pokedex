@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class PokedexApp extends JFrame implements ActionListener {
     JPanel mainPanel;
     ImagePanel imagePanel;
     SelectionPanel selectionPanel;
+    TopPanel topPanel;
 
     int idActuel;
 
@@ -57,10 +59,13 @@ public class PokedexApp extends JFrame implements ActionListener {
         imagePanel.setImage(image);
         mainPanel.add(imagePanel, BorderLayout.CENTER);
 
-        selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur", this);
+        selectionPanel = new SelectionPanel(001, "Bulbizarre", "Visiteur", this);
         idActuel = 1;
         mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
+        topPanel = new TopPanel(this);
+        mainPanel.add(topPanel, BorderLayout.NORTH);
+        
         setVisible(true);
     }
 
@@ -112,7 +117,7 @@ public class PokedexApp extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        int goalId = -1;
+        int goalId = idActuel;
         if (arg0.getSource() instanceof JButton) {
             JButton button = (JButton) (arg0.getSource());
             if ("up".equals(button.getText())) {
@@ -121,6 +126,21 @@ public class PokedexApp extends JFrame implements ActionListener {
                 goalId = idActuel - 1;
             } else if ("go".equals(button.getText())) {
                 goalId = selectionPanel.getGoId();
+            }
+        } else if (arg0.getSource() instanceof JComboBox) {
+            JOptionPane jop = new JOptionPane();
+            String selection = (String) topPanel.choix.getSelectedItem();
+            String mdp;
+            if (selection.equals("Visiteur")){
+                mdp = "visiteur";
+            }else{
+                mdp = jop.showInputDialog(null, "Saisissez le mot de passe", "CAPTCHA", JOptionPane.QUESTION_MESSAGE);
+            }
+            if (mdp.toLowerCase().equals(selection.toLowerCase())){
+            selectionPanel.setUtilisateur(selection);
+            }else{
+                JOptionPane jop2 = new JOptionPane();
+                jop2.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             goalId = selectionPanel.getGoId();

@@ -7,6 +7,8 @@ package pokedex;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,7 +18,7 @@ import javax.swing.JPanel;
  *
  * @author Leon
  */
-public class PokedexApp extends JFrame {
+public class PokedexApp extends JFrame implements ActionListener {
 
     String dbName = "pokedex";
     String schemaName = "pokedex";
@@ -50,8 +52,8 @@ public class PokedexApp extends JFrame {
         Image image = db.getImage("SELECT image FROM pokedex WHERE id=001");
         imagePanel.setImage(image);
         mainPanel.add(imagePanel, BorderLayout.CENTER);
-        
-        selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur");
+
+        selectionPanel = new SelectionPanel(001, "Bulbizarre", this, "dresseur", this);
         mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
         setVisible(true);
@@ -102,7 +104,7 @@ public class PokedexApp extends JFrame {
             System.out.println("" + pokemon);
         }
 
-        while (true) {
+        /*while (true) {
             String result = JOptionPane.showInputDialog(null, "Id du pokedex", "Pokedex Finder", JOptionPane.QUESTION_MESSAGE);
             if (result == null || result.length() == 0 || result.length() > 3) {
                 break;
@@ -114,12 +116,23 @@ public class PokedexApp extends JFrame {
 
             Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + Integer.parseInt(result));
             imagePanel.setImage(image);
-            imagePanel.repaint();
             
             int id = Integer.parseInt(result);
             selectionPanel.setId(Integer.parseInt(result), db);
             selectionPanel.repaint();
             this.repaint();
+        }*/
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+        try {
+            int id = selectionPanel.getId();
+            selectionPanel.setId(id, db);
+            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + id);
+            imagePanel.setImage(image);
+        } catch (NumberFormatException ex) {
+
         }
     }
 

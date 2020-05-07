@@ -19,6 +19,7 @@ public class ImagePanel extends JPanel {
 
     public void setImage(Image image) {
         this.image = image;
+        repaint();
     }
 
     @Override
@@ -31,11 +32,8 @@ public class ImagePanel extends JPanel {
             int W = this.getWidth();
             int H = this.getHeight();
             double tmpRatio = Math.min((double)(W) / imageW, (double)(H) / imageH);
-            System.out.println(""+tmpRatio+" "+ W+" "+H+" "+imageW+" "+imageH);
             int destWidth = (int) (imageW * tmpRatio);
             int destHeight = (int) (imageH * tmpRatio);
-
-            System.out.println(""+destWidth+" "+destHeight+" "+(destWidth-imageW)/2+" "+(destHeight-imageH)/2);
             g.drawImage(image, (W-destWidth)/2, (H-destHeight)/2, destWidth, destHeight, null);
         }
     }

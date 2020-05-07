@@ -11,6 +11,8 @@ import java.awt.Cursor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,23 +27,22 @@ import javax.swing.SwingConstants;
  * @author Spectan
  */
 public class SelectionPanel extends JPanel{
-    
+
     JFrame frame;
     JPanel gauche, droite, allerId;
     JLabel idActuel, nom, allerAId;
     JButton up, down, go, modification, ajout, gerer;
     JTextField goId;
     String utilisateur;
-    
-    public SelectionPanel(int id, String name, JFrame f, String user){
-        
+
+    public SelectionPanel(int id, String name, JFrame f, String user, PokedexApp parent) {        
         frame = f;
         gauche = new JPanel();
         droite = new JPanel();
         allerId = new JPanel();
-        idActuel = new JLabel("ID actuel : " + String.valueOf(id),SwingConstants.CENTER);
-        nom = new JLabel("Nom : " + name,SwingConstants.CENTER);
-        allerAId = new JLabel("Aller à l'ID : ",SwingConstants.CENTER);
+        idActuel = new JLabel("ID actuel : " + String.valueOf(id), SwingConstants.CENTER);
+        nom = new JLabel("Nom : " + name, SwingConstants.CENTER);
+        allerAId = new JLabel("Aller à l'ID : ", SwingConstants.CENTER);
         up = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_haut.png")));
         up.setContentAreaFilled(false);
         up.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -51,6 +52,7 @@ public class SelectionPanel extends JPanel{
         go = new JButton("GO to ID");
         go.setBackground(Color.gray);
         go.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        go.addActionListener(parent);
         modification = new JButton("Modifier les données sur " + name);
         modification.setBackground(Color.gray);
         modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -68,7 +70,7 @@ public class SelectionPanel extends JPanel{
         goId.setForeground(Color.white);
         goId.setColumns(3);
         utilisateur = user;
-        
+
         gauche.setLayout(new GridLayout(0, 1));
         gauche.setBackground(Color.gray);
         droite.setLayout(new BorderLayout());
@@ -77,7 +79,7 @@ public class SelectionPanel extends JPanel{
         allerId.setBackground(Color.gray);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        
+
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -89,31 +91,31 @@ public class SelectionPanel extends JPanel{
         c.gridx = 2;
         c.weightx = 0.4;
         allerId.add(go, c);
-        
+
         gauche.add(nom);
         gauche.add(allerId);
         gauche.add(modification);
         gauche.add(ajout);
         gauche.add(gerer);
-        gauche.setSize((int)(frame.getWidth()*0.7), (int)(frame.getHeight()*0.2));
-        
+        gauche.setSize((int) (frame.getWidth() * 0.7), (int) (frame.getHeight() * 0.2));
+
         droite.add(up, BorderLayout.NORTH);
         droite.add(idActuel, BorderLayout.CENTER);
         droite.add(down, BorderLayout.SOUTH);
-        droite.setSize((int)(frame.getWidth()*0.3), (int)(frame.getHeight()*0.2));
-        
-        switch (utilisateur){
-            case "professeur" :
+        droite.setSize((int) (frame.getWidth() * 0.3), (int) (frame.getHeight() * 0.2));
+
+        switch (utilisateur) {
+            case "professeur":
                 ajout.setEnabled(true);
-                modification.setEnabled(true);  
-                gerer.setEnabled(false);              
+                modification.setEnabled(true);
+                gerer.setEnabled(false);
                 break;
-            case "dresseur" :
+            case "dresseur":
                 ajout.setEnabled(true);
-                modification.setEnabled(false);  
-                gerer.setEnabled(true);              
+                modification.setEnabled(false);
+                gerer.setEnabled(true);
                 break;
-            case "visiteur" :
+            case "visiteur":
                 ajout.setEnabled(false);
                 modification.setEnabled(false);
                 gerer.setEnabled(false);
@@ -122,21 +124,27 @@ public class SelectionPanel extends JPanel{
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.weightx = 0.7;
-        add(gauche , c);
+        add(gauche, c);
         c.gridx = 1;
         c.weightx = 0.3;
         add(droite, c);
     }
-    
-    public void setUtilisateur(String user){
-        
+
+    public void setUtilisateur(String user) {
+
+    }
+
+    public void setId(int id, Database db) {
+        ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(id), Pokedex.class);
+        String name = listname.get(0).name;
+        idActuel.setText("ID actuel : " + String.valueOf(id));
+        nom.setText("Nom : " + name);
+        this.repaint();
+    }
+
+    public int getId() {
+        return Integer.parseInt(goId.getText());
     }
     
-    public void setId(int id, Database db){
-            ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(id), Pokedex.class);
-            String name = listname.get(0).name;
-            idActuel.setText("ID actuel : " + String.valueOf(id));
-            nom.setText("Nom : " + name);
-            this.repaint();
-    }
+    
 }

@@ -28,15 +28,15 @@ import javax.swing.SwingConstants;
  */
 public class SelectionPanel extends JPanel{
 
-    JFrame frame;
+    PokedexApp parent;
     JPanel gauche, droite, allerId;
     JLabel idActuel, nom, allerAId;
     JButton up, down, go, modification, ajout, gerer;
     JTextField goId;
-    String utilisateur;
 
-    public SelectionPanel(int id, String name, JFrame f, String user, PokedexApp parent) {        
-        frame = f;
+    public SelectionPanel(int id, String name, String utilisateur, PokedexApp main) {  
+        
+        parent = main;
         gauche = new JPanel();
         droite = new JPanel();
         allerId = new JPanel();
@@ -77,9 +77,6 @@ public class SelectionPanel extends JPanel{
         up.addActionListener(parent);
         down.addActionListener(parent);
 
-        
-        utilisateur = user;
-
         gauche.setLayout(new GridLayout(0, 1));
         gauche.setBackground(Color.gray);
         droite.setLayout(new BorderLayout());
@@ -106,25 +103,25 @@ public class SelectionPanel extends JPanel{
         gauche.add(modification);
         gauche.add(ajout);
         gauche.add(gerer);
-        gauche.setSize((int) (frame.getWidth() * 0.7), (int) (frame.getHeight() * 0.2));
+        gauche.setSize((int) (parent.getWidth() * 0.7), (int) (parent.getHeight() * 0.2));
 
         droite.add(up, BorderLayout.NORTH);
         droite.add(idActuel, BorderLayout.CENTER);
         droite.add(down, BorderLayout.SOUTH);
-        droite.setSize((int) (frame.getWidth() * 0.3), (int) (frame.getHeight() * 0.2));
+        droite.setSize((int) (parent.getWidth() * 0.3), (int) (parent.getHeight() * 0.2));
 
         switch (utilisateur) {
-            case "professeur":
+            case "Professeur":
                 ajout.setEnabled(true);
                 modification.setEnabled(true);
                 gerer.setEnabled(false);
                 break;
-            case "dresseur":
+            case "Dresseur":
                 ajout.setEnabled(true);
                 modification.setEnabled(false);
                 gerer.setEnabled(true);
                 break;
-            case "visiteur":
+            case "Visiteur":
                 ajout.setEnabled(false);
                 modification.setEnabled(false);
                 gerer.setEnabled(false);
@@ -139,8 +136,25 @@ public class SelectionPanel extends JPanel{
         add(droite, c);
     }
 
-    public void setUtilisateur(String user) {
-
+    public void setUtilisateur(String utilisateur) {
+        switch (utilisateur) {
+            case "Professeur":
+                ajout.setEnabled(true);
+                modification.setEnabled(true);
+                gerer.setEnabled(false);
+                break;
+            case "Dresseur":
+                ajout.setEnabled(true);
+                modification.setEnabled(false);
+                gerer.setEnabled(true);
+                break;
+            case "Visiteur":
+                ajout.setEnabled(false);
+                modification.setEnabled(false);
+                gerer.setEnabled(false);
+                break;
+        }
+        this.repaint();
     }
 
     public void setId(int id, Database db) {

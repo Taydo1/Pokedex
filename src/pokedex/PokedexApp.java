@@ -5,6 +5,7 @@
  */
 package pokedex;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -105,7 +106,14 @@ public class PokedexApp extends JFrame {
             try {
                 ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
                 BufferedImage image = ImageIO.read(bis);
-                JLabel imageLabel = new JLabel(new ImageIcon(image));
+                double widthRatio = ((double)this.getWidth())/ image.getWidth();
+                double heightRatio = ((double)this.getHeight())/ image.getHeight(); 
+                System.out.println("widthRatio = "+widthRatio+ " heightRatio = "+heightRatio);
+                double tmpRatio = Math.min(widthRatio, heightRatio);
+                int destWidth = (int) (image.getWidth()*tmpRatio);
+                int destHeight = (int)(image.getHeight()*tmpRatio);
+                Image dimg = image.getScaledInstance(destHeight, destWidth,Image.SCALE_SMOOTH);
+                JLabel imageLabel = new JLabel(new ImageIcon(dimg));
                 pan.removeAll();
                 pan.add(imageLabel);
                 pan.repaint();

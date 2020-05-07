@@ -5,9 +5,19 @@
  */
 package pokedex;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,12 +26,15 @@ import javax.swing.JOptionPane;
 public class PokedexApp extends JFrame {
 
     Database db;
+    JPanel pan;
 
     public PokedexApp() {
         this.setTitle("Pokedex 4.0");
         this.setSize(400, 500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.pan = new JPanel();
+        this.setContentPane(pan);
         this.setVisible(true);
         start();
         testRequest();
@@ -78,10 +91,28 @@ public class PokedexApp extends JFrame {
 
         while (true) {
             String result = JOptionPane.showInputDialog(null, "Id du pokedex", "Pokedex Finder", JOptionPane.QUESTION_MESSAGE);
-            if(result.length()==0)break;
-            listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id="+Integer.parseInt(result), Pokedex.class);
+            if (result==null || result.length() == 0) {
+                break;
+            }
+            listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id=" + Integer.parseInt(result), Pokedex.class);
             for (Pokedex pokedex : listPokedex) {
                 System.out.println("" + pokedex);
+            }
+            listPokemonPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id=" + Integer.parseInt(result));
+            System.out.println("" + listPokemonPokedex);
+            byte[] imageByte = (byte[]) listPokemonPokedex.get(17);
+
+            try {
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                BufferedImage image = ImageIO.read(bis);
+                JLabel imageLabel = new JLabel(new ImageIcon(image));
+                pan.removeAll();
+                pan.add(imageLabel);
+                pan.repaint();
+                this.revalidate();
+                this.repaint();
+            } catch (IOException ex) {
+                Logger.getLogger(PokedexApp.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

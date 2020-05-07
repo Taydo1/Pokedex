@@ -213,13 +213,15 @@ public class Database {
                             list.add(rs.getInt(i));
                             break;
                         case Types.BOOLEAN:
+                        case Types.BIT:
                             list.add(rs.getBoolean(i));
                             break;
                         case Types.BINARY:
-                            list.add("FAUT GERER LA RECUP DES IMAGES");
+                            list.add(rs.getBytes(i));
+                            //list.add("FAUT GERER LA RECUP DES IMAGES");
                             break;
                         default:
-                            System.out.println("NON SUPPORTED TYPE !!! " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
+                            System.out.println("NON SUPPORTED TYPE !!! ("+i+") "+rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
                             break;
                     }
                 }

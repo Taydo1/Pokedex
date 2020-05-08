@@ -126,6 +126,7 @@ public class PokedexApp extends JFrame implements ActionListener {
         //Go to id
         try {
             selectionPanel.setId(id, db);
+            topPanel.setId(id, db);
             Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + id);
             imagePanel.setImage(image);
             idActuel = id;

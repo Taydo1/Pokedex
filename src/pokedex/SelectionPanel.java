@@ -128,6 +128,16 @@ public class SelectionPanel extends JPanel{
                 gerer.setEnabled(false);
                 break;
         }
+        if(id == 1){
+            down.setEnabled(false);
+            up.setEnabled(true);
+        } else if (id == Integer.parseInt(db.getFromDB("SELECT COUNT(*) FROM pokedex", Pokedex.class).toString())){
+            down.setEnabled(true);
+            up.setEnabled(false);
+        } else {
+            down.setEnabled(true);
+            up.setEnabled(true);
+        }
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.weightx = 0.7;
@@ -169,6 +179,17 @@ public class SelectionPanel extends JPanel{
         idActuel.setText("ID actuel : " + String.valueOf(id));
         nom.setText("Nom : " + name);
         modification.setText("Modifier les données sur " + name);
+        ArrayList<Object[]> nb_pokemon = db.getFromDB("SELECT id FROM pokedex");
+        if(id == 1){
+            down.setEnabled(false);
+            up.setEnabled(true);
+        } else if (id == nb_pokemon.size()){
+            down.setEnabled(true);
+            up.setEnabled(false);
+        } else {
+            down.setEnabled(true);
+            up.setEnabled(true);
+        }
         this.repaint();
     }
 

@@ -31,12 +31,14 @@ public class SelectionPanel extends JPanel{
     JTextField goId;
     String utilisateur;
 
-    public SelectionPanel(int id, String name, String utilisateur, PokedexApp main) {  
+    public SelectionPanel(int id, Database db, String utilisateur, PokedexApp main) {  
         
         parent = main;
         gauche = new JPanel();
         droite = new JPanel();
         allerId = new JPanel();
+        ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + id, Pokedex.class);
+        String name = listname.get(0).name;
         idActuel = new JLabel("ID actuel : " + String.valueOf(id), SwingConstants.CENTER);
         nom = new JLabel("Nom : " + name, SwingConstants.CENTER);
         allerAId = new JLabel("Aller à l'ID : ", SwingConstants.CENTER);
@@ -166,6 +168,7 @@ public class SelectionPanel extends JPanel{
         String name = listname.get(0).name;
         idActuel.setText("ID actuel : " + String.valueOf(id));
         nom.setText("Nom : " + name);
+        modification.setText("Modifier les données sur " + name);
         this.repaint();
     }
 

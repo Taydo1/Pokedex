@@ -60,11 +60,11 @@ public class PokedexApp extends JFrame implements ActionListener {
         imagePanel.setImage(image);
         mainPanel.add(imagePanel, BorderLayout.CENTER);
 
-        selectionPanel = new SelectionPanel(001, "Bulbizarre", "Visiteur", this);
+        selectionPanel = new SelectionPanel(001, db, "Visiteur", this);
         idActuel = 1;
         mainPanel.add(selectionPanel, BorderLayout.SOUTH);
 
-        topPanel = new TopPanel(this);
+        topPanel = new TopPanel(this, 001, db);
         mainPanel.add(topPanel, BorderLayout.NORTH);
 
         setVisible(true);

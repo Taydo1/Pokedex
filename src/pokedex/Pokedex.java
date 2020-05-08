@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -70,6 +71,7 @@ public class Pokedex extends DBElement {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
         this.en_name = rs.getString("en_name");
+        this.classfication = rs.getString("classfication");
         this.id_ability1 = rs.getInt("id_ability1");
         this.id_ability2 = rs.getInt("id_ability2");
         this.id_ability3 = rs.getInt("id_ability3");
@@ -100,5 +102,16 @@ public class Pokedex extends DBElement {
                 id_ability1, int2StringRequest(id_ability2), int2StringRequest(id_ability3), int2StringRequest(id_ability4),
                 height, weight, float2StringRequest(percentage_male), is_legendary, generation,
                 int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution));
+    }
+    
+    public String getType1(int id, Database db){
+        ArrayList<Object[]> list = db.getFromDB("Select * from type t join pokedex p on p.id_type1 = t.id WHERE p.id =" + id);
+        String valeurDonne = list.get(0)[1].toString();
+        return valeurDonne;
+    }
+    public String getType2(int id, Database db){
+        ArrayList<Object[]> list = db.getFromDB("Select * from type t join pokedex p on p.id_type2 = t.id WHERE p.id =" + id);
+        String valeurDonne = list.get(0)[1].toString();
+        return valeurDonne;
     }
 }

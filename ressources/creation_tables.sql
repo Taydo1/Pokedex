@@ -48,7 +48,7 @@ CREATE TABLE pokedex(
 	id serial PRIMARY KEY,
     name varchar(20),
 	en_name varchar(20),
-	category varchar(30),
+	classification varchar(30),
 	id_type1 int REFERENCES type(id),
 	id_type2 int REFERENCES type(id),
 	id_ability1 int REFERENCES ability(id),

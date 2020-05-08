@@ -71,7 +71,7 @@ public class Pokedex extends DBElement {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
         this.en_name = rs.getString("en_name");
-        this.classification = rs.getString("category");
+        this.classification = rs.getString("classification");
         this.id_ability1 = rs.getInt("id_ability1");
         this.id_ability2 = rs.getInt("id_ability2");
         this.id_ability3 = rs.getInt("id_ability3");

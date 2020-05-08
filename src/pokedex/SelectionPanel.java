@@ -11,17 +11,13 @@ import java.awt.Cursor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 /**
  *
  * @author Spectan
@@ -33,6 +29,7 @@ public class SelectionPanel extends JPanel{
     JLabel idActuel, nom, allerAId;
     JButton up, down, go, modification, ajout, gerer;
     JTextField goId;
+    String utilisateur;
 
     public SelectionPanel(int id, String name, String utilisateur, PokedexApp main) {  
         
@@ -110,6 +107,7 @@ public class SelectionPanel extends JPanel{
         droite.add(down, BorderLayout.SOUTH);
         droite.setSize((int) (parent.getWidth() * 0.3), (int) (parent.getHeight() * 0.2));
 
+        this.utilisateur = utilisateur.substring(0, 1).toUpperCase() + utilisateur.substring(1);
         switch (utilisateur) {
             case "Professeur":
                 ajout.setEnabled(true);
@@ -137,7 +135,8 @@ public class SelectionPanel extends JPanel{
     }
 
     public void setUtilisateur(String utilisateur) {
-        switch (utilisateur) {
+        this.utilisateur = utilisateur.substring(0, 1).toUpperCase() + utilisateur.substring(1);
+        switch (this.utilisateur) {
             case "Professeur":
                 ajout.setEnabled(true);
                 modification.setEnabled(true);
@@ -155,6 +154,10 @@ public class SelectionPanel extends JPanel{
                 break;
         }
         this.repaint();
+    }
+
+    public String getUtilisateur() {
+        return utilisateur;
     }
 
     public void setId(int id, Database db) {

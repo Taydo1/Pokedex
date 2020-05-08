@@ -121,13 +121,15 @@ public class PokedexApp extends JFrame implements ActionListener {
         if (arg0.getSource() instanceof JButton) {
             JButton button = (JButton) (arg0.getSource());
             if ("up".equals(button.getText())) {
-                goalId = idActuel + 1;
+                goalId++;
             } else if ("down".equals(button.getText())) {
-                goalId = idActuel - 1;
+                goalId--;
             } else if ("go".equals(button.getText())) {
                 goalId = selectionPanel.getGoId();
             }
-        } else if (arg0.getSource() instanceof JComboBox) {
+        } else if (arg0.getSource() instanceof JTextField){
+            goalId = selectionPanel.getGoId();
+        }else if (arg0.getSource() instanceof JComboBox) {
             JOptionPane jop = new JOptionPane();
             String selection = (String) topPanel.choix.getSelectedItem();
             String mdp;
@@ -139,12 +141,15 @@ public class PokedexApp extends JFrame implements ActionListener {
             if (mdp.toLowerCase().equals(selection.toLowerCase())){
             selectionPanel.setUtilisateur(selection);
             }else{
+                JComboBox comboBox = (JComboBox)(arg0.getSource());
+                comboBox.setSelectedItem(selectionPanel.getUtilisateur());
                 JOptionPane jop2 = new JOptionPane();
                 jop2.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            goalId = selectionPanel.getGoId();
-        }
+            return;
+        } 
+        
+        //Go to id
         try {
             selectionPanel.setId(goalId, db);
             Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + goalId);

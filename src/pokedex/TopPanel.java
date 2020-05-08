@@ -45,7 +45,7 @@ public class TopPanel extends JPanel {
         mega.setBackground(Color.gray);
         mega.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         group.add(mega);
-        
+
         idNom = new JLabel();
         idNom.setBackground(Color.gray);
         classification = new JLabel();
@@ -110,12 +110,16 @@ public class TopPanel extends JPanel {
         } else {
             idNom.setText("0" + id + " " + pokeActuel.name);
         }
+
+        if (!pokeActuel.has_mega && mega.isSelected()) {
+            classique.doClick();
+        }
+        if (!pokeActuel.has_shiny && chromatique.isSelected()) {
+            classique.doClick();
+        }
         mega.setEnabled(pokeActuel.has_mega);
         chromatique.setEnabled(pokeActuel.has_shiny);
-        
-        if(!pokeActuel.has_mega && mega.isSelected()){classique.doClick();}
-        if(!pokeActuel.has_shiny && chromatique.isSelected()){classique.doClick();}
-        
+
         poids.setText("" + pokeActuel.weight + " kg");
         taille.setText("" + pokeActuel.height + " m");
         type1.setText(pokeActuel.getType1(id, db));

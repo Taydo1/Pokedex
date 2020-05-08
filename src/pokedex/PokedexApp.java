@@ -26,6 +26,7 @@ public class PokedexApp extends JFrame implements ActionListener {
 
     String dbName = "pokedex";
     String schemaName = "pokedex";
+    String imageName = "image";
 
     Database db;
     JPanel mainPanel;
@@ -37,12 +38,19 @@ public class PokedexApp extends JFrame implements ActionListener {
 
     public PokedexApp() {
 
-        db = new Database();
-        //createDB();
-        db.connectDB(dbName);
-        db.executeUpdate("SET search_path TO " + schemaName);
+        setupDB(true);
         setupWindow();
         //testRequest();
+    }
+
+    private void setupDB(boolean toBeCreated) {
+        db = new Database();
+        if (toBeCreated) {
+            createDB();
+        } else {
+            db.connectDB(dbName);
+            db.executeUpdate("SET search_path TO " + schemaName);
+        }
     }
 
     private void setupWindow() {
@@ -123,7 +131,9 @@ public class PokedexApp extends JFrame implements ActionListener {
         try {
             selectionPanel.setId(id, db);
             topPanel.setId(id, db);
-            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + id);
+            String imageRequest;
+            //switch
+            Image image = db.getImage("SELECT " + imageName + " FROM pokedex WHERE id=" + id);
             imagePanel.setImage(image);
             idActuel = id;
         } catch (NumberFormatException ex) {
@@ -183,13 +193,26 @@ public class PokedexApp extends JFrame implements ActionListener {
             case DOWN:
                 goToID(idActuel - 1);
                 break;
-            case GO:
+            case GO: {
                 try {
-                goToID(selectionPanel.getGoId());
-                selectionPanel.clearGoId();
-            } catch (NumberFormatException ex) {
+                    goToID(selectionPanel.getGoId());
+                    selectionPanel.clearGoId();
+                } catch (NumberFormatException ex) {
+                }
+                break;
             }
-            break;
+            case IMAGE_NORMAL:
+                imageName = "image";
+                goToID(idActuel);
+                break;
+            case IMAGE_SHINY:
+                imageName = "image_shiny";
+                goToID(idActuel);
+                break;
+            case IMAGE_MEGA:
+                imageName = "image_mega";
+                goToID(idActuel);
+                break;
             case CHANGE_USER:
                 changeUser((JComboBox) e.getSource());
         }

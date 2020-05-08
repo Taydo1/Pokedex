@@ -62,6 +62,13 @@ public class TopPanel extends JPanel{
         type2.setBackground(Color.gray);
         
         choix.addActionListener(parent);
+        choix.setActionCommand(Action.CHANGE_USER.name());
+        classique.addActionListener(parent);
+        classique.setActionCommand(Action.IMAGE_NORMAL.name());
+        chromatique.addActionListener(parent);
+        chromatique.setActionCommand(Action.IMAGE_SHINY.name());
+        mega.addActionListener(parent);
+        mega.setActionCommand(Action.IMAGE_MEGA.name());
 
         setLayout(new GridBagLayout());
         setBackground(Color.gray);

@@ -13,5 +13,9 @@ public enum Action {
     UP,
     DOWN,
     GO,
-    CHANGE_USER;
+    
+    CHANGE_USER,
+    IMAGE_NORMAL,
+    IMAGE_SHINY,
+    IMAGE_MEGA;
 }

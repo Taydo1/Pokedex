@@ -187,8 +187,12 @@ public class PokedexApp extends JFrame implements ActionListener {
                 goToID(idActuel - 1);
                 break;
             case GO:
+                try {
                 goToID(selectionPanel.getGoId());
-                break;
+                selectionPanel.clearGoId();
+            } catch (NumberFormatException ex) {
+            }
+            break;
             case CHANGE_USER:
                 changeUser((JComboBox) e.getSource());
         }

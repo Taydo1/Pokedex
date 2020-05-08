@@ -172,7 +172,11 @@ public class SelectionPanel extends JPanel{
         this.repaint();
     }
 
-    public int getGoId() {
+    public int getGoId() throws  NumberFormatException{
         return Integer.parseInt(goId.getText());
+    }
+    
+    public void clearGoId() {
+        goId.setText("");
     }
 }

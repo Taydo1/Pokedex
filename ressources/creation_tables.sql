@@ -63,7 +63,9 @@ CREATE TABLE pokedex(
 	id_lower_evolution int REFERENCES pokedex(id),
 	id_evolution int REFERENCES pokedex(id),
 	image bytea,
-	image_shiny bytea
+	image_shiny bytea,
+	has_mega BOOLEAN,
+	image_mega bytea
 );
 
 CREATE TABlE trainer(

@@ -208,20 +208,20 @@ public class Database {
                 for (int i = 1; i <= columnNumber; i++) {
                     switch (rsmd.getColumnType(i)) {
                         case Types.VARCHAR:
-                            row[i]=rs.getString(i);
+                            row[i-1]=rs.getString(i);
                             break;
                         case Types.NUMERIC:
-                            row[i]=(rs.getFloat(i));
+                            row[i-1]=(rs.getFloat(i));
                             break;
                         case Types.INTEGER:
-                            row[i]=(rs.getInt(i));
+                            row[i-1]=(rs.getInt(i));
                             break;
                         case Types.BOOLEAN:
                         case Types.BIT:
-                            row[i]=(rs.getBoolean(i));
+                            row[i-1]=(rs.getBoolean(i));
                             break;
                         case Types.BINARY:
-                            row[i]=(rs.getBytes(i));
+                            row[i-1]=(rs.getBytes(i));
                             //row[i]=("FAUT GERER LA RECUP DES IMAGES");
                             break;
                         default:

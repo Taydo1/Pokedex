@@ -100,8 +100,10 @@ public class PokedexApp extends JFrame implements ActionListener {
             System.out.println("" + attaque);
         }
 
-        ArrayList<Object> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
-        System.out.println("" + listPokemonPokedex);
+        ArrayList<Object[]> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
+        for (Object[] row : listPokemonPokedex) {
+            System.out.println(""+row);
+        }
 
         // Test de la fonction modification
         int[] tableau = {1, 1};

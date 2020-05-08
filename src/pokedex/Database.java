@@ -196,38 +196,40 @@ public class Database {
         }
     }
 
-    public ArrayList<Object> getFromDB(String request) {
+    public ArrayList<Object[]> getFromDB(String request) {
         ResultSet rs = executeQuery(request);
 
-        ArrayList<Object> list = new ArrayList();
+        ArrayList<Object[]> list = new ArrayList();
         try {
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnNumber = rsmd.getColumnCount();
             while (rs.next()) {
+                Object row[] = new Object[columnNumber];
                 for (int i = 1; i <= columnNumber; i++) {
                     switch (rsmd.getColumnType(i)) {
                         case Types.VARCHAR:
-                            list.add(rs.getString(i));
+                            row[i]=rs.getString(i);
                             break;
                         case Types.NUMERIC:
-                            list.add(rs.getFloat(i));
+                            row[i]=(rs.getFloat(i));
                             break;
                         case Types.INTEGER:
-                            list.add(rs.getInt(i));
+                            row[i]=(rs.getInt(i));
                             break;
                         case Types.BOOLEAN:
                         case Types.BIT:
-                            list.add(rs.getBoolean(i));
+                            row[i]=(rs.getBoolean(i));
                             break;
                         case Types.BINARY:
-                            list.add(rs.getBytes(i));
-                            //list.add("FAUT GERER LA RECUP DES IMAGES");
+                            row[i]=(rs.getBytes(i));
+                            //row[i]=("FAUT GERER LA RECUP DES IMAGES");
                             break;
                         default:
                             System.out.println("NON SUPPORTED TYPE !!! (" + i + ") " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
                             break;
                     }
                 }
+                list.add(row);
             }
             return list;
         } catch (IllegalArgumentException | SecurityException | SQLException ex) {
@@ -244,7 +246,7 @@ public class Database {
     }
 
     public Image getImage(String request) {
-        byte[] imageByte = (byte[]) getFromDB(request).get(0);
+        byte[] imageByte = (byte[]) getFromDB(request).get(0)[0];
         try {
             ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
             return ImageIO.read(bis);

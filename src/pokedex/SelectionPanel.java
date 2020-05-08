@@ -43,15 +43,12 @@ public class SelectionPanel extends JPanel{
         up = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_haut.png")));
         up.setContentAreaFilled(false);
         up.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        up.setText("up");
         down = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_bas.png")));
         down.setContentAreaFilled(false);
         down.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        down.setText("down");
         go = new JButton("GO to ID");
         go.setBackground(Color.gray);
         go.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        go.setText("go");
         modification = new JButton("Modifier les données sur " + name);
         modification.setBackground(Color.gray);
         modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -73,6 +70,10 @@ public class SelectionPanel extends JPanel{
         goId.addActionListener(parent);
         up.addActionListener(parent);
         down.addActionListener(parent);
+        go.setActionCommand(Action.GO.name());
+        goId.setActionCommand(Action.GO.name());
+        up.setActionCommand(Action.UP.name());
+        down.setActionCommand(Action.DOWN.name());
 
         gauche.setLayout(new GridLayout(0, 1));
         gauche.setBackground(Color.gray);

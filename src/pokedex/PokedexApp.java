@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -65,7 +66,7 @@ public class PokedexApp extends JFrame implements ActionListener {
 
         topPanel = new TopPanel(this);
         mainPanel.add(topPanel, BorderLayout.NORTH);
-        
+
         setVisible(true);
     }
 
@@ -102,7 +103,7 @@ public class PokedexApp extends JFrame implements ActionListener {
 
         ArrayList<Object[]> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
         for (Object[] row : listPokemonPokedex) {
-            System.out.println(""+row);
+            System.out.println("" + row);
         }
 
         // Test de la fonction modification
@@ -117,11 +118,59 @@ public class PokedexApp extends JFrame implements ActionListener {
         }
     }
 
+    private void goToID(int id) {
+        //Go to id
+        try {
+            selectionPanel.setId(id, db);
+            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + id);
+            imagePanel.setImage(image);
+            idActuel = id;
+        } catch (NumberFormatException ex) {
+
+        }
+    }
+
+    private void changeUser(JComboBox comboBox) {
+        String selection = (String) topPanel.choix.getSelectedItem();
+        String mdp;
+        if (selection.equals("Visiteur")) {
+            mdp = "visiteur";
+        } else {
+            JPasswordField passwordField = new JPasswordField();
+            int resultPassword = JOptionPane.showConfirmDialog(null, passwordField, "Saisissez le mot de passe", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if(resultPassword==JOptionPane.OK_OPTION){
+                mdp = new String(passwordField.getPassword());
+            }else{
+                return;
+            }
+            //mdp = JOptionPane.showInputDialog(null, "Saisissez le mot de passe", "CAPTCHA", JOptionPane.QUESTION_MESSAGE);
+        }
+        if (mdp.toLowerCase().equals(selection.toLowerCase())) {
+            selectionPanel.setUtilisateur(selection);
+        } else {
+            comboBox.setSelectedItem(selectionPanel.getUtilisateur());
+            JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
     @Override
-    public void actionPerformed(ActionEvent arg0) {
-        int goalId = idActuel;
-        if (arg0.getSource() instanceof JButton) {
-            JButton button = (JButton) (arg0.getSource());
+    public void actionPerformed(ActionEvent e) {
+        switch (Action.valueOf(e.getActionCommand())) {
+            case UP:
+                goToID(idActuel + 1);
+                break;
+            case DOWN:
+                goToID(idActuel - 1);
+                break;
+            case GO:
+                goToID(selectionPanel.getGoId());
+                break;
+            case CHANGE_USER:
+                changeUser((JComboBox) e.getSource());
+        }
+        /*if (e.getSource() instanceof JButton) {
+            JButton button = (JButton) (e.getSource());
             if ("up".equals(button.getText())) {
                 goalId++;
             } else if ("down".equals(button.getText())) {
@@ -129,37 +178,12 @@ public class PokedexApp extends JFrame implements ActionListener {
             } else if ("go".equals(button.getText())) {
                 goalId = selectionPanel.getGoId();
             }
-        } else if (arg0.getSource() instanceof JTextField){
+        } else if (e.getSource() instanceof JTextField){
             goalId = selectionPanel.getGoId();
-        }else if (arg0.getSource() instanceof JComboBox) {
-            JOptionPane jop = new JOptionPane();
-            String selection = (String) topPanel.choix.getSelectedItem();
-            String mdp;
-            if (selection.equals("Visiteur")){
-                mdp = "visiteur";
-            }else{
-                mdp = jop.showInputDialog(null, "Saisissez le mot de passe", "CAPTCHA", JOptionPane.QUESTION_MESSAGE);
-            }
-            if (mdp.toLowerCase().equals(selection.toLowerCase())){
-            selectionPanel.setUtilisateur(selection);
-            }else{
-                JComboBox comboBox = (JComboBox)(arg0.getSource());
-                comboBox.setSelectedItem(selectionPanel.getUtilisateur());
-                JOptionPane jop2 = new JOptionPane();
-                jop2.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
-            }
+        }else*/ if (e.getSource() instanceof JComboBox) {
             return;
-        } 
-        
-        //Go to id
-        try {
-            selectionPanel.setId(goalId, db);
-            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + goalId);
-            imagePanel.setImage(image);
-            idActuel = goalId;
-        } catch (NumberFormatException ex) {
-
         }
+
     }
 
     /**

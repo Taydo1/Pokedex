@@ -5,8 +5,6 @@
  */
 package pokedex;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
@@ -25,6 +23,7 @@ public class TopPanel extends JPanel{
         String[] personnes = new String[]{"Visiteur" ,"Dresseur", "Professeur"};
         choix = new JComboBox<String>(personnes);
         choix.addActionListener(parent);
+        choix.setActionCommand(Action.CHANGE_USER.name());
         
         add(choix);
     }

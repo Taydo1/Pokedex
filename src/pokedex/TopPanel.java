@@ -32,6 +32,7 @@ public class TopPanel extends JPanel{
         String[] personnes = new String[]{"Visiteur" ,"Dresseur", "Professeur"};
         choix = new JComboBox<String>(personnes);
         choix.addActionListener(parent);
+        choix.setActionCommand(Action.CHANGE_USER.name());
         classique = new JButton("Classique");
         chromatique = new JButton("Chromatique");
         mega = new JButton("Méga-évolution");

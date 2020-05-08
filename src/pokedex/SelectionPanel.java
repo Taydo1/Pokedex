@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 /**
  *
- * @author Spectan
+ * @author Quentin
  */
 public class SelectionPanel extends JPanel{
 

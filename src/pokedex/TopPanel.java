@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Spectan
+ * @author Quentin
  */
 public class TopPanel extends JPanel{
 
@@ -60,7 +60,6 @@ public class TopPanel extends JPanel{
         type1.setBackground(Color.gray);
         type2 = new JLabel(list.get(0).getType2(id, db));
         type2.setBackground(Color.gray);
-        
         
         choix.addActionListener(parent);
 

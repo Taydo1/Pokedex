@@ -12,15 +12,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
@@ -110,7 +106,7 @@ public class PokedexApp extends JFrame implements ActionListener {
             System.out.println("" + row);
         }
 
-        // Test de la fonction modification
+        //Test de la fonction modification
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};

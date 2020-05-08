@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -124,31 +125,49 @@ public class Database {
             br.close();
 
             int imageNb = 809;
-            int shinyImageNb = 388;
             for (int i = 1; i <= imageNb; i++) {
-                File file = new File(String.format("ressources/images/normal/%03d.png", i));
-                FileInputStream fis = new FileInputStream(file);
+                Pokedex pokeActuel = getFromDB("SELECT * FROM pokedex WHERE id=" + i, Pokedex.class).get(0);
+                File file, fileShiny = null, fileMega = null;
+                FileInputStream fis, fisShiny = null, fisMega = null;
 
-                FileInputStream fisShiny = null;
-                PreparedStatement ps;
-                if (i <= shinyImageNb) {
-                    File fileShiny = new File(String.format("ressources/images/shiny/%03d.png", i));
+                String requestImage = "UPDATE pokedex SET image=?";
+                file = new File(String.format("ressources/images/normal/%03d.png", i));
+                fis = new FileInputStream(file);
+                if (pokeActuel.has_shiny) {
+                    fileShiny = new File(String.format("ressources/images/shiny/%03d.png", i));
                     fisShiny = new FileInputStream(fileShiny);
-                    ps = conn.prepareStatement("UPDATE pokedex SET image=?, image_shiny=? WHERE id=" + i);
-                    ps.setBinaryStream(1, fis, file.length());
-                    ps.setBinaryStream(2, fisShiny, fileShiny.length());
-                } else {
-                    ps = conn.prepareStatement("UPDATE pokedex SET image=? WHERE id=" + i);
-                    ps.setBinaryStream(1, fis, file.length());
+                    requestImage += ", image_shiny=?";
                 }
+                if (pokeActuel.has_mega) {
+                    fileMega = new File(String.format("ressources/images/mega/%03d.png", i));
+                    fisMega = new FileInputStream(fileMega);
+                    requestImage += ", image_mega=?";
+                }
+                requestImage += " WHERE id=" + i;
+
+                PreparedStatement ps;
+                ps = conn.prepareStatement(requestImage);
+                ps.setBinaryStream(1, fis, file.length());
+                if (pokeActuel.has_shiny) {
+                    ps.setBinaryStream(2, fisShiny, fileShiny.length());
+                }
+                if (pokeActuel.has_mega) {
+                    ps.setBinaryStream(3, fisMega, fileMega.length());
+                }
+
                 ps.executeUpdate();
                 ps.close();
+
                 fis.close();
-                if (i <= shinyImageNb) {
+                if (pokeActuel.has_shiny) {
                     fisShiny.close();
                 }
+                if (pokeActuel.has_mega) {
+                    fisMega.close();
+                }
+
             }
-        } catch (IOException | SQLException ex) {
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -208,21 +227,21 @@ public class Database {
                 for (int i = 1; i <= columnNumber; i++) {
                     switch (rsmd.getColumnType(i)) {
                         case Types.VARCHAR:
-                            row[i-1]=rs.getString(i);
+                            row[i - 1] = rs.getString(i);
                             break;
                         case Types.NUMERIC:
-                            row[i-1]=(rs.getFloat(i));
+                            row[i - 1] = (rs.getFloat(i));
                             break;
                         case Types.INTEGER:
                         case Types.BIGINT:
-                            row[i-1]=(rs.getInt(i));
+                            row[i - 1] = (rs.getInt(i));
                             break;
                         case Types.BOOLEAN:
                         case Types.BIT:
-                            row[i-1]=(rs.getBoolean(i));
+                            row[i - 1] = (rs.getBoolean(i));
                             break;
                         case Types.BINARY:
-                            row[i-1]=(rs.getBytes(i));
+                            row[i - 1] = (rs.getBytes(i));
                             //row[i]=("FAUT GERER LA RECUP DES IMAGES");
                             break;
                         default:

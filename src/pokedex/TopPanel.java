@@ -111,6 +111,11 @@ public class TopPanel extends JPanel {
             idNom.setText("0" + id + " " + pokeActuel.name);
         }
         mega.setEnabled(pokeActuel.has_mega);
+        chromatique.setEnabled(pokeActuel.has_shiny);
+        
+        if(!pokeActuel.has_mega && mega.isSelected()){classique.doClick();}
+        if(!pokeActuel.has_shiny && chromatique.isSelected()){classique.doClick();}
+        
         poids.setText("" + pokeActuel.weight + " kg");
         taille.setText("" + pokeActuel.height + " m");
         type1.setText(pokeActuel.getType1(id, db));

@@ -62,9 +62,10 @@ CREATE TABLE pokedex(
 	generation int,
 	id_lower_evolution int REFERENCES pokedex(id),
 	id_evolution int REFERENCES pokedex(id),
+	has_shiny BOOLEAN,
+	has_mega BOOLEAN,
 	image bytea,
 	image_shiny bytea,
-	has_mega BOOLEAN,
 	image_mega bytea
 );
 

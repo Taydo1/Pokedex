@@ -124,7 +124,7 @@ public class Database {
             br.close();
 
             int imageNb = 809;
-            int shinyImageNb = 151;
+            int shinyImageNb = 388;
             for (int i = 1; i <= imageNb; i++) {
                 File file = new File(String.format("ressources/images/normal/%03d.png", i));
                 FileInputStream fis = new FileInputStream(file);
@@ -214,6 +214,7 @@ public class Database {
                             row[i-1]=(rs.getFloat(i));
                             break;
                         case Types.INTEGER:
+                        case Types.BIGINT:
                             row[i-1]=(rs.getInt(i));
                             break;
                         case Types.BOOLEAN:

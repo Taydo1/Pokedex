@@ -21,11 +21,11 @@ public class Pokedex extends DBElement {
     int id, id_type1, id_type2, id_ability1, id_ability2, id_ability3, id_ability4,
             generation, id_lower_evolution, id_evolution;
     float height, weight, percentage_male;
-    boolean is_legendary;
+    boolean is_legendary, has_mega;
 
     public Pokedex() {}
     
-    public Pokedex(String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, boolean is_legendary) {
+    public Pokedex(String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, boolean is_legendary, boolean bhas_mega) {
         this.id = -1;
         this.name = name;
         this.en_name = en_name;
@@ -43,6 +43,7 @@ public class Pokedex extends DBElement {
         this.weight = weight;
         this.percentage_male = percentage_male;
         this.is_legendary = is_legendary;
+        this.has_mega = has_mega;
     }
 
     public Pokedex(String cvsLign, Map<String, Integer> type2id, Map<String, Integer> ability2id) {
@@ -65,6 +66,7 @@ public class Pokedex extends DBElement {
         this.is_legendary = Boolean.parseBoolean(infos[14]);
         this.id_lower_evolution = StringToIntParse(infos[15]);
         this.id_evolution = StringToIntParse(infos[16]);
+        
     }
     
     public Pokedex(ResultSet rs) throws SQLException {
@@ -85,6 +87,7 @@ public class Pokedex extends DBElement {
         this.weight = rs.getFloat("weight");
         this.percentage_male = rs.getFloat("percentage_male");
         this.is_legendary = rs.getBoolean("is_legendary");
+        this.has_mega = rs.getBoolean("has_mega");
     }
 
 
@@ -95,7 +98,7 @@ public class Pokedex extends DBElement {
     
     @Override
     public String getInsertSubRequest() {
-        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s)",
+        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s, null, null, false)",
                 name.replace("'", "''"), en_name.replace("'", "''"),
                 classification.replace("'", "''"),
                 id_type1, int2StringRequest(id_type2),

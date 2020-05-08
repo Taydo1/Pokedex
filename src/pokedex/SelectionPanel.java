@@ -131,7 +131,7 @@ public class SelectionPanel extends JPanel{
         if(id == 1){
             down.setEnabled(false);
             up.setEnabled(true);
-        } else if (id == Integer.parseInt(db.getFromDB("SELECT COUNT(*) FROM pokedex", Pokedex.class).toString())){
+        } else if (id == (Integer)db.getFromDB("SELECT COUNT(*) FROM pokedex").get(0)[0]){
             down.setEnabled(true);
             up.setEnabled(false);
         } else {

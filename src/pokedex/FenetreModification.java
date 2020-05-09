@@ -30,7 +30,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class FenetreModification extends JDialog {
+public class FenetreModification extends JPanel {
    
   JLabel icon;
   JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
@@ -43,11 +43,7 @@ public class FenetreModification extends JDialog {
       
     idModif = id;
     parent = main;
-    this.setTitle("Modification");
     this.setSize(550, 270);
-    this.setLocationRelativeTo(null);
-    this.setResizable(true);
-    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
     this.initComponent();
     this.setVisible(true);
   }
@@ -159,7 +155,7 @@ public class FenetreModification extends JDialog {
     
     ArrayList<String> types = new ArrayList();
     types.add("");
-    ArrayList<pokedex.Type> listType = parent.db.getFromDB("SELECT * FROM ability", pokedex.Type.class);
+    ArrayList<pokedex.Type> listType = parent.db.getFromDB("SELECT * FROM type", pokedex.Type.class);
     for (int i = 0; i < listType.size(); i++){
         types.add(listType.get(i).name);
     }
@@ -200,22 +196,22 @@ public class FenetreModification extends JDialog {
     panGeneration.setBorder(BorderFactory.createTitledBorder("Génération du pokémon"));
     panGeneration.add(generation);
     
-    String[] pkmn = new String[]{};
-    pkmn[0] = "";
+    ArrayList<String> pkmn = new ArrayList();
+    pkmn.add("");
     ArrayList<Pokedex> listPokemon = parent.db.getFromDB("SELECT * from pokedex", Pokedex.class);
     for (int i = 0; i < listPokemon.size(); i++){
-        pkmn[i + 1] = listPokemon.get(i).name;
+        pkmn.add(listPokemon.get(i).name);
     }
     
     //Pré-évolution
     JPanel panPreEvolution = new JPanel();
     panPreEvolution.setBackground(Color.white);
     panPreEvolution.setPreferredSize(new Dimension(220, 60));
-    preEvolution = new JComboBox<>(pkmn);
+    preEvolution = new JComboBox<>(pkmn.toArray());
     if (list.get(0).id_lower_evolution != 0){
-        preEvolution.setSelectedItem(pkmn[list.get(0).id_lower_evolution]);
+        preEvolution.setSelectedItem(pkmn.get(list.get(0).id_lower_evolution));
     } else {
-        preEvolution.setSelectedItem(pkmn[0]);
+        preEvolution.setSelectedItem(pkmn.get(0));
     }
     preEvolution.setPreferredSize(new Dimension(100, 25));
     panPreEvolution.setBorder(BorderFactory.createTitledBorder("Pré-évolution du pokémon"));
@@ -225,11 +221,11 @@ public class FenetreModification extends JDialog {
     JPanel panEvolution1 = new JPanel();
     panEvolution1.setBackground(Color.white);
     panEvolution1.setPreferredSize(new Dimension(220, 60));
-    evolution1 = new JComboBox<>(pkmn);
+    evolution1 = new JComboBox<>(pkmn.toArray());
     if (list.get(0).id_evolution1 != 0){
-        evolution1.setSelectedItem(pkmn[list.get(0).id_evolution1]);
+        evolution1.setSelectedItem(pkmn.get(list.get(0).id_evolution1));
     } else {
-        evolution1.setSelectedItem(pkmn[0]);
+        evolution1.setSelectedItem(pkmn.get(0));
     }
     evolution1.setPreferredSize(new Dimension(100, 25));
     panEvolution1.setBorder(BorderFactory.createTitledBorder("Évolution n°1 du pokémon"));
@@ -239,11 +235,11 @@ public class FenetreModification extends JDialog {
     JPanel panEvolution2 = new JPanel();
     panEvolution2.setBackground(Color.white);
     panEvolution2.setPreferredSize(new Dimension(220, 60));
-    evolution2 = new JComboBox<>(pkmn);
+    evolution2 = new JComboBox<>(pkmn.toArray());
     if (list.get(0).id_evolution2 != 0){
-        evolution2.setSelectedItem(pkmn[list.get(0).id_evolution2]);
+        evolution2.setSelectedItem(pkmn.get(list.get(0).id_evolution2));
     } else {
-        evolution2.setSelectedItem(pkmn[0]);
+        evolution2.setSelectedItem(pkmn.get(0));
     }
     evolution2.setPreferredSize(new Dimension(100, 25));
     panEvolution2.setBorder(BorderFactory.createTitledBorder("Évolution n°2 du pokémon"));
@@ -291,7 +287,7 @@ public class FenetreModification extends JDialog {
     panRarete.setBackground(Color.white);
     panRarete.setPreferredSize(new Dimension(220, 60));
     rarete = new JComboBox<>(rar);
-    rarete.setSelectedItem(rar[list.get(0).is_legendary - 1]);
+    rarete.setSelectedItem(rar[list.get(0).is_legendary]);
     rarete.setPreferredSize(new Dimension(100, 25));
     panRarete.setBorder(BorderFactory.createTitledBorder("Rareté du pokémon"));
     panRarete.add(rarete);
@@ -372,8 +368,8 @@ public class FenetreModification extends JDialog {
     control.add(okBouton);
     control.add(cancelBouton);
 
-    this.getContentPane().add(panIcon, BorderLayout.WEST);
-    this.getContentPane().add(content, BorderLayout.CENTER);
-    this.getContentPane().add(control, BorderLayout.SOUTH);
+    this.add(panIcon, BorderLayout.WEST);
+    this.add(content, BorderLayout.CENTER);
+    this.add(control, BorderLayout.SOUTH);
   }  
 }

@@ -257,10 +257,10 @@ public class Database {
         }
     }
 
-    public void modify(String liste_a_modif, int[] id_a_modifier, String[] colonnes_a_modifier, Object[] valeurs_modif) {
-        for (int i = 0; i < colonnes_a_modifier.length; i++) {
-            this.executeUpdate("UPDATE " + liste_a_modif + " SET " + colonnes_a_modifier[i].replace("'", "''") + " = '" + valeurs_modif[i].toString().replace("'", "''")
-                    + "' WHERE id = " + String.valueOf(id_a_modifier[i]));
+    public void modify(String listeAModif, int idModif, String[] colonnesModifiees, Object[] valeursModif) {
+        for (int i = 0; i < colonnesModifiees.length; i++) {
+            this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''")
+                    + "' WHERE id = " + idModif);
         }
     }
 

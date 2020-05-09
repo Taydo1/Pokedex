@@ -6,6 +6,7 @@
 package pokedex;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -83,18 +84,19 @@ public class PokedexPanel extends JPanel  implements ActionListener {
             }
             case IMAGE_NORMAL:
                 imageName = "image";
+                topPanel.setColor(Color.GRAY);
                 goToID(idActuel);
                 break;
             case IMAGE_SHINY:
                 imageName = "image_shiny";
+                topPanel.setColor(new Color(128, 128, 180));
                 goToID(idActuel);
                 break;
             case IMAGE_MEGA:
                 imageName = "image_mega";
+                topPanel.setColor(new Color(100, 100, 100));
                 goToID(idActuel);
                 break;
         }
-    }
-
-    
+    }   
 }

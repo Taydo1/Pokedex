@@ -13,8 +13,6 @@ import java.awt.GridBagLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.util.ArrayList;
-import javax.swing.BoxLayout;
 
 /**
  *
@@ -25,48 +23,37 @@ public class TopPokedexPanel extends JPanel {
     ToggleButton classique, chromatique, mega;
     InfoButton type1, type2, ability1, ability2, ability3, ability4;
     JLabel idNom, classification, poids, taille;
+    Color backgroundColor;
 
     public TopPokedexPanel(PokedexPanel parent) {
-
+        backgroundColor=Color.GRAY;
+        
         ButtonGroup group = new ButtonGroup();
         classique = new ToggleButton("Classique");
-        classique.setBackground(Color.gray);
         classique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         classique.setSelected(true);
         group.add(classique);
         chromatique = new ToggleButton("Chromatique");
-        chromatique.setBackground(Color.gray);
         chromatique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         group.add(chromatique);
         mega = new ToggleButton("Méga-évolution");
-        mega.setBackground(Color.gray);
         mega.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         group.add(mega);
 
         idNom = new JLabel();
-        idNom.setBackground(Color.gray);
         idNom.setPreferredSize(new Dimension(1, 20));
         classification = new JLabel();
-        classification.setBackground(Color.gray);
         classification.setPreferredSize(new Dimension(1, 20));
         poids = new JLabel();
-        poids.setBackground(Color.gray);
         poids.setPreferredSize(new Dimension(1, 20));
         taille = new JLabel();
-        taille.setBackground(Color.gray);
         taille.setPreferredSize(new Dimension(1, 20));
         type1 = new InfoButton();
-        type1.setBackground(Color.gray);
         type2 = new InfoButton();
-        type2.setBackground(Color.gray);
         ability1 = new InfoButton();
-        ability1.setBackground(Color.gray);
         ability2 = new InfoButton();
-        ability2.setBackground(Color.gray);
         ability3 = new InfoButton();
-        ability3.setBackground(Color.gray);
         ability4 = new InfoButton();
-        ability4.setBackground(Color.gray);
         JPanel abilityPanel = new JPanel();
 
         abilityPanel.setLayout(new GridBagLayout());
@@ -102,7 +89,6 @@ public class TopPokedexPanel extends JPanel {
         ability4.setActionCommand(Action.GET_ABILITY.name());
 
         setLayout(new GridBagLayout());
-        setBackground(Color.gray);
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
@@ -131,6 +117,8 @@ public class TopPokedexPanel extends JPanel {
         c.gridx = 0;
         c.gridwidth = 3;
         add(abilityPanel, c);
+        
+        setColor(backgroundColor);
     }
 
     public void setId(int id, Database db) {
@@ -190,5 +178,22 @@ public class TopPokedexPanel extends JPanel {
             ability4.setVisible(false);
         }
         this.repaint();
+    }
+    
+    public void setColor(Color color){
+        classique.setBackground(color);
+        chromatique.setBackground(color);
+        mega.setBackground(color);
+        idNom.setBackground(color);
+        classification.setBackground(color);
+        poids.setBackground(color);
+        taille.setBackground(color);
+        type1.setBackground(color);
+        type2.setBackground(color);
+        ability1.setBackground(color);
+        ability2.setBackground(color);
+        ability3.setBackground(color);
+        ability4.setBackground(color);
+        setBackground(color);
     }
 }

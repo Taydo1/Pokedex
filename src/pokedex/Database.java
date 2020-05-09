@@ -22,6 +22,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -263,6 +264,34 @@ public class Database {
                     + "' WHERE id = " + idModif);
         }
     }
+    //methode de suppression de plusieurs lignes d'une table en renseignant l'id des ces lignes
+   public void deleteFromID(String liste_del, int[] id_suppression){
+        this.executeUpdate("DELETE FROM " +liste_del+ " WHERE id = " +Arrays.toString(id_suppression));
+    }
+   
+/*Methode qui test si le string est un entier
+ParseInt essaies de tranformer en entier, s'il n'y arrive pas, alors il y'a une 
+erreur attrapée et le booléen passe à faux, sinon le booleen est vrai.*/
+   public boolean TestInt(String chaine) {
+		try {
+			Integer.parseInt(chaine,10);
+		} catch (NumberFormatException e){
+			return false;
+		}
+ 
+		return true;
+	}
+   //Methode permettant de supprimer des lignes selon une condition quelconque sur une colonne quelconque
+   public void deleteFromCondition(String liste_del,String colonne, String condition  ){
+       if (TestInt(condition)==true){
+           this.executeUpdate("DELETE FROM "+ liste_del +" WHERE "+colonne+" = "+condition);
+       }
+       else{
+           this.executeUpdate("DELETE FROM "+ liste_del +" WHERE "+colonne+" = '"+condition+"'");
+       }
+           
+        
+   }
 
     public Image getImage(String request) {
         byte[] imageByte = (byte[]) getFromDB(request).get(0)[0];

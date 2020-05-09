@@ -28,7 +28,7 @@ public class FenetreModification extends JPanel {
     JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
     JTextField nomfr, nomen, classification;
     JFormattedTextField taille, poids, pourcentage;
-    JButton okBouton, cancelBouton;
+    JButton saveBouton, discardBouton;
     MainPanel parent;
     int idModif;
     
@@ -264,21 +264,21 @@ public class FenetreModification extends JPanel {
         panMega.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme méga ?"));
         panMega.add(mega);
         
-        okBouton = new JButton("OK");
-        okBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        okBouton.addActionListener(parent);
-        okBouton.setActionCommand(Action.DO_MODIFICATION.name());
-        cancelBouton = new JButton("Annuler");
-        cancelBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        cancelBouton.addActionListener(parent);
-        cancelBouton.setActionCommand(Action.CANCEL_MODIFICATION.name());
+        saveBouton = new JButton("SAVE");
+        saveBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        saveBouton.addActionListener(parent);
+        saveBouton.setActionCommand(Action.SAVE_MODIFICATION.name());
+        discardBouton = new JButton("Annuler");
+        discardBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        discardBouton.addActionListener(parent);
+        discardBouton.setActionCommand(Action.DISCARD_MODIFICATION.name());
         
-        JPanel okPanel = new JPanel();
-        okPanel.add(okBouton);
-        okPanel.setBackground(Color.white);
-        JPanel cancelPanel = new JPanel();
-        cancelPanel.add(cancelBouton);
-        cancelPanel.setBackground(Color.white);
+        JPanel savePanel = new JPanel();
+        savePanel.add(saveBouton);
+        savePanel.setBackground(Color.white);
+        JPanel discardPanel = new JPanel();
+        discardPanel.add(discardBouton);
+        discardPanel.setBackground(Color.white);
     
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -327,9 +327,9 @@ public class FenetreModification extends JPanel {
         c.gridy = 6;
         add(panMega, c);
         c.gridx = 0;
-        add(okPanel, c);
+        add(savePanel, c);
         c.gridx = 2;
-        add(cancelPanel, c);
+        add(discardPanel, c);
         
         int dimx = (parent.getWidth()/3) - 70;
         int dimy = (parent.getHeight()/7) - 60;
@@ -352,8 +352,8 @@ public class FenetreModification extends JPanel {
         rarete.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
-        okBouton.setPreferredSize(new Dimension(dimx + 20, (int)(dimy * 2.2)));
-        cancelBouton.setPreferredSize(new Dimension(dimx +20, (int)(dimy * 2.2)));
+        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int)(dimy * 2.2)));
+        discardBouton.setPreferredSize(new Dimension(dimx +20, (int)(dimy * 2.2)));
     }  
     
     public void updateDimension(){
@@ -378,7 +378,7 @@ public class FenetreModification extends JPanel {
         rarete.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
-        okBouton.setPreferredSize(new Dimension(dimx + 20, (int)(dimy * 2.2)));
-        cancelBouton.setPreferredSize(new Dimension(dimx +20, (int)(dimy * 2.2)));
+        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int)(dimy * 2.2)));
+        discardBouton.setPreferredSize(new Dimension(dimx +20, (int)(dimy * 2.2)));
     }
 }

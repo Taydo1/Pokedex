@@ -114,6 +114,12 @@ public class MainPanel extends JPanel implements ActionListener {
                 Ability ability = db.getFromDB("SELECT * FROM ability WHERE id="+source.getId(), Ability.class).get(0);
                 System.out.println(""+ability);
                 break;
+            case SAVE_MODIFICATION :
+                    
+                break;
+            case DISCARD_MODIFICATION :
+                
+                break;
         }
     }
 }

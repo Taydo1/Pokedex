@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -254,6 +255,7 @@ public class FenetreModification extends JPanel {
         panPoids.add(poids);
         
         NumberFormat formatPourcentage = NumberFormat.getPercentInstance();
+        formatPourcentage.setMinimumFractionDigits(1);
 
         //Pourcentage de mâle
         JPanel panPourcent = new JPanel();
@@ -358,7 +360,6 @@ public class FenetreModification extends JPanel {
             public void actionPerformed(ActionEvent arg0) {
                 JOptionPane jop = new JOptionPane();
                 int rang = jop.showOptionDialog(null, "Êtes-vous sûr ?", "Double vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, ouiNon, ouiNon[1]);
-                
             }
             
             public String getTaille() {

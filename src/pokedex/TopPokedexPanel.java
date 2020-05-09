@@ -10,11 +10,8 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.CompoundBorder;
 
 /**
  *
@@ -199,8 +196,9 @@ public class TopPokedexPanel extends JPanel {
         mega.setEnabled(pokeActuel.has_mega);
         chromatique.setEnabled(pokeActuel.has_shiny);
 
-        poids.setText("" + pokeActuel.weight + " kg");
-        taille.setText("" + pokeActuel.height + " m");
+        poids.setText(String.format("Poids : %.1fkg",pokeActuel.weight));
+        taille.setText(String.format("Taille : %.1fm",pokeActuel.height));
+        pourcentageMale.setText(String.format("%.1f%% de mâles",pokeActuel.percentage_male*100));
         type1.setText(pokeActuel.getTypeName(db, 1));
         type1.setId(pokeActuel.id_type1);
 

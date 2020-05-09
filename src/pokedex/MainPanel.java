@@ -96,14 +96,21 @@ public class MainPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
             case CHANGE_USER:
                 changeUser((JComboBox) e.getSource());
                 break;
             case GET_TYPE:
-                InfoButton source = (InfoButton)e.getSource();
+                source = (InfoButton)e.getSource();
                 Type type = db.getFromDB("SELECT * FROM type WHERE id="+source.getId(), Type.class).get(0);
                 System.out.println(""+type);
+                break;
+            case GET_ABILITY:
+                source = (InfoButton)e.getSource();
+                Ability ability = db.getFromDB("SELECT * FROM ability WHERE id="+source.getId(), Ability.class).get(0);
+                System.out.println(""+ability);
+                break;
         }
     }
 }

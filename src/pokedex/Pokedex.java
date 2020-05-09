@@ -111,14 +111,14 @@ public class Pokedex extends DBElement {
                 has_shiny, has_mega);
     }
     
-    public String getType1(int id, Database db){
-        ArrayList<Object[]> list = db.getFromDB("Select * from type t join pokedex p on p.id_type1 = t.id WHERE p.id =" + id);
-        String valeurDonne = list.get(0)[1].toString();
+    public String getTypeName(int id, Database db, int typeNb){
+        ArrayList<Object[]> list = db.getFromDB("Select t.name from type t join pokedex p on p.id_type"+typeNb+" = t.id WHERE p.id =" + id);
+        String valeurDonne = list.get(0)[0].toString();
         return valeurDonne;
     }
-    public String getType2(int id, Database db){
-        ArrayList<Object[]> list = db.getFromDB("Select * from type t join pokedex p on p.id_type2 = t.id WHERE p.id =" + id);
-        String valeurDonne = list.get(0)[1].toString();
+    public String getAbilityName(int id, Database db, int abilityNb){
+        ArrayList<Object[]> list = db.getFromDB("Select a.name from ability a join pokedex p on p.id_ability"+abilityNb+" = a.id WHERE p.id =" + id);
+        String valeurDonne = list.get(0)[0].toString();
         return valeurDonne;
     }
 }

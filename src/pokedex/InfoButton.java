@@ -6,6 +6,7 @@
 package pokedex;
 
 import javax.swing.JButton;
+import java.awt.Dimension;
 
 /**
  *
@@ -18,6 +19,7 @@ public class InfoButton extends JButton {
     public InfoButton() {
         super();
         this.id = 0;
+        setPreferredSize(new Dimension(1,20));
     }
 
     public void setId(int id) {

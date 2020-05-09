@@ -7,11 +7,14 @@ package pokedex;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.util.ArrayList;
+import javax.swing.BoxLayout;
 
 /**
  *
@@ -20,7 +23,7 @@ import javax.swing.JPanel;
 public class TopPokedexPanel extends JPanel {
 
     ToggleButton classique, chromatique, mega;
-    InfoButton type1, type2;
+    InfoButton type1, type2, ability1, ability2, ability3, ability4;
     JLabel idNom, classification, poids, taille;
 
     public TopPokedexPanel(PokedexPanel parent) {
@@ -42,16 +45,42 @@ public class TopPokedexPanel extends JPanel {
 
         idNom = new JLabel();
         idNom.setBackground(Color.gray);
+        idNom.setPreferredSize(new Dimension(1, 20));
         classification = new JLabel();
         classification.setBackground(Color.gray);
+        classification.setPreferredSize(new Dimension(1, 20));
         poids = new JLabel();
         poids.setBackground(Color.gray);
+        poids.setPreferredSize(new Dimension(1, 20));
         taille = new JLabel();
         taille.setBackground(Color.gray);
+        taille.setPreferredSize(new Dimension(1, 20));
         type1 = new InfoButton();
         type1.setBackground(Color.gray);
         type2 = new InfoButton();
         type2.setBackground(Color.gray);
+        ability1 = new InfoButton();
+        ability1.setBackground(Color.gray);
+        ability2 = new InfoButton();
+        ability2.setBackground(Color.gray);
+        ability3 = new InfoButton();
+        ability3.setBackground(Color.gray);
+        ability4 = new InfoButton();
+        ability4.setBackground(Color.gray);
+        JPanel abilityPanel = new JPanel();
+
+        abilityPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c1 = new GridBagConstraints();
+        c1.fill = GridBagConstraints.BOTH;
+        c1.weightx = 1;
+        c1.gridx = 0;
+        abilityPanel.add(ability1, c1);
+        c1.gridx = 1;
+        abilityPanel.add(ability2, c1);
+        c1.gridx = 2;
+        abilityPanel.add(ability3, c1);
+        c1.gridx = 3;
+        abilityPanel.add(ability4, c1);
 
         classique.addActionListener(parent);
         classique.setActionCommand(Action.IMAGE_NORMAL.name());
@@ -63,12 +92,20 @@ public class TopPokedexPanel extends JPanel {
         type1.setActionCommand(Action.GET_TYPE.name());
         type2.addActionListener((MainPanel) parent.parent);
         type2.setActionCommand(Action.GET_TYPE.name());
+        ability1.addActionListener((MainPanel) parent.parent);
+        ability1.setActionCommand(Action.GET_ABILITY.name());
+        ability2.addActionListener((MainPanel) parent.parent);
+        ability2.setActionCommand(Action.GET_ABILITY.name());
+        ability3.addActionListener((MainPanel) parent.parent);
+        ability3.setActionCommand(Action.GET_ABILITY.name());
+        ability4.addActionListener((MainPanel) parent.parent);
+        ability4.setActionCommand(Action.GET_ABILITY.name());
 
         setLayout(new GridBagLayout());
         setBackground(Color.gray);
-        GridBagConstraints c = new GridBagConstraints();
 
-        c.fill = GridBagConstraints.HORIZONTAL;
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.weightx = 1;
         c.gridwidth = 1;
@@ -90,6 +127,10 @@ public class TopPokedexPanel extends JPanel {
         add(type1, c);
         c.gridx = 2;
         add(type2, c);
+        c.gridy = 4;
+        c.gridx = 0;
+        c.gridwidth = 3;
+        add(abilityPanel, c);
     }
 
     public void setId(int id, Database db) {
@@ -114,15 +155,40 @@ public class TopPokedexPanel extends JPanel {
 
         poids.setText("" + pokeActuel.weight + " kg");
         taille.setText("" + pokeActuel.height + " m");
-        type1.setText(pokeActuel.getType1(id, db));
+        type1.setText(pokeActuel.getTypeName(id, db, 1));
         type1.setId(pokeActuel.id_type1);
-        if (pokeActuel.id_type2 == 0) {
-            type2.setText("");
-        } else {
-            type2.setText(pokeActuel.getType2(id, db));
+
+        if (pokeActuel.id_type2 != 0) {
+            type2.setVisible(true);
+            type2.setText(pokeActuel.getTypeName(id, db, 2));
             type2.setId(pokeActuel.id_type2);
+        } else {
+            type2.setVisible(false);
         }
-        System.out.println(""+pokeActuel.id_ability4);
+        ability1.setText(pokeActuel.getAbilityName(id, db, 1));
+        ability1.setId(pokeActuel.id_ability1);
+
+        if (pokeActuel.id_ability2 != 0) {
+            ability2.setVisible(true);
+            ability2.setText(pokeActuel.getAbilityName(id, db, 2));
+            ability2.setId(pokeActuel.id_ability2);
+        } else {
+            ability2.setVisible(false);
+        }
+        if (pokeActuel.id_ability3 != 0) {
+            ability3.setVisible(true);
+            ability3.setText(pokeActuel.getAbilityName(id, db, 3));
+            ability3.setId(pokeActuel.id_ability3);
+        } else {
+            ability3.setVisible(false);
+        }
+        if (pokeActuel.id_ability4 != 0) {
+            ability4.setVisible(true);
+            ability4.setText(pokeActuel.getAbilityName(id, db, 4));
+            ability4.setId(pokeActuel.id_ability4);
+        } else {
+            ability4.setVisible(false);
+        }
         this.repaint();
     }
 }

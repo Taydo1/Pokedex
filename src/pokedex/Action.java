@@ -19,5 +19,6 @@ public enum Action {
     IMAGE_SHINY,
     IMAGE_MEGA,
     
-    GET_TYPE;
+    GET_TYPE,
+    GET_ABILITY;
 }

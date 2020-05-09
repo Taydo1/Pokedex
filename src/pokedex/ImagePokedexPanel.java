@@ -5,6 +5,7 @@
  */
 package pokedex;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
@@ -35,6 +36,7 @@ public class ImagePokedexPanel extends JPanel {
             int destWidth = (int) (imageW * tmpRatio);
             int destHeight = (int) (imageH * tmpRatio);
             g.drawImage(image, (W-destWidth)/2, (H-destHeight)/2, destWidth, destHeight, null);
+            setBackground(Color.WHITE);
         }
     }
 

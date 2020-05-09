@@ -116,7 +116,8 @@ public class MainPanel extends JPanel implements ActionListener {
                 System.out.println(""+ability);
                 break;
             case SAVE_MODIFICATION :
-                    
+                fenetreModification.saveModification();
+                tabbedPane.remove(2);
                 break;
             case DISCARD_MODIFICATION :
                 tabbedPane.remove(2);

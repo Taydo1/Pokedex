@@ -99,8 +99,8 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 goToID(source.getId());
                 break;
             case START_MODIFICATION:
-                FenetreModification fenetreModification = new FenetreModification(idActuel, parent);
-                parent.tabbedPane.add("Modification", fenetreModification);
+                parent.fenetreModification = new FenetreModification(idActuel, parent);
+                parent.tabbedPane.add("Modification", parent.fenetreModification);
                 break;
         }
     }

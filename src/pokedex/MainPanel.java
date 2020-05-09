@@ -28,6 +28,7 @@ public class MainPanel extends JPanel implements ActionListener {
     Database db;
     PokedexPanel pokedexPanel1, pokedexPanel2;
     PokedexApp parent;
+    FenetreModification fenetreModification;
 
     MainPanel(Database db, PokedexApp p) {
         
@@ -118,7 +119,7 @@ public class MainPanel extends JPanel implements ActionListener {
                     
                 break;
             case DISCARD_MODIFICATION :
-                
+                tabbedPane.remove(2);
                 break;
         }
     }

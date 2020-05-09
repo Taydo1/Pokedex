@@ -268,7 +268,7 @@ public class FenetreModification extends JPanel {
         saveBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveBouton.addActionListener(parent);
         saveBouton.setActionCommand(Action.SAVE_MODIFICATION.name());
-        discardBouton = new JButton("Annuler");
+        discardBouton = new JButton("DISCARD");
         discardBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardBouton.addActionListener(parent);
         discardBouton.setActionCommand(Action.DISCARD_MODIFICATION.name());

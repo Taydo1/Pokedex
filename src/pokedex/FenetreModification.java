@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class FenetreModification extends JPanel implements ActionListener {
@@ -147,13 +148,13 @@ public class FenetreModification extends JPanel implements ActionListener {
         panType2.setBorder(BorderFactory.createTitledBorder("Type n°2 du pokémon"));
         panType2.add(type2);
 
-        String[] gen = new String[]{"gen 1", "gen 2", "gen 3", "gen 4", "gen 5", "gen 6", "gen 7"};
+        String[] gen = new String[]{"", "gen 1", "gen 2", "gen 3", "gen 4", "gen 5", "gen 6", "gen 7"};
 
         //Génération
         JPanel panGeneration = new JPanel();
         panGeneration.setBackground(Color.white);
         generation = new JComboBox<>(gen);
-        generation.setSelectedItem(gen[currentPokedex.generation - 1]);
+        generation.setSelectedItem(gen[currentPokedex.generation]);
         panGeneration.setBorder(BorderFactory.createTitledBorder("Génération du pokémon"));
         panGeneration.add(generation);
 
@@ -219,24 +220,21 @@ public class FenetreModification extends JPanel implements ActionListener {
         panPoids.setBorder(BorderFactory.createTitledBorder("Poids du pokémon"));
         panPoids.add(poids);
 
-        NumberFormat formatPourcentage = NumberFormat.getPercentInstance();
-        formatPourcentage.setMinimumFractionDigits(1);
-
         //Pourcentage de mâle
         JPanel panPourcent = new JPanel();
         panPourcent.setBackground(Color.white);
-        pourcentage = new JFormattedTextField(formatPourcentage);
+        pourcentage = new JFormattedTextField(formatPoidsTaille);
         pourcentage.setValue(currentPokedex.percentage_male);
         panPourcent.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
         panPourcent.add(pourcentage);
 
-        String[] rar = new String[]{"Banal", "Fabuleux", "Légendaire"};
+        String[] rar = new String[]{"" ,"Banal", "Fabuleux", "Légendaire"};
 
         //Rareté du pokémon
         JPanel panRarete = new JPanel();
         panRarete.setBackground(Color.white);
         rarete = new JComboBox<>(rar);
-        rarete.setSelectedItem(rar[currentPokedex.is_legendary]);
+        rarete.setSelectedItem(rar[currentPokedex.is_legendary + 1]);
         panRarete.setBorder(BorderFactory.createTitledBorder("Rareté du pokémon"));
         panRarete.add(rarete);
 
@@ -268,7 +266,7 @@ public class FenetreModification extends JPanel implements ActionListener {
 
         saveBouton = new JButton("SAVE");
         saveBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        saveBouton.addActionListener(parent);
+        saveBouton.addActionListener(this);
         saveBouton.setActionCommand(Action.SAVE_MODIFICATION.name());
         discardBouton = new JButton("DISCARD");
         discardBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -389,7 +387,179 @@ public class FenetreModification extends JPanel implements ActionListener {
         InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
             case SAVE_MODIFICATION:
-                //fenetreModification.saveModification();
+                String[] colonnesModif = new String[]{"name", "en_name", "classification", "id_type1", "id_type2", "id_ability1", "id_ability2",
+                                                      "id_ability3", "id_ability4", "height", "weight", "percentage_male","is_legendary_fabulous",
+                                                       "generation", "has_shiny", "has_mega", "id_lower_evolution", "id_evolution1", "id_evolution2"};
+                
+                Object nfr;
+                Object nen;
+                Object clas;
+                Object t1;
+                Object t2;
+                Object tl1;
+                Object tl2;
+                Object tl3;
+                Object tl4;
+                Object tlle;
+                Object pds;
+                Object perc;
+                Object preevo;
+                Object evo1;
+                Object evo2;
+                Object g;
+                Object s;
+                Object m;
+                Object r;
+                
+                //Change le "" du nom en null
+                if (nomfr.getText().equals("")){
+                    nfr = null;
+                } else {
+                    nfr = nomfr.getText();
+                }
+                //Change le "" du nom anglais en null
+                if (nomen.getText().equals("")){
+                    nen = null;
+                } else {
+                    nen = nomen.getText();
+                }
+                //Change le "" de classification en null
+                if (classification.getText().equals("")){
+                    clas = null;
+                } else {
+                    clas = classification.getText();
+                }
+                //Change les "" des types 1 et 2 en null et place un type unique dans le type 1 s'il a été sélectionné dans type 2
+                t1 = t2 = null;
+                if (type1.getSelectedIndex() != 0){
+                    t1 = type1.getSelectedIndex();
+                } else if (type1.getSelectedIndex() == 0 && type2.getSelectedIndex() != 0){
+                    t1 = type2.getSelectedIndex();
+                    type2.setSelectedIndex(0);
+                }
+                if (type2.getSelectedIndex() != 0){
+                    t2 = type2.getSelectedIndex();
+                }
+                //Pareil que pour les types, mais pour les 4 talents
+                tl1 = tl2 = tl3 = tl4 = null;
+                if (talent1.getSelectedIndex() != 0){
+                    tl1 = talent1.getSelectedIndex();
+                } else if (talent1.getSelectedIndex() == 0 && talent2.getSelectedIndex() != 0){
+                    tl1 = talent2.getSelectedIndex();
+                    talent2.setSelectedIndex(0);
+                } else if (talent1.getSelectedIndex() == 0 && talent2.getSelectedIndex() == 0 && talent3.getSelectedIndex() != 0){
+                    tl1 = talent3.getSelectedIndex();
+                    talent3.setSelectedIndex(0);
+                } else if (talent1.getSelectedIndex() == 0 && talent2.getSelectedIndex() == 0 && talent3.getSelectedIndex() == 0 && talent4.getSelectedIndex() != 0){
+                    tl1 = talent4.getSelectedIndex();
+                    talent4.setSelectedIndex(0);
+                }
+                if (talent2.getSelectedIndex() != 0){
+                    tl2 = talent2.getSelectedIndex();
+                } else if (talent2.getSelectedIndex() == 0 && talent3.getSelectedIndex() != 0){
+                    tl2 = talent3.getSelectedIndex();
+                    talent3.setSelectedIndex(0);
+                } else if (talent2.getSelectedIndex() == 0 && talent3.getSelectedIndex() == 0 && talent4.getSelectedIndex() != 0){
+                    tl2 = talent4.getSelectedIndex();
+                    talent4.setSelectedIndex(0);
+                }
+                if (talent3.getSelectedIndex() != 0){
+                    tl3 = talent3.getSelectedIndex();
+                } else if (talent3.getSelectedIndex() == 0 && talent4.getSelectedIndex() != 0){
+                    tl3 = talent4.getSelectedIndex();
+                    talent4.setSelectedIndex(0);
+                }
+                if (talent4.getSelectedIndex() != 0){
+                    tl4 = talent4.getSelectedIndex();
+                }
+                //Change le "" de la taille en null
+                if (taille.getText().equals("")){
+                    tlle = null;
+                } else {
+                    tlle = taille.getText();
+                }
+                //Change le "" du poids en null
+                if (poids.getText().equals("")){
+                    pds = null;
+                } else {
+                    pds = poids.getText();
+                }
+                //Change le "" de pourcentage en null
+                if (pourcentage.getText().equals("")){
+                    perc = null;
+                } else {
+                    perc = pourcentage.getText();
+                }
+                //Change le "" de pré-évolution en null
+                if (preEvolution.getSelectedIndex() == 0){
+                    preevo = null;
+                } else {
+                    preevo = preEvolution.getSelectedIndex();
+                }
+                //Change les "" des évolutions 1 et 2 en null et place une évolution unique dans l'évolution 1 si elle a été sélectionnée dans évolution 2
+                evo1 = evo2 = null;
+                if (evolution1.getSelectedIndex() != 0){
+                    evo1 = evolution1.getSelectedIndex();
+                } else if (evolution1.getSelectedIndex() == 0 && evolution2.getSelectedIndex() != 0){
+                    evo1 = evolution2.getSelectedIndex();
+                    evolution2.setSelectedIndex(0);
+                }
+                if (evolution2.getSelectedIndex() != 0){
+                    evo2 = evolution2.getSelectedIndex();
+                }
+                //Change le "" de génération en null
+                if (generation.getSelectedIndex() == 0){
+                    g = null;
+                } else {
+                    g = generation.getSelectedIndex();
+                }
+                //Traduit les Oui/Non en booléen
+                if (shiny.getSelectedItem().equals("Oui")){
+                    s = true;
+                } else {
+                    s = false;
+                }
+                if (mega.getSelectedItem().equals("Oui")){
+                    m = true;
+                } else {
+                    m = false;
+                }
+                //Réglage d'un bug sur la rareté
+                r = null;
+                if(rarete.getSelectedItem().equals("")){
+                    r = null;
+                } else if(rarete.getSelectedItem().equals("Banal")){
+                    r = 0;
+                } else if(rarete.getSelectedItem().equals("Fabuleux")){
+                    r = 1;
+                } else if(rarete.getSelectedItem().equals("Légendaire")){
+                    r = 2;
+                }
+                
+                Object[] valeursModif = new Object[]{nfr,
+                                                     nen,
+                                                     clas,
+                                                     t1,
+                                                     t2,
+                                                     tl1,
+                                                     tl2,
+                                                     tl3,
+                                                     tl4,
+                                                     tlle,
+                                                     pds,
+                                                     perc,
+                                                     g,
+                                                     r,
+                                                     s,
+                                                     m,
+                                                     preevo,
+                                                     evo1,
+                                                     evo2
+                                                    };
+                parent.db.modify("pokedex", idModif, colonnesModif, valeursModif);
+                parent.tabbedPane.remove(this);
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
             case DISCARD_MODIFICATION:
                 parent.tabbedPane.remove(this);
                 break;

@@ -260,8 +260,13 @@ public class Database {
 
     public void modify(String listeAModif, int idModif, String[] colonnesModifiees, Object[] valeursModif) {
         for (int i = 0; i < colonnesModifiees.length; i++) {
-            this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''")
-                    + "' WHERE id = " + idModif);
+            if (valeursModif[i] == null){
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = NULL "
+                    + "WHERE id = " + idModif);
+            } else {
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''").replace(",", ".")
+                                    + "' WHERE id = " + idModif);
+            }
         }
     }
     //methode de suppression de plusieurs lignes d'une table en renseignant l'id des ces lignes

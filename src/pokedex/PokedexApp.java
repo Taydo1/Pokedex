@@ -24,7 +24,7 @@ public class PokedexApp extends JFrame {
 
     public PokedexApp() {
 
-        setupDB(false);
+        setupDB(true);
         setupWindow();
         //testRequest();
     }
@@ -96,7 +96,7 @@ public class PokedexApp extends JFrame {
         
         //test delete
         int[] suppression = {41,42,43};
-        db.delete("Pokemon",suppression);
+        //db.delete("Pokemon",suppression);
         
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {

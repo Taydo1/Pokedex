@@ -799,7 +799,7 @@ pokedex_number;name;en_name;classfication;type1;type2;abilitiy1;abilitiy2;abilit
 798;Katagami;Kartana;Pokémon battô;Grass;Steel;Beast Boost; ; ; ;0.3;0.1; ;7;0;true;false; ; ; ; ; ; ; ; ;
 799;Engloutyran;Guzzlord;Pokémon bizarrovore;Dark;Dragon;Beast Boost; ; ; ;5.5;888.0; ;7;0;true;false; ; ; ; ; ; ; ; ;
 800;Necrozma;Necrozma;Pokémon prisme;Psychic; ;Prism Armor; ; ; ;2.4;230.0; ;7;0;true;false; ; ; ; ; ; ; ; ;
-801;Magearna;Magearna;Pokémon artificiel;Steel;Fairy;Soul-Heart; ; ; ;1.0;80.5; ;7;1;false;false; ; ; ; ; ; ; ; ;
+801;Magearna;Magearna;Pokémon artificiel;Steel;Fairy;Soul-Heart; ; ; ;1.0;80.5; ;7;1;true;false; ; ; ; ; ; ; ; ;
 802;Marshadow;Marshadow;Pokémon ombrefuge;Fighting;Ghost;Technician; ; ; ;0.7;22.2; ;7;1;false;false; ; ; ; ; ; ; ; ;
 803;Vémini;Poipole;Pokémon vénépic;Poison; ;Beast Boost; ; ; ;0.6;1.8; ;7;0;true;false; ;804; ; ; ; ; ; ;
 804;Mandrillon;Naganadel;Pokémon vénépic;Poison;Dragon;Beast Boost; ; ; ;3.6;150.0; ;7;0;true;false;803; ; ; ; ; ; ; ;

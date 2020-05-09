@@ -289,8 +289,10 @@ erreur attrapée et le booléen passe à faux, sinon le booleen est vrai.*/
        else{
            this.executeUpdate("DELETE FROM "+ liste_del +" WHERE "+colonne+" = '"+condition+"'");
        }
-           
-        
+   }
+   //Methode permettant de supprimer des lignes d'une table selon une condition d'égalité avec une autre table.
+   public void deleteFromOther(String table_del, String table2,  String colonne){
+       this.executeUpdate("DELETE FROM "+ table_del +" USING "+table2+ " WHERE "+table_del+"."+colonne+" = "+table2+"."+colonne);
    }
 
     public Image getImage(String request) {

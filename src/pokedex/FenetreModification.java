@@ -376,7 +376,7 @@ public class FenetreModification extends JPanel {
     JButton cancelBouton = new JButton("Annuler");
     cancelBouton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent arg0) {
-        
+        parent.tabbedPane.remove(FenetreModification.this);
       }      
     });
 

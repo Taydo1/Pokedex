@@ -33,7 +33,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
 
         setLayout(new BorderLayout());
 
-        idActuel = 2;
+        idActuel = 16;
         imagePanel = new ImagePokedexPanel();
         add(imagePanel, BorderLayout.CENTER);
         selectionPanel = new SelectionPokedexPanel("Visiteur", this);
@@ -84,19 +84,19 @@ public class PokedexPanel extends JPanel implements ActionListener {
             }
             case IMAGE_NORMAL:
                 imageName = "image";
-                topPanel.setColor(Color.GRAY);
                 goToID(idActuel);
                 break;
             case IMAGE_SHINY:
                 imageName = "image_shiny";
-                topPanel.setColor(new Color(128, 128, 180));
                 goToID(idActuel);
                 break;
             case IMAGE_MEGA:
                 imageName = "image_mega";
-                topPanel.setColor(new Color(100, 100, 100));
                 goToID(idActuel);
                 break;
+            case GET_POKEDEX:
+                InfoButton source = (InfoButton) e.getSource();
+                goToID(source.getId());
         }
     }
 }

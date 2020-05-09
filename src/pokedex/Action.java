@@ -20,5 +20,6 @@ public enum Action {
     IMAGE_MEGA,
     
     GET_TYPE,
-    GET_ABILITY;
+    GET_ABILITY,
+    GET_POKEDEX;
 }

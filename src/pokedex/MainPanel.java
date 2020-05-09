@@ -28,7 +28,6 @@ public class MainPanel extends JPanel implements ActionListener {
     Database db;
     PokedexPanel pokedexPanel1, pokedexPanel2;
     PokedexApp parent;
-    FenetreModification fenetreModification;
 
     MainPanel(Database db, PokedexApp p) {
         
@@ -40,10 +39,8 @@ public class MainPanel extends JPanel implements ActionListener {
 
         pokedexPanel1 = new PokedexPanel(db, this);
         pokedexPanel2 = new PokedexPanel(db, this);
-        fenetreModification = new FenetreModification(16, this);
         tabbedPane.addTab("Pokedex", pokedexPanel1);
         tabbedPane.addTab("Pokedex 2", pokedexPanel2);
-        tabbedPane.addTab("Modification", fenetreModification);
 
         String[] personnes = new String[]{"Visiteur", "Dresseur", "Professeur"};
         choix = new JComboBox<>(personnes);
@@ -118,7 +115,10 @@ public class MainPanel extends JPanel implements ActionListener {
                 System.out.println(""+ability);
                 break;
             case START_MODIFICATION:
-                
+                FenetreModification fenetreModification = new FenetreModification(16, this);
+                this.tabbedPane.add("Modification", fenetreModification);
+                this.repaint();
+                System.out.println("Je suis passé");
                 break;
         }
     }

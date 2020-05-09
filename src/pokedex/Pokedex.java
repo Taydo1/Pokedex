@@ -19,13 +19,13 @@ public class Pokedex extends DBElement {
 
     String name, en_name, classification;
     int id, id_type1, id_type2, id_ability1, id_ability2, id_ability3, id_ability4,is_legendary,
-            generation, id_lower_evolution, id_evolution;
+            generation, id_lower_evolution, id_evolution1, id_evolution2;
     float height, weight, percentage_male;
     boolean has_shiny, has_mega;
 
     public Pokedex() {}
     
-    public Pokedex(String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, int is_legendary, boolean  has_shiny, boolean has_mega) {
+    public Pokedex(String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution1, int id_evolution2, float height, float weight, float percentage_male, int is_legendary, boolean  has_shiny, boolean has_mega) {
         this.id = -1;
         this.name = name;
         this.en_name = en_name;
@@ -38,7 +38,8 @@ public class Pokedex extends DBElement {
         this.id_ability4 = id_ability4;
         this.generation = generation;
         this.id_lower_evolution = id_lower_evolution;
-        this.id_evolution = id_evolution;
+        this.id_evolution1 = id_evolution1;
+        this.id_evolution2 = id_evolution2;
         this.height = height;
         this.weight = weight;
         this.percentage_male = percentage_male;
@@ -68,7 +69,8 @@ public class Pokedex extends DBElement {
         this.has_shiny = Boolean.parseBoolean(infos[15]);
         this.has_mega = Boolean.parseBoolean(infos[16]);
         this.id_lower_evolution = StringToIntParse(infos[17]);
-        this.id_evolution = StringToIntParse(infos[18]);
+        this.id_evolution1 = StringToIntParse(infos[18]);
+        this.id_evolution2 = StringToIntParse(infos[19]);
         
     }
     
@@ -85,7 +87,8 @@ public class Pokedex extends DBElement {
         this.id_type2 = rs.getInt("id_type2");
         this.generation = rs.getInt("generation");
         this.id_lower_evolution = rs.getInt("id_lower_evolution");
-        this.id_evolution = rs.getInt("id_evolution");
+        this.id_evolution1 = rs.getInt("id_evolution1");
+        this.id_evolution2 = rs.getInt("id_evolution2");
         this.height = rs.getFloat("height");
         this.weight = rs.getFloat("weight");
         this.percentage_male = rs.getFloat("percentage_male");
@@ -96,18 +99,18 @@ public class Pokedex extends DBElement {
 
     @Override
     public String toString() {
-        return "Pokedex{" + "name=" + name + ", en_name=" + en_name + ", classification=" + classification + ", id=" + id + ", id_type1=" + id_type1 + ", id_type2=" + id_type2 + ", id_ability1=" + id_ability1 + ", id_ability2=" + id_ability2 + ", id_ability3=" + id_ability3 + ", id_ability4=" + id_ability4 + ", generation=" + generation + ", id_lower_evolution=" + id_lower_evolution + ", id_evolution=" + id_evolution + ", height=" + height + ", weight=" + weight + ", percentage_male=" + percentage_male + ", is_legendary=" + is_legendary + ", has_shiny=" + has_shiny + ", has_mega=" + has_mega + '}';
+        return "Pokedex{" + "name=" + name + ", en_name=" + en_name + ", classification=" + classification + ", id=" + id + ", id_type1=" + id_type1 + ", id_type2=" + id_type2 + ", id_ability1=" + id_ability1 + ", id_ability2=" + id_ability2 + ", id_ability3=" + id_ability3 + ", id_ability4=" + id_ability4 + ", is_legendary=" + is_legendary + ", generation=" + generation + ", id_lower_evolution=" + id_lower_evolution + ", id_evolution1=" + id_evolution1 + ", id_evolution2=" + id_evolution2 + ", height=" + height + ", weight=" + weight + ", percentage_male=" + percentage_male + ", has_shiny=" + has_shiny + ", has_mega=" + has_mega + '}';
     }
     
     @Override
     public String getInsertSubRequest() {
-        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %d, %d,%s, %s, %b, %b)",
+        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %d, %d,%s, %s, %s, %b, %b)",
                 name.replace("'", "''"), en_name.replace("'", "''"),
                 classification.replace("'", "''"),
                 id_type1, int2StringRequest(id_type2),
                 id_ability1, int2StringRequest(id_ability2), int2StringRequest(id_ability3), int2StringRequest(id_ability4),
                 height, weight, float2StringRequest(percentage_male), is_legendary, generation,
-                int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution),
+                int2StringRequest(id_lower_evolution), int2StringRequest(id_evolution1), int2StringRequest(id_evolution2),
                 has_shiny, has_mega);
     }
     
@@ -128,8 +131,8 @@ public class Pokedex extends DBElement {
         return valeurDonne;
     }
 
-    String getEvolutionName(Database db) {
-        ArrayList<Object[]> list = db.getFromDB("Select p2.name from pokedex p1 join pokedex p2 on p1.id_evolution=p2.id WHERE p1.id =" + id);
+    String getEvolutionName(Database db, int evolutionNb) {
+        ArrayList<Object[]> list = db.getFromDB("Select p2.name from pokedex p1 join pokedex p2 on p1.id_evolution"+evolutionNb+"=p2.id WHERE p1.id =" + id);
         String valeurDonne = list.get(0)[0].toString();
         return valeurDonne;
     }

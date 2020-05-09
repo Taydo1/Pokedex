@@ -49,26 +49,26 @@ public class TopPokedexPanel extends JPanel {
         classification = new Label();
         classification.setFont(classification.getFont().deriveFont(18f));
         classification.setPreferredSize(new Dimension(1, 20));
-        
+
         type = new Label("Type : ");
         type.setPreferredSize(new Dimension(1, 20));
         type1 = new InfoButton();
         type2 = new InfoButton();
-        
+
         poids = new Label();
         poids.setPreferredSize(new Dimension(1, 20));
         taille = new Label();
         taille.setPreferredSize(new Dimension(1, 20));
         pourcentageMale = new Label();
         pourcentageMale.setPreferredSize(new Dimension(1, 20));
-        
+
         ability = new Label("Talent : ");
         ability.setPreferredSize(new Dimension(1, 20));
         ability1 = new InfoButton();
         ability2 = new InfoButton();
         ability3 = new InfoButton();
         ability4 = new InfoButton();
-        
+
         evolution = new Label("Evolution");
         evolution.setPreferredSize(new Dimension(1, 20));
         evolution1 = new InfoButton();
@@ -118,12 +118,12 @@ public class TopPokedexPanel extends JPanel {
         add(mega, c);
         c.gridy++;
         c.gridx = 0;
-        c.gridwidth=2;
-        add(idNom,c);
-        c.gridx+=2;
-        c.gridwidth=1;
-        add(classification,c);
-        c.gridx=0;
+        c.gridwidth = 2;
+        add(idNom, c);
+        c.gridx += 2;
+        c.gridwidth = 1;
+        add(classification, c);
+        c.gridx = 0;
         c.gridy++;
         add(type, c);
         c.gridx++;
@@ -163,7 +163,7 @@ public class TopPokedexPanel extends JPanel {
         add(evolution1, c);
         c.gridx++;
         add(evolution2, c);
-        
+
         setColor(backgroundColor, Color.WHITE);
     }
 
@@ -235,7 +235,7 @@ public class TopPokedexPanel extends JPanel {
         } else {
             ability4.setVisible(false);
         }
-        
+
         if (pokeActuel.id_lower_evolution != 0) {
             sousEvolution.setVisible(true);
             sousEvolution1.setVisible(true);
@@ -245,20 +245,28 @@ public class TopPokedexPanel extends JPanel {
             sousEvolution.setVisible(false);
             sousEvolution1.setVisible(false);
         }
-        if (pokeActuel.id_evolution != 0) {
+        if (pokeActuel.id_evolution1 != 0) {
             evolution.setVisible(true);
             evolution1.setVisible(true);
-            evolution1.setText(pokeActuel.getEvolutionName(db));
-            evolution1.setId(pokeActuel.id_evolution);
+            evolution1.setText(pokeActuel.getEvolutionName(db, 1));
+            evolution1.setId(pokeActuel.id_evolution1);
+            if (pokeActuel.id_evolution2 != 0) {
+                evolution2.setVisible(true);
+                evolution2.setText(pokeActuel.getEvolutionName(db, 2));
+                evolution2.setId(pokeActuel.id_evolution2);
+            } else {
+                evolution2.setVisible(false);
+            }
         } else {
             evolution.setVisible(false);
             evolution1.setVisible(false);
+            evolution2.setVisible(false);
         }
-        
+
         this.repaint();
     }
 
-    public void setColor(Color bgColor,Color fgColor) {
+    public void setColor(Color bgColor, Color fgColor) {
         classique.setBackground(bgColor);
         chromatique.setBackground(bgColor);
         mega.setBackground(bgColor);
@@ -272,7 +280,7 @@ public class TopPokedexPanel extends JPanel {
         evolution2.setBackground(bgColor);
         sousEvolution1.setBackground(bgColor);
         setBackground(bgColor);
-        
+
         classique.setForeground(fgColor);
         chromatique.setForeground(fgColor);
         mega.setForeground(fgColor);

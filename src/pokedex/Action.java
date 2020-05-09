@@ -17,5 +17,7 @@ public enum Action {
     CHANGE_USER,
     IMAGE_NORMAL,
     IMAGE_SHINY,
-    IMAGE_MEGA;
+    IMAGE_MEGA,
+    
+    GET_TYPE;
 }

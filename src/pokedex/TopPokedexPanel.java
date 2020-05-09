@@ -10,6 +10,7 @@ import java.awt.Cursor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,22 +20,23 @@ import javax.swing.JPanel;
  */
 public class TopPokedexPanel extends JPanel {
 
-    Button classique, chromatique, mega;
-    JLabel idNom, classification, poids, taille, type1, type2;
+    ToggleButton classique, chromatique, mega;
+    InfoButton type1, type2;
+    JLabel idNom, classification, poids, taille;
 
     public TopPokedexPanel(PokedexPanel parent, int id, Database db) {
 
         ButtonGroup group = new ButtonGroup();
-        classique = new Button("Classique");
+        classique = new ToggleButton("Classique");
         classique.setBackground(Color.gray);
         classique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         classique.setSelected(true);
         group.add(classique);
-        chromatique = new Button("Chromatique");
+        chromatique = new ToggleButton("Chromatique");
         chromatique.setBackground(Color.gray);
         chromatique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         group.add(chromatique);
-        mega = new Button("Méga-évolution");
+        mega = new ToggleButton("Méga-évolution");
         mega.setBackground(Color.gray);
         mega.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         group.add(mega);
@@ -47,9 +49,9 @@ public class TopPokedexPanel extends JPanel {
         poids.setBackground(Color.gray);
         taille = new JLabel();
         taille.setBackground(Color.gray);
-        type1 = new JLabel();
+        type1 = new InfoButton();
         type1.setBackground(Color.gray);
-        type2 = new JLabel();
+        type2 = new InfoButton();
         type2.setBackground(Color.gray);
 
         classique.addActionListener(parent);
@@ -58,6 +60,10 @@ public class TopPokedexPanel extends JPanel {
         chromatique.setActionCommand(Action.IMAGE_SHINY.name());
         mega.addActionListener(parent);
         mega.setActionCommand(Action.IMAGE_MEGA.name());
+        type1.addActionListener((MainPanel) parent.parent);
+        type1.setActionCommand(Action.GET_TYPE.name());
+        type2.addActionListener((MainPanel) parent.parent);
+        type2.setActionCommand(Action.GET_TYPE.name());
 
         setLayout(new GridBagLayout());
         setBackground(Color.gray);
@@ -111,10 +117,12 @@ public class TopPokedexPanel extends JPanel {
         poids.setText("" + pokeActuel.weight + " kg");
         taille.setText("" + pokeActuel.height + " m");
         type1.setText(pokeActuel.getType1(id, db));
+        type1.setId(pokeActuel.id_type1);
         if (pokeActuel.id_type2 == 0) {
             type2.setText("");
         } else {
             type2.setText(pokeActuel.getType2(id, db));
+            type2.setId(pokeActuel.id_type2);
         }
         this.repaint();
     }

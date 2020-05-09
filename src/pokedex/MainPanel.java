@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -34,8 +35,8 @@ public class MainPanel extends JPanel implements ActionListener {
 
         tabbedPane = new JTabbedPane();
 
-        pokedexPanel1 = new PokedexPanel(db);
-        pokedexPanel2 = new PokedexPanel(db);
+        pokedexPanel1 = new PokedexPanel(db, this);
+        pokedexPanel2 = new PokedexPanel(db, this);
         tabbedPane.addTab("Pokedex", pokedexPanel1);
         tabbedPane.addTab("Pokedex 2", pokedexPanel2);
 
@@ -100,6 +101,10 @@ public class MainPanel extends JPanel implements ActionListener {
             case CHANGE_USER:
                 changeUser((JComboBox) e.getSource());
                 break;
+            case GET_TYPE:
+                InfoButton source = (InfoButton)e.getSource();
+                Type type = db.getFromDB("SELECT * FROM type WHERE id="+source.getId(), Type.class).get(0);
+                System.out.println(""+type);
         }
     }
 }

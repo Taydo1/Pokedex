@@ -27,11 +27,13 @@ public class PokedexPanel extends JPanel  implements ActionListener {
     SelectionPokedexPanel selectionPanel;
     TopPokedexPanel topPanel;
     String imageName;
+    MainPanel parent;
 
     int idActuel;
 
-    public PokedexPanel(Database db) {
+    public PokedexPanel(Database db, MainPanel parent) {
         this.db = db;
+        this.parent = parent;
 
         setLayout(new BorderLayout());
 

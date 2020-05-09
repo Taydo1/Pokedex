@@ -117,7 +117,6 @@ public class MainPanel extends JPanel implements ActionListener {
             case START_MODIFICATION:
                 FenetreModification fenetreModification = new FenetreModification(16, this);
                 this.tabbedPane.add("Modification", fenetreModification);
-                this.repaint();
                 System.out.println("Je suis passé");
                 break;
         }

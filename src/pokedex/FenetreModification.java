@@ -93,7 +93,6 @@ public class FenetreModification extends JPanel {
     classification.setPreferredSize(new Dimension(100, 25));
     panClassification.setBorder(BorderFactory.createTitledBorder("Classification du pokémon"));
     panClassification.add(classification);
-    
     ArrayList<String> listTalent = new ArrayList();
     listTalent.add("");
     ArrayList<Ability> talent = parent.db.getFromDB("SELECT * FROM ability", Ability.class);
@@ -185,7 +184,8 @@ public class FenetreModification extends JPanel {
     panType2.add(type2);
     
     String[] gen = new String[]{"gen 1", "gen 2", "gen 3", "gen 4", "gen 5", "gen 6", "gen 7"};
-    
+          System.out.println("12");
+
     //Génération
     JPanel panGeneration = new JPanel();
     panGeneration.setBackground(Color.white);
@@ -195,14 +195,20 @@ public class FenetreModification extends JPanel {
     generation.setPreferredSize(new Dimension(100, 25));
     panGeneration.setBorder(BorderFactory.createTitledBorder("Génération du pokémon"));
     panGeneration.add(generation);
+          System.out.println("12.1");
     
     ArrayList<String> pkmn = new ArrayList();
-    pkmn.add("");
+    /*pkmn.add("");
     ArrayList<Pokedex> listPokemon = parent.db.getFromDB("SELECT * from pokedex", Pokedex.class);
     for (int i = 0; i < listPokemon.size(); i++){
         pkmn.add(listPokemon.get(i).name);
-    }
-    
+    }*/
+    ArrayList<Object[]> pkmnTemp = parent.db.getFromDB("SELECT name FROM pokedex");
+          System.out.println("13");
+      for (Object[] objects : pkmnTemp) {
+          pkmn.add((String)objects[0]);
+      }
+
     //Pré-évolution
     JPanel panPreEvolution = new JPanel();
     panPreEvolution.setBackground(Color.white);
@@ -216,7 +222,7 @@ public class FenetreModification extends JPanel {
     preEvolution.setPreferredSize(new Dimension(100, 25));
     panPreEvolution.setBorder(BorderFactory.createTitledBorder("Pré-évolution du pokémon"));
     panPreEvolution.add(preEvolution);
-    
+
     //Evolution 1
     JPanel panEvolution1 = new JPanel();
     panEvolution1.setBackground(Color.white);
@@ -230,7 +236,7 @@ public class FenetreModification extends JPanel {
     evolution1.setPreferredSize(new Dimension(100, 25));
     panEvolution1.setBorder(BorderFactory.createTitledBorder("Évolution n°1 du pokémon"));
     panEvolution1.add(evolution1);
-    
+
     //Evolution 2
     JPanel panEvolution2 = new JPanel();
     panEvolution2.setBackground(Color.white);
@@ -247,7 +253,7 @@ public class FenetreModification extends JPanel {
     
     NumberFormat formatPoidsTaille = NumberFormat.getInstance();
     formatPoidsTaille.setMaximumFractionDigits(1);
-    
+
     //Taille
     JPanel panTaille = new JPanel();
     panTaille.setBackground(Color.white);

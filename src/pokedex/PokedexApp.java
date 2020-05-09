@@ -86,13 +86,18 @@ public class PokedexApp extends JFrame {
         for (Object[] row : listPokemonPokedex) {
             System.out.println("" + row);
         }
-
+           
+        
         //Test de la fonction modification
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};
         db.modify("Pokemon", 1, tableau2, tableau3);
-
+        
+        //test delete
+        int[] suppression = {41,42,43};
+        db.delete("Pokemon",suppression);
+        
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);

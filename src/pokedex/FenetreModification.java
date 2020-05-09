@@ -14,6 +14,8 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -23,25 +25,25 @@ import javax.swing.JPanel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
-public class FenetreModification extends JPanel {
-    
+public class FenetreModification extends JPanel implements ActionListener {
+
     JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
     JTextField nomfr, nomen, classification;
     JFormattedTextField taille, poids, pourcentage;
     JButton saveBouton, discardBouton;
     MainPanel parent;
     int idModif;
-    
+
     public FenetreModification(int id, MainPanel main) {
-        
+
         idModif = id;
         parent = main;
         this.initComponent();
         this.setVisible(true);
     }
-    
+
     private void initComponent() {
-        
+
         Pokedex currentPokedex = parent.db.getFromDB("SELECT * FROM pokedex WHERE id=" + idModif, Pokedex.class).get(0);
 
         //Le nom français
@@ -117,7 +119,7 @@ public class FenetreModification extends JPanel {
         }
         panTalent4.setBorder(BorderFactory.createTitledBorder("Talent n°4 du pokémon"));
         panTalent4.add(talent4);
-        
+
         ArrayList<String> types = new ArrayList();
         types.add("");
         ArrayList<pokedex.Type> listType = parent.db.getFromDB("SELECT * FROM type", pokedex.Type.class);
@@ -144,7 +146,7 @@ public class FenetreModification extends JPanel {
         }
         panType2.setBorder(BorderFactory.createTitledBorder("Type n°2 du pokémon"));
         panType2.add(type2);
-        
+
         String[] gen = new String[]{"gen 1", "gen 2", "gen 3", "gen 4", "gen 5", "gen 6", "gen 7"};
 
         //Génération
@@ -154,7 +156,7 @@ public class FenetreModification extends JPanel {
         generation.setSelectedItem(gen[currentPokedex.generation - 1]);
         panGeneration.setBorder(BorderFactory.createTitledBorder("Génération du pokémon"));
         panGeneration.add(generation);
-        
+
         ArrayList<String> pkmn = new ArrayList();
         ArrayList<Object[]> pkmnTemp = parent.db.getFromDB("SELECT name FROM pokedex ORDER BY id ASC");
         pkmn.add("");
@@ -197,7 +199,7 @@ public class FenetreModification extends JPanel {
         }
         panEvolution2.setBorder(BorderFactory.createTitledBorder("Évolution n°2 du pokémon"));
         panEvolution2.add(evolution2);
-        
+
         NumberFormat formatPoidsTaille = NumberFormat.getInstance();
         formatPoidsTaille.setMaximumFractionDigits(1);
 
@@ -216,7 +218,7 @@ public class FenetreModification extends JPanel {
         poids.setValue(currentPokedex.weight);
         panPoids.setBorder(BorderFactory.createTitledBorder("Poids du pokémon"));
         panPoids.add(poids);
-        
+
         NumberFormat formatPourcentage = NumberFormat.getPercentInstance();
         formatPourcentage.setMinimumFractionDigits(1);
 
@@ -227,7 +229,7 @@ public class FenetreModification extends JPanel {
         pourcentage.setValue(currentPokedex.percentage_male);
         panPourcent.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
         panPourcent.add(pourcentage);
-        
+
         String[] rar = new String[]{"Banal", "Fabuleux", "Légendaire"};
 
         //Rareté du pokémon
@@ -237,7 +239,7 @@ public class FenetreModification extends JPanel {
         rarete.setSelectedItem(rar[currentPokedex.is_legendary]);
         panRarete.setBorder(BorderFactory.createTitledBorder("Rareté du pokémon"));
         panRarete.add(rarete);
-        
+
         String[] ouiNon = new String[]{"Oui", "Non"};
 
         //Forme Shiny
@@ -263,23 +265,23 @@ public class FenetreModification extends JPanel {
         }
         panMega.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme méga ?"));
         panMega.add(mega);
-        
+
         saveBouton = new JButton("SAVE");
         saveBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveBouton.addActionListener(parent);
         saveBouton.setActionCommand(Action.SAVE_MODIFICATION.name());
         discardBouton = new JButton("DISCARD");
         discardBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        discardBouton.addActionListener(parent);
+        discardBouton.addActionListener(this);
         discardBouton.setActionCommand(Action.DISCARD_MODIFICATION.name());
-        
+
         JPanel savePanel = new JPanel();
         savePanel.add(saveBouton);
         savePanel.setBackground(Color.white);
         JPanel discardPanel = new JPanel();
         discardPanel.add(discardBouton);
         discardPanel.setBackground(Color.white);
-    
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         setBackground(Color.white);
@@ -330,9 +332,9 @@ public class FenetreModification extends JPanel {
         add(savePanel, c);
         c.gridx = 2;
         add(discardPanel, c);
-        
-        int dimx = (parent.getWidth()/3) - 70;
-        int dimy = (parent.getHeight()/7) - 60;
+
+        int dimx = (parent.getWidth() / 3) - 70;
+        int dimy = (parent.getHeight() / 7) - 60;
         nomfr.setPreferredSize(new Dimension(dimx, dimy));
         nomen.setPreferredSize(new Dimension(dimx, dimy));
         classification.setPreferredSize(new Dimension(dimx, dimy));
@@ -352,13 +354,13 @@ public class FenetreModification extends JPanel {
         rarete.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
-        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int)(dimy * 2.2)));
-        discardBouton.setPreferredSize(new Dimension(dimx +20, (int)(dimy * 2.2)));
-    }  
-    
-    public void updateDimension(){
-        int dimx = (parent.getWidth()/3) - 70;
-        int dimy = (parent.getHeight()/7) - 60;
+        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 2.2)));
+        discardBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 2.2)));
+    }
+
+    public void updateDimension() {
+        int dimx = (parent.getWidth() / 3) - 70;
+        int dimy = (parent.getHeight() / 7) - 60;
         nomfr.setPreferredSize(new Dimension(dimx, dimy));
         nomen.setPreferredSize(new Dimension(dimx, dimy));
         classification.setPreferredSize(new Dimension(dimx, dimy));
@@ -378,7 +380,19 @@ public class FenetreModification extends JPanel {
         rarete.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
-        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int)(dimy * 2.2)));
-        discardBouton.setPreferredSize(new Dimension(dimx +20, (int)(dimy * 2.2)));
+        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 2.2)));
+        discardBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 2.2)));
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        InfoButton source;
+        switch (Action.valueOf(e.getActionCommand())) {
+            case SAVE_MODIFICATION:
+                //fenetreModification.saveModification();
+            case DISCARD_MODIFICATION:
+                parent.tabbedPane.remove(this);
+                break;
+        }
     }
 }

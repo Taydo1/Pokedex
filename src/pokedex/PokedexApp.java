@@ -91,7 +91,7 @@ public class PokedexApp extends JFrame {
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};
-        db.modify("Pokemon", tableau, tableau2, tableau3);
+        db.modify("Pokemon", 1, tableau2, tableau3);
 
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {

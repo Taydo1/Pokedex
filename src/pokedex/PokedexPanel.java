@@ -23,9 +23,9 @@ import javax.swing.JPanel;
 public class PokedexPanel extends JPanel  implements ActionListener {
 
     Database db;
-    ImagePanel imagePanel;
-    SelectionPanel selectionPanel;
-    TopPanel topPanel;
+    ImagePokedexPanel imagePanel;
+    SelectionPokedexPanel selectionPanel;
+    TopPokedexPanel topPanel;
     String imageName;
 
     int idActuel;
@@ -36,11 +36,11 @@ public class PokedexPanel extends JPanel  implements ActionListener {
         setLayout(new BorderLayout());
 
         idActuel = 2;
-        imagePanel = new ImagePanel();
+        imagePanel = new ImagePokedexPanel();
         add(imagePanel, BorderLayout.CENTER);
-        selectionPanel = new SelectionPanel(idActuel, db, "Visiteur", this);
+        selectionPanel = new SelectionPokedexPanel(idActuel, db, "Visiteur", this);
         add(selectionPanel, BorderLayout.SOUTH);
-        topPanel = new TopPanel(this, idActuel, db);
+        topPanel = new TopPokedexPanel(this, idActuel, db);
         add(topPanel, BorderLayout.NORTH);
         
         imageName = "image";

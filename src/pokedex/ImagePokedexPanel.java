@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author Leon
  */
-public class ImagePanel extends JPanel {
+public class ImagePokedexPanel extends JPanel {
 
     Image image;
 

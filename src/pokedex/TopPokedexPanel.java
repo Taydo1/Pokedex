@@ -138,6 +138,18 @@ public class TopPokedexPanel extends JPanel {
         if (!pokeActuel.has_shiny && chromatique.isSelected()) {
             classique.doClick();
         }
+        
+        switch(pokeActuel.is_legendary){
+            case 0:
+                setColor(Color.GRAY);
+                break;
+            case 1:
+                setColor(new Color(126, 138, 171));
+                break;
+            case 2:
+                setColor(new Color(126, 200, 217));
+                break;
+        }
         mega.setEnabled(pokeActuel.has_mega);
         chromatique.setEnabled(pokeActuel.has_shiny);
 

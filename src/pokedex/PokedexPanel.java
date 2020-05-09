@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author Leon
  */
-public class PokedexPanel extends JPanel  implements ActionListener {
+public class PokedexPanel extends JPanel implements ActionListener {
 
     Database db;
     ImagePokedexPanel imagePanel;
@@ -40,13 +40,13 @@ public class PokedexPanel extends JPanel  implements ActionListener {
         add(selectionPanel, BorderLayout.SOUTH);
         topPanel = new TopPokedexPanel(this);
         add(topPanel, BorderLayout.NORTH);
-        
+
         imageName = "image";
         goToID(idActuel);
 
     }
 
-        private void goToID(int id) {
+    private void goToID(int id) {
         //Go to id
         try {
             selectionPanel.setId(id, db);
@@ -61,7 +61,7 @@ public class PokedexPanel extends JPanel  implements ActionListener {
         }
     }
 
-    public void setUtilisateur(String utilisateur){
+    public void setUtilisateur(String utilisateur) {
         selectionPanel.setUtilisateur(utilisateur);
     }
 
@@ -98,5 +98,5 @@ public class PokedexPanel extends JPanel  implements ActionListener {
                 goToID(idActuel);
                 break;
         }
-    }   
+    }
 }

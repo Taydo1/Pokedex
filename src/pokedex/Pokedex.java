@@ -18,14 +18,14 @@ import java.util.ArrayList;
 public class Pokedex extends DBElement {
 
     String name, en_name, classification;
-    int id, id_type1, id_type2, id_ability1, id_ability2, id_ability3, id_ability4,
+    int id, id_type1, id_type2, id_ability1, id_ability2, id_ability3, id_ability4,is_legendary,
             generation, id_lower_evolution, id_evolution;
     float height, weight, percentage_male;
-    boolean is_legendary, has_shiny, has_mega;
+    boolean has_shiny, has_mega;
 
     public Pokedex() {}
     
-    public Pokedex(String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, boolean is_legendary, boolean  has_shiny, boolean has_mega) {
+    public Pokedex(String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution, float height, float weight, float percentage_male, int is_legendary, boolean  has_shiny, boolean has_mega) {
         this.id = -1;
         this.name = name;
         this.en_name = en_name;
@@ -64,7 +64,7 @@ public class Pokedex extends DBElement {
         this.weight = Float.parseFloat(infos[11]);
         this.percentage_male = StringToFloatParse(infos[12]);
         this.generation = Integer.parseInt(infos[13]);
-        this.is_legendary = Boolean.parseBoolean(infos[14]);
+        this.is_legendary = Integer.parseInt(infos[14]);
         this.has_shiny = Boolean.parseBoolean(infos[15]);
         this.has_mega = Boolean.parseBoolean(infos[16]);
         this.id_lower_evolution = StringToIntParse(infos[17]);
@@ -89,7 +89,7 @@ public class Pokedex extends DBElement {
         this.height = rs.getFloat("height");
         this.weight = rs.getFloat("weight");
         this.percentage_male = rs.getFloat("percentage_male");
-        this.is_legendary = rs.getBoolean("is_legendary");
+        this.is_legendary = rs.getInt("is_legendary_fabulous");
         this.has_shiny = rs.getBoolean("has_shiny");
         this.has_mega = rs.getBoolean("has_mega");
     }
@@ -101,7 +101,7 @@ public class Pokedex extends DBElement {
     
     @Override
     public String getInsertSubRequest() {
-        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %b, %d,%s, %s, %b, %b)",
+        return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %d, %d,%s, %s, %b, %b)",
                 name.replace("'", "''"), en_name.replace("'", "''"),
                 classification.replace("'", "''"),
                 id_type1, int2StringRequest(id_type2),

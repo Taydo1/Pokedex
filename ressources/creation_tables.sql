@@ -58,7 +58,7 @@ CREATE TABLE pokedex(
 	height numeric,
 	weight numeric,
 	percentage_male numeric,
-	is_legendary BOOLEAN,
+	is_legendary_fabulous int,
 	generation int,
 	id_lower_evolution int REFERENCES pokedex(id),
 	id_evolution int REFERENCES pokedex(id),

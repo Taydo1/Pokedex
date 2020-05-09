@@ -13,7 +13,7 @@ import javax.swing.JTabbedPane;
  *
  * @author Leon
  */
-public class PokedexApp extends JFrame{
+public class PokedexApp extends JFrame {
 
     String dbName = "pokedex";
     String schemaName = "pokedex";
@@ -21,7 +21,6 @@ public class PokedexApp extends JFrame{
     Database db;
     MainPanel mainPanel;
     JTabbedPane tabbedPane;
-
 
     public PokedexApp() {
 
@@ -45,12 +44,10 @@ public class PokedexApp extends JFrame{
         setSize(600, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
 
-        mainPanel = new MainPanel(db , this);
+        mainPanel = new MainPanel(db, this);
         setContentPane(mainPanel);
-        
-        
+
         setVisible(true);
     }
 
@@ -101,7 +98,6 @@ public class PokedexApp extends JFrame{
             System.out.println("" + pokemon);
         }
     }
-
 
     /**
      * @param args the command line arguments

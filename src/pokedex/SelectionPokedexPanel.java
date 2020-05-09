@@ -51,7 +51,7 @@ public class SelectionPokedexPanel extends JPanel{
         modification.setBackground(Color.gray);
         modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         modification.setForeground(Color.black);
-        modification.addActionListener(parent.parent);
+        modification.addActionListener(parent);
         modification.setActionCommand(Action.START_MODIFICATION.name());
         ajout = new JButton("Ajouter un pokémon");
         ajout.setBackground(Color.gray);

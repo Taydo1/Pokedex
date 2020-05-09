@@ -97,6 +97,11 @@ public class PokedexPanel extends JPanel implements ActionListener {
             case GET_POKEDEX:
                 InfoButton source = (InfoButton) e.getSource();
                 goToID(source.getId());
+                break;
+            case START_MODIFICATION:
+                FenetreModification fenetreModification = new FenetreModification(idActuel, parent);
+                parent.tabbedPane.add("Modification", fenetreModification);
+                break;
         }
     }
 }

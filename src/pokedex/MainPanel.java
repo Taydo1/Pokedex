@@ -114,11 +114,6 @@ public class MainPanel extends JPanel implements ActionListener {
                 Ability ability = db.getFromDB("SELECT * FROM ability WHERE id="+source.getId(), Ability.class).get(0);
                 System.out.println(""+ability);
                 break;
-            case START_MODIFICATION:
-                FenetreModification fenetreModification = new FenetreModification(16, this);
-                this.tabbedPane.add("Modification", fenetreModification);
-                System.out.println("Je suis passé");
-                break;
         }
     }
 }

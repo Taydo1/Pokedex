@@ -63,47 +63,8 @@ public class PokedexPanel extends JPanel  implements ActionListener {
         }
     }
 
-    private String getPassword() {
-        PasswordPanel passwordPanel = new PasswordPanel();
-        JOptionPane op = new JOptionPane(passwordPanel);
-        op.setMessageType(JOptionPane.QUESTION_MESSAGE);
-        op.setOptionType(JOptionPane.OK_CANCEL_OPTION);
-
-        JDialog dlg = op.createDialog("Mot de Passe");
-
-        dlg.addWindowFocusListener(new WindowAdapter() {
-            @Override
-            public void windowGainedFocus(WindowEvent e) {
-                passwordPanel.gainedFocus();
-            }
-        });
-        dlg.setVisible(true);
-
-        if (op.getValue() != null && op.getValue().equals(JOptionPane.OK_OPTION)) {
-            return new String(passwordPanel.getPassword());
-        }
-        return null;
-    }
-
-    private void changeUser(JComboBox comboBox) {
-        String selection = (String) topPanel.choix.getSelectedItem();
-        String mdp;
-        if (selection.equals("Visiteur")) {
-            mdp = "visiteur";
-        } else {
-            mdp = getPassword();
-        }
-
-        if (mdp != null && mdp.toLowerCase().equals(selection.toLowerCase())) {
-            selectionPanel.setUtilisateur(selection);
-        } else if (mdp != null) {
-            comboBox.setSelectedItem(selectionPanel.getUtilisateur());
-            JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
-        } else {
-            comboBox.setSelectedItem(selectionPanel.getUtilisateur());
-
-        }
-
+    public void setUtilisateur(String utilisateur){
+        selectionPanel.setUtilisateur(utilisateur);
     }
 
     @Override
@@ -135,8 +96,6 @@ public class PokedexPanel extends JPanel  implements ActionListener {
                 imageName = "image_mega";
                 goToID(idActuel);
                 break;
-            case CHANGE_USER:
-                changeUser((JComboBox) e.getSource());
         }
     }
 

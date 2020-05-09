@@ -22,18 +22,16 @@ import javax.swing.JPanel;
  */
 public class TopPanel extends JPanel {
 
-    JComboBox choix;
     Button classique, chromatique, mega;
     JLabel idNom, classification, poids, taille, type1, type2;
 
     public TopPanel(PokedexPanel parent, int id, Database db) {
 
         ButtonGroup group = new ButtonGroup();
-        String[] personnes = new String[]{"Visiteur", "Dresseur", "Professeur"};
-        choix = new JComboBox<>(personnes);
         classique = new Button("Classique");
         classique.setBackground(Color.gray);
         classique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        classique.setSelected(true);
         group.add(classique);
         chromatique = new Button("Chromatique");
         chromatique.setBackground(Color.gray);
@@ -57,8 +55,6 @@ public class TopPanel extends JPanel {
         type2 = new JLabel();
         type2.setBackground(Color.gray);
 
-        choix.addActionListener(parent);
-        choix.setActionCommand(Action.CHANGE_USER.name());
         classique.addActionListener(parent);
         classique.setActionCommand(Action.IMAGE_NORMAL.name());
         chromatique.addActionListener(parent);
@@ -72,10 +68,7 @@ public class TopPanel extends JPanel {
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 3;
         c.weightx = 1;
-        add(choix, c);
         c.gridwidth = 1;
         c.gridy = 1;
         add(classique, c);

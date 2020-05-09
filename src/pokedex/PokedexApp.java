@@ -5,18 +5,10 @@
  */
 package pokedex;
 
-import java.awt.BorderLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -28,12 +20,13 @@ public class PokedexApp extends JFrame{
     String schemaName = "pokedex";
 
     Database db;
-    PokedexPanel mainPanel;
+    MainPanel mainPanel;
+    JTabbedPane tabbedPane;
 
 
     public PokedexApp() {
 
-        setupDB(true);
+        setupDB(false);
         setupWindow();
         //testRequest();
     }
@@ -53,10 +46,12 @@ public class PokedexApp extends JFrame{
         setSize(600, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
-        mainPanel = new PokedexPanel(db);
+        mainPanel = new MainPanel(db);
         setContentPane(mainPanel);
-
+        
+        
         setVisible(true);
     }
 

@@ -24,16 +24,14 @@ import javax.swing.SwingConstants;
  */
 public class SelectionPanel extends JPanel{
 
-    PokedexApp parent;
     JPanel gauche, droite, allerId;
     JLabel idActuel, nom, allerAId;
     JButton up, down, go, modification, ajout, gerer;
     JTextField goId;
     String utilisateur;
 
-    public SelectionPanel(int id, Database db, String utilisateur, PokedexApp main) {  
+    public SelectionPanel(int id, Database db, String utilisateur, PokedexPanel parent) {  
         
-        parent = main;
         gauche = new JPanel();
         droite = new JPanel();
         allerId = new JPanel();

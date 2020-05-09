@@ -22,15 +22,13 @@ import javax.swing.JPanel;
  */
 public class TopPanel extends JPanel {
 
-    PokedexApp parent;
     JComboBox choix;
     Button classique, chromatique, mega;
     JLabel idNom, classification, poids, taille, type1, type2;
 
-    public TopPanel(PokedexApp main, int id, Database db) {
+    public TopPanel(PokedexPanel parent, int id, Database db) {
 
         ButtonGroup group = new ButtonGroup();
-        parent = main;
         String[] personnes = new String[]{"Visiteur", "Dresseur", "Professeur"};
         choix = new JComboBox<>(personnes);
         classique = new Button("Classique");

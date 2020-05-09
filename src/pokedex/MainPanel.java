@@ -27,8 +27,12 @@ public class MainPanel extends JPanel implements ActionListener {
     JTabbedPane tabbedPane;
     Database db;
     PokedexPanel pokedexPanel1, pokedexPanel2;
+    PokedexApp parent;
+    FenetreModification fenetreModification;
 
-    MainPanel(Database db) {
+    MainPanel(Database db, PokedexApp p) {
+        
+        parent = p;
         this.db = db;
         setLayout(new BorderLayout());
 
@@ -36,8 +40,10 @@ public class MainPanel extends JPanel implements ActionListener {
 
         pokedexPanel1 = new PokedexPanel(db, this);
         pokedexPanel2 = new PokedexPanel(db, this);
+        fenetreModification = new FenetreModification(16, this);
         tabbedPane.addTab("Pokedex", pokedexPanel1);
         tabbedPane.addTab("Pokedex 2", pokedexPanel2);
+        tabbedPane.addTab("Modification", fenetreModification);
 
         String[] personnes = new String[]{"Visiteur", "Dresseur", "Professeur"};
         choix = new JComboBox<>(personnes);
@@ -110,6 +116,9 @@ public class MainPanel extends JPanel implements ActionListener {
                 source = (InfoButton)e.getSource();
                 Ability ability = db.getFromDB("SELECT * FROM ability WHERE id="+source.getId(), Ability.class).get(0);
                 System.out.println(""+ability);
+                break;
+            case START_MODIFICATION:
+                
                 break;
         }
     }

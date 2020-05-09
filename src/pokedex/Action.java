@@ -21,5 +21,7 @@ public enum Action {
     
     GET_TYPE,
     GET_ABILITY,
-    GET_POKEDEX;
+    GET_POKEDEX,
+    
+    START_MODIFICATION;
 }

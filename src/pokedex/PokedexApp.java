@@ -25,7 +25,7 @@ public class PokedexApp extends JFrame{
 
     public PokedexApp() {
 
-        setupDB(false);
+        setupDB(true);
         setupWindow();
         //testRequest();
     }
@@ -47,7 +47,7 @@ public class PokedexApp extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
-        mainPanel = new MainPanel(db);
+        mainPanel = new MainPanel(db , this);
         setContentPane(mainPanel);
         
         

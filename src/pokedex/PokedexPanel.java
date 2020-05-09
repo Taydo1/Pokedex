@@ -35,9 +35,9 @@ public class PokedexPanel extends JPanel  implements ActionListener {
         idActuel = 2;
         imagePanel = new ImagePokedexPanel();
         add(imagePanel, BorderLayout.CENTER);
-        selectionPanel = new SelectionPokedexPanel(idActuel, db, "Visiteur", this);
+        selectionPanel = new SelectionPokedexPanel("Visiteur", this);
         add(selectionPanel, BorderLayout.SOUTH);
-        topPanel = new TopPokedexPanel(this, idActuel, db);
+        topPanel = new TopPokedexPanel(this);
         add(topPanel, BorderLayout.NORTH);
         
         imageName = "image";

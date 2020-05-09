@@ -23,7 +23,7 @@ public class TopPokedexPanel extends JPanel {
     InfoButton type1, type2;
     JLabel idNom, classification, poids, taille;
 
-    public TopPokedexPanel(PokedexPanel parent, int id, Database db) {
+    public TopPokedexPanel(PokedexPanel parent) {
 
         ButtonGroup group = new ButtonGroup();
         classique = new ToggleButton("Classique");
@@ -90,7 +90,6 @@ public class TopPokedexPanel extends JPanel {
         add(type1, c);
         c.gridx = 2;
         add(type2, c);
-        setId(id, db);
     }
 
     public void setId(int id, Database db) {
@@ -123,6 +122,7 @@ public class TopPokedexPanel extends JPanel {
             type2.setText(pokeActuel.getType2(id, db));
             type2.setId(pokeActuel.id_type2);
         }
+        System.out.println(""+pokeActuel.id_ability4);
         this.repaint();
     }
 }

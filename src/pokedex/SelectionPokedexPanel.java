@@ -30,15 +30,13 @@ public class SelectionPokedexPanel extends JPanel{
     JTextField goId;
     String utilisateur;
 
-    public SelectionPokedexPanel(int id, Database db, String utilisateur, PokedexPanel parent) {  
+    public SelectionPokedexPanel(String utilisateur, PokedexPanel parent) {  
         
         gauche = new JPanel();
         droite = new JPanel();
         allerId = new JPanel();
-        ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + id, Pokedex.class);
-        String name = listname.get(0).name;
-        idActuel = new JLabel("ID actuel : " + String.valueOf(id), SwingConstants.CENTER);
-        nom = new JLabel("Nom : " + name, SwingConstants.CENTER);
+        idActuel = new JLabel("", SwingConstants.CENTER);
+        nom = new JLabel("", SwingConstants.CENTER);
         allerAId = new JLabel("Aller à l'ID : ", SwingConstants.CENTER);
         up = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_haut.png")));
         up.setContentAreaFilled(false);
@@ -49,7 +47,7 @@ public class SelectionPokedexPanel extends JPanel{
         go = new JButton("GO to ID");
         go.setBackground(Color.gray);
         go.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        modification = new JButton("Modifier les données sur " + name);
+        modification = new JButton("");
         modification.setBackground(Color.gray);
         modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         modification.setForeground(Color.black);
@@ -108,34 +106,7 @@ public class SelectionPokedexPanel extends JPanel{
         droite.add(down, BorderLayout.SOUTH);
         droite.setSize((int) (parent.getWidth() * 0.3), (int) (parent.getHeight() * 0.2));
 
-        this.utilisateur = utilisateur.substring(0, 1).toUpperCase() + utilisateur.substring(1);
-        switch (utilisateur) {
-            case "Professeur":
-                ajout.setEnabled(true);
-                modification.setEnabled(true);
-                gerer.setEnabled(false);
-                break;
-            case "Dresseur":
-                ajout.setEnabled(true);
-                modification.setEnabled(false);
-                gerer.setEnabled(true);
-                break;
-            case "Visiteur":
-                ajout.setEnabled(false);
-                modification.setEnabled(false);
-                gerer.setEnabled(false);
-                break;
-        }
-        if(id == 1){
-            down.setEnabled(false);
-            up.setEnabled(true);
-        } else if (id == (Integer)db.getFromDB("SELECT COUNT(*) FROM pokedex").get(0)[0]){
-            down.setEnabled(true);
-            up.setEnabled(false);
-        } else {
-            down.setEnabled(true);
-            up.setEnabled(true);
-        }
+        setUtilisateur(utilisateur);
         c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.weightx = 0.7;

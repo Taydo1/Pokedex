@@ -12,27 +12,22 @@ package pokedex;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class FenetreModification extends JPanel {
-   
-  JLabel icon;
+  
   JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
   JTextField nomfr, nomen, classification;
   JFormattedTextField taille, poids, pourcentage;
@@ -43,7 +38,6 @@ public class FenetreModification extends JPanel {
       
     idModif = id;
     parent = main;
-    this.setSize(550, 270);
     this.initComponent();
     this.setVisible(true);
   }
@@ -56,14 +50,6 @@ public class FenetreModification extends JPanel {
       
     ArrayList<Pokedex> list = parent.db.getFromDB("SELECT * FROM pokedex WHERE id=" + idModif, Pokedex.class);
     
-    //Icône
-    Image image = parent.db.getImage("SELECT " + "image" + " FROM pokedex WHERE id=" + idModif);
-    icon = new JLabel(new ImageIcon (image));
-    JPanel panIcon = new JPanel();
-    panIcon.setBackground(Color.white);
-    panIcon.setLayout(new BorderLayout());
-    panIcon.add(icon);
-
     //Le nom français
     JPanel panNomfr = new JPanel();
     panNomfr.setBackground(Color.white);
@@ -327,26 +313,50 @@ public class FenetreModification extends JPanel {
     panMega.add(mega);
 
     JPanel content = new JPanel();
+    content.setLayout(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
     content.setBackground(Color.white);
-    content.add(panNomfr);
-    content.add(panNomen);
-    content.add(panClassification);
-    content.add(panType1);
-    content.add(panType2);
-    content.add(panTalent1);
-    content.add(panTalent2);
-    content.add(panTalent3);
-    content.add(panTalent4);
-    content.add(panGeneration);
-    content.add(panPreEvolution);
-    content.add(panEvolution1);
-    content.add(panEvolution2);
-    content.add(panTaille);
-    content.add(panPoids);
-    content.add(panPourcent);
-    content.add(panRarete);
-    content.add(panShiny);
-    content.add(panMega);
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.gridx = 0;
+    c.gridy = 0;
+    content.add(panNomfr, c);
+    c.gridx = 1;
+    content.add(panNomen, c);
+    c.gridx = 2;
+    content.add(panClassification, c);
+    c.gridy = 1;
+    content.add(panTalent1, c);
+    c.gridx = 1;
+    content.add(panType2, c);
+    c.gridx = 0;
+    content.add(panType1, c);
+    c.gridy = 2;
+    content.add(panTalent2, c);
+    c.gridx = 1;
+    content.add(panTalent3, c);
+    c.gridx = 2;
+    content.add(panTalent4, c);
+    c.gridy = 3;
+    content.add(panEvolution1, c);
+    c.gridx = 1;
+    content.add(panPreEvolution, c);
+    c.gridx = 0;
+    content.add(panGeneration, c);
+    c.gridy = 4;
+    content.add(panEvolution2, c);
+    c.gridx = 1;
+    content.add(panTaille, c);
+    c.gridx = 2;
+    content.add(panPoids, c);
+    c.gridy = 5;
+    content.add(panShiny, c);
+    c.gridx = 1;
+    content.add(panRarete, c);
+    c.gridx = 0;
+    content.add(panPourcent, c);
+    c.gridx = 1;
+    c.gridy = 6;
+    content.add(panMega, c);
 
     JPanel control = new JPanel();
     JButton okBouton = new JButton("OK");
@@ -355,8 +365,7 @@ public class FenetreModification extends JPanel {
       public void actionPerformed(ActionEvent arg0) {
         JOptionPane jop = new JOptionPane();
         int rang = jop.showOptionDialog(null, "Êtes-vous sûr ?", "Double vérification", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, ouiNon, ouiNon[1]);
-        System.out.println(ouiNon[rang]);
-        setVisible(false);
+        
       }
 
       public String getTaille(){
@@ -367,14 +376,13 @@ public class FenetreModification extends JPanel {
     JButton cancelBouton = new JButton("Annuler");
     cancelBouton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent arg0) {
-        setVisible(false);
+        
       }      
     });
 
     control.add(okBouton);
     control.add(cancelBouton);
 
-    this.add(panIcon, BorderLayout.WEST);
     this.add(content, BorderLayout.CENTER);
     this.add(control, BorderLayout.SOUTH);
   }  

@@ -27,10 +27,10 @@ pokedex_number;name;en_name;classfication;type1;type2;abilitiy1;abilitiy2;abilit
 26;Raichu;Raichu;pokémon souris;Electric; ;Static;Lightning Rod; ; ;0.8;30;0.5;1;0;true;false;25; ; ; ; ; ; ; ;
 27;Sabelette;Sandshrew;Pokémon souris;Ground; ;Sand Veil;Sand Rush; ; ;0.6;12;0.5;1;0;true;false; ;28; ; ; ; ; ; ;
 28;Sablaireau;Sandslash;Pokémon souris;Ground; ;Sand Veil;Sand Rush; ; ;1;29.5;0.5;1;0;true;false;27; ; ; ; ; ; ; ;
-29;Nidoran?;Nidoran?;Pokémon vénépic;Poison; ;Poison Point;Rivalry;Hustle; ;0.4;7.0;0;1;0;true;false; ;30; ; ; ; ; ; ;
+29;Nidoran♀;Nidoran♀;Pokémon vénépic;Poison; ;Poison Point;Rivalry;Hustle; ;0.4;7.0;0;1;0;true;false; ;30; ; ; ; ; ; ;
 30;Nidorina;Nidorina;Pokémon vénépic;Poison; ;Poison Point;Rivalry;Hustle; ;0.8;20.0;0;1;0;true;false;29;31; ; ; ; ; ; ;
 31;Nidoqueen;Nidoqueen;Pokémon perceur;Poison;Ground;Poison Point;Rivalry;Sheer Force; ;1.3;60.0;0;1;0;true;false;30; ; ; ; ; ; ; ;
-32;Nidoran?;Nidoran?;Pokémon vénépic;Poison; ;Poison Point;Rivalry;Hustle; ;0.5;9.0;1;1;0;true;false; ;33; ; ; ; ; ; ;
+32;Nidoran♂;Nidoran♂;Pokémon vénépic;Poison; ;Poison Point;Rivalry;Hustle; ;0.5;9.0;1;1;0;true;false; ;33; ; ; ; ; ; ;
 33;Nidorino;Nidorino;Pokémon vénépic;Poison; ;Poison Point;Rivalry;Hustle; ;0.9;19.5;1;1;0;true;false;32;34; ; ; ; ; ; ;
 34;Nidoking;Nidoking;Pokémon perceur;Poison;Ground;Poison Point;Rivalry;Sheer Force; ;1.4;62.0;1;1;0;true;false;33; ; ; ; ; ; ; ;
 35;Mélofée;Clefairy;Pokémon fée;Fairy; ;Cute Charm;Magic Guard;Friend Guard; ;0.6;7.5;0.246;1;0;true;false;173;36; ; ; ; ; ; ;

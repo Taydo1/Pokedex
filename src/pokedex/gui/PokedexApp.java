@@ -25,9 +25,9 @@ public class PokedexApp extends JFrame {
 
     public PokedexApp() {
 
-        setupDB(false);
+        setupDB(true);
         setupWindow();
-        testRequest();
+        //testRequest();
     }
 
     private void setupDB(boolean toBeCreated) {

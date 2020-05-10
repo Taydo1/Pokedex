@@ -93,7 +93,7 @@ public class TypePanel extends JPanel implements ActionListener {
         } else if (weakness == 2) {
             return "Vulnérable";
         } else if (weakness == 1) {
-            return "Classique ??????????";
+            return "Efficace";
         } else if (weakness == 0.5) {
             return "Résistant";
         } else if (weakness == 0.25) {

@@ -36,7 +36,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
         idActuel = 16;
         imagePanel = new ImagePokedexPanel();
         add(imagePanel, BorderLayout.CENTER);
-        selectionPanel = new SelectionPokedexPanel("Professeur", this);
+        selectionPanel = new SelectionPokedexPanel("Visiteur", this);
         add(selectionPanel, BorderLayout.SOUTH);
         topPanel = new TopPokedexPanel(this);
         add(topPanel, BorderLayout.NORTH);
@@ -46,7 +46,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
 
     }
 
-    private void goToID(int id) {
+    public void goToID(int id) {
         //Go to id
         try {
             selectionPanel.setId(id, db);

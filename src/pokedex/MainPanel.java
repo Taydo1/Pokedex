@@ -64,11 +64,11 @@ public class MainPanel extends JPanel implements ActionListener {
         }
 
         if (mdp != null && mdp.toLowerCase().equals(selection.toLowerCase())) {
-            if(!utilisateur.equals(selection) && tabbedPane.getTabCount() > 2){
-                for (int i = 2; i < tabbedPane.getTabCount(); i++){
-                    tabbedPane.remove(i);
-                    tabbedPane.setSelectedIndex(0);
+            if(!utilisateur.equals(selection)){
+                while(tabbedPane.getTabCount() > 2){
+                    tabbedPane.remove(2);
                 }
+                tabbedPane.setSelectedIndex(0);
             }
             utilisateur = selection;
             pokedexPanel1.setUtilisateur(utilisateur);

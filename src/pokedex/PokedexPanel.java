@@ -70,14 +70,23 @@ public class PokedexPanel extends JPanel implements ActionListener {
         switch (Action.valueOf(e.getActionCommand())) {
             case UP:
                 goToID(idActuel + 1);
+                while(parent.tabbedPane.getTabCount() > 2){
+                    parent.tabbedPane.remove(2);
+                }
                 break;
             case DOWN:
                 goToID(idActuel - 1);
+                while(parent.tabbedPane.getTabCount() > 2){
+                    parent.tabbedPane.remove(2);
+                }
                 break;
             case GO: {
                 try {
                     goToID(selectionPanel.getGoId());
                     selectionPanel.clearGoId();
+                    while(parent.tabbedPane.getTabCount() > 2){
+                        parent.tabbedPane.remove(2);
+                    }
                 } catch (NumberFormatException ex) {
                 }
                 break;

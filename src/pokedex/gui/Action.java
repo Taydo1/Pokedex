@@ -13,16 +13,16 @@ public enum Action {
     UP,
     DOWN,
     GO,
-    GO_COMBINED_TYPE,
     
     CHANGE_USER,
     IMAGE_NORMAL,
     IMAGE_SHINY,
     IMAGE_MEGA,
     
-    GET_TYPE,
-    GET_ABILITY,
     GET_POKEDEX,
+    GET_TYPE,
+    GET_COMBINED_TYPE,
+    GET_ABILITY,
     
     START_MODIFICATION,
     SAVE_MODIFICATION,

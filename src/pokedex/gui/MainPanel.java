@@ -43,7 +43,7 @@ public class MainPanel extends JPanel implements ActionListener {
         tabbedPane = new JTabbedPane();
 
         pokedexPanel1 = new PokedexPanel(db, this);
-        typePanel = new TypePanel(db);
+        typePanel = new TypePanel(db, this);
         tabbedPane.addTab("Pokedex", pokedexPanel1);
         tabbedPane.addTab("Type", typePanel);
 
@@ -116,8 +116,8 @@ public class MainPanel extends JPanel implements ActionListener {
                 break;
             case GET_TYPE:
                 source = (InfoButton)e.getSource();
-                Type type = db.getFromDB("SELECT * FROM type WHERE id="+source.getId(), Type.class).get(0);
-                System.out.println(""+type);
+                typePanel.setId(source.getId(), 0);
+                tabbedPane.setSelectedIndex(1);
                 break;
             case GET_ABILITY:
                 source = (InfoButton)e.getSource();

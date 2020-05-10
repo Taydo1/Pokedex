@@ -52,7 +52,11 @@ public class TopPokedexPanel extends JPanel {
         type = new Label("Type : ");
         type.setPreferredSize(new Dimension(1, 20));
         type1 = new InfoButton();
+        type1.setActionCommand(Action.GET_TYPE.name());
+        type1.addActionListener(parent.parent);
         type2 = new InfoButton();
+        type2.setActionCommand(Action.GET_TYPE.name());
+        type2.addActionListener(parent.parent);
 
         poids = new Label();
         poids.setPreferredSize(new Dimension(1, 20));

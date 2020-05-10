@@ -147,8 +147,7 @@ public class BottomPokedexPanel extends JPanel{
     }
 
     public void setId(int id, Database db) {
-        ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(id), Pokedex.class);
-        String name = listname.get(0).name;
+        String name = (String) db.getFromDB("SELECT name FROM pokedex WHERE id=" + String.valueOf(id)).get(0)[0];
         idActuel.setText("ID actuel : " + String.valueOf(id));
         nom.setText("Nom : " + name);
         modification.setText("Modifier les données sur " + name);

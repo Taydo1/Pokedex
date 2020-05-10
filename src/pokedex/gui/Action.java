@@ -18,6 +18,7 @@ public enum Action {
     IMAGE_NORMAL,
     IMAGE_SHINY,
     IMAGE_MEGA,
+    GONOM,
     
     GET_POKEDEX,
     GET_TYPE,

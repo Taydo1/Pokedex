@@ -5,21 +5,43 @@
  */
 package pokedex.gui.type;
 
-import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import pokedex.database.*;
+import pokedex.gui.Action;
 import pokedex.gui.InfoButton;
-import pokedex.gui.Label;
 
 /**
  *
  * @author Leon
  */
-public class TypePanel extends JPanel{
+public class TypePanel extends JPanel implements ActionListener{
+    TopTypePanel topTypePanel;
+    Database db;
 
-    static Color veryStrong = Color.GREEN;
-    static Color strong = Color.CYAN;
-    static Color weak = Color.MAGENTA;
-    static Color veryWeak = Color.RED;
-    InfoButton type1, type2, ability1, ability2, ability3, ability4, evolution1, evolution2, sousEvolution1;
-    Label idNom, classification, poids, taille, pourcentageMale, type, ability, evolution, sousEvolution;
+    public TypePanel(Database db) {
+        this.db = db;
+        topTypePanel = new TopTypePanel(db, this);
+        
+        setLayout(new BorderLayout());
+        add(topTypePanel, BorderLayout.CENTER);
+    }
+
+    public void setId(int id, Database db) {
+        Type pokeActuel = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id), Type.class).get(0);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        InfoButton button;
+        switch(Action.valueOf(e.getActionCommand())){
+            case GO:
+                button = (InfoButton)e.getSource();
+                topTypePanel.setId(button.getId(), db);
+        }
+    }
+
 }

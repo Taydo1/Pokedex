@@ -43,7 +43,7 @@ public class MainPanel extends JPanel implements ActionListener {
         tabbedPane = new JTabbedPane();
 
         pokedexPanel1 = new PokedexPanel(db, this);
-        typePanel = new TypePanel();
+        typePanel = new TypePanel(db);
         tabbedPane.addTab("Pokedex", pokedexPanel1);
         tabbedPane.addTab("Type", typePanel);
 

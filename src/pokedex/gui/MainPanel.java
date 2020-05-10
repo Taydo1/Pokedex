@@ -30,7 +30,7 @@ public class MainPanel extends JPanel implements ActionListener {
     public Database db;
     public PokedexPanel pokedexPanel1, pokedexPanel2;
     PokedexApp parent;
-    public FenetreModification fenetreModification;
+    public FenetreModificationPokemon fenetreModification;
 
     MainPanel(Database db, PokedexApp p) {
         

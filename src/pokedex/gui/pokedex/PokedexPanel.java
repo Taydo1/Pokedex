@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.*;
 import pokedex.gui.*;
@@ -21,7 +22,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
 
     Database db;
     ImagePokedexPanel imagePanel;
-    SelectionPokedexPanel selectionPanel;
+    BottomPokedexPanel selectionPanel;
     TopPokedexPanel topPanel;
     String imageName;
     MainPanel parent;
@@ -37,7 +38,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
         idActuel = 16;
         imagePanel = new ImagePokedexPanel();
         add(imagePanel, BorderLayout.CENTER);
-        selectionPanel = new SelectionPokedexPanel("Visiteur", this);
+        selectionPanel = new BottomPokedexPanel("Visiteur", this);
         add(selectionPanel, BorderLayout.SOUTH);
         topPanel = new TopPokedexPanel(this);
         add(topPanel, BorderLayout.NORTH);
@@ -100,8 +101,10 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 goToID(source.getId());
                 break;
             case START_MODIFICATION:
-                parent.fenetreModification = new FenetreModification(idActuel, parent);
-                parent.tabbedPane.add("Modification", parent.fenetreModification);
+                ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(idActuel), Pokedex.class);
+                String name = listname.get(0).name;
+                parent.fenetreModification = new FenetreModificationPokemon(idActuel, parent);
+                parent.tabbedPane.add("Modification de" + name, parent.fenetreModification);
                 parent.tabbedPane.setSelectedComponent(parent.fenetreModification);
                 break;
         }

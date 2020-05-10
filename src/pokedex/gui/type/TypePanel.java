@@ -44,8 +44,6 @@ public class TypePanel extends JPanel implements ActionListener {
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {
             typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0]);
-            typeName[i].setActionCommand(Action.GET_TYPE.name());
-            typeName[i].addActionListener(parent);
             vs_type[i] = new Label();
             type1.addItem(typeName[i]);
             type2.addItem(typeName[i]);

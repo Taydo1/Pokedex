@@ -183,7 +183,7 @@ public class Database {
     }
 
     public void executeUpdate(String request) {
-        //System.out.println(request);
+        System.out.println(request);
         try {
             st.executeUpdate(request);
         } catch (SQLException ex) {
@@ -287,7 +287,9 @@ public class Database {
     }
     //methode de suppression de plusieurs lignes d'une table en renseignant l'id des ces lignes
    public void deleteFromID(String liste_del, int[] id_suppression){
-        this.executeUpdate("DELETE FROM " +liste_del+ " WHERE id = " +Arrays.toString(id_suppression));
+       for(int i = 0; i < id_suppression.length; i++){
+            this.executeUpdate("DELETE FROM " +liste_del+ " WHERE id = " +id_suppression[i]);
+       }
     }
    
 /*Methode qui test si le string est un entier

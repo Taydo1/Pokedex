@@ -13,6 +13,7 @@ public enum Action {
     UP,
     DOWN,
     GO,
+    GONOM,
     
     CHANGE_USER,
     IMAGE_NORMAL,

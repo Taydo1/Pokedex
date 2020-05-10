@@ -107,6 +107,16 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 parent.tabbedPane.add("Modification de" + name, parent.fenetreModification);
                 parent.tabbedPane.setSelectedComponent(parent.fenetreModification);
                 break;
+            case GONOM:{
+                try{
+                    goToID(selectionPanel.getIDFromNom(db));
+                    selectionPanel.clearGoNom();
+                } catch (NumberFormatException ex)
+                {
+                    System.out.println("Pokemon inexistant");
+                }
+                break;
+            }
         }
     }
 }

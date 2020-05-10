@@ -70,23 +70,14 @@ public class PokedexPanel extends JPanel implements ActionListener {
         switch (Action.valueOf(e.getActionCommand())) {
             case UP:
                 goToID(idActuel + 1);
-                while(parent.tabbedPane.getTabCount() > 2){
-                    parent.tabbedPane.remove(2);
-                }
                 break;
             case DOWN:
                 goToID(idActuel - 1);
-                while(parent.tabbedPane.getTabCount() > 2){
-                    parent.tabbedPane.remove(2);
-                }
                 break;
             case GO: {
                 try {
                     goToID(selectionPanel.getGoId());
                     selectionPanel.clearGoId();
-                    while(parent.tabbedPane.getTabCount() > 2){
-                        parent.tabbedPane.remove(2);
-                    }
                 } catch (NumberFormatException ex) {
                 }
                 break;
@@ -108,16 +99,9 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 goToID(source.getId());
                 break;
             case START_MODIFICATION:
-                for(int i = 0; i < parent.tabbedPane.getTabCount(); i++){
-                    if (parent.tabbedPane.getComponentAt(i).equals(parent.fenetreModification)){
-                        parent.tabbedPane.setSelectedComponent(parent.fenetreModification); 
-                    }
-                }
-                if(!parent.tabbedPane.getSelectedComponent().equals(parent.fenetreModification)){
-                    parent.fenetreModification = new FenetreModification(idActuel, parent);
-                    parent.tabbedPane.add("Modification", parent.fenetreModification);
-                    parent.tabbedPane.setSelectedComponent(parent.fenetreModification);
-                }
+                parent.fenetreModification = new FenetreModification(idActuel, parent);
+                parent.tabbedPane.add("Modification", parent.fenetreModification);
+                parent.tabbedPane.setSelectedComponent(parent.fenetreModification);
                 break;
         }
     }

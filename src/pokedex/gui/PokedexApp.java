@@ -27,7 +27,7 @@ public class PokedexApp extends JFrame {
 
         setupDB(false);
         setupWindow();
-        //testRequest();
+        testRequest();
     }
 
     private void setupDB(boolean toBeCreated) {
@@ -59,7 +59,7 @@ public class PokedexApp extends JFrame {
     }
 
     private void testRequest() {
-        /*Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110, 188);
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110, 188);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest());
 
         ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
@@ -70,8 +70,8 @@ public class PokedexApp extends JFrame {
         for (Pokedex pokedex : listPokedex) {
             System.out.println("" + pokedex);
         }
-        ArrayList<pokedex.Type> listType = db.getFromDB("SELECT * FROM type WHERE id<=2", pokedex.Type.class);
-        for (pokedex.Type type : listType) {
+        ArrayList<pokedex.database.Type> listType = db.getFromDB("SELECT * FROM type WHERE id<=2", pokedex.database.Type.class);
+        for (pokedex.database.Type type : listType) {
             System.out.println("" + type);
         }
         ArrayList<Ability> listTalent = db.getFromDB("SELECT * FROM ability WHERE id<=2", Ability.class);
@@ -93,13 +93,13 @@ public class PokedexApp extends JFrame {
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};
-        db.modify("Pokemon", 1, tableau2, tableau3);*/
+        db.modify("Pokemon", 1, tableau2, tableau3);
         
         //test delete
         int[] suppression = {41,42,43};
         db.deleteFromID("Pokemon",suppression);
         
-        ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
+        listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
         }

@@ -11,6 +11,9 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pokedex.database.*;
 import pokedex.gui.*;
@@ -114,6 +117,12 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 } catch (NumberFormatException | IndexOutOfBoundsException ex)
                 {
                     System.out.println("Pokemon inexistant");
+                    JFrame frame = new JFrame("");
+                    ImageIcon icon = new ImageIcon(getClass().getResource("/images/icones/PikachuGif.gif"));
+                    Object[] options = {"Get coronavirus","OK Boomer"};
+                    JOptionPane.showOptionDialog(frame,"Le Pokemon '"+selectionPanel.goNom.getText()+"' n'existe pas\n"
+                    + "Veuillez entrer un nom valide\nNB: N'oubliez pas la majuscule","Pokemon introuvable",JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,icon,options,options[1]);
                 }
                 selectionPanel.clearGoNom();
                 break;

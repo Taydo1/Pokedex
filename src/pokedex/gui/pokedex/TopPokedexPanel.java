@@ -14,6 +14,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import pokedex.gui.*;
 import pokedex.database.*;
+
 /**
  *
  * @author Quentin
@@ -169,11 +170,11 @@ public class TopPokedexPanel extends JPanel {
         Pokedex pokeActuel = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(id), Pokedex.class).get(0);
         classification.setText(pokeActuel.classification);
         if (id >= 100) {
-            idNom.setText(String.valueOf(id) + " " + pokeActuel.name);
+            idNom.setText(String.valueOf(id) + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
         } else if (id < 10) {
-            idNom.setText("00" + id + " " + pokeActuel.name);
+            idNom.setText("00" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
         } else {
-            idNom.setText("0" + id + " " + pokeActuel.name);
+            idNom.setText("0" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
         }
 
         if (!pokeActuel.has_mega && mega.isSelected()) {
@@ -197,9 +198,9 @@ public class TopPokedexPanel extends JPanel {
         mega.setEnabled(pokeActuel.has_mega);
         chromatique.setEnabled(pokeActuel.has_shiny);
 
-        poids.setText(String.format("Poids : %.1fkg",pokeActuel.weight));
-        taille.setText(String.format("Taille : %.1fm",pokeActuel.height));
-        pourcentageMale.setText(String.format("%.1f%% de mâles",pokeActuel.percentage_male*100));
+        poids.setText(String.format("Poids : %.1fkg", pokeActuel.weight));
+        taille.setText(String.format("Taille : %.1fm", pokeActuel.height));
+        pourcentageMale.setText(String.format("%.1f%% de mâles", pokeActuel.percentage_male * 100));
         type1.setText(pokeActuel.getTypeName(db, 1));
         type1.setId(pokeActuel.id_type1);
 

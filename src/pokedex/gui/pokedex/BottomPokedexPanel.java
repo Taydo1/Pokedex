@@ -27,8 +27,8 @@ import pokedex.database.*;
 public class BottomPokedexPanel extends JPanel{
 
     JPanel gauche, droite, allerId;
-    JLabel idActuel, nom, allerAId;
-    JButton up, down, go, modification, ajout, gerer;
+    JLabel idActuel, allerAId;
+    JButton up, down, go, modification, ajout, delete, gerer;
     JTextField goId;
     String utilisateur;
 
@@ -38,7 +38,6 @@ public class BottomPokedexPanel extends JPanel{
         droite = new JPanel();
         allerId = new JPanel();
         idActuel = new JLabel("", SwingConstants.CENTER);
-        nom = new JLabel("", SwingConstants.CENTER);
         allerAId = new JLabel("Aller à l'ID : ", SwingConstants.CENTER);
         up = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_haut.png")));
         up.setContentAreaFilled(false);
@@ -59,6 +58,10 @@ public class BottomPokedexPanel extends JPanel{
         ajout.setBackground(Color.gray);
         ajout.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         ajout.setForeground(Color.black);
+        delete = new JButton("");
+        delete.setBackground(Color.gray);
+        delete.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        delete.setForeground(Color.black);
         gerer = new JButton("Gérer l'équipe");
         gerer.setBackground(Color.gray);
         gerer.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -98,10 +101,10 @@ public class BottomPokedexPanel extends JPanel{
         c.weightx = 0.4;
         allerId.add(go, c);
 
-        gauche.add(nom);
         gauche.add(allerId);
-        gauche.add(modification);
         gauche.add(ajout);
+        gauche.add(modification);
+        gauche.add(delete);
         gauche.add(gerer);
         gauche.setSize((int) (parent.getWidth() * 0.7), (int) (parent.getHeight() * 0.2));
 
@@ -127,16 +130,19 @@ public class BottomPokedexPanel extends JPanel{
                 ajout.setEnabled(true);
                 modification.setEnabled(true);
                 gerer.setEnabled(false);
+                delete.setEnabled(true);
                 break;
             case "Dresseur":
                 ajout.setEnabled(true);
                 modification.setEnabled(false);
                 gerer.setEnabled(true);
+                delete.setEnabled(false);
                 break;
             case "Visiteur":
                 ajout.setEnabled(false);
                 modification.setEnabled(false);
                 gerer.setEnabled(false);
+                delete.setEnabled(false);
                 break;
         }
         this.repaint();
@@ -149,7 +155,7 @@ public class BottomPokedexPanel extends JPanel{
     public void setId(int id, Database db) {
         String name = (String) db.getFromDB("SELECT name FROM pokedex WHERE id=" + String.valueOf(id)).get(0)[0];
         idActuel.setText("ID actuel : " + String.valueOf(id));
-        nom.setText("Nom : " + name);
+        delete.setText("Supprimer les données sur " + name);
         modification.setText("Modifier les données sur " + name);
         ArrayList<Object[]> nb_pokemon = db.getFromDB("SELECT id FROM pokedex");
         if(id == 1){

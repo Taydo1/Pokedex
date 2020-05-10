@@ -40,7 +40,7 @@ public class TypePanel extends JPanel implements ActionListener{
         switch(Action.valueOf(e.getActionCommand())){
             case GO:
                 button = (InfoButton)e.getSource();
-                topTypePanel.setId(button.getId(), db);
+                topTypePanel.setId(button.getId(),0, db);
         }
     }
 

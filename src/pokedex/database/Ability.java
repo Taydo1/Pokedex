@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokedex;
+package pokedex.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +17,8 @@ import java.util.Map;
 public class Ability extends DBElement {
 
     static int idCounter = 1;
-    int id;
-    String name, en_name, description[];
+    public int id;
+    public String name, en_name, description[];
 
     public Ability() {
     }

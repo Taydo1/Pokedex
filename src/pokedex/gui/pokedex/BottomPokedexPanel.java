@@ -27,7 +27,7 @@ import pokedex.database.*;
 public class BottomPokedexPanel extends JPanel{
 
     JPanel gauche, droite, allerId, allerNom;
-    JLabel idActuel, allerAId, allerANom;
+    Label idActuel, allerAId, allerANom;
     JButton up, down, go, modification, ajout, delete, gerer,goNomButton;
     JTextField goId, goNom;
     String utilisateur;
@@ -37,8 +37,8 @@ public class BottomPokedexPanel extends JPanel{
         gauche = new JPanel();
         droite = new JPanel();
         allerId = new JPanel();
-        idActuel = new JLabel("", SwingConstants.CENTER);
-        allerAId = new JLabel("Aller à l'ID : ", SwingConstants.CENTER);
+        idActuel = new Label("");
+        allerAId = new Label("Aller à l'ID : ");
         up = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_haut.png")));
         up.setContentAreaFilled(false);
         up.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -75,7 +75,7 @@ public class BottomPokedexPanel extends JPanel{
         goNom.setBackground(Color.gray);
         goNom.setForeground(Color.white);
         goNom.setColumns(3);
-        allerANom = new JLabel("Search by name:", SwingConstants.CENTER);
+        allerANom = new Label("Search by name:");
         goNomButton = new JButton("Search name");
         goNomButton.setBackground(Color.gray);
         goNomButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));

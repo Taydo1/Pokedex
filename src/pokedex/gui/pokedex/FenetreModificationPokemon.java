@@ -221,11 +221,14 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
         poids.setValue(currentPokedex.weight);
         panPoids.setBorder(BorderFactory.createTitledBorder("Poids du pokémon"));
         panPoids.add(poids);
+        
+        NumberFormat formatPourcentage = NumberFormat.getPercentInstance();
+        formatPourcentage.setMaximumFractionDigits(1);
 
         //Pourcentage de mâle
         JPanel panPourcent = new JPanel();
         panPourcent.setBackground(Color.white);
-        pourcentage = new JFormattedTextField(formatPoidsTaille);
+        pourcentage = new JFormattedTextField(formatPourcentage);
         pourcentage.setValue(currentPokedex.percentage_male);
         panPourcent.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
         panPourcent.add(pourcentage);
@@ -487,10 +490,10 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                     pds = poids.getText();
                 }
                 //Change le "" de pourcentage en null
-                if (pourcentage.getText().equals("")){
+                if (pourcentage.getText().equals("")  || pourcentage.getText().equals(" %")  || pourcentage.getText().equals("%")){
                     perc = null;
                 } else {
-                    perc = pourcentage.getText();
+                    perc = pourcentage.getValue();
                 }
                 //Change le "" de pré-évolution en null
                 if (preEvolution.getSelectedIndex() == 0){
@@ -561,8 +564,12 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 parent.db.modify("pokedex", idModif, colonnesModif, valeursModif);
                 parent.pokedexPanel1.goToID(idModif);
                 parent.pokedexPanel2.goToID(idModif);
+                parent.tabbedPane.remove(this);
+                parent.tabbedPane.setSelectedIndex(0);
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+                break;
+
             case DISCARD_MODIFICATION:
                 parent.tabbedPane.remove(this);
                 parent.tabbedPane.setSelectedIndex(0);

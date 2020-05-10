@@ -26,10 +26,10 @@ import pokedex.database.*;
  */
 public class BottomPokedexPanel extends JPanel{
 
-    JPanel gauche, droite, allerId;
-    JLabel idActuel, allerAId;
-    JButton up, down, go, modification, ajout, delete, gerer;
-    JTextField goId;
+    JPanel gauche, droite, allerId, allerNom;
+    JLabel idActuel, allerAId, allerANom;
+    JButton up, down, go, modification, ajout, delete, gerer,goNomButton;
+    JTextField goId, goNom;
     String utilisateur;
 
     public BottomPokedexPanel(String utilisateur, PokedexPanel parent) {  
@@ -70,6 +70,15 @@ public class BottomPokedexPanel extends JPanel{
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);
         goId.setColumns(3);
+        allerNom = new JPanel();
+        goNom = new JTextField();
+        goNom.setBackground(Color.gray);
+        goNom.setForeground(Color.white);
+        goNom.setColumns(3);
+        allerANom = new JLabel("Search by name:", SwingConstants.CENTER);
+        goNomButton = new JButton("Search name");
+        goNomButton.setBackground(Color.gray);
+        goNomButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
 
         go.addActionListener(parent);
         goId.addActionListener(parent);
@@ -79,6 +88,10 @@ public class BottomPokedexPanel extends JPanel{
         goId.setActionCommand(Action.GO.name());
         up.setActionCommand(Action.UP.name());
         down.setActionCommand(Action.DOWN.name());
+        goNom.addActionListener(parent);
+        goNom.setActionCommand(Action.GONOM.name());
+        goNomButton.addActionListener(parent);
+        goNomButton.setActionCommand(Action.GONOM.name());
 
         gauche.setLayout(new GridLayout(0, 1));
         gauche.setBackground(Color.gray);
@@ -86,8 +99,11 @@ public class BottomPokedexPanel extends JPanel{
         droite.setBackground(Color.gray);
         allerId.setLayout(new GridBagLayout());
         allerId.setBackground(Color.gray);
+        allerNom.setLayout(new GridBagLayout());
+        allerNom.setBackground(Color.gray);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+        
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
@@ -100,8 +116,19 @@ public class BottomPokedexPanel extends JPanel{
         c.gridx = 2;
         c.weightx = 0.4;
         allerId.add(go, c);
+        c.gridx = 0;
+        c.gridy = 0;
+        c.weightx = 0.4;
+        allerNom.add(allerANom,c);
+        c.gridx = 1;
+        c.weightx = 0.4;
+        allerNom.add(goNom,c);
+        c.gridx = 2;
+        c.weightx = 0.4;
+        allerNom.add(goNomButton,c);
 
         gauche.add(allerId);
+        gauche.add(allerNom);
         gauche.add(ajout);
         gauche.add(modification);
         gauche.add(delete);
@@ -177,5 +204,14 @@ public class BottomPokedexPanel extends JPanel{
     
     public void clearGoId() {
         goId.setText("");
+    }
+    public int getIDFromNom(Database db){
+        int id = (int) db.getFromDB("SELECT id FROM pokedex WHERE name = '"+goNom.getText()+"'").get(0)[0];
+        System.out.println("ID récupéré : "+id);
+        return id;
+    }
+
+ public void clearGoNom(){
+        goNom.setText("");
     }
 }

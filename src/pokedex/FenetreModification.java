@@ -557,8 +557,6 @@ public class FenetreModification extends JPanel implements ActionListener {
                                                      evo2
                                                     };
                 parent.db.modify("pokedex", idModif, colonnesModif, valeursModif);
-                parent.tabbedPane.remove(this);
-                parent.tabbedPane.setSelectedIndex(0);
                 parent.pokedexPanel1.goToID(idModif);
                 parent.pokedexPanel2.goToID(idModif);
                 JOptionPane jop = new JOptionPane();

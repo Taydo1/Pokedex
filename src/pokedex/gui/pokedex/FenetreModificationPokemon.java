@@ -138,7 +138,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
         panType1.setBorder(BorderFactory.createTitledBorder("Type n°1 du pokémon"));
         panType1.add(type1);
 
-        //Type n°2 
+        //Type n°2
         JPanel panType2 = new JPanel();
         panType2.setBackground(Color.white);
         type2 = new JComboBox<>(types.toArray());
@@ -222,10 +222,13 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
         panPoids.setBorder(BorderFactory.createTitledBorder("Poids du pokémon"));
         panPoids.add(poids);
 
+        NumberFormat formatPourcentage = NumberFormat.getPercentInstance();
+        formatPourcentage.setMaximumFractionDigits(1);
+
         //Pourcentage de mâle
         JPanel panPourcent = new JPanel();
         panPourcent.setBackground(Color.white);
-        pourcentage = new JFormattedTextField(formatPoidsTaille);
+        pourcentage = new JFormattedTextField(formatPourcentage);
         pourcentage.setValue(currentPokedex.percentage_male);
         panPourcent.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
         panPourcent.add(pourcentage);
@@ -392,7 +395,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 String[] colonnesModif = new String[]{"name", "en_name", "classification", "id_type1", "id_type2", "id_ability1", "id_ability2",
                                                       "id_ability3", "id_ability4", "height", "weight", "percentage_male","is_legendary_fabulous",
                                                        "generation", "has_shiny", "has_mega", "id_lower_evolution", "id_evolution1", "id_evolution2"};
-                
+
                 Object nfr;
                 Object nen;
                 Object clas;
@@ -412,7 +415,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 Object s;
                 Object m;
                 Object r;
-                
+
                 //Change le "" du nom en null
                 if (nomfr.getText().equals("")){
                     nfr = null;
@@ -487,10 +490,10 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                     pds = poids.getText();
                 }
                 //Change le "" de pourcentage en null
-                if (pourcentage.getText().equals("")){
+                if (pourcentage.getText().equals("")  || pourcentage.getText().equals(" %")  || pourcentage.getText().equals("%")){
                     perc = null;
                 } else {
-                    perc = pourcentage.getText();
+                    perc = pourcentage.getValue();
                 }
                 //Change le "" de pré-évolution en null
                 if (preEvolution.getSelectedIndex() == 0){
@@ -537,7 +540,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 } else if(rarete.getSelectedItem().equals("Légendaire")){
                     r = 2;
                 }
-                
+
                 Object[] valeursModif = new Object[]{nfr,
                                                      nen,
                                                      clas,
@@ -562,6 +565,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 parent.pokedexPanel1.goToID(idModif);
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+
             case DISCARD_MODIFICATION:
                 parent.tabbedPane.remove(this);
                 parent.tabbedPane.setSelectedIndex(0);

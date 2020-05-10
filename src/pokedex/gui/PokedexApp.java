@@ -96,8 +96,12 @@ public class PokedexApp extends JFrame {
         db.modify("Pokemon", 1, tableau2, tableau3);
         
         //test delete
-        int[] suppression = {41,42,43};
+        db.printTable("Pokemon");
+        int[] suppression = {2,3};
         db.deleteFromID("Pokemon",suppression);
+        db.printTable("Pokemon");
+        db.deleteFromCondition("Pokemon", "name", "Coronavirus");
+        db.printTable("Pokemon");
         
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {

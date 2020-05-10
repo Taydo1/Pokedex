@@ -121,7 +121,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
                     ImageIcon icon = new ImageIcon(getClass().getResource("/images/icones/PikachuGif.gif"));
                     Object[] options = {"Get coronavirus","OK Boomer"};
                     JOptionPane.showOptionDialog(frame,"Le Pokemon '"+selectionPanel.goNom.getText()+"' n'existe pas\n"
-                    + "Veuillez entrer un nom valide\nNB: N'oubliez pas la majuscule","Pokemon introuvable",JOptionPane.YES_NO_CANCEL_OPTION,
+                    + "Veuillez entrer un nom valide","Pokemon introuvable",JOptionPane.YES_NO_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE,icon,options,options[1]);
                 }
                 selectionPanel.clearGoNom();

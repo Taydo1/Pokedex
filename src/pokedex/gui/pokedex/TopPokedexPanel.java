@@ -274,15 +274,6 @@ public class TopPokedexPanel extends JPanel {
         classique.setBackground(bgColor);
         chromatique.setBackground(bgColor);
         mega.setBackground(bgColor);
-        type1.setBackground(bgColor);
-        type2.setBackground(bgColor);
-        ability1.setBackground(bgColor);
-        ability2.setBackground(bgColor);
-        ability3.setBackground(bgColor);
-        ability4.setBackground(bgColor);
-        evolution1.setBackground(bgColor);
-        evolution2.setBackground(bgColor);
-        sousEvolution1.setBackground(bgColor);
         setBackground(bgColor);
 
         classique.setForeground(fgColor);

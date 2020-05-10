@@ -46,12 +46,11 @@ public class InfoButton extends JButton {
     protected void paintComponent(Graphics g) {
         if (getModel().isPressed() || isSelected()) {
             g.setColor(getBackground().darker().darker());
+            g.fillRect(0, 0, getWidth(), getHeight());
         } else if (getModel().isRollover()) {
             g.setColor(getBackground().darker());
-        } else {
-            g.setColor(getBackground());
+            g.fillRect(0, 0, getWidth(), getHeight());
         }
-        g.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
     }
 

@@ -23,10 +23,12 @@ import pokedex.gui.*;
 public class TypePanel extends JPanel implements ActionListener {
 
     Database db;
-    static Color veryStrong = Color.GREEN;
-    static Color strong = Color.CYAN;
+    static Color veryStrong = Color.GRAY;
+    static Color strong = Color.DARK_GRAY;
     static Color weak = Color.MAGENTA;
     static Color veryWeak = Color.RED;
+    static Color immune = Color.LIGHT_GRAY;
+    static Color efficace = Color.BLACK;
     InfoButton typeName[];
     Label type1label, type2label, vs_type[];
     JComboBox<InfoButton> type1, type2;
@@ -44,8 +46,6 @@ public class TypePanel extends JPanel implements ActionListener {
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {
             typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0]);
-            typeName[i].setActionCommand(Action.GET_TYPE.name());
-            typeName[i].addActionListener(parent);
             vs_type[i] = new Label();
             type1.addItem(typeName[i]);
             type2.addItem(typeName[i]);
@@ -118,6 +118,22 @@ public class TypePanel extends JPanel implements ActionListener {
         }
         type1.setSelectedIndex(id1-1);
         type2.setSelectedIndex(id2);
+        for (int i = 0; i < 18; i++) {
+            String faiblesse = vs_type[i].getText();
+            if (faiblesse.equals("Très Vulnérable")){
+                vs_type[i].setForeground(veryWeak);
+            } else if (faiblesse.equals("Vulnérable")) {
+                vs_type[i].setForeground(weak);
+            } else if (faiblesse.equals("Résistant")) {
+                vs_type[i].setForeground(strong);
+            } else if (faiblesse.equals("Très Résistant")) {
+                vs_type[i].setForeground(veryStrong);
+            } else if (faiblesse.equals("Immunisé")) {
+                vs_type[i].setForeground(immune);
+            } else if (faiblesse.equals("Efficace")){
+                vs_type[i].setForeground(efficace);
+            }
+        }
     }
 
     @Override
@@ -130,5 +146,4 @@ public class TypePanel extends JPanel implements ActionListener {
                 break;
         }
     }
-
 }

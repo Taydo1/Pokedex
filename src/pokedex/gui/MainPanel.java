@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import pokedex.gui.pokedex.*;
 import pokedex.database.*;
+import pokedex.gui.type.AbilityPanel;
 import pokedex.gui.type.TypePanel;
 
 /**
@@ -31,6 +32,7 @@ public class MainPanel extends JPanel implements ActionListener {
     public Database db;
     public PokedexPanel pokedexPanel1;
     TypePanel typePanel;
+    AbilityPanel abilityPanel;
     PokedexApp parent;
     public FenetreModificationPokemon fenetreModification;
 
@@ -44,8 +46,10 @@ public class MainPanel extends JPanel implements ActionListener {
 
         pokedexPanel1 = new PokedexPanel(db, this);
         typePanel = new TypePanel(db, this);
+        abilityPanel = new AbilityPanel(db, this);
         tabbedPane.addTab("Pokedex", pokedexPanel1);
         tabbedPane.addTab("Type", typePanel);
+        tabbedPane.addTab("Talent", abilityPanel);
 
         String[] personnes = new String[]{"Visiteur", "Dresseur", "Professeur"};
         choix = new JComboBox<>(personnes);
@@ -121,8 +125,8 @@ public class MainPanel extends JPanel implements ActionListener {
                 break;
             case GET_ABILITY:
                 source = (InfoButton)e.getSource();
-                Ability ability = db.getFromDB("SELECT * FROM ability WHERE id="+source.getId(), Ability.class).get(0);
-                System.out.println(""+ability);
+                abilityPanel.setId(source.getId());
+                tabbedPane.setSelectedIndex(2);
                 break;
         }
     }

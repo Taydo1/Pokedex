@@ -27,6 +27,7 @@ public class Label extends JLabel {
         setOpaque(false);
         setHorizontalAlignment(SwingConstants.CENTER);
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-
+        setForeground(Color.WHITE);
+        setBackground(Color.GRAY);
     }
 }

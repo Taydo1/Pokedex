@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import pokedex.gui.pokedex.*;
 import pokedex.database.*;
-import pokedex.gui.type.AbilityPanel;
+import pokedex.gui.ability.AbilityPanel;
 import pokedex.gui.type.TypePanel;
 
 /**

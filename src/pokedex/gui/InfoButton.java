@@ -26,8 +26,10 @@ public class InfoButton extends JButton {
         setPreferredSize(new Dimension(1, 20));
         setOpaque(false);
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-        setContentAreaFilled(false);
+        setContentAreaFilled(true);
 
+        setForeground(Color.WHITE);
+        setBackground(Color.GRAY);
     }
 
     public InfoButton() {

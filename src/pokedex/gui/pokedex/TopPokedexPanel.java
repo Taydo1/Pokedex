@@ -167,7 +167,7 @@ public class TopPokedexPanel extends JPanel {
         c.gridx++;
         add(evolution2, c);
 
-        setColor(backgroundColor, Color.WHITE);
+        setBackground(backgroundColor);
     }
 
     public void setId(int id, Database db) {
@@ -190,13 +190,13 @@ public class TopPokedexPanel extends JPanel {
 
         switch (pokeActuel.is_legendary) {
             case 0:
-                setColor(Color.GRAY, Color.WHITE);
+                setColor(Color.GRAY);
                 break;
             case 1:
-                setColor(new Color(126, 138, 171), Color.WHITE);
+                setColor(new Color(126, 138, 171));
                 break;
             case 2:
-                setColor(new Color(126, 200, 217), Color.WHITE);
+                setColor(new Color(126, 200, 217));
                 break;
         }
         mega.setEnabled(pokeActuel.has_mega);
@@ -270,32 +270,10 @@ public class TopPokedexPanel extends JPanel {
         this.repaint();
     }
 
-    public void setColor(Color bgColor, Color fgColor) {
+    public void setColor(Color bgColor) {
         classique.setBackground(bgColor);
         chromatique.setBackground(bgColor);
         mega.setBackground(bgColor);
         setBackground(bgColor);
-
-        classique.setForeground(fgColor);
-        chromatique.setForeground(fgColor);
-        mega.setForeground(fgColor);
-        idNom.setForeground(fgColor);
-        classification.setForeground(fgColor);
-        type.setForeground(fgColor);
-        type1.setForeground(fgColor);
-        type2.setForeground(fgColor);
-        poids.setForeground(fgColor);
-        taille.setForeground(fgColor);
-        pourcentageMale.setForeground(fgColor);
-        ability.setForeground(fgColor);
-        ability1.setForeground(fgColor);
-        ability2.setForeground(fgColor);
-        ability3.setForeground(fgColor);
-        ability4.setForeground(fgColor);
-        evolution.setForeground(fgColor);
-        evolution1.setForeground(fgColor);
-        evolution2.setForeground(fgColor);
-        sousEvolution.setForeground(fgColor);
-        sousEvolution1.setForeground(fgColor);
     }
 }

@@ -20,13 +20,18 @@ public class InfoButton extends JButton {
 
     private int id;
 
-    public InfoButton() {
-        super();
-        this.id = 0;
+    public InfoButton(String text, int id) {
+        super(text);
+        this.id = id;
         setPreferredSize(new Dimension(1, 20));
         setOpaque(false);
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         setContentAreaFilled(false);
+
+    }
+
+    public InfoButton() {
+        this("",0);
     }
 
     public void setId(int id) {
@@ -49,5 +54,12 @@ public class InfoButton extends JButton {
         g.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
     }
+
+    @Override
+    public String toString() {
+        return getText();
+    }
+    
+    
 
 }

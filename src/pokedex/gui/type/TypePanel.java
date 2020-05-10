@@ -8,6 +8,7 @@ package pokedex.gui.type;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.*;
 import pokedex.gui.Action;
@@ -41,6 +42,12 @@ public class TypePanel extends JPanel implements ActionListener{
             case GO:
                 button = (InfoButton)e.getSource();
                 topTypePanel.setId(button.getId(),0, db);
+                break;
+            case GO_COMBINED_TYPE:
+                InfoButton type1 = (InfoButton) topTypePanel.type1.getSelectedItem();
+                InfoButton type2 = (InfoButton) topTypePanel.type2.getSelectedItem();
+                topTypePanel.setId(type1.getId(),type2.getId(), db);
+                break;
         }
     }
 

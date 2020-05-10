@@ -64,6 +64,12 @@ public class MainPanel extends JPanel implements ActionListener {
         }
 
         if (mdp != null && mdp.toLowerCase().equals(selection.toLowerCase())) {
+            if(!utilisateur.equals(selection) && tabbedPane.getTabCount() > 2){
+                for (int i = 2; i < tabbedPane.getTabCount(); i++){
+                    tabbedPane.remove(i);
+                    tabbedPane.setSelectedIndex(0);
+                }
+            }
             utilisateur = selection;
             pokedexPanel1.setUtilisateur(utilisateur);
             pokedexPanel2.setUtilisateur(utilisateur);
@@ -72,8 +78,8 @@ public class MainPanel extends JPanel implements ActionListener {
             JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
         } else {
             comboBox.setSelectedItem(utilisateur);
-
         }
+        
     }
 
     private String getPassword() {

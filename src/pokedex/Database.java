@@ -269,6 +269,18 @@ public class Database {
             }
         }
     }
+    public void modifyFromCondition(String listeAModif, String condition, String[] colonnesModifiees, Object[] valeursModif){
+        for (int i = 0; i < colonnesModifiees.length; i++) {
+             if (TestInt(condition)==true){
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''")
+                    + "' WHERE id = " + condition);
+             }
+             else{
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''")
+                    + "' WHERE id = '" + condition +"'");
+             }
+        }
+    }
     //methode de suppression de plusieurs lignes d'une table en renseignant l'id des ces lignes
    public void deleteFromID(String liste_del, int[] id_suppression){
         this.executeUpdate("DELETE FROM " +liste_del+ " WHERE id = " +Arrays.toString(id_suppression));

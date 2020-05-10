@@ -558,12 +558,14 @@ public class FenetreModification extends JPanel implements ActionListener {
                                                     };
                 parent.db.modify("pokedex", idModif, colonnesModif, valeursModif);
                 parent.tabbedPane.remove(this);
+                parent.tabbedPane.setSelectedIndex(0);
                 parent.pokedexPanel1.goToID(idModif);
                 parent.pokedexPanel2.goToID(idModif);
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
             case DISCARD_MODIFICATION:
                 parent.tabbedPane.remove(this);
+                parent.tabbedPane.setSelectedIndex(0);
                 break;
         }
     }

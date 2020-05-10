@@ -35,28 +35,25 @@ public class TypePanel extends JPanel implements ActionListener {
 
     public TypePanel(Database db, MainPanel parent) {
         this.db = db;
-        type1label = new Label("Type 1 : ");
-        type1label.setOpaque(true);
-        type2label = new Label("Type 2 : ");
-        type2label.setOpaque(true);
+        type1label = new Label("Type 1 : ", true);
+        type2label = new Label("Type 2 : ", true);
         type1 = new JComboBox();
         type1.setBackground(Color.GRAY);
+        type1.setForeground(Color.WHITE);
         type2 = new JComboBox();
         type2.setBackground(Color.GRAY);
+        type2.setForeground(Color.WHITE);
         type2.addItem(new InfoButton("", 0));
-        weakness = new Label("Faiblesse versus ...");
-        weakness.setOpaque(true);
+        weakness = new Label("Faiblesse versus ...", true);
         typeName = new InfoButton[18];
         vs_type = new Label[18];
 
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {
-            typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0]);
+            typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0], true);
             typeName[i].addActionListener(parent);
             typeName[i].setActionCommand(Action.GET_TYPE.name());
-            typeName[i].setOpaque(true);
-            vs_type[i] = new Label();
-            vs_type[i].setOpaque(true);
+            vs_type[i] = new Label("", true);
             type1.addItem(typeName[i]);
             type2.addItem(typeName[i]);
         }
@@ -115,7 +112,6 @@ public class TypePanel extends JPanel implements ActionListener {
     }
 
     public void setId(int id1, int id2) {
-        System.out.println(""+id1+" "+id2);
         ArrayList<Type> currentTypes = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1) + " OR id=" + String.valueOf(id2), Type.class);
 
         if (id2 == 0 || id2 == id1) {

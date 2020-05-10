@@ -21,19 +21,24 @@ public class InfoButton extends JButton {
     private int id;
 
     public InfoButton(String text, int id) {
+        this(text, id, false);
+    }
+
+    public InfoButton(String text, int id, boolean opaque) {
         super(text);
         this.id = id;
         setPreferredSize(new Dimension(1, 20));
-        setOpaque(false);
+        setOpaque(opaque);
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         setContentAreaFilled(true);
 
         setForeground(Color.WHITE);
         setBackground(Color.GRAY);
+
     }
 
     public InfoButton() {
-        this("",0);
+        this("", 0);
     }
 
     public void setId(int id) {
@@ -60,7 +65,5 @@ public class InfoButton extends JButton {
     public String toString() {
         return getText();
     }
-    
-    
 
 }

@@ -33,10 +33,13 @@ public class TopPokedexPanel extends JPanel {
         classique = new ToggleButton("Classique");
         classique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         classique.setSelected(true);
+        classique.setForeground(Color.WHITE);
         chromatique = new ToggleButton("Chromatique");
         chromatique.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        chromatique.setForeground(Color.WHITE);
         mega = new ToggleButton("Méga-évolution");
         mega.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        mega.setForeground(Color.WHITE);
 
         imageButtonGroup.add(classique);
         imageButtonGroup.add(chromatique);

@@ -22,12 +22,17 @@ public class Label extends JLabel {
     }
 
     public Label(String text) {
+        this(text, false);
+    }
+
+    public Label(String text, boolean opaque) {
         super(text);
         setPreferredSize(new Dimension(1, 20));
-        setOpaque(false);
+        setOpaque(opaque);
         setHorizontalAlignment(SwingConstants.CENTER);
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         setForeground(Color.WHITE);
         setBackground(Color.GRAY);
+
     }
 }

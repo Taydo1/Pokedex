@@ -34,10 +34,12 @@ public class AbilityPanel extends JPanel implements ActionListener {
     public AbilityPanel(Database db, MainPanel parent) {
         super();
         this.db = db;
-        name = new Label("Talent : ");
-        description1 = new Label();
-        description2 = new Label();
+        name = new Label("Talent : ",true);
+        description1 = new Label("", true);
+        description2 = new Label("", true);
         selector = new JComboBox();
+        selector.setBackground(Color.GRAY);
+        selector.setForeground(Color.WHITE);
 
         InfoButton selectorButton;
         ArrayList<Object[]> abilityNames = db.getFromDB("SELECT id,name FROM ability");
@@ -66,7 +68,6 @@ public class AbilityPanel extends JPanel implements ActionListener {
         add(description2, c);
 
         setId(1);
-        setBackground(Color.GRAY);
     }
 
     public void setId(int id) {

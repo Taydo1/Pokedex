@@ -89,9 +89,9 @@ public class BottomPokedexPanel extends JPanel{
         up.setActionCommand(Action.UP.name());
         down.setActionCommand(Action.DOWN.name());
         goNom.addActionListener(parent);
-        goNom.setActionCommand(Action.GONOM.name());
+        goNom.setActionCommand(Action.GO_NOM.name());
         goNomButton.addActionListener(parent);
-        goNomButton.setActionCommand(Action.GONOM.name());
+        goNomButton.setActionCommand(Action.GO_NOM.name());
 
         gauche.setLayout(new GridLayout(0, 1));
         gauche.setBackground(Color.gray);

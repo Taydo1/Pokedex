@@ -233,13 +233,17 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
         panPourcent.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
         panPourcent.add(pourcentage);
 
-        String[] rar = new String[]{"" ,"Banal", "Fabuleux", "Légendaire"};
+        String[] rar = new String[]{"Banal", "Fabuleux", "Légendaire"};
 
         //Rareté du pokémon
         JPanel panRarete = new JPanel();
         panRarete.setBackground(Color.white);
         rarete = new JComboBox<>(rar);
-        rarete.setSelectedItem(rar[currentPokedex.is_legendary + 1]);
+        if (currentPokedex.is_legendary == -1){
+            rarete.setSelectedItem(rar[0]);
+        } else {
+            rarete.setSelectedItem(rar[currentPokedex.is_legendary]);            
+        }
         panRarete.setBorder(BorderFactory.createTitledBorder("Rareté du pokémon"));
         panRarete.add(rarete);
 
@@ -531,9 +535,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 }
                 //Réglage d'un bug sur la rareté
                 r = null;
-                if(rarete.getSelectedItem().equals("")){
-                    r = null;
-                } else if(rarete.getSelectedItem().equals("Banal")){
+                if(rarete.getSelectedItem().equals("Banal")){
                     r = 0;
                 } else if(rarete.getSelectedItem().equals("Fabuleux")){
                     r = 1;
@@ -553,8 +555,8 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                                                      tlle,
                                                      pds,
                                                      perc,
-                                                     g,
                                                      r,
+                                                     g,
                                                      s,
                                                      m,
                                                      preevo,
@@ -563,6 +565,8 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                                                     };
                 parent.db.modify("pokedex", idModif, colonnesModif, valeursModif);
                 parent.pokedexPanel1.goToID(idModif);
+                parent.tabbedPane.remove(this);
+                parent.tabbedPane.setSelectedIndex(0);
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 

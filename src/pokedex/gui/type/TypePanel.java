@@ -25,7 +25,7 @@ public class TypePanel extends JPanel implements ActionListener{
     public TypePanel(Database db) {
         this.db = db;
         topTypePanel = new TopTypePanel(db, this);
-        
+
         setLayout(new BorderLayout());
         add(topTypePanel, BorderLayout.CENTER);
     }

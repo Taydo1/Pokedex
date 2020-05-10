@@ -70,6 +70,13 @@ public class TypePanel extends JPanel implements ActionListener {
         add(type2label, c);
         c.gridx++;
         add(type2, c);
+        c.gridy++;
+        c.gridx = 0;
+        c.gridwidth=2;
+        add(new Label(), c);
+        c.gridy++;
+        add(new Label("Faiblesse versus ..."), c);
+        c.gridwidth=1;
         for (int i = 0; i < 18; i++) {
             c.gridx = 0;
             c.gridy++;

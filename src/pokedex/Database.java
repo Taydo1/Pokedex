@@ -269,6 +269,12 @@ public class Database {
             }
         }
     }
+    
+    
+    
+    
+    
+    
     public void modifyFromCondition(String listeAModif, String condition, String[] colonnesModifiees, Object[] valeursModif){
         for (int i = 0; i < colonnesModifiees.length; i++) {
              if (TestInt(condition)==true){

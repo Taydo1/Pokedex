@@ -6,6 +6,7 @@
 package pokedex.gui.ability;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,9 @@ public class AbilityPanel extends JPanel implements ActionListener {
         this.db = db;
         name = new Label("Talent : ",true);
         description1 = new Label("", true);
+        description1.setPreferredSize(new Dimension(1, 50));
         description2 = new Label("", true);
+        description2.setPreferredSize(new Dimension(1, 50));
         selector = new JComboBox();
         selector.setBackground(Color.GRAY);
         selector.setForeground(Color.WHITE);
@@ -75,8 +78,8 @@ public class AbilityPanel extends JPanel implements ActionListener {
 
         //name.setText(currentAbility.name+" ("+currentAbility.en_name+")");
         selector.setSelectedIndex(id - 1);
-        description1.setText(currentAbility.description[0]);
-        description2.setText(currentAbility.description[1]);
+        description1.setText("<html>"+currentAbility.description[0]+"</html>");
+        description2.setText("<html>"+currentAbility.description[1]+"</html>");
     }
 
     @Override

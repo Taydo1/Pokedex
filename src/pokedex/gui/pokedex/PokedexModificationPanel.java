@@ -16,6 +16,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -28,7 +30,7 @@ import javax.swing.JTextField;
 import pokedex.gui.*;
 import pokedex.database.*;
 
-public class PokedexModificationPanel extends JPanel implements ActionListener {
+public class PokedexModificationPanel extends JPanel implements ActionListener, ComponentListener {
 
     JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
     JTextField nomfr, nomen, classification;
@@ -311,6 +313,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener {
         add(discardPanel, c);
 
         updateDimension();
+        addComponentListener(this);
     }
 
     public void updateDimension() {
@@ -384,4 +387,21 @@ public class PokedexModificationPanel extends JPanel implements ActionListener {
                 break;
         }
     }
+        @Override
+    public void componentResized(ComponentEvent arg0) {
+        updateDimension();
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent arg0) {
+    }
+
+    @Override
+    public void componentShown(ComponentEvent arg0) {
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent arg0) {
+    }
+
 }

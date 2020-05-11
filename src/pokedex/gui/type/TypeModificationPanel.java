@@ -12,6 +12,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -28,7 +30,7 @@ import pokedex.gui.MainPanel;
  *
  * @author Spectan
  */
-public class TypeModificationPanel extends JPanel implements ActionListener {
+public class TypeModificationPanel extends JPanel implements ActionListener, ComponentListener {
 
     JTextField name, enName;
     MainPanel parent;
@@ -44,7 +46,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
         this.setSize(new Dimension(parent.getWidth(), parent.getHeight()));
         this.initComponents();
         this.setVisible(true);
-
+        addComponentListener(this);
     }
 
     private void initComponents() {
@@ -79,7 +81,6 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
             panVs[i].setBorder(BorderFactory.createTitledBorder("Contre " + list.get(i).name));
             panVs[i].add(vsSelectors[i]);
         }
-
 
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -193,10 +194,10 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
             case SAVE_TYPE_MODIFICATION:
                 float[] vs = new float[18];
                 for (int i = 0; i < 18; i++) {
-                    vs[i]=stringToFaiblesse(vsSelectors[i].getSelectedItem().toString());
+                    vs[i] = stringToFaiblesse(vsSelectors[i].getSelectedItem().toString());
                 }
                 new Type(idModif, name.getText(), enName.getText(), vs).modifyInDB(parent.db);
-                
+
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.tabbedPane.setSelectedComponent(parent.typePanel);
                 parent.typePanel.update();
@@ -207,4 +208,22 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
                 break;
         }
     }
+
+    @Override
+    public void componentResized(ComponentEvent arg0) {
+        updateDimension();
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent arg0) {
+    }
+
+    @Override
+    public void componentShown(ComponentEvent arg0) {
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent arg0) {
+    }
+
 }

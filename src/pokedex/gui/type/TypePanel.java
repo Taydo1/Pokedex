@@ -12,7 +12,6 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.*;
@@ -143,7 +142,6 @@ public class TypePanel extends JPanel implements ActionListener {
 
     public void setId(int id1, int id2) {
         Type type1 = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1), Type.class).get(0);
-
 
         type1selector.setSelectedIndex(id1 - 1);
         type2selector.setSelectedIndex(id2);

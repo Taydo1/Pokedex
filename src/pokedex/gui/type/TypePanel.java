@@ -30,8 +30,7 @@ public class TypePanel extends JPanel implements ActionListener {
     static Color veryWeak = Color.RED;
     static Color immune = Color.LIGHT_GRAY;
     static Color efficace = Color.BLACK;
-    InfoButton typeName[];
-    JButton modificationType1, modificationType2;
+    InfoButton typeName[], modificationType1, modificationType2;
     Label type1label, type2label, vs_type[], weakness;
     JComboBox<InfoButton> type1, type2;
 
@@ -49,12 +48,8 @@ public class TypePanel extends JPanel implements ActionListener {
         weakness = new Label("Faiblesse versus ...", true);
         typeName = new InfoButton[18];
         vs_type = new Label[18];
-        modificationType1 = new JButton("Modifier le type 1");
-        modificationType1.setBackground(Color.GRAY);
-        modificationType1.setForeground(Color.WHITE);
-        modificationType2 = new JButton("Modifier le type 2");
-        modificationType2.setBackground(Color.GRAY);
-        modificationType2.setForeground(Color.WHITE);
+        modificationType1 = new InfoButton("Modifier le type 1", 0, true);
+        modificationType2 = new InfoButton("Modifier le type 2", 0, true);
 
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {

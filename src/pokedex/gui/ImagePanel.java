@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokedex.gui.pokedex;
+package pokedex.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author Leon
  */
-public class ImagePokedexPanel extends JPanel {
+public class ImagePanel extends JPanel {
 
     Image image;
 

@@ -5,6 +5,7 @@
  */
 package pokedex.gui.pokedex;
 
+import pokedex.gui.ImagePanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -24,7 +25,7 @@ import pokedex.gui.*;
 public class PokedexPanel extends JPanel implements ActionListener {
 
     Database db;
-    ImagePokedexPanel imagePanel;
+    ImagePanel imagePanel;
     BottomPokedexPanel selectionPanel;
     TopPokedexPanel topPanel;
     String imageName;
@@ -39,7 +40,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
         setLayout(new BorderLayout());
 
         idActuel = 16;
-        imagePanel = new ImagePokedexPanel();
+        imagePanel = new ImagePanel();
         add(imagePanel, BorderLayout.CENTER);
         selectionPanel = new BottomPokedexPanel("Visiteur", this);
         add(selectionPanel, BorderLayout.SOUTH);

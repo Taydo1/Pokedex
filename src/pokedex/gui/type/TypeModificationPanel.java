@@ -41,6 +41,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
 
         idModif = id;
         parent = p;
+        this.setSize(new Dimension(parent.getWidth(), parent.getHeight()));
         this.initComponents();
         this.setVisible(true);
 
@@ -150,8 +151,8 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
     }
 
     public void updateDimension() {
-        int dimx = (parent.getWidth() / 3) - 70;
-        int dimy = (parent.getHeight() / 7) - 60;
+        int dimx = (this.getWidth() / 4) - 60;
+        int dimy = (this.getHeight() / 7) - 70;
         name.setPreferredSize(new Dimension(dimx, dimy));
         enName.setPreferredSize(new Dimension(dimx, dimy));
         for (int i = 0; i < 18; i++) {

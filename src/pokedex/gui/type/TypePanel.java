@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.*;
@@ -30,6 +31,7 @@ public class TypePanel extends JPanel implements ActionListener {
     static Color immune = Color.LIGHT_GRAY;
     static Color efficace = Color.BLACK;
     InfoButton typeName[];
+    JButton modificationType1, modificationType2, suppressionType1, suppressionType2, nouveau;
     Label type1label, type2label, vs_type[], weakness;
     JComboBox<InfoButton> type1, type2;
 
@@ -47,6 +49,7 @@ public class TypePanel extends JPanel implements ActionListener {
         weakness = new Label("Faiblesse versus ...", true);
         typeName = new InfoButton[18];
         vs_type = new Label[18];
+        modificationType1 = new JButton("Modifier le type 1");
 
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {

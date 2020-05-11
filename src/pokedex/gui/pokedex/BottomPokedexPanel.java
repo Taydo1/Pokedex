@@ -53,7 +53,7 @@ public class BottomPokedexPanel extends JPanel{
         modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         modification.setForeground(Color.black);
         modification.addActionListener(parent);
-        modification.setActionCommand(Action.START_MODIFICATION.name());
+        modification.setActionCommand(Action.START_POKEDEX_MODIFICATION.name());
         ajout = new JButton("Ajouter un pokémon");
         ajout.setBackground(Color.gray);
         ajout.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));

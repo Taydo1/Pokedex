@@ -34,7 +34,7 @@ public class MainPanel extends JPanel implements ActionListener {
     TypePanel typePanel;
     AbilityPanel abilityPanel;
     PokedexApp parent;
-    public FenetreModificationPokemon fenetreModification;
+    public PokedexModificationPanel fenetreModification;
 
     MainPanel(Database db, PokedexApp p) {
         

@@ -28,7 +28,7 @@ import javax.swing.JTextField;
 import pokedex.gui.*;
 import pokedex.database.*;
 
-public class FenetreModificationPokemon extends JPanel implements ActionListener {
+public class PokedexModificationPanel extends JPanel implements ActionListener {
 
     JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
     JTextField nomfr, nomen, classification;
@@ -37,7 +37,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
     MainPanel parent;
     int idModif;
 
-    public FenetreModificationPokemon(int id, MainPanel main) {
+    public PokedexModificationPanel(int id, MainPanel main) {
 
         idModif = id;
         parent = main;
@@ -247,11 +247,11 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
         saveBouton = new JButton("SAVE");
         saveBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveBouton.addActionListener(this);
-        saveBouton.setActionCommand(Action.SAVE_MODIFICATION.name());
+        saveBouton.setActionCommand(Action.SAVE_POKEDEX_MODIFICATION.name());
         discardBouton = new JButton("DISCARD");
         discardBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardBouton.addActionListener(this);
-        discardBouton.setActionCommand(Action.DISCARD_MODIFICATION.name());
+        discardBouton.setActionCommand(Action.DISCARD_POKEDEX_MODIFICATION.name());
 
         JPanel savePanel = new JPanel();
         savePanel.add(saveBouton);
@@ -344,7 +344,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
     public void actionPerformed(ActionEvent e) {
         InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
-            case SAVE_MODIFICATION:
+            case SAVE_POKEDEX_MODIFICATION:
                 String[] colonnesModif = new String[]{"name", "en_name", "classification", "id_type1", "id_type2", "id_ability1", "id_ability2",
                     "id_ability3", "id_ability4", "height", "weight", "percentage_male", "is_legendary_fabulous",
                     "generation", "has_shiny", "has_mega", "id_lower_evolution", "id_evolution1", "id_evolution2"};
@@ -516,7 +516,7 @@ public class FenetreModificationPokemon extends JPanel implements ActionListener
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
-            case DISCARD_MODIFICATION:
+            case DISCARD_POKEDEX_MODIFICATION:
                 parent.tabbedPane.remove(this);
                 parent.tabbedPane.setSelectedIndex(0);
                 break;

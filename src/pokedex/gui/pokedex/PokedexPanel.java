@@ -103,10 +103,10 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 InfoButton source = (InfoButton) e.getSource();
                 goToID(source.getId());
                 break;
-            case START_MODIFICATION:
+            case START_POKEDEX_MODIFICATION:
                 ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(idActuel), Pokedex.class);
                 String name = listname.get(0).name;
-                parent.fenetreModification = new FenetreModificationPokemon(idActuel, parent);
+                parent.fenetreModification = new PokedexModificationPanel(idActuel, parent);
                 parent.tabbedPane.add("Modification de" + name, parent.fenetreModification);
                 parent.tabbedPane.setSelectedComponent(parent.fenetreModification);
                 break;

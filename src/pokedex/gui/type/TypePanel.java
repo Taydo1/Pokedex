@@ -104,9 +104,8 @@ public class TypePanel extends JPanel implements ActionListener {
         c.gridwidth = 2;
         add(new Label(), c);
         c.gridy++;
-        c.gridwidth = 1;
         add(modificationType1, c);
-        c.gridx++;
+        c.gridy++;
         add(modificationType2, c);
     }
 

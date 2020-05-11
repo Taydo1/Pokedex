@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.*;
@@ -36,7 +37,7 @@ public class TypePanel extends JPanel implements ActionListener {
     JComboBox<InfoButton> type1, type2;
 
     public TypePanel(Database db, MainPanel p) {
-        
+
         parent = p;
         this.db = db;
         type1label = new Label("Type 1 : ", true);
@@ -44,11 +45,11 @@ public class TypePanel extends JPanel implements ActionListener {
         type1 = new JComboBox();
         type1.setBackground(Color.GRAY);
         type1.setForeground(Color.WHITE);
-        type1.setPreferredSize(new Dimension(1,20));
+        type1.setPreferredSize(new Dimension(1, 20));
         type2 = new JComboBox();
         type2.setBackground(Color.GRAY);
         type2.setForeground(Color.WHITE);
-        type2.setPreferredSize(new Dimension(1,20));
+        type2.setPreferredSize(new Dimension(1, 20));
         type2.addItem(new InfoButton("", 0));
         weakness = new Label("Faiblesse versus ...", true);
         typeName = new InfoButton[18];
@@ -56,6 +57,15 @@ public class TypePanel extends JPanel implements ActionListener {
         modificationType1 = new InfoButton("Modifier le type 1", 0, true);
         modificationType2 = new InfoButton("Modifier le type 2", 0, true);
 
+        ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type ORDER BY id ASC");
+        for (int i = 0; i < 18; i++) {
+            typeName[i] = new InfoButton("", 0, true);
+            typeName[i].addActionListener(parent);
+            typeName[i].setActionCommand(Action.GET_TYPE.name());
+            vs_type[i] = new Label("", true);
+            type1.addItem(typeName[i]);
+            type2.addItem(typeName[i]);
+        }
         this.setNames();
 
         type1.setActionCommand(Action.GET_COMBINED_TYPE.name());
@@ -83,11 +93,11 @@ public class TypePanel extends JPanel implements ActionListener {
         add(type2, c);
         c.gridy++;
         c.gridx = 0;
-        c.gridwidth=2;
+        c.gridwidth = 2;
         add(new Label(), c);
         c.gridy++;
         add(weakness, c);
-        c.gridwidth=1;
+        c.gridwidth = 1;
         for (int i = 0; i < 18; i++) {
             c.gridx = 0;
             c.gridy++;
@@ -122,29 +132,28 @@ public class TypePanel extends JPanel implements ActionListener {
         }
 
     }
-    
-    public void setNames(){
-        type1.removeAll();
-        type2.removeAll();
+
+    public void setNames() {
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type ORDER BY id ASC");
         for (int i = 0; i < 18; i++) {
-            typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0], true);
-            typeName[i].addActionListener(parent);
-            typeName[i].setActionCommand(Action.GET_TYPE.name());
-            vs_type[i] = new Label("", true);
-            type1.addItem(typeName[i]);
-            type2.addItem(typeName[i]);
+            typeName[i].setText((String) typeNames.get(i)[1]);
+            typeName[i].setId((Integer) typeNames.get(i)[0]);
         }
     }
 
     public void setId(int id1, int id2) {
         ArrayList<Type> currentTypes = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1) + " OR id=" + String.valueOf(id2), Type.class);
-        
-        
-        type1.setSelectedIndex(id1-1);
+
+        System.out.println("");
+        for (Type currentType : currentTypes) {
+            System.out.println("" + currentType);
+        }
+
+        type1.setSelectedIndex(id1 - 1);
         type2.setSelectedIndex(id2);
         if (id2 == 0 || id2 == id1) {
             for (int i = 0; i < 18; i++) {
+                System.out.println("" + Arrays.toString(currentTypes.get(0).vs));
                 vs_type[i].setText(weakToString(currentTypes.get(0).vs[i]));
             }
             modificationType2.setVisible(false);
@@ -158,7 +167,7 @@ public class TypePanel extends JPanel implements ActionListener {
         modificationType1.setText("Modifier le type " + type1.getSelectedItem().toString());
         for (int i = 0; i < 18; i++) {
             String faiblesse = vs_type[i].getText();
-            if (faiblesse.equals("Très Vulnérable")){
+            if (faiblesse.equals("Très Vulnérable")) {
                 vs_type[i].setForeground(veryWeak);
             } else if (faiblesse.equals("Vulnérable")) {
                 vs_type[i].setForeground(weak);
@@ -168,26 +177,27 @@ public class TypePanel extends JPanel implements ActionListener {
                 vs_type[i].setForeground(veryStrong);
             } else if (faiblesse.equals("Immunisé")) {
                 vs_type[i].setForeground(immune);
-            } else if (faiblesse.equals("Efficace")){
+            } else if (faiblesse.equals("Efficace")) {
                 vs_type[i].setForeground(efficace);
             }
         }
+        parent.repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (Action.valueOf(e.getActionCommand())) {
-            case GET_COMBINED_TYPE :
+            case GET_COMBINED_TYPE:
                 InfoButton typeButton1 = (InfoButton) type1.getSelectedItem();
                 InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
                 setId(typeButton1.getId(), typeButton2.getId());
                 break;
             case START_TYPE_MODIFICATION:
-                if (e.getSource() == this.modificationType1){
+                if (e.getSource() == this.modificationType1) {
                     parent.fenetreModificationType = new TypeModificationPanel(type1.getSelectedIndex() + 1, parent);
                     parent.tabbedPane.add("Modification du type " + type1.getSelectedItem().toString(), parent.fenetreModificationType);
                     parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
-                } else if (e.getSource() == this.modificationType2){
+                } else if (e.getSource() == this.modificationType2) {
                     parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex(), parent);
                     parent.tabbedPane.add("Modification du type " + type2.getSelectedItem().toString(), parent.fenetreModificationType);
                     parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
@@ -199,6 +209,8 @@ public class TypePanel extends JPanel implements ActionListener {
     void update() {
         this.setId(type1.getSelectedIndex() + 1, type2.getSelectedIndex());
         this.setNames();
+        System.out.println("salut");
         this.repaint();
+        this.revalidate();
     }
 }

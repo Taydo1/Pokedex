@@ -18,6 +18,7 @@ import javax.swing.JTabbedPane;
 import pokedex.gui.pokedex.*;
 import pokedex.database.*;
 import pokedex.gui.ability.AbilityPanel;
+import pokedex.gui.type.TypeModificationPanel;
 import pokedex.gui.type.TypePanel;
 
 /**
@@ -34,7 +35,8 @@ public class MainPanel extends JPanel implements ActionListener {
     TypePanel typePanel;
     AbilityPanel abilityPanel;
     PokedexApp parent;
-    public PokedexModificationPanel fenetreModification;
+    public PokedexModificationPanel fenetreModificationPokedex;
+    public TypeModificationPanel fenetreModificationType;
 
     MainPanel(Database db, PokedexApp p) {
         

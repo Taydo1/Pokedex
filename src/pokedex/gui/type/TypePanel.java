@@ -12,12 +12,10 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.*;
 import pokedex.gui.*;
-import pokedex.gui.pokedex.PokedexModificationPanel;
 
 /**
  *
@@ -180,11 +178,13 @@ public class TypePanel extends JPanel implements ActionListener {
                 break;
             case START_MODIFICATION_TYPE:
                 if (e.getSource() == this.modificationType1){
-                    parent.fenetreModificationP = new PokedexModificationPanel(idActuel, parent);
-                    parent.tabbedPane.add("Modification de" + type1.getSelectedItem().toString(), parent.fenetreModificationP);
-                    parent.tabbedPane.setSelectedComponent(parent.fenetreModificationP);
+                    parent.fenetreModificationType = new TypeModificationPanel(type1.getSelectedIndex(), parent);
+                    parent.tabbedPane.add("Modification du type " + type1.getSelectedItem().toString(), parent.fenetreModificationType);
+                    parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 } else if (e.getSource() == this.modificationType2){
-                    
+                    parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex(), parent);
+                    parent.tabbedPane.add("Modification du type " + type2.getSelectedItem().toString(), parent.fenetreModificationType);
+                    parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 }
                 break;
         }

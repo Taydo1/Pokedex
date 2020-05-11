@@ -335,8 +335,8 @@ public class PokedexModificationPanel extends JPanel implements ActionListener {
         rarete.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
-        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 2.2)));
-        discardBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 2.2)));
+        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
+        discardBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
     }
 
     @Override

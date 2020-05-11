@@ -193,31 +193,16 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
                     "vs_fight", "vs_fire", "vs_flying", "vs_ghost", "vs_grass", "vs_ground", "vs_ice", "vs_normal", "vs_poison",
                     "vs_psychic", "vs_rock", "vs_steel", "vs_water"};
 
-                Object nfr;
-                Object nen;
-                //Change le "" du nom en null
-                if (name.getText().equals("")) {
-                    nfr = null;
-                } else {
-                    nfr = name.getText();
-                }
-                //Change le "" du nom anglais en null
-                if (enName.getText().equals("")) {
-                    nen = null;
-                } else {
-                    nen = enName.getText();
-                }
                 Object[] valeursModif = new Object[20];
-                valeursModif[0]=nfr;
-                valeursModif[1]=nen;
+                valeursModif[0]=name.getText();
+                valeursModif[1]=enName.getText();
                 for (int i = 0; i < 18; i++) {
                     valeursModif[i+2]=stringToFaiblesse(vs[i].getSelectedItem().toString());
                 }
                 parent.db.modify("type", idModif, colonnesModif, valeursModif);
-                parent.typePanel.update();
+                JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.tabbedPane.setSelectedComponent(parent.typePanel);
-                JOptionPane jop = new JOptionPane();
-                jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+                parent.typePanel.update();
 
             case DISCARD_TYPE_MODIFICATION:
                 parent.tabbedPane.remove(this);

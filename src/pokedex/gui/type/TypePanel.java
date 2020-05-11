@@ -34,7 +34,7 @@ public class TypePanel extends JPanel implements ActionListener {
     static Color efficace = Color.BLACK;
     InfoButton typeName[], modificationType1, modificationType2;
     Label type1label, type2label, vs_type[], weakness;
-    JComboBox<InfoButton> type1, type2;
+    JComboBox<InfoButton> type1selector, type2selector;
 
     public TypePanel(Database db, MainPanel p) {
 
@@ -42,15 +42,15 @@ public class TypePanel extends JPanel implements ActionListener {
         this.db = db;
         type1label = new Label("Type 1 : ", true);
         type2label = new Label("Type 2 : ", true);
-        type1 = new JComboBox();
-        type1.setBackground(Color.GRAY);
-        type1.setForeground(Color.WHITE);
-        type1.setPreferredSize(new Dimension(1, 20));
-        type2 = new JComboBox();
-        type2.setBackground(Color.GRAY);
-        type2.setForeground(Color.WHITE);
-        type2.setPreferredSize(new Dimension(1, 20));
-        type2.addItem(new InfoButton("", 0));
+        type1selector = new JComboBox();
+        type1selector.setBackground(Color.GRAY);
+        type1selector.setForeground(Color.WHITE);
+        type1selector.setPreferredSize(new Dimension(1, 20));
+        type2selector = new JComboBox();
+        type2selector.setBackground(Color.GRAY);
+        type2selector.setForeground(Color.WHITE);
+        type2selector.setPreferredSize(new Dimension(1, 20));
+        type2selector.addItem(new InfoButton("", 0));
         weakness = new Label("Faiblesse versus ...", true);
         typeName = new InfoButton[18];
         vs_type = new Label[18];
@@ -63,19 +63,19 @@ public class TypePanel extends JPanel implements ActionListener {
             typeName[i].addActionListener(parent);
             typeName[i].setActionCommand(Action.GET_TYPE.name());
             vs_type[i] = new Label("", true);
-            type1.addItem(typeName[i]);
-            type2.addItem(typeName[i]);
+            type1selector.addItem(typeName[i]);
+            type2selector.addItem(typeName[i]);
         }
         this.setNames();
 
-        type1.setActionCommand(Action.GET_COMBINED_TYPE.name());
-        type2.setActionCommand(Action.GET_COMBINED_TYPE.name());
+        type1selector.setActionCommand(Action.GET_COMBINED_TYPE.name());
+        type2selector.setActionCommand(Action.GET_COMBINED_TYPE.name());
         modificationType1.setActionCommand(Action.START_TYPE_MODIFICATION.name());
         modificationType2.setActionCommand(Action.START_TYPE_MODIFICATION.name());
         modificationType1.addActionListener(this);
         modificationType2.addActionListener(this);
-        type1.addActionListener(this);
-        type2.addActionListener(this);
+        type1selector.addActionListener(this);
+        type2selector.addActionListener(this);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -85,12 +85,12 @@ public class TypePanel extends JPanel implements ActionListener {
         c.gridx = 0;
         add(type1label, c);
         c.gridx++;
-        add(type1, c);
+        add(type1selector, c);
         c.gridy++;
         c.gridx = 0;
         add(type2label, c);
         c.gridx++;
-        add(type2, c);
+        add(type2selector, c);
         c.gridy++;
         c.gridx = 0;
         c.gridwidth = 2;
@@ -142,25 +142,26 @@ public class TypePanel extends JPanel implements ActionListener {
     }
 
     public void setId(int id1, int id2) {
-        ArrayList<Type> currentTypes = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1) + " OR id=" + String.valueOf(id2), Type.class);
+        Type type1 = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1), Type.class).get(0);
 
 
-        type1.setSelectedIndex(id1 - 1);
-        type2.setSelectedIndex(id2);
+        type1selector.setSelectedIndex(id1 - 1);
+        type2selector.setSelectedIndex(id2);
         if (id2 == 0 || id2 == id1) {
             for (int i = 0; i < 18; i++) {
-                vs_type[i].setText(weakToString(currentTypes.get(0).vs[i]));
+                vs_type[i].setText(weakToString(type1.vs[i]));
             }
             modificationType2.setVisible(false);
         } else {
+            Type type2 = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id2), Type.class).get(0);
             for (int i = 0; i < 18; i++) {
-                vs_type[i].setText(weakToString(currentTypes.get(0).vs[i] * currentTypes.get(1).vs[i]));
+                vs_type[i].setText(weakToString(type1.vs[i] * type2.vs[i]));
             }
             modificationType2.setVisible(true);
-            modificationType2.setText("Modifier le type " + type2.getSelectedItem().toString());
+            modificationType2.setText("Modifier le type " + type2.name);
             modificationType2.setId(id2);
         }
-        modificationType1.setText("Modifier le type " + type1.getSelectedItem().toString());
+        modificationType1.setText("Modifier le type " + type1.name);
         modificationType1.setId(id1);
         for (int i = 0; i < 18; i++) {
             String faiblesse = vs_type[i].getText();
@@ -183,8 +184,8 @@ public class TypePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        InfoButton typeButton1 = (InfoButton) type1.getSelectedItem();
-        InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
+        InfoButton typeButton1 = (InfoButton) type1selector.getSelectedItem();
+        InfoButton typeButton2 = (InfoButton) type2selector.getSelectedItem();
         switch (Action.valueOf(e.getActionCommand())) {
             case GET_COMBINED_TYPE:
                 setId(typeButton1.getId(), typeButton2.getId());
@@ -200,7 +201,7 @@ public class TypePanel extends JPanel implements ActionListener {
     }
 
     void update() {
-        this.setId(type1.getSelectedIndex() + 1, type2.getSelectedIndex());
+        this.setId(type1selector.getSelectedIndex() + 1, type2selector.getSelectedIndex());
         this.setNames();
         this.repaint();
         this.revalidate();

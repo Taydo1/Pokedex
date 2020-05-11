@@ -50,6 +50,20 @@ public class TypePanel extends JPanel implements ActionListener {
         typeName = new InfoButton[18];
         vs_type = new Label[18];
         modificationType1 = new JButton("Modifier le type 1");
+        modificationType1.setBackground(Color.GRAY);
+        modificationType1.setForeground(Color.WHITE);
+        modificationType2 = new JButton("Modifier le type 2");
+        modificationType2.setBackground(Color.GRAY);
+        modificationType2.setForeground(Color.WHITE);
+        suppressionType1 = new JButton("Supprimer le type 1");
+        suppressionType1.setBackground(Color.GRAY);
+        suppressionType1.setForeground(Color.WHITE);
+        suppressionType2 = new JButton("Supprimer le type 2");
+        suppressionType2.setBackground(Color.GRAY);
+        suppressionType2.setForeground(Color.WHITE);
+        nouveau = new JButton("Créer un nouveau Type");
+        nouveau.setBackground(Color.GRAY);
+        nouveau.setForeground(Color.WHITE);
 
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {
@@ -63,6 +77,16 @@ public class TypePanel extends JPanel implements ActionListener {
 
         type1.setActionCommand(Action.GET_COMBINED_TYPE.name());
         type2.setActionCommand(Action.GET_COMBINED_TYPE.name());
+        modificationType1.setActionCommand(Action.START_MODIFICATION_TYPE1.name());
+        modificationType2.setActionCommand(Action.START_MODIFICATION_TYPE2.name());
+        suppressionType1.setActionCommand(Action.SUPPRESSION_TYPE1.name());
+        suppressionType2.setActionCommand(Action.SUPPRESSION_TYPE2.name());
+        nouveau.setActionCommand(Action.NOUVEAU_TYPE.name());
+        modificationType1.addActionListener(this);
+        modificationType2.addActionListener(this);
+        suppressionType1.addActionListener(this);
+        suppressionType2.addActionListener(this);
+        nouveau.addActionListener(this);
         type1.addActionListener(this);
         type2.addActionListener(this);
 
@@ -95,6 +119,23 @@ public class TypePanel extends JPanel implements ActionListener {
             add(vs_type[i], c);
         }
         setId(1, 0);
+        c.gridx = 0;
+        c.gridy++;
+        c.gridwidth = 2;
+        add(new Label(), c);
+        c.gridy++;
+        add(nouveau, c);
+        c.gridy++;
+        c.gridwidth = 1;
+        add(modificationType1, c);
+        c.gridx++;
+        add(modificationType2, c);
+        c.gridy++;
+        c.gridx = 0;
+        c.gridwidth = 1;
+        add(suppressionType1, c);
+        c.gridx++;
+        add(suppressionType2, c);
     }
 
     public String weakToString(float weakness) {
@@ -149,10 +190,25 @@ public class TypePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (Action.valueOf(e.getActionCommand())) {
-            case GET_COMBINED_TYPE:
+            case GET_COMBINED_TYPE :
                 InfoButton typeButton1 = (InfoButton) type1.getSelectedItem();
                 InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
                 setId(typeButton1.getId(), typeButton2.getId());
+                break;
+            case NOUVEAU_TYPE :
+                
+                break;
+            case START_MODIFICATION_TYPE1 :
+                
+                break;
+            case START_MODIFICATION_TYPE2 :
+                
+                break;
+            case SUPPRESSION_TYPE1 :
+                
+                break;
+            case SUPPRESSION_TYPE2 :
+                
                 break;
         }
     }

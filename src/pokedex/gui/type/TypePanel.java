@@ -144,16 +144,11 @@ public class TypePanel extends JPanel implements ActionListener {
     public void setId(int id1, int id2) {
         ArrayList<Type> currentTypes = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1) + " OR id=" + String.valueOf(id2), Type.class);
 
-        System.out.println("");
-        for (Type currentType : currentTypes) {
-            System.out.println("" + currentType);
-        }
 
         type1.setSelectedIndex(id1 - 1);
         type2.setSelectedIndex(id2);
         if (id2 == 0 || id2 == id1) {
             for (int i = 0; i < 18; i++) {
-                System.out.println("" + Arrays.toString(currentTypes.get(0).vs));
                 vs_type[i].setText(weakToString(currentTypes.get(0).vs[i]));
             }
             modificationType2.setVisible(false);
@@ -163,8 +158,10 @@ public class TypePanel extends JPanel implements ActionListener {
             }
             modificationType2.setVisible(true);
             modificationType2.setText("Modifier le type " + type2.getSelectedItem().toString());
+            modificationType2.setId(id2);
         }
         modificationType1.setText("Modifier le type " + type1.getSelectedItem().toString());
+        modificationType1.setId(id1);
         for (int i = 0; i < 18; i++) {
             String faiblesse = vs_type[i].getText();
             if (faiblesse.equals("Très Vulnérable")) {
@@ -186,22 +183,18 @@ public class TypePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        InfoButton typeButton1 = (InfoButton) type1.getSelectedItem();
+        InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
         switch (Action.valueOf(e.getActionCommand())) {
             case GET_COMBINED_TYPE:
-                InfoButton typeButton1 = (InfoButton) type1.getSelectedItem();
-                InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
                 setId(typeButton1.getId(), typeButton2.getId());
                 break;
             case START_TYPE_MODIFICATION:
-                if (e.getSource() == this.modificationType1) {
-                    parent.fenetreModificationType = new TypeModificationPanel(type1.getSelectedIndex() + 1, parent);
-                    parent.tabbedPane.add("Modification du type " + type1.getSelectedItem().toString(), parent.fenetreModificationType);
-                    parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
-                } else if (e.getSource() == this.modificationType2) {
-                    parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex(), parent);
-                    parent.tabbedPane.add("Modification du type " + type2.getSelectedItem().toString(), parent.fenetreModificationType);
-                    parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
-                }
+                InfoButton source = (InfoButton) e.getSource();
+                String typeName = (String) db.getFromDB("SELECT name FROM type WHERE id=" + source.getId()).get(0)[0];
+                parent.fenetreModificationType = new TypeModificationPanel(source.getId(), parent);
+                parent.tabbedPane.add("Modification du type " + typeName, parent.fenetreModificationType);
+                parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 break;
         }
     }
@@ -209,7 +202,6 @@ public class TypePanel extends JPanel implements ActionListener {
     void update() {
         this.setId(type1.getSelectedIndex() + 1, type2.getSelectedIndex());
         this.setNames();
-        System.out.println("salut");
         this.repaint();
         this.revalidate();
     }

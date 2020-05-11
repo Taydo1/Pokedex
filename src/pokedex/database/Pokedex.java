@@ -116,18 +116,18 @@ public class Pokedex extends DBElement {
     
     public String getTypeName(Database db, int typeNb){
         ArrayList<Object[]> list = db.getFromDB("Select t.name from type t join pokedex p on p.id_type"+typeNb+" = t.id WHERE p.id =" + id);
-        String valeurDonne = list.get(0)[0].toString();
+        String valeurDonne = (String)list.get(0)[0];
         return valeurDonne;
     }
     public String getAbilityName(Database db, int abilityNb){
         ArrayList<Object[]> list = db.getFromDB("Select a.name from ability a join pokedex p on p.id_ability"+abilityNb+" = a.id WHERE p.id =" + id);
-        String valeurDonne = list.get(0)[0].toString();
+        String valeurDonne = (String)list.get(0)[0];
         return valeurDonne;
     }
 
     public String getLowerEvolutionName(Database db) {
         ArrayList<Object[]> list = db.getFromDB("Select p2.name from pokedex p1 join pokedex p2 on p1.id_lower_evolution=p2.id WHERE p1.id =" + id);
-        String valeurDonne = list.get(0)[0].toString();
+        String valeurDonne = (String)list.get(0)[0];
         return valeurDonne;
     }
 

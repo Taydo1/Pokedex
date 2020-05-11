@@ -32,7 +32,7 @@ public class TypePanel extends JPanel implements ActionListener {
     static Color veryWeak = Color.RED;
     static Color immune = Color.LIGHT_GRAY;
     static Color efficace = Color.BLACK;
-    InfoButton typeName[], modificationType1, modificationType2;
+    InfoButton names[], modificationType1, modificationType2;
     Label type1label, type2label, vs_type[], weakness;
     JComboBox<InfoButton> type1selector, type2selector;
 
@@ -42,29 +42,29 @@ public class TypePanel extends JPanel implements ActionListener {
         this.db = db;
         type1label = new Label("Type 1 : ", true);
         type2label = new Label("Type 2 : ", true);
-        type1selector = new JComboBox();
+        type1selector = new JComboBox<>();
         type1selector.setBackground(Color.GRAY);
         type1selector.setForeground(Color.WHITE);
         type1selector.setPreferredSize(new Dimension(1, 20));
-        type2selector = new JComboBox();
+        type2selector = new JComboBox<>();
         type2selector.setBackground(Color.GRAY);
         type2selector.setForeground(Color.WHITE);
         type2selector.setPreferredSize(new Dimension(1, 20));
         type2selector.addItem(new InfoButton("", 0));
         weakness = new Label("Faiblesse versus ...", true);
-        typeName = new InfoButton[18];
+        names = new InfoButton[18];
         vs_type = new Label[18];
         modificationType1 = new InfoButton("Modifier le type 1", 0, true);
         modificationType2 = new InfoButton("Modifier le type 2", 0, true);
 
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type ORDER BY id ASC");
         for (int i = 0; i < 18; i++) {
-            typeName[i] = new InfoButton("", 0, true);
-            typeName[i].addActionListener(parent);
-            typeName[i].setActionCommand(Action.GET_TYPE.name());
+            names[i] = new InfoButton("", 0, true);
+            names[i].addActionListener(parent);
+            names[i].setActionCommand(Action.GET_TYPE.name());
             vs_type[i] = new Label("", true);
-            type1selector.addItem(typeName[i]);
-            type2selector.addItem(typeName[i]);
+            type1selector.addItem(names[i]);
+            type2selector.addItem(names[i]);
         }
         this.setNames();
 
@@ -101,7 +101,7 @@ public class TypePanel extends JPanel implements ActionListener {
         for (int i = 0; i < 18; i++) {
             c.gridx = 0;
             c.gridy++;
-            add(typeName[i], c);
+            add(names[i], c);
             c.gridx = 1;
             add(vs_type[i], c);
         }
@@ -136,8 +136,8 @@ public class TypePanel extends JPanel implements ActionListener {
     public void setNames() {
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type ORDER BY id ASC");
         for (int i = 0; i < 18; i++) {
-            typeName[i].setText((String) typeNames.get(i)[1]);
-            typeName[i].setId((Integer) typeNames.get(i)[0]);
+            names[i].setText((String) typeNames.get(i)[1]);
+            names[i].setId((Integer) typeNames.get(i)[0]);
         }
     }
 

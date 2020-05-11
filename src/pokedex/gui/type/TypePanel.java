@@ -191,17 +191,6 @@ public class TypePanel extends JPanel implements ActionListener {
     }
 
     void update() {
-        type1 = new JComboBox();
-        type2 = new JComboBox();
-        ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
-        for (int i = 0; i < 18; i++) {
-            typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0], true);
-            typeName[i].addActionListener(parent);
-            typeName[i].setActionCommand(Action.GET_TYPE.name());
-            vs_type[i] = new Label("", true);
-            type1.addItem(typeName[i]);
-            type2.addItem(typeName[i]);
-            this.repaint();
-        }
+        this.setId(type1.getSelectedIndex() + 1, type2.getSelectedIndex());
     }
 }

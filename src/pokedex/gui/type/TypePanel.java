@@ -31,7 +31,7 @@ public class TypePanel extends JPanel implements ActionListener {
     static Color immune = Color.LIGHT_GRAY;
     static Color efficace = Color.BLACK;
     InfoButton typeName[];
-    JButton modificationType1, modificationType2, suppressionType1, suppressionType2, nouveau;
+    JButton modificationType1, modificationType2;
     Label type1label, type2label, vs_type[], weakness;
     JComboBox<InfoButton> type1, type2;
 
@@ -55,15 +55,6 @@ public class TypePanel extends JPanel implements ActionListener {
         modificationType2 = new JButton("Modifier le type 2");
         modificationType2.setBackground(Color.GRAY);
         modificationType2.setForeground(Color.WHITE);
-        suppressionType1 = new JButton("Supprimer le type 1");
-        suppressionType1.setBackground(Color.GRAY);
-        suppressionType1.setForeground(Color.WHITE);
-        suppressionType2 = new JButton("Supprimer le type 2");
-        suppressionType2.setBackground(Color.GRAY);
-        suppressionType2.setForeground(Color.WHITE);
-        nouveau = new JButton("Créer un nouveau Type");
-        nouveau.setBackground(Color.GRAY);
-        nouveau.setForeground(Color.WHITE);
 
         ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
         for (int i = 0; i < 18; i++) {
@@ -79,14 +70,8 @@ public class TypePanel extends JPanel implements ActionListener {
         type2.setActionCommand(Action.GET_COMBINED_TYPE.name());
         modificationType1.setActionCommand(Action.START_MODIFICATION_TYPE1.name());
         modificationType2.setActionCommand(Action.START_MODIFICATION_TYPE2.name());
-        suppressionType1.setActionCommand(Action.SUPPRESSION_TYPE1.name());
-        suppressionType2.setActionCommand(Action.SUPPRESSION_TYPE2.name());
-        nouveau.setActionCommand(Action.NOUVEAU_TYPE.name());
         modificationType1.addActionListener(this);
         modificationType2.addActionListener(this);
-        suppressionType1.addActionListener(this);
-        suppressionType2.addActionListener(this);
-        nouveau.addActionListener(this);
         type1.addActionListener(this);
         type2.addActionListener(this);
 
@@ -124,18 +109,10 @@ public class TypePanel extends JPanel implements ActionListener {
         c.gridwidth = 2;
         add(new Label(), c);
         c.gridy++;
-        add(nouveau, c);
-        c.gridy++;
         c.gridwidth = 1;
         add(modificationType1, c);
         c.gridx++;
         add(modificationType2, c);
-        c.gridy++;
-        c.gridx = 0;
-        c.gridwidth = 1;
-        add(suppressionType1, c);
-        c.gridx++;
-        add(suppressionType2, c);
     }
 
     public String weakToString(float weakness) {
@@ -157,18 +134,23 @@ public class TypePanel extends JPanel implements ActionListener {
 
     public void setId(int id1, int id2) {
         ArrayList<Type> currentTypes = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1) + " OR id=" + String.valueOf(id2), Type.class);
-
+        
+        
+        type1.setSelectedIndex(id1-1);
+        type2.setSelectedIndex(id2);
         if (id2 == 0 || id2 == id1) {
             for (int i = 0; i < 18; i++) {
                 vs_type[i].setText(weakToString(currentTypes.get(0).vs[i]));
             }
+            modificationType2.setVisible(false);
         } else {
             for (int i = 0; i < 18; i++) {
                 vs_type[i].setText(weakToString(currentTypes.get(0).vs[i] * currentTypes.get(1).vs[i]));
             }
+            modificationType2.setVisible(true);
+            modificationType2.setText("Modifier le type " + type2.getSelectedItem().toString());
         }
-        type1.setSelectedIndex(id1-1);
-        type2.setSelectedIndex(id2);
+        modificationType1.setText("Modifier le type " + type1.getSelectedItem().toString());
         for (int i = 0; i < 18; i++) {
             String faiblesse = vs_type[i].getText();
             if (faiblesse.equals("Très Vulnérable")){

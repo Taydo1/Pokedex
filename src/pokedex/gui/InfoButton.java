@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 public class InfoButton extends JButton {
 
     private int id;
+    private boolean opaque;
 
     public InfoButton(String text, int id) {
         this(text, id, false);
@@ -28,7 +29,8 @@ public class InfoButton extends JButton {
         super(text);
         this.id = id;
         setPreferredSize(new Dimension(1, 20));
-        setOpaque(opaque);
+        setOpaque(false);
+        this.opaque=opaque;
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         setContentAreaFilled(true);
 
@@ -56,6 +58,9 @@ public class InfoButton extends JButton {
             g.fillRect(0, 0, getWidth(), getHeight());
         } else if (getModel().isRollover()) {
             g.setColor(getBackground().darker());
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }else if(opaque){
+            g.setColor(getBackground());
             g.fillRect(0, 0, getWidth(), getHeight());
         }
         super.paintComponent(g);

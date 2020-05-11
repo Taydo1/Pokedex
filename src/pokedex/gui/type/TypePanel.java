@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.*;
 import pokedex.gui.*;
+import pokedex.gui.pokedex.PokedexModificationPanel;
 
 /**
  *
@@ -24,6 +25,7 @@ import pokedex.gui.*;
 public class TypePanel extends JPanel implements ActionListener {
 
     Database db;
+    MainPanel parent;
     static Color veryStrong = Color.GRAY;
     static Color strong = Color.DARK_GRAY;
     static Color weak = Color.MAGENTA;
@@ -34,7 +36,9 @@ public class TypePanel extends JPanel implements ActionListener {
     Label type1label, type2label, vs_type[], weakness;
     JComboBox<InfoButton> type1, type2;
 
-    public TypePanel(Database db, MainPanel parent) {
+    public TypePanel(Database db, MainPanel p) {
+        
+        parent = p;
         this.db = db;
         type1label = new Label("Type 1 : ", true);
         type2label = new Label("Type 2 : ", true);
@@ -172,7 +176,13 @@ public class TypePanel extends JPanel implements ActionListener {
                 setId(typeButton1.getId(), typeButton2.getId());
                 break;
             case START_MODIFICATION_TYPE:
-                
+                if (e.getSource() == this.modificationType1){
+                    parent.fenetreModificationP = new PokedexModificationPanel(idActuel, parent);
+                    parent.tabbedPane.add("Modification de" + type1.getSelectedItem().toString(), parent.fenetreModificationP);
+                    parent.tabbedPane.setSelectedComponent(parent.fenetreModificationP);
+                } else if (e.getSource() == this.modificationType2){
+                    
+                }
                 break;
         }
     }

@@ -203,7 +203,7 @@ public class TypePanel extends JPanel implements ActionListener {
     void update() {
         InfoButton typeButton1 = (InfoButton) type1selector.getSelectedItem();
         InfoButton typeButton2 = (InfoButton) type2selector.getSelectedItem();
-        this.setId(typeButton1.getId() + 1, typeButton2.getId());
+        this.setId(typeButton1.getId(), typeButton2.getId());
         this.setNames();
         this.repaint();
         this.revalidate();

@@ -68,8 +68,8 @@ public class TypePanel extends JPanel implements ActionListener {
 
         type1.setActionCommand(Action.GET_COMBINED_TYPE.name());
         type2.setActionCommand(Action.GET_COMBINED_TYPE.name());
-        modificationType1.setActionCommand(Action.START_MODIFICATION_TYPE.name());
-        modificationType2.setActionCommand(Action.START_MODIFICATION_TYPE.name());
+        modificationType1.setActionCommand(Action.START_TYPE_MODIFICATION.name());
+        modificationType2.setActionCommand(Action.START_TYPE_MODIFICATION.name());
         modificationType1.addActionListener(this);
         modificationType2.addActionListener(this);
         type1.addActionListener(this);
@@ -176,13 +176,13 @@ public class TypePanel extends JPanel implements ActionListener {
                 InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
                 setId(typeButton1.getId(), typeButton2.getId());
                 break;
-            case START_MODIFICATION_TYPE:
+            case START_TYPE_MODIFICATION:
                 if (e.getSource() == this.modificationType1){
                     parent.fenetreModificationType = new TypeModificationPanel(type1.getSelectedIndex() + 1, parent);
                     parent.tabbedPane.add("Modification du type " + type1.getSelectedItem().toString(), parent.fenetreModificationType);
                     parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 } else if (e.getSource() == this.modificationType2){
-                    parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex() + 1, parent);
+                    parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex(), parent);
                     parent.tabbedPane.add("Modification du type " + type2.getSelectedItem().toString(), parent.fenetreModificationType);
                     parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 }

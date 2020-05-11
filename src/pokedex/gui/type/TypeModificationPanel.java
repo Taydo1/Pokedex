@@ -6,25 +6,33 @@
 package pokedex.gui.type;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import pokedex.gui.Action;
+import pokedex.gui.InfoButton;
 import pokedex.gui.MainPanel;
 
 /**
  *
  * @author Spectan
  */
-public class TypeModificationPanel extends JPanel{
+public class TypeModificationPanel extends JPanel implements ActionListener{
     
-    JTextField name, enName;
+    JLabel name, enName;
     MainPanel parent;
     int idModif;
+    JButton saveButton, discardButton;
     JComboBox<String> vsBug, vsDark, vsDragon, vsElectric, vsFairy, vsFight, vsFire, vsFlying, vsGhost, vsGrass, vsGround, vsIce, vsNormal,vsPoison, vsPsychic, vsRock, vsSteel, vsWater;
 
     public TypeModificationPanel(int id, MainPanel p) {
@@ -44,18 +52,18 @@ public class TypeModificationPanel extends JPanel{
         //Pour le nom français
         JPanel panName = new JPanel();
         panName.setBackground(Color.white);
-        name = new JTextField(currentType.name);
+        name = new JLabel(currentType.name);
         panName.setBorder(BorderFactory.createTitledBorder("Nom du type"));
         panName.add(name);
         
         //Pour le nom anglais
         JPanel panEnName = new JPanel();
         panEnName.setBackground(Color.white);
-        enName = new JTextField(currentType.en_name);
+        enName = new JLabel(currentType.en_name);
         panEnName.setBorder(BorderFactory.createTitledBorder("Nom anglais du type"));
         panEnName.add(enName);
         
-        String[] listFaiblesse = new String[]{"Immunisé", "Résistant", "Résistant", "Vulnérable"};
+        String[] listFaiblesse = new String[]{"Immunisé", "Résistant", "Efficace", "Vulnérable"};
         
     //Pour les faiblesses dans l'ordre (même si le nom du type a été changé)
         JPanel panvsBug = new JPanel();
@@ -182,7 +190,16 @@ public class TypeModificationPanel extends JPanel{
         vsWater = new JComboBox<>(listFaiblesse);
         vsWater.setSelectedItem(faiblesseToString(currentType.vs[17]));
         panvsWater.setBorder(BorderFactory.createTitledBorder("Contre " + list.get(17).name));
-        panvsWater.add(vsBug);
+        panvsWater.add(vsWater);
+        
+        saveButton = new JButton("SAVE");
+        saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        saveButton.addActionListener(this);
+        saveButton.setActionCommand(Action.SAVE_TYPE_MODIFICATION.name());
+        discardButton = new JButton("DISCARD");
+        discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        discardButton.addActionListener(this);
+        discardButton.setActionCommand(Action.DISCARD_TYPE_MODIFICATION.name());
         
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -234,6 +251,12 @@ public class TypeModificationPanel extends JPanel{
         add(panvsSteel, c);
         c.gridx++;
         add(panvsWater, c);
+        c.gridwidth = 2;
+        c.gridx = 0;
+        c.gridy++;
+        add(saveButton, c);
+        c.gridx = 2;
+        add(discardButton, c);
         
     updateDimension();
     }
@@ -276,4 +299,57 @@ public class TypeModificationPanel extends JPanel{
         return "Efficace";
     }
     
+    public float stringToFaiblesse(String value){
+        if (value.equals("Vulnérable")){
+            return 2;
+        } else if (value.equals("Efficace")) {
+            return 1;
+        } else if (value.equals("Résistant")) {
+            return 0;
+        } else if (value.equals("Immunisé")) {
+            return 0;
+        }
+        return 1;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        InfoButton source;
+        switch (Action.valueOf(e.getActionCommand())) {
+            case SAVE_TYPE_MODIFICATION:
+                String[] colonnesModif = new String[]{"vs_bug", "vs_dark", "vs_dragon", "vs_electric", "vs_fairy",
+                    "vs_fight", "vs_fire", "vs_flying", "vs_ghost", "vs_grass", "vs_ground", "vs_ice", "vs_normal", "vs_poison",
+                    "vs_psychic", "vs_rock", "vs_steel", "vs_water"};
+
+                Object[] valeursModif = new Object[]{stringToFaiblesse(vsBug.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsDark.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsDragon.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsElectric.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsFairy.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsFight.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsFire.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsFlying.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsGhost.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsGrass.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsGround.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsIce.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsNormal.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsPoison.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsPsychic.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsRock.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsSteel.getSelectedItem().toString()),
+                                                     stringToFaiblesse(vsWater.getSelectedItem().toString()),
+                                                    };
+                parent.db.modify("type", idModif, colonnesModif, valeursModif);
+                parent.tabbedPane.setSelectedComponent(parent.typePanel);
+                parent.pokedexPanel.goToID(parent.pokedexPanel.idActuel);
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+            case DISCARD_TYPE_MODIFICATION:
+                parent.tabbedPane.remove(this);
+                parent.tabbedPane.setSelectedComponent(parent.typePanel);
+                break;
+        }
+    }
 }

@@ -31,8 +31,8 @@ public class MainPanel extends JPanel implements ActionListener {
     String utilisateur;
     public JTabbedPane tabbedPane;
     public Database db;
-    public PokedexPanel pokedexPanel1;
-    TypePanel typePanel;
+    public PokedexPanel pokedexPanel;
+    public TypePanel typePanel;
     AbilityPanel abilityPanel;
     PokedexApp parent;
     public PokedexModificationPanel fenetreModificationPokedex;
@@ -46,10 +46,10 @@ public class MainPanel extends JPanel implements ActionListener {
 
         tabbedPane = new JTabbedPane();
 
-        pokedexPanel1 = new PokedexPanel(db, this);
+        pokedexPanel = new PokedexPanel(db, this);
         typePanel = new TypePanel(db, this);
         abilityPanel = new AbilityPanel(db, this);
-        tabbedPane.addTab("Pokedex", pokedexPanel1);
+        tabbedPane.addTab("Pokedex", pokedexPanel);
         tabbedPane.addTab("Type", typePanel);
         tabbedPane.addTab("Talent", abilityPanel);
 
@@ -78,10 +78,10 @@ public class MainPanel extends JPanel implements ActionListener {
                 while(tabbedPane.getTabCount() > 2){
                     tabbedPane.remove(2);
                 }
-                tabbedPane.setSelectedComponent(pokedexPanel1);
+                tabbedPane.setSelectedComponent(pokedexPanel);
             }
             utilisateur = selection;
-            pokedexPanel1.setUtilisateur(utilisateur);
+            pokedexPanel.setUtilisateur(utilisateur);
         } else if (mdp != null) {
             comboBox.setSelectedItem(utilisateur);
             JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);

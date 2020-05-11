@@ -31,7 +31,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
     String imageName;
     MainPanel parent;
 
-    int idActuel;
+    public int idActuel;
 
     public PokedexPanel(Database db, MainPanel parent) {
         this.db = db;

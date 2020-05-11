@@ -51,6 +51,7 @@ public abstract class DBElement {
     }
 
     public abstract String getInsertSubRequest();
+    public abstract void modifyInDB(Database db);
 
     @Override
     public abstract String toString();

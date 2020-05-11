@@ -57,4 +57,9 @@ public class Pokemon extends DBElement {
         return String.format(Locale.ROOT, "(default, '%s', %d, %d, %s, %d, %s, %s, %s, %d, %d)",
                 name.replace("'", "''"), level, health, int2StringRequest(id_trainer), id_move1, int2StringRequest(id_move2), int2StringRequest(id_move3), int2StringRequest(id_move4), id_pokedex, id_ability);
     }
+
+    @Override
+    public void modifyInDB(Database db){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -66,4 +66,9 @@ public class Move extends DBElement {
         return String.format("(default, '%s', '%s', %d, '%s', %d, %d, %d)",
                 name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy);
     }
+
+    @Override
+    public void modifyInDB(Database db) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

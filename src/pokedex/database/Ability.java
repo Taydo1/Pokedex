@@ -55,4 +55,9 @@ public class Ability extends DBElement {
         return String.format("(default, '%s', '%s', '%s', '%s')",
                 name.replace("'", "''"), en_name.replace("'", "''"), description[0].replace("'", "''"), description[1].replace("'", "''"));
     }
+
+    @Override
+    public void modifyInDB(Database db) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -136,4 +136,9 @@ public class Pokedex extends DBElement {
         String valeurDonne = list.get(0)[0].toString();
         return valeurDonne;
     }
+
+    @Override
+    public void modifyInDB(Database db) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

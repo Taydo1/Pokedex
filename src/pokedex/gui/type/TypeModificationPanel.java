@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import pokedex.database.Type;
 import pokedex.gui.Action;
 import pokedex.gui.InfoButton;
 import pokedex.gui.MainPanel;
@@ -33,7 +34,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
     MainPanel parent;
     int idModif;
     JButton saveButton, discardButton;
-    JComboBox<String> vs[];
+    JComboBox<String>[] vsSelectors;
     JPanel panVs[];
 
     public TypeModificationPanel(int id, MainPanel p) {
@@ -67,15 +68,15 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
         String[] listFaiblesse = new String[]{"Immunisé", "Résistant", "Efficace", "Vulnérable"};
 
         //Pour les faiblesses dans l'ordre (même si le nom du type a été changé)
-        vs = new JComboBox[18];
+        vsSelectors = new JComboBox[18];
         panVs = new JPanel[18];
         for (int i = 0; i < 18; i++) {
             panVs[i] = new JPanel();
             panVs[i].setBackground(Color.white);
-            vs[i] = new JComboBox<>(listFaiblesse);
-            vs[i].setSelectedItem(faiblesseToString(currentType.vs[i]));
+            vsSelectors[i] = new JComboBox<>(listFaiblesse);
+            vsSelectors[i].setSelectedItem(faiblesseToString(currentType.vs[i]));
             panVs[i].setBorder(BorderFactory.createTitledBorder("Contre " + list.get(i).name));
-            panVs[i].add(vs[i]);
+            panVs[i].add(vsSelectors[i]);
         }
 
 
@@ -154,7 +155,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
         name.setPreferredSize(new Dimension(dimx, dimy));
         enName.setPreferredSize(new Dimension(dimx, dimy));
         for (int i = 0; i < 18; i++) {
-            vs[i].setPreferredSize(new Dimension(dimx, dimy));
+            vsSelectors[i].setPreferredSize(new Dimension(dimx, dimy));
         }
     }
 
@@ -171,13 +172,13 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
         return "Efficace";
     }
 
-    public double stringToFaiblesse(String value) {
+    public float stringToFaiblesse(String value) {
         if (value.equals("Vulnérable")) {
             return 2;
         } else if (value.equals("Efficace")) {
             return 1;
         } else if (value.equals("Résistant")) {
-            return 0.5;
+            return 0.5f;
         } else if (value.equals("Immunisé")) {
             return 0;
         }
@@ -189,17 +190,12 @@ public class TypeModificationPanel extends JPanel implements ActionListener {
         InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
             case SAVE_TYPE_MODIFICATION:
-                String[] colonnesModif = new String[]{"name", "en_name", "vs_bug", "vs_dark", "vs_dragon", "vs_electric", "vs_fairy",
-                    "vs_fight", "vs_fire", "vs_flying", "vs_ghost", "vs_grass", "vs_ground", "vs_ice", "vs_normal", "vs_poison",
-                    "vs_psychic", "vs_rock", "vs_steel", "vs_water"};
-
-                Object[] valeursModif = new Object[20];
-                valeursModif[0]=name.getText();
-                valeursModif[1]=enName.getText();
+                float[] vs = new float[18];
                 for (int i = 0; i < 18; i++) {
-                    valeursModif[i+2]=stringToFaiblesse(vs[i].getSelectedItem().toString());
+                    vs[i]=stringToFaiblesse(vsSelectors[i].getSelectedItem().toString());
                 }
-                parent.db.modify("type", idModif, colonnesModif, valeursModif);
+                new Type(idModif, name.getText(), enName.getText(), vs).modifyInDB(parent.db);
+                
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.tabbedPane.setSelectedComponent(parent.typePanel);
                 parent.typePanel.update();

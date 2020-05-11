@@ -178,11 +178,11 @@ public class TypePanel extends JPanel implements ActionListener {
                 break;
             case START_MODIFICATION_TYPE:
                 if (e.getSource() == this.modificationType1){
-                    parent.fenetreModificationType = new TypeModificationPanel(type1.getSelectedIndex(), parent);
+                    parent.fenetreModificationType = new TypeModificationPanel(type1.getSelectedIndex() + 1, parent);
                     parent.tabbedPane.add("Modification du type " + type1.getSelectedItem().toString(), parent.fenetreModificationType);
                     parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 } else if (e.getSource() == this.modificationType2){
-                    parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex(), parent);
+                    parent.fenetreModificationType = new TypeModificationPanel(type2.getSelectedIndex() + 1, parent);
                     parent.tabbedPane.add("Modification du type " + type2.getSelectedItem().toString(), parent.fenetreModificationType);
                     parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
                 }

@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import pokedex.gui.Action;
 import pokedex.gui.InfoButton;
 import pokedex.gui.MainPanel;
@@ -29,7 +29,7 @@ import pokedex.gui.MainPanel;
  */
 public class TypeModificationPanel extends JPanel implements ActionListener{
     
-    JLabel name, enName;
+    JTextField name, enName;
     MainPanel parent;
     int idModif;
     JButton saveButton, discardButton;
@@ -52,14 +52,14 @@ public class TypeModificationPanel extends JPanel implements ActionListener{
         //Pour le nom français
         JPanel panName = new JPanel();
         panName.setBackground(Color.white);
-        name = new JLabel(currentType.name);
+        name = new JTextField(currentType.name);
         panName.setBorder(BorderFactory.createTitledBorder("Nom du type"));
         panName.add(name);
         
         //Pour le nom anglais
         JPanel panEnName = new JPanel();
         panEnName.setBackground(Color.white);
-        enName = new JLabel(currentType.en_name);
+        enName = new JTextField(currentType.en_name);
         panEnName.setBorder(BorderFactory.createTitledBorder("Nom anglais du type"));
         panEnName.add(enName);
         
@@ -299,13 +299,13 @@ public class TypeModificationPanel extends JPanel implements ActionListener{
         return "Efficace";
     }
     
-    public float stringToFaiblesse(String value){
+    public double stringToFaiblesse(String value){
         if (value.equals("Vulnérable")){
             return 2;
         } else if (value.equals("Efficace")) {
             return 1;
         } else if (value.equals("Résistant")) {
-            return 0;
+            return 0.5;
         } else if (value.equals("Immunisé")) {
             return 0;
         }
@@ -317,11 +317,27 @@ public class TypeModificationPanel extends JPanel implements ActionListener{
         InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
             case SAVE_TYPE_MODIFICATION:
-                String[] colonnesModif = new String[]{"vs_bug", "vs_dark", "vs_dragon", "vs_electric", "vs_fairy",
+                String[] colonnesModif = new String[]{"name", "en_name", "vs_bug", "vs_dark", "vs_dragon", "vs_electric", "vs_fairy",
                     "vs_fight", "vs_fire", "vs_flying", "vs_ghost", "vs_grass", "vs_ground", "vs_ice", "vs_normal", "vs_poison",
                     "vs_psychic", "vs_rock", "vs_steel", "vs_water"};
-
-                Object[] valeursModif = new Object[]{stringToFaiblesse(vsBug.getSelectedItem().toString()),
+                
+                Object nfr;
+                Object nen;
+                //Change le "" du nom en null
+                if (name.getText().equals("")) {
+                    nfr = null;
+                } else {
+                    nfr = name.getText();
+                }
+                //Change le "" du nom anglais en null
+                if (enName.getText().equals("")) {
+                    nen = null;
+                } else {
+                    nen = enName.getText();
+                }
+                Object[] valeursModif = new Object[]{nfr,
+                                                     nen,
+                                                     stringToFaiblesse(vsBug.getSelectedItem().toString()),
                                                      stringToFaiblesse(vsDark.getSelectedItem().toString()),
                                                      stringToFaiblesse(vsDragon.getSelectedItem().toString()),
                                                      stringToFaiblesse(vsElectric.getSelectedItem().toString()),
@@ -341,8 +357,8 @@ public class TypeModificationPanel extends JPanel implements ActionListener{
                                                      stringToFaiblesse(vsWater.getSelectedItem().toString()),
                                                     };
                 parent.db.modify("type", idModif, colonnesModif, valeursModif);
+                parent.typePanel.update();
                 parent.tabbedPane.setSelectedComponent(parent.typePanel);
-                parent.pokedexPanel.goToID(parent.pokedexPanel.idActuel);
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 

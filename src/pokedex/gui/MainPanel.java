@@ -76,7 +76,7 @@ public class MainPanel extends JPanel implements ActionListener {
                 while(tabbedPane.getTabCount() > 2){
                     tabbedPane.remove(2);
                 }
-                tabbedPane.setSelectedIndex(0);
+                tabbedPane.setSelectedComponent(pokedexPanel1);
             }
             utilisateur = selection;
             pokedexPanel1.setUtilisateur(utilisateur);
@@ -121,12 +121,12 @@ public class MainPanel extends JPanel implements ActionListener {
             case GET_TYPE:
                 source = (InfoButton)e.getSource();
                 typePanel.setId(source.getId(), 0);
-                tabbedPane.setSelectedIndex(1);
+                tabbedPane.setSelectedComponent(typePanel);
                 break;
             case GET_ABILITY:
                 source = (InfoButton)e.getSource();
                 abilityPanel.setId(source.getId());
-                tabbedPane.setSelectedIndex(2);
+                tabbedPane.setSelectedComponent(abilityPanel);
                 break;
         }
     }

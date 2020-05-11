@@ -511,14 +511,12 @@ public class PokedexModificationPanel extends JPanel implements ActionListener {
                 };
                 parent.db.modify("pokedex", idModif, colonnesModif, valeursModif);
                 parent.pokedexPanel1.goToID(parent.pokedexPanel1.idActuel);
-                parent.tabbedPane.remove(this);
-                parent.tabbedPane.setSelectedIndex(0);
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
             case DISCARD_POKEDEX_MODIFICATION:
                 parent.tabbedPane.remove(this);
-                parent.tabbedPane.setSelectedIndex(0);
+                parent.tabbedPane.setSelectedComponent(parent.pokedexPanel1);
                 break;
         }
     }

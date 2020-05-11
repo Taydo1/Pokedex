@@ -63,8 +63,8 @@ public class TypePanel extends JPanel implements ActionListener {
 
         type1.setActionCommand(Action.GET_COMBINED_TYPE.name());
         type2.setActionCommand(Action.GET_COMBINED_TYPE.name());
-        modificationType1.setActionCommand(Action.START_MODIFICATION_TYPE1.name());
-        modificationType2.setActionCommand(Action.START_MODIFICATION_TYPE2.name());
+        modificationType1.setActionCommand(Action.START_MODIFICATION_TYPE.name());
+        modificationType2.setActionCommand(Action.START_MODIFICATION_TYPE.name());
         modificationType1.addActionListener(this);
         modificationType2.addActionListener(this);
         type1.addActionListener(this);
@@ -172,19 +172,7 @@ public class TypePanel extends JPanel implements ActionListener {
                 InfoButton typeButton2 = (InfoButton) type2.getSelectedItem();
                 setId(typeButton1.getId(), typeButton2.getId());
                 break;
-            case NOUVEAU_TYPE :
-                
-                break;
-            case START_MODIFICATION_TYPE1 :
-                
-                break;
-            case START_MODIFICATION_TYPE2 :
-                
-                break;
-            case SUPPRESSION_TYPE1 :
-                
-                break;
-            case SUPPRESSION_TYPE2 :
+            case START_MODIFICATION_TYPE:
                 
                 break;
         }

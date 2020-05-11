@@ -6,6 +6,7 @@
 package pokedex.gui.type;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -41,9 +42,11 @@ public class TypePanel extends JPanel implements ActionListener {
         type1 = new JComboBox();
         type1.setBackground(Color.GRAY);
         type1.setForeground(Color.WHITE);
+        type1.setPreferredSize(new Dimension(1,20));
         type2 = new JComboBox();
         type2.setBackground(Color.GRAY);
         type2.setForeground(Color.WHITE);
+        type2.setPreferredSize(new Dimension(1,20));
         type2.addItem(new InfoButton("", 0));
         weakness = new Label("Faiblesse versus ...", true);
         typeName = new InfoButton[18];

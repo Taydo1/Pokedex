@@ -56,15 +56,7 @@ public class TypePanel extends JPanel implements ActionListener {
         modificationType1 = new InfoButton("Modifier le type 1", 0, true);
         modificationType2 = new InfoButton("Modifier le type 2", 0, true);
 
-        ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type");
-        for (int i = 0; i < 18; i++) {
-            typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0], true);
-            typeName[i].addActionListener(parent);
-            typeName[i].setActionCommand(Action.GET_TYPE.name());
-            vs_type[i] = new Label("", true);
-            type1.addItem(typeName[i]);
-            type2.addItem(typeName[i]);
-        }
+        this.setNames();
 
         type1.setActionCommand(Action.GET_COMBINED_TYPE.name());
         type2.setActionCommand(Action.GET_COMBINED_TYPE.name());
@@ -130,6 +122,20 @@ public class TypePanel extends JPanel implements ActionListener {
         }
 
     }
+    
+    public void setNames(){
+        type1.removeAll();
+        type2.removeAll();
+        ArrayList<Object[]> typeNames = db.getFromDB("SELECT id,name FROM type ORDER BY id ASC");
+        for (int i = 0; i < 18; i++) {
+            typeName[i] = new InfoButton((String) typeNames.get(i)[1], (Integer) typeNames.get(i)[0], true);
+            typeName[i].addActionListener(parent);
+            typeName[i].setActionCommand(Action.GET_TYPE.name());
+            vs_type[i] = new Label("", true);
+            type1.addItem(typeName[i]);
+            type2.addItem(typeName[i]);
+        }
+    }
 
     public void setId(int id1, int id2) {
         ArrayList<Type> currentTypes = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1) + " OR id=" + String.valueOf(id2), Type.class);
@@ -192,5 +198,7 @@ public class TypePanel extends JPanel implements ActionListener {
 
     void update() {
         this.setId(type1.getSelectedIndex() + 1, type2.getSelectedIndex());
+        this.setNames();
+        this.repaint();
     }
 }

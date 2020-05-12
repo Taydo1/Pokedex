@@ -57,25 +57,25 @@ public class Pokedex extends DBElement {
             this.id_evolution2 = 0;
         }
 
-        boolean bon;
+        boolean good;
         do {
-            bon = true;
+            good = true;
             if (this.id_ability1 == 0 && this.id_ability2 != 0) {
-                bon = false;
+                good = false;
                 this.id_ability1 = this.id_ability2;
                 this.id_ability2 = 0;
             }
             if (this.id_ability2 == 0 && this.id_ability3 != 0) {
-                bon = false;
+                good = false;
                 this.id_ability2 = this.id_ability3;
                 this.id_ability3 = 0;
             }
             if (this.id_ability3 == 0 && this.id_ability4 != 0) {
-                bon = false;
+                good = false;
                 this.id_ability3 = this.id_ability4;
                 this.id_ability4 = 0;
             }
-        } while (!bon);
+        } while (!good);
     }
 
     public Pokedex(String cvsLign, Map<String, Integer> type2id, Map<String, Integer> ability2id) {

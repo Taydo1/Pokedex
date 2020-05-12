@@ -22,19 +22,19 @@ public class Ability extends DBElement {
 
     public Ability() {
     }
-    
-    public Ability(int id, String name,String en_name, String description1, String description2) {
+
+    public Ability(int id, String name, String en_name, String description1, String description2) {
         this.id = id;
         this.name = name;
         this.en_name = en_name;
         this.description = new String[]{description1, description2};
     }
-    
+
     public Ability(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
         this.en_name = rs.getString("en_name");
-        this.description = new String[]{rs.getString("description1"),rs.getString("description2")};
+        this.description = new String[]{rs.getString("description1"), rs.getString("description2")};
     }
 
     public Ability(String cvsLign, Map<String, Integer> abilityid) {

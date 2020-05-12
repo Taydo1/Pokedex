@@ -22,7 +22,6 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Types;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -42,7 +41,8 @@ public class Database {
 
     public void connectDB(String dbName) {
         try {
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, "postgres", "hugoquentinleon");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, "postgres",
+                    "hugoquentinleon");
             st = conn.createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,19 +61,19 @@ public class Database {
     }
 
     public void executeFile(String fileName, String replace) {
-        String fichier = "";
-        String ligne;
+        String file = "";
+        String lign;
         try {
             try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                while ((ligne = br.readLine()) != null) {
-                    fichier += " " + ligne;
+                while ((lign = br.readLine()) != null) {
+                    file += " " + lign;
                 }
             }
 
-            String[] commands = fichier.split(";");
+            String[] commands = file.split(";");
             for (int i = 0; i < commands.length; i++) {
                 commands[i] = commands[i].replaceAll("\\$[^\\$]*\\$", replace);
-                //System.out.println(commands[i]);
+                // System.out.println(commands[i]);
                 st.executeUpdate(commands[i]);
             }
         } catch (IOException | SQLException ex) {
@@ -82,7 +82,7 @@ public class Database {
     }
 
     public void importAll() {
-        String ligne;
+        String lign;
         try {
             Map<String, Integer> type2id = new HashMap<>();
             type2id.put(" ", -1);
@@ -91,8 +91,8 @@ public class Database {
             BufferedReader br = new BufferedReader(new FileReader("ressources/liste_types.csv"));
             br.readLine();
             String request = "INSERT INTO type VALUES ";
-            while ((ligne = br.readLine()) != null) {
-                request += new Type(ligne, type2id).getInsertSubRequest() + ",";
+            while ((lign = br.readLine()) != null) {
+                request += new Type(lign, type2id).getInsertSubRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
@@ -100,8 +100,8 @@ public class Database {
             request = "INSERT INTO ability VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_abilities.csv"));
             br.readLine();
-            while ((ligne = br.readLine()) != null) {
-                request += new Ability(ligne, ability2id).getInsertSubRequest() + ",";
+            while ((lign = br.readLine()) != null) {
+                request += new Ability(lign, ability2id).getInsertSubRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
@@ -109,8 +109,8 @@ public class Database {
             request = "INSERT INTO move VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_moves.csv"));
             br.readLine();
-            while ((ligne = br.readLine()) != null) {
-                request += new Move(ligne, type2id).getInsertSubRequest() + ",";
+            while ((lign = br.readLine()) != null) {
+                request += new Move(lign, type2id).getInsertSubRequest() + ",";
             }
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
@@ -118,10 +118,10 @@ public class Database {
             request = "INSERT INTO pokedex VALUES ";
             br = new BufferedReader(new FileReader("ressources/liste_pokedex.csv"));
             br.readLine();
-            while ((ligne = br.readLine()) != null) {
-                request += new Pokedex(ligne, type2id, ability2id).getInsertSubRequest() + ",";
+            while ((lign = br.readLine()) != null) {
+                request += new Pokedex(lign, type2id, ability2id).getInsertSubRequest() + ",";
             }
-            //System.out.println(request);
+            // System.out.println(request);
             executeUpdate(request.substring(0, request.length() - 1));
             br.close();
 
@@ -183,7 +183,7 @@ public class Database {
     }
 
     public void executeUpdate(String request) {
-        //System.out.println(request);
+        // System.out.println(request);
         try {
             st.executeUpdate(request);
         } catch (SQLException ex) {
@@ -192,7 +192,7 @@ public class Database {
     }
 
     public ResultSet executeQuery(String request) {
-        //System.out.println(request);
+        // System.out.println(request);
         try {
             return st.executeQuery(request);
         } catch (SQLException ex) {
@@ -210,7 +210,8 @@ public class Database {
                 list.add(className.getDeclaredConstructor(ResultSet.class).newInstance(rs));
             }
             return list;
-        } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException | SQLException ex) {
+        } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException
+                | SecurityException | InvocationTargetException | SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
@@ -243,10 +244,11 @@ public class Database {
                             break;
                         case Types.BINARY:
                             row[i - 1] = (rs.getBytes(i));
-                            //row[i]=("FAUT GERER LA RECUP DES IMAGES");
+                            // row[i]=("FAUT GERER LA RECUP DES IMAGES");
                             break;
                         default:
-                            System.out.println("NON SUPPORTED TYPE !!! (" + i + ") " + rsmd.getColumnType(i) + " " + rsmd.getColumnTypeName(i));
+                            System.out.println("NON SUPPORTED TYPE !!! (" + i + ") " + rsmd.getColumnType(i) + " "
+                                    + rsmd.getColumnTypeName(i));
                             break;
                     }
                 }
@@ -261,62 +263,68 @@ public class Database {
 
     public void modify(String listeAModif, int idModif, String[] colonnesModifiees, Object[] valeursModif) {
         for (int i = 0; i < colonnesModifiees.length; i++) {
-            if (valeursModif[i] == null){
-                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = NULL "
-                    + "WHERE id = " + idModif);
+            if (valeursModif[i] == null) {
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''")
+                        + " = NULL " + "WHERE id = " + idModif);
             } else {
-                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''").replace(",", ".")
-                                    + "' WHERE id = " + idModif);
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '"
+                        + valeursModif[i].toString().replace("'", "''").replace(",", ".") + "' WHERE id = " + idModif);
             }
         }
     }
-    
-   
-    
-    public void modifyFromCondition(String listeAModif, String colonne, String condition, String[] colonnesModifiees, Object[] valeursModif){
+
+    public void modifyFromCondition(String listeAModif, String colonne, String condition, String[] colonnesModifiees,
+            Object[] valeursModif) {
         for (int i = 0; i < colonnesModifiees.length; i++) {
-             if (TestInt(condition)==true){
-                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''")
-                    + "' WHERE "+colonne+" = " + condition);
-             }
-             else{
-                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '" + valeursModif[i].toString().replace("'", "''")
-                    + "' WHERE "+colonne+" = '" + condition +"'");
-             }
+            if (TestInt(condition) == true) {
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '"
+                        + valeursModif[i].toString().replace("'", "''") + "' WHERE " + colonne + " = " + condition);
+            } else {
+                this.executeUpdate("UPDATE " + listeAModif + " SET " + colonnesModifiees[i].replace("'", "''") + " = '"
+                        + valeursModif[i].toString().replace("'", "''") + "' WHERE " + colonne + " = '" + condition
+                        + "'");
+            }
         }
     }
-    //methode de suppression de plusieurs lignes d'une table en renseignant l'id des ces lignes
-   public void deleteFromID(String liste_del, int[] id_suppression){
-       for(int i = 0; i < id_suppression.length; i++){
-            this.executeUpdate("DELETE FROM " +liste_del+ " WHERE id = " +id_suppression[i]);
-       }
+
+    // methode de suppression de plusieurs lignes d'une table en renseignant l'id
+    // des ces lignes
+    public void deleteFromID(String liste_del, int[] id_suppression) {
+        for (int i = 0; i < id_suppression.length; i++) {
+            this.executeUpdate("DELETE FROM " + liste_del + " WHERE id = " + id_suppression[i]);
+        }
     }
-   
-/*Methode qui test si le string est un entier
-ParseInt essaies de tranformer en entier, s'il n'y arrive pas, alors il y'a une 
-erreur attrapée et le booléen passe à faux, sinon le booleen est vrai.*/
-   public boolean TestInt(String chaine) {
-		try {
-			Integer.parseInt(chaine,10);
-		} catch (NumberFormatException e){
-			return false;
-		}
- 
-		return true;
-	}
-   //Methode permettant de supprimer des lignes selon une condition quelconque sur une colonne quelconque
-   public void deleteFromCondition(String liste_del,String colonne, String condition  ){
-       if (TestInt(condition)==true){
-           this.executeUpdate("DELETE FROM "+ liste_del +" WHERE "+colonne+" = "+condition);
-       }
-       else{
-           this.executeUpdate("DELETE FROM "+ liste_del +" WHERE "+colonne+" = '"+condition+"'");
-       }
-   }
-   //Methode permettant de supprimer des lignes d'une table selon une condition d'égalité avec une autre table.
-   public void deleteFromOther(String table_del, String table2,  String colonne){
-       this.executeUpdate("DELETE FROM "+ table_del +" USING "+table2+ " WHERE "+table_del+"."+colonne+" = "+table2+"."+colonne);
-   }
+
+    /*
+     * Methode qui test si le string est un entier ParseInt essaies de tranformer en
+     * entier, s'il n'y arrive pas, alors il y'a une erreur attrapée et le booléen
+     * passe à faux, sinon le booleen est vrai.
+     */
+    public boolean TestInt(String chaine) {
+        try {
+            Integer.parseInt(chaine, 10);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    // Methode permettant de supprimer des lignes selon une condition quelconque sur
+    // une colonne quelconque
+    public void deleteFromCondition(String liste_del, String colonne, String condition) {
+        if (TestInt(condition) == true) {
+            this.executeUpdate("DELETE FROM " + liste_del + " WHERE " + colonne + " = " + condition);
+        } else {
+            this.executeUpdate("DELETE FROM " + liste_del + " WHERE " + colonne + " = '" + condition + "'");
+        }
+    }
+
+    // Methode permettant de supprimer des lignes d'une table selon une condition
+    // d'égalité avec une autre table.
+    public void deleteFromOther(String table_del, String table2, String colonne) {
+        this.executeUpdate("DELETE FROM " + table_del + " USING " + table2 + " WHERE " + table_del + "." + colonne
+                + " = " + table2 + "." + colonne);
+    }
 
     public Image getImage(String request) {
         byte[] imageByte = (byte[]) getFromDB(request).get(0)[0];

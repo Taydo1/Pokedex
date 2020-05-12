@@ -32,10 +32,10 @@ public class ImagePanel extends JPanel {
             int imageH = image.getHeight(null);
             int W = this.getWidth();
             int H = this.getHeight();
-            double tmpRatio = Math.min((double)(W) / imageW, (double)(H) / imageH);
+            double tmpRatio = Math.min((double) (W) / imageW, (double) (H) / imageH);
             int destWidth = (int) (imageW * tmpRatio);
             int destHeight = (int) (imageH * tmpRatio);
-            g.drawImage(image, (W-destWidth)/2, (H-destHeight)/2, destWidth, destHeight, null);
+            g.drawImage(image, (W - destWidth) / 2, (H - destHeight) / 2, destWidth, destHeight, null);
             setBackground(Color.WHITE);
         }
     }

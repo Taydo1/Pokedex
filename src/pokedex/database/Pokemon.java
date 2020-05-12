@@ -100,7 +100,7 @@ public class Pokemon extends DBElement {
     }
 
     public String getMoveName(Database db, int moveNb) {
-        ArrayList<Object[]> list = db.getFromDB("Select m.name from move m join pokemon p on p.id_move"+moveNb+"=m.id WHERE p.id =" + id);
+        ArrayList<Object[]> list = db.getFromDB("Select m.name from move m join pokemon p on p.id_move" + moveNb + "=m.id WHERE p.id =" + id);
         if (list.isEmpty()) {
             return "";
         }

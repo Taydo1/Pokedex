@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.BorderFactory;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -30,7 +29,7 @@ public class InfoButton extends JButton {
         this.id = id;
         setPreferredSize(new Dimension(1, 20));
         setOpaque(false);
-        this.opaque=opaque;
+        this.opaque = opaque;
         setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         setContentAreaFilled(true);
 
@@ -59,7 +58,7 @@ public class InfoButton extends JButton {
         } else if (getModel().isRollover()) {
             g.setColor(getBackground().darker());
             g.fillRect(0, 0, getWidth(), getHeight());
-        }else if(opaque){
+        } else if (opaque) {
             g.setColor(getBackground());
             g.fillRect(0, 0, getWidth(), getHeight());
         }

@@ -22,7 +22,7 @@ public class Type extends DBElement {
     public int id;
     public float[] vs;
 
-    public Type(int id,String name, String en_name,
+    public Type(int id, String name, String en_name,
             float vs_bug, float vs_dark,
             float vs_dragon, float vs_electric,
             float vs_fairy, float vs_fight,
@@ -57,7 +57,7 @@ public class Type extends DBElement {
         vs[17] = vs_water;
     }
 
-    public Type(int id,String name, String en_name, float[] vs) {
+    public Type(int id, String name, String en_name, float[] vs) {
         this.id = id;
         this.name = name;
         this.en_name = en_name;
@@ -70,7 +70,7 @@ public class Type extends DBElement {
         this.en_name = rs.getString("en_name");
         this.vs = new float[18];
         for (int i = 0; i < 18; i++) {
-            vs[i] = rs.getFloat(i+4);
+            vs[i] = rs.getFloat(i + 4);
         }
     }
 
@@ -100,15 +100,15 @@ public class Type extends DBElement {
     @Override
     public void modifyInDB(Database db) {
         db.executeUpdate(String.format(Locale.ROOT, "UPDATE type SET name='%s', en_name='%s', "
-                +"vs_bug=%f, vs_dark=%f, vs_dragon=%f, vs_electric=%f, vs_fairy=%f,"
-                +"vs_fight=%f, vs_fire=%f, vs_flying=%f, vs_ghost=%f, vs_grass=%f,"
-                +"vs_ground=%f, vs_ice=%f, vs_normal=%f, vs_poison=%f, vs_psychic=%f,"
-                +"vs_rock=%f, vs_steel=%f, vs_water=%f WHERE id=%d",
-            name.replace("'", "''"), en_name.replace("'", "''"), 
-            vs[0], vs[1], vs[2], vs[3], vs[4], 
-            vs[5], vs[6], vs[7], vs[8], vs[9], 
-            vs[10], vs[11], vs[12], vs[13], vs[14], 
-            vs[15], vs[16], vs[17],id
+                + "vs_bug=%f, vs_dark=%f, vs_dragon=%f, vs_electric=%f, vs_fairy=%f,"
+                + "vs_fight=%f, vs_fire=%f, vs_flying=%f, vs_ghost=%f, vs_grass=%f,"
+                + "vs_ground=%f, vs_ice=%f, vs_normal=%f, vs_poison=%f, vs_psychic=%f,"
+                + "vs_rock=%f, vs_steel=%f, vs_water=%f WHERE id=%d",
+                name.replace("'", "''"), en_name.replace("'", "''"),
+                vs[0], vs[1], vs[2], vs[3], vs[4],
+                vs[5], vs[6], vs[7], vs[8], vs[9],
+                vs[10], vs[11], vs[12], vs[13], vs[14],
+                vs[15], vs[16], vs[17], id
         ));
     }
 

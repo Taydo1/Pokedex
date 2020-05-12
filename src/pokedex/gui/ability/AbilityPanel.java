@@ -16,7 +16,6 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.Ability;
 import pokedex.database.Database;
-import pokedex.database.Type;
 import pokedex.gui.Action;
 import pokedex.gui.InfoButton;
 import pokedex.gui.Label;

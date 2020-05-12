@@ -162,18 +162,18 @@ public class TypePanel extends JPanel implements ActionListener {
         modificationType1.setText("Modifier le type " + type1.name);
         modificationType1.setId(id1);
         for (int i = 0; i < 18; i++) {
-            String faiblesse = vs_type[i].getText();
-            if (faiblesse.equals("Très Vulnérable")) {
+            String weaknessName = vs_type[i].getText();
+            if (weaknessName.equals("Très Vulnérable")) {
                 vs_type[i].setForeground(veryWeak);
-            } else if (faiblesse.equals("Vulnérable")) {
+            } else if (weaknessName.equals("Vulnérable")) {
                 vs_type[i].setForeground(weak);
-            } else if (faiblesse.equals("Résistant")) {
+            } else if (weaknessName.equals("Résistant")) {
                 vs_type[i].setForeground(strong);
-            } else if (faiblesse.equals("Très Résistant")) {
+            } else if (weaknessName.equals("Très Résistant")) {
                 vs_type[i].setForeground(veryStrong);
-            } else if (faiblesse.equals("Immunisé")) {
+            } else if (weaknessName.equals("Immunisé")) {
                 vs_type[i].setForeground(immune);
-            } else if (faiblesse.equals("Efficace")) {
+            } else if (weaknessName.equals("Efficace")) {
                 vs_type[i].setForeground(efficace);
             }
         }

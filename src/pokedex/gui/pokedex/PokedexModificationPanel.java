@@ -32,9 +32,9 @@ import pokedex.database.*;
 
 public class PokedexModificationPanel extends JPanel implements ActionListener, ComponentListener {
 
-    JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
-    JTextField nomfr, nomen, classification;
-    JFormattedTextField taille, poids, pourcentage;
+    JComboBox type1, type2, generation, ability1, ability2, ability3, ability4, lowerEvolution, evolution1, evolution2, rarity, shiny, mega;
+    JTextField name, enName, classification;
+    JFormattedTextField height, weight, malePercentage;
     JButton saveButton, discardButton;
     MainPanel parent;
     int idModif;
@@ -52,25 +52,25 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         Pokedex currentPokedex = parent.db.getFromDB("SELECT * FROM pokedex WHERE id=" + idModif, Pokedex.class).get(0);
 
         //Le nom français
-        JPanel panNomfr = new JPanel();
-        panNomfr.setBackground(Color.white);
-        nomfr = new JTextField(currentPokedex.name);
-        panNomfr.setBorder(BorderFactory.createTitledBorder("Nom du pokémon"));
-        panNomfr.add(nomfr);
+        JPanel namPanel = new JPanel();
+        namPanel.setBackground(Color.white);
+        name = new JTextField(currentPokedex.name);
+        namPanel.setBorder(BorderFactory.createTitledBorder("Nom du pokémon"));
+        namPanel.add(name);
 
         //Le nom anglais
-        JPanel panNomen = new JPanel();
-        panNomen.setBackground(Color.white);
-        nomen = new JTextField(currentPokedex.en_name);
-        panNomen.setBorder(BorderFactory.createTitledBorder("Nom anglais du pokémon"));
-        panNomen.add(nomen);
+        JPanel enNamePanel = new JPanel();
+        enNamePanel.setBackground(Color.white);
+        enName = new JTextField(currentPokedex.en_name);
+        enNamePanel.setBorder(BorderFactory.createTitledBorder("Nom anglais du pokémon"));
+        enNamePanel.add(enName);
 
         //La classification
-        JPanel panClassification = new JPanel();
-        panClassification.setBackground(Color.white);
+        JPanel classificationPanel = new JPanel();
+        classificationPanel.setBackground(Color.white);
         classification = new JTextField(currentPokedex.classification);
-        panClassification.setBorder(BorderFactory.createTitledBorder("Classification du pokémon"));
-        panClassification.add(classification);
+        classificationPanel.setBorder(BorderFactory.createTitledBorder("Classification du pokémon"));
+        classificationPanel.add(classification);
 
         ArrayList<Object[]> talent = parent.db.getFromDB("SELECT name FROM ability ORDER BY id ASC");
         String[] listTalent = new String[talent.size() + 1];
@@ -80,36 +80,36 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         }
 
         //Talent n°1
-        JPanel panTalent1 = new JPanel();
-        panTalent1.setBackground(Color.white);
-        talent1 = new JComboBox<>(listTalent);
-        talent1.setSelectedItem(listTalent[currentPokedex.id_ability1]);
-        panTalent1.setBorder(BorderFactory.createTitledBorder("Talent n°1 du pokémon"));
-        panTalent1.add(talent1);
+        JPanel ability1Panel = new JPanel();
+        ability1Panel.setBackground(Color.white);
+        ability1 = new JComboBox<>(listTalent);
+        ability1.setSelectedItem(listTalent[currentPokedex.id_ability1]);
+        ability1Panel.setBorder(BorderFactory.createTitledBorder("Talent n°1 du pokémon"));
+        ability1Panel.add(ability1);
 
         //Talent n°2
-        JPanel panTalent2 = new JPanel();
-        panTalent2.setBackground(Color.white);
-        talent2 = new JComboBox<>(listTalent);
-        talent2.setSelectedItem(listTalent[currentPokedex.id_ability2]);
-        panTalent2.setBorder(BorderFactory.createTitledBorder("Talent n°2 du pokémon"));
-        panTalent2.add(talent2);
+        JPanel ability2Panel = new JPanel();
+        ability2Panel.setBackground(Color.white);
+        ability2 = new JComboBox<>(listTalent);
+        ability2.setSelectedItem(listTalent[currentPokedex.id_ability2]);
+        ability2Panel.setBorder(BorderFactory.createTitledBorder("Talent n°2 du pokémon"));
+        ability2Panel.add(ability2);
 
         //Talent n°3
-        JPanel panTalent3 = new JPanel();
-        panTalent3.setBackground(Color.white);
-        talent3 = new JComboBox<>(listTalent);
-        talent3.setSelectedItem(listTalent[currentPokedex.id_ability3]);
-        panTalent3.setBorder(BorderFactory.createTitledBorder("Talent n°3 du pokémon"));
-        panTalent3.add(talent3);
+        JPanel ability3Panel = new JPanel();
+        ability3Panel.setBackground(Color.white);
+        ability3 = new JComboBox<>(listTalent);
+        ability3.setSelectedItem(listTalent[currentPokedex.id_ability3]);
+        ability3Panel.setBorder(BorderFactory.createTitledBorder("Talent n°3 du pokémon"));
+        ability3Panel.add(ability3);
 
         //Talent n°4
-        JPanel panTalent4 = new JPanel();
-        panTalent4.setBackground(Color.white);
-        talent4 = new JComboBox<>(listTalent);
-        talent4.setSelectedItem(listTalent[currentPokedex.id_ability4]);
-        panTalent4.setBorder(BorderFactory.createTitledBorder("Talent n°4 du pokémon"));
-        panTalent4.add(talent4);
+        JPanel ability4Panel = new JPanel();
+        ability4Panel.setBackground(Color.white);
+        ability4 = new JComboBox<>(listTalent);
+        ability4.setSelectedItem(listTalent[currentPokedex.id_ability4]);
+        ability4Panel.setBorder(BorderFactory.createTitledBorder("Talent n°4 du pokémon"));
+        ability4Panel.add(ability4);
 
         ArrayList<Object[]> listType = parent.db.getFromDB("SELECT name FROM type ORDER BY id ASC");
         ArrayList<String> types = new ArrayList();
@@ -118,31 +118,31 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         }
 
         //Type n°1
-        JPanel panType1 = new JPanel();
-        panType1.setBackground(Color.white);
+        JPanel type1JPanel = new JPanel();
+        type1JPanel.setBackground(Color.white);
         type1 = new JComboBox<>(types.toArray());
-        type1.setSelectedItem(types.get(currentPokedex.id_type1-1));
-        panType1.setBorder(BorderFactory.createTitledBorder("Type n°1 du pokémon"));
-        panType1.add(type1);
+        type1.setSelectedItem(types.get(currentPokedex.id_type1 - 1));
+        type1JPanel.setBorder(BorderFactory.createTitledBorder("Type n°1 du pokémon"));
+        type1JPanel.add(type1);
 
         //Type n°2
-        types.add(0,"");
-        JPanel panType2 = new JPanel();
-        panType2.setBackground(Color.white);
+        types.add(0, "");
+        JPanel type2Panel = new JPanel();
+        type2Panel.setBackground(Color.white);
         type2 = new JComboBox<>(types.toArray());
         type2.setSelectedItem(types.get(currentPokedex.id_type2));
-        panType2.setBorder(BorderFactory.createTitledBorder("Type n°2 du pokémon"));
-        panType2.add(type2);
+        type2Panel.setBorder(BorderFactory.createTitledBorder("Type n°2 du pokémon"));
+        type2Panel.add(type2);
 
         String[] gen = new String[]{"gen 1", "gen 2", "gen 3", "gen 4", "gen 5", "gen 6", "gen 7"};
 
         //Génération
-        JPanel panGeneration = new JPanel();
-        panGeneration.setBackground(Color.white);
+        JPanel generationPanel = new JPanel();
+        generationPanel.setBackground(Color.white);
         generation = new JComboBox<>(gen);
         generation.setSelectedItem(gen[currentPokedex.generation - 1]);
-        panGeneration.setBorder(BorderFactory.createTitledBorder("Génération du pokémon"));
-        panGeneration.add(generation);
+        generationPanel.setBorder(BorderFactory.createTitledBorder("Génération du pokémon"));
+        generationPanel.add(generation);
 
         ArrayList<Object[]> pkmnTemp = parent.db.getFromDB("SELECT name FROM pokedex ORDER BY id ASC");
         String[] pkmn = new String[pkmnTemp.size() + 1];
@@ -152,98 +152,98 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         }
 
         //Pré-évolution
-        JPanel panPreEvolution = new JPanel();
-        panPreEvolution.setBackground(Color.white);
-        preEvolution = new JComboBox<>(pkmn);
-        preEvolution.setSelectedItem(pkmn[currentPokedex.id_lower_evolution]);
-        panPreEvolution.setBorder(BorderFactory.createTitledBorder("Pré-évolution du pokémon"));
-        panPreEvolution.add(preEvolution);
+        JPanel lowerEvolutionPanel = new JPanel();
+        lowerEvolutionPanel.setBackground(Color.white);
+        lowerEvolution = new JComboBox<>(pkmn);
+        lowerEvolution.setSelectedItem(pkmn[currentPokedex.id_lower_evolution]);
+        lowerEvolutionPanel.setBorder(BorderFactory.createTitledBorder("Pré-évolution du pokémon"));
+        lowerEvolutionPanel.add(lowerEvolution);
 
         //Evolution 1
-        JPanel panEvolution1 = new JPanel();
-        panEvolution1.setBackground(Color.white);
+        JPanel evolution1Panel = new JPanel();
+        evolution1Panel.setBackground(Color.white);
         evolution1 = new JComboBox<>(pkmn);
         evolution1.setSelectedItem(pkmn[currentPokedex.id_evolution1]);
-        panEvolution1.setBorder(BorderFactory.createTitledBorder("Évolution n°1 du pokémon"));
-        panEvolution1.add(evolution1);
+        evolution1Panel.setBorder(BorderFactory.createTitledBorder("Évolution n°1 du pokémon"));
+        evolution1Panel.add(evolution1);
 
         //Evolution 2
-        JPanel panEvolution2 = new JPanel();
-        panEvolution2.setBackground(Color.white);
+        JPanel evolution2Panel = new JPanel();
+        evolution2Panel.setBackground(Color.white);
         evolution2 = new JComboBox<>(pkmn);
         evolution2.setSelectedItem(pkmn[currentPokedex.id_evolution2]);
-        panEvolution2.setBorder(BorderFactory.createTitledBorder("Évolution n°2 du pokémon"));
-        panEvolution2.add(evolution2);
+        evolution2Panel.setBorder(BorderFactory.createTitledBorder("Évolution n°2 du pokémon"));
+        evolution2Panel.add(evolution2);
 
         NumberFormat formatPoidsTaille = NumberFormat.getInstance();
         formatPoidsTaille.setMaximumFractionDigits(1);
 
         //Taille
-        JPanel panTaille = new JPanel();
-        panTaille.setBackground(Color.white);
-        taille = new JFormattedTextField(formatPoidsTaille);
-        taille.setValue(currentPokedex.height);
-        panTaille.setBorder(BorderFactory.createTitledBorder("Taille du pokémon"));
-        panTaille.add(taille);
+        JPanel heightPanel = new JPanel();
+        heightPanel.setBackground(Color.white);
+        height = new JFormattedTextField(formatPoidsTaille);
+        height.setValue(currentPokedex.height);
+        heightPanel.setBorder(BorderFactory.createTitledBorder("Taille du pokémon"));
+        heightPanel.add(height);
 
         //Poids
-        JPanel panPoids = new JPanel();
-        panPoids.setBackground(Color.white);
-        poids = new JFormattedTextField(formatPoidsTaille);
-        poids.setValue(currentPokedex.weight);
-        panPoids.setBorder(BorderFactory.createTitledBorder("Poids du pokémon"));
-        panPoids.add(poids);
+        JPanel weightPanel = new JPanel();
+        weightPanel.setBackground(Color.white);
+        weight = new JFormattedTextField(formatPoidsTaille);
+        weight.setValue(currentPokedex.weight);
+        weightPanel.setBorder(BorderFactory.createTitledBorder("Poids du pokémon"));
+        weightPanel.add(weight);
 
         NumberFormat formatPourcentage = NumberFormat.getPercentInstance();
         formatPourcentage.setMaximumFractionDigits(1);
 
         //Pourcentage de mâle
-        JPanel panPourcent = new JPanel();
-        panPourcent.setBackground(Color.white);
-        pourcentage = new JFormattedTextField(formatPourcentage);
-        pourcentage.setValue((double)currentPokedex.percentage_male);
-        panPourcent.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
-        panPourcent.add(pourcentage);
+        JPanel percentagePanel = new JPanel();
+        percentagePanel.setBackground(Color.white);
+        malePercentage = new JFormattedTextField(formatPourcentage);
+        malePercentage.setValue((double) currentPokedex.percentage_male);
+        percentagePanel.setBorder(BorderFactory.createTitledBorder("Pourcentage de mâle"));
+        percentagePanel.add(malePercentage);
 
         String[] rar = new String[]{"Banal", "Fabuleux", "Légendaire"};
 
         //Rareté du pokémon
-        JPanel panRarete = new JPanel();
-        panRarete.setBackground(Color.white);
-        rarete = new JComboBox<>(rar);
+        JPanel rarityPanel = new JPanel();
+        rarityPanel.setBackground(Color.white);
+        rarity = new JComboBox<>(rar);
         if (currentPokedex.is_legendary == -1) {
-            rarete.setSelectedItem(rar[0]);
+            rarity.setSelectedItem(rar[0]);
         } else {
-            rarete.setSelectedItem(rar[currentPokedex.is_legendary]);
+            rarity.setSelectedItem(rar[currentPokedex.is_legendary]);
         }
-        panRarete.setBorder(BorderFactory.createTitledBorder("Rareté du pokémon"));
-        panRarete.add(rarete);
+        rarityPanel.setBorder(BorderFactory.createTitledBorder("Rareté du pokémon"));
+        rarityPanel.add(rarity);
 
         String[] ouiNon = new String[]{"Oui", "Non"};
 
         //Forme Shiny
-        JPanel panShiny = new JPanel();
-        panShiny.setBackground(Color.white);
+        JPanel shinyPanel = new JPanel();
+        shinyPanel.setBackground(Color.white);
         shiny = new JComboBox<>(ouiNon);
         if (currentPokedex.has_shiny) {
             shiny.setSelectedItem(ouiNon[0]);
         } else {
             shiny.setSelectedItem(ouiNon[1]);
         }
-        panShiny.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme shiny ?"));
-        panShiny.add(shiny);
+        shinyPanel.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme shiny ?"));
+        shinyPanel.add(shiny);
 
         //Forme Méga
-        JPanel panMega = new JPanel();
-        panMega.setBackground(Color.white);
+        JPanel megaPanel = new JPanel();
+        megaPanel.setBackground(Color.white);
         mega = new JComboBox<>(ouiNon);
         if (currentPokedex.has_mega) {
             mega.setSelectedItem(ouiNon[0]);
         } else {
             mega.setSelectedItem(ouiNon[1]);
         }
-        panMega.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme méga ?"));
-        panMega.add(mega);
+        megaPanel.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme méga ?"));
+        megaPanel.add(mega);
 
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
@@ -269,44 +269,44 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         c.gridy = 0;
         c.weightx = 0.33;
         c.weighty = 0.14;
-        add(panNomfr, c);
+        add(namPanel, c);
         c.gridx = 1;
-        add(panNomen, c);
+        add(enNamePanel, c);
         c.gridx = 2;
-        add(panClassification, c);
+        add(classificationPanel, c);
         c.gridy = 1;
-        add(panTalent1, c);
+        add(ability1Panel, c);
         c.gridx = 1;
-        add(panType2, c);
+        add(type2Panel, c);
         c.gridx = 0;
-        add(panType1, c);
+        add(type1JPanel, c);
         c.gridy = 2;
-        add(panTalent2, c);
+        add(ability2Panel, c);
         c.gridx = 1;
-        add(panTalent3, c);
+        add(ability3Panel, c);
         c.gridx = 2;
-        add(panTalent4, c);
+        add(ability4Panel, c);
         c.gridy = 3;
-        add(panEvolution1, c);
+        add(evolution1Panel, c);
         c.gridx = 1;
-        add(panPreEvolution, c);
+        add(lowerEvolutionPanel, c);
         c.gridx = 0;
-        add(panGeneration, c);
+        add(generationPanel, c);
         c.gridy = 4;
-        add(panEvolution2, c);
+        add(evolution2Panel, c);
         c.gridx = 1;
-        add(panTaille, c);
+        add(heightPanel, c);
         c.gridx = 2;
-        add(panPoids, c);
+        add(weightPanel, c);
         c.gridy = 5;
-        add(panShiny, c);
+        add(shinyPanel, c);
         c.gridx = 1;
-        add(panRarete, c);
+        add(rarityPanel, c);
         c.gridx = 0;
-        add(panPourcent, c);
+        add(percentagePanel, c);
         c.gridx = 1;
         c.gridy = 6;
-        add(panMega, c);
+        add(megaPanel, c);
         c.gridx = 0;
         add(savePanel, c);
         c.gridx = 2;
@@ -319,23 +319,23 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
     public void updateDimension() {
         int dimx = (parent.getWidth() / 3) - 70;
         int dimy = (parent.getHeight() / 7) - 60;
-        nomfr.setPreferredSize(new Dimension(dimx, dimy));
-        nomen.setPreferredSize(new Dimension(dimx, dimy));
+        name.setPreferredSize(new Dimension(dimx, dimy));
+        enName.setPreferredSize(new Dimension(dimx, dimy));
         classification.setPreferredSize(new Dimension(dimx, dimy));
-        talent1.setPreferredSize(new Dimension(dimx, dimy));
-        talent2.setPreferredSize(new Dimension(dimx, dimy));
-        talent3.setPreferredSize(new Dimension(dimx, dimy));
-        talent4.setPreferredSize(new Dimension(dimx, dimy));
+        ability1.setPreferredSize(new Dimension(dimx, dimy));
+        ability2.setPreferredSize(new Dimension(dimx, dimy));
+        ability3.setPreferredSize(new Dimension(dimx, dimy));
+        ability4.setPreferredSize(new Dimension(dimx, dimy));
         type1.setPreferredSize(new Dimension(dimx, dimy));
         type2.setPreferredSize(new Dimension(dimx, dimy));
         generation.setPreferredSize(new Dimension(dimx, dimy));
-        preEvolution.setPreferredSize(new Dimension(dimx, dimy));
+        lowerEvolution.setPreferredSize(new Dimension(dimx, dimy));
         evolution1.setPreferredSize(new Dimension(dimx, dimy));
         evolution2.setPreferredSize(new Dimension(dimx, dimy));
-        taille.setPreferredSize(new Dimension(dimx, dimy));
-        poids.setPreferredSize(new Dimension(dimx, dimy));
-        pourcentage.setPreferredSize(new Dimension(dimx, dimy));
-        rarete.setPreferredSize(new Dimension(dimx, dimy));
+        height.setPreferredSize(new Dimension(dimx, dimy));
+        weight.setPreferredSize(new Dimension(dimx, dimy));
+        malePercentage.setPreferredSize(new Dimension(dimx, dimy));
+        rarity.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
         saveButton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
@@ -349,7 +349,8 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
             case SAVE_POKEDEX_MODIFICATION:
                 //Traduit les Oui/Non en booléen
                 int r;
-                boolean s,m;
+                boolean s,
+                 m;
                 if (shiny.getSelectedItem().equals("Oui")) {
                     s = true;
                 } else {
@@ -361,24 +362,24 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
                     m = false;
                 }
                 //Réglage d'un bug sur la rareté
-                if (rarete.getSelectedItem().equals("Légendaire")) {
+                if (rarity.getSelectedItem().equals("Légendaire")) {
                     r = 2;
-                } else if (rarete.getSelectedItem().equals("Fabuleux")) {
+                } else if (rarity.getSelectedItem().equals("Fabuleux")) {
                     r = 1;
                 } else {
                     r = 0;
                 }
-                double temp = (double)pourcentage.getValue();
-                new Pokedex(idModif, nomfr.getText(), nomen.getText(), classification.getText(),
-                        type1.getSelectedIndex()+1, type2.getSelectedIndex(),
-                        talent1.getSelectedIndex(), talent2.getSelectedIndex(), 
-                        talent3.getSelectedIndex(), talent4.getSelectedIndex(), 
-                        generation.getSelectedIndex()+1, preEvolution.getSelectedIndex(), 
-                        evolution1.getSelectedIndex(), evolution2.getSelectedIndex(), 
-                        Float.parseFloat(taille.getText().replace(',', '.')), Float.parseFloat(poids.getText().replace(',', '.')),
-                        (float)temp, r, s, m).modifyInDB(parent.db);
+                double percent = (double) malePercentage.getValue();
+                new Pokedex(idModif, name.getText(), enName.getText(), classification.getText(),
+                        type1.getSelectedIndex() + 1, type2.getSelectedIndex(),
+                        ability1.getSelectedIndex(), ability2.getSelectedIndex(),
+                        ability3.getSelectedIndex(), ability4.getSelectedIndex(),
+                        generation.getSelectedIndex() + 1, lowerEvolution.getSelectedIndex(),
+                        evolution1.getSelectedIndex(), evolution2.getSelectedIndex(),
+                        Float.parseFloat(height.getText().replace(',', '.')), Float.parseFloat(weight.getText().replace(',', '.')),
+                        (float) percent, r, s, m).modifyInDB(parent.db);
 
-                parent.pokedexPanel.setId(parent.pokedexPanel.idActuel);
+                parent.pokedexPanel.setId(parent.pokedexPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
             case DISCARD_POKEDEX_MODIFICATION:
@@ -386,7 +387,8 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
                 break;
         }
     }
-        @Override
+
+    @Override
     public void componentResized(ComponentEvent arg0) {
         updateDimension();
     }

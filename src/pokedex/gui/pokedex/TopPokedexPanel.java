@@ -22,8 +22,8 @@ import pokedex.database.*;
 public class TopPokedexPanel extends JPanel {
 
     ToggleButton classique, chromatique, mega;
-    InfoButton type1, type2, ability1, ability2, ability3, ability4, evolution1, evolution2, sousEvolution1;
-    Label idNom, classification, poids, taille, pourcentageMale, type, ability, evolution, sousEvolution;
+    InfoButton type1, type2, ability1, ability2, ability3, ability4, evolution1, evolution2, lowerEvolution1;
+    Label idName, classification, weight, height, malePercentage, type, ability, evolution, lowerEvolution;
     Color backgroundColor;
 
     public TopPokedexPanel(PokedexPanel parent) {
@@ -45,9 +45,9 @@ public class TopPokedexPanel extends JPanel {
         imageButtonGroup.add(chromatique);
         imageButtonGroup.add(mega);
 
-        idNom = new Label();
-        idNom.setFont(idNom.getFont().deriveFont(20f));
-        idNom.setPreferredSize(new Dimension(1, 40));
+        idName = new Label();
+        idName.setFont(idName.getFont().deriveFont(20f));
+        idName.setPreferredSize(new Dimension(1, 40));
         classification = new Label();
         classification.setFont(classification.getFont().deriveFont(18f));
         classification.setPreferredSize(new Dimension(1, 20));
@@ -61,12 +61,12 @@ public class TopPokedexPanel extends JPanel {
         type2.setActionCommand(Action.GET_TYPE.name());
         type2.addActionListener(parent.parent);
 
-        poids = new Label();
-        poids.setPreferredSize(new Dimension(1, 20));
-        taille = new Label();
-        taille.setPreferredSize(new Dimension(1, 20));
-        pourcentageMale = new Label();
-        pourcentageMale.setPreferredSize(new Dimension(1, 20));
+        weight = new Label();
+        weight.setPreferredSize(new Dimension(1, 20));
+        height = new Label();
+        height.setPreferredSize(new Dimension(1, 20));
+        malePercentage = new Label();
+        malePercentage.setPreferredSize(new Dimension(1, 20));
 
         ability = new Label("Talent : ");
         ability.setPreferredSize(new Dimension(1, 20));
@@ -80,9 +80,9 @@ public class TopPokedexPanel extends JPanel {
         evolution1 = new InfoButton();
         evolution2 = new InfoButton();
 
-        sousEvolution = new Label("Sous-Evolution");
-        sousEvolution.setPreferredSize(new Dimension(1, 20));
-        sousEvolution1 = new InfoButton();
+        lowerEvolution = new Label("Sous-Evolution");
+        lowerEvolution.setPreferredSize(new Dimension(1, 20));
+        lowerEvolution1 = new InfoButton();
 
         classique.addActionListener(parent);
         classique.setActionCommand(Action.IMAGE_NORMAL.name());
@@ -106,8 +106,8 @@ public class TopPokedexPanel extends JPanel {
         evolution1.setActionCommand(Action.GET_POKEDEX.name());
         evolution2.addActionListener(parent.parent);
         evolution2.setActionCommand(Action.GET_POKEDEX.name());
-        sousEvolution1.addActionListener(parent.parent);
-        sousEvolution1.setActionCommand(Action.GET_POKEDEX.name());
+        lowerEvolution1.addActionListener(parent.parent);
+        lowerEvolution1.setActionCommand(Action.GET_POKEDEX.name());
 
         setLayout(new GridBagLayout());
 
@@ -125,7 +125,7 @@ public class TopPokedexPanel extends JPanel {
         c.gridy++;
         c.gridx = 0;
         c.gridwidth = 2;
-        add(idNom, c);
+        add(idName, c);
         c.gridx += 2;
         c.gridwidth = 1;
         add(classification, c);
@@ -138,11 +138,11 @@ public class TopPokedexPanel extends JPanel {
         add(type2, c);
         c.gridy++;
         c.gridx = 0;
-        add(poids, c);
+        add(weight, c);
         c.gridx++;
-        add(taille, c);
+        add(height, c);
         c.gridx++;
-        add(pourcentageMale, c);
+        add(malePercentage, c);
         c.gridy++;
         c.gridx = 0;
         c.gridheight = 2;
@@ -159,9 +159,9 @@ public class TopPokedexPanel extends JPanel {
         add(ability4, c);
         c.gridy++;
         c.gridx = 0;
-        add(sousEvolution, c);
+        add(lowerEvolution, c);
         c.gridx++;
-        add(sousEvolution1, c);
+        add(lowerEvolution1, c);
         c.gridy++;
         c.gridx = 0;
         add(evolution, c);
@@ -177,11 +177,11 @@ public class TopPokedexPanel extends JPanel {
         Pokedex pokeActuel = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(id), Pokedex.class).get(0);
         classification.setText(pokeActuel.classification);
         if (id >= 100) {
-            idNom.setText(String.valueOf(id) + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
+            idName.setText("" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
         } else if (id < 10) {
-            idNom.setText("00" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
+            idName.setText("00" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
         } else {
-            idNom.setText("0" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
+            idName.setText("0" + id + " " + pokeActuel.name + " (" + pokeActuel.en_name + ")");
         }
 
         if (!pokeActuel.has_mega && mega.isSelected()) {
@@ -205,9 +205,9 @@ public class TopPokedexPanel extends JPanel {
         mega.setEnabled(pokeActuel.has_mega);
         chromatique.setEnabled(pokeActuel.has_shiny);
 
-        poids.setText(String.format("Poids : %.1fkg", pokeActuel.weight));
-        taille.setText(String.format("Taille : %.1fm", pokeActuel.height));
-        pourcentageMale.setText(String.format("%.1f%% de mâles", pokeActuel.percentage_male * 100));
+        weight.setText(String.format("Poids : %.1fkg", pokeActuel.weight));
+        height.setText(String.format("Taille : %.1fm", pokeActuel.height));
+        malePercentage.setText(String.format("%.1f%% de mâles", pokeActuel.percentage_male * 100));
         type1.setText(pokeActuel.getTypeName(db, 1));
         type1.setId(pokeActuel.id_type1);
 
@@ -244,13 +244,13 @@ public class TopPokedexPanel extends JPanel {
         }
 
         if (pokeActuel.id_lower_evolution != 0) {
-            sousEvolution.setVisible(true);
-            sousEvolution1.setVisible(true);
-            sousEvolution1.setText(pokeActuel.getLowerEvolutionName(db));
-            sousEvolution1.setId(pokeActuel.id_lower_evolution);
+            lowerEvolution.setVisible(true);
+            lowerEvolution1.setVisible(true);
+            lowerEvolution1.setText(pokeActuel.getLowerEvolutionName(db));
+            lowerEvolution1.setId(pokeActuel.id_lower_evolution);
         } else {
-            sousEvolution.setVisible(false);
-            sousEvolution1.setVisible(false);
+            lowerEvolution.setVisible(false);
+            lowerEvolution1.setVisible(false);
         }
         if (pokeActuel.id_evolution1 != 0) {
             evolution.setVisible(true);

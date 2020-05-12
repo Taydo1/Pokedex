@@ -21,7 +21,6 @@ import pokedex.gui.pokedex.*;
 import pokedex.database.*;
 import pokedex.gui.ability.AbilityPanel;
 import pokedex.gui.pokemon.PokemonPanel;
-import pokedex.gui.type.TypeModificationPanel;
 import pokedex.gui.type.TypePanel;
 
 /**
@@ -32,7 +31,7 @@ public class MainPanel extends JPanel implements ActionListener {
 
     JComboBox choix;
     String utilisateur;
-    public JTabbedPane tabbedPane;
+    private JTabbedPane tabbedPane;
     public Database db;
     public PokedexPanel pokedexPanel;
     public TypePanel typePanel;
@@ -168,9 +167,10 @@ public class MainPanel extends JPanel implements ActionListener {
         }
     }
     
-    public void removeTab(JPanel tab){
+    public void removeTab(JPanel tab, JPanel tabToSelect){
         tabbedPane.remove(tab);
         ongletsDresseur.remove(tab);
         ongletsProfesseur.remove(tab);
+        tabbedPane.setSelectedComponent(tabToSelect);
     }
 }

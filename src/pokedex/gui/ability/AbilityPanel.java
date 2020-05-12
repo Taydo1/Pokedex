@@ -12,6 +12,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.Ability;
@@ -30,6 +32,8 @@ public class AbilityPanel extends JPanel implements ActionListener {
     Database db;
     Label name, description1, description2;
     JComboBox<InfoButton> selector;
+    InfoButton modification, suppression;
+    JButton ajout;
 
     public AbilityPanel(Database db, MainPanel parent) {
         super();
@@ -42,6 +46,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
         selector = new JComboBox();
         selector.setBackground(Color.GRAY);
         selector.setForeground(Color.WHITE);
+        
 
         InfoButton selectorButton;
         ArrayList<Object[]> abilityNames = db.getFromDB("SELECT id,name FROM ability");
@@ -49,9 +54,19 @@ public class AbilityPanel extends JPanel implements ActionListener {
             selectorButton = new InfoButton((String) abilityNames.get(i)[1], (Integer) abilityNames.get(i)[0]);
             selector.addItem(selectorButton);
         }
+        
+        ajout = new JButton("Ajouter un nouveau talent");
+        ajout.setForeground(Color.white);
+        ajout.setBackground(Color.gray);
+        ajout.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        
+        modification = new InfoButton("Modifier le talent " + abilityNames.get(0)[1].toString(), 1, true);
+        suppression = new InfoButton("Supprimer le talent " + abilityNames.get(0)[1].toString(), 1, true);
 
         selector.setActionCommand(Action.GET_ABILITY.name());
         selector.addActionListener(this);
+        modification.setActionCommand(Action.START_ABILITY_MODIFICATION.name());
+        modification.addActionListener(this);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -68,6 +83,12 @@ public class AbilityPanel extends JPanel implements ActionListener {
         add(description1, c);
         c.gridy++;
         add(description2, c);
+        c.gridy = c.gridy + 3;
+        add(ajout, c);
+        c.gridy++;
+        add(modification, c);
+        c.gridy++;
+        add(suppression, c);
 
         setId(1);
     }
@@ -79,6 +100,10 @@ public class AbilityPanel extends JPanel implements ActionListener {
         selector.setSelectedIndex(id - 1);
         description1.setText("<html>"+currentAbility.description[0]+"</html>");
         description2.setText("<html>"+currentAbility.description[1]+"</html>");
+        modification.setText("Modifiier le talent " + currentAbility.name);
+        modification.setId(id);
+        suppression.setText("Supprimer le talent " + currentAbility.name);
+        suppression.setId(id);
     }
 
     @Override
@@ -88,6 +113,9 @@ public class AbilityPanel extends JPanel implements ActionListener {
             case GET_ABILITY:
                 InfoButton abilityButton = (InfoButton) selector.getSelectedItem();
                 setId(abilityButton.getId());
+                break;
+            case START_ABILITY_MODIFICATION :
+                    System.out.println(modification.getId());
                 break;
         }
     }

@@ -30,12 +30,6 @@ public class Ability extends DBElement {
         this.description = new String[]{description1, description2};
     }
     
-    public Ability(String name, String description1, String description2) {
-        this.id = -1;
-        this.name = name;
-        this.description = new String[]{description1, description2};
-    }
-
     public Ability(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");

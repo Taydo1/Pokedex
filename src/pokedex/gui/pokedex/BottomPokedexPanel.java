@@ -206,7 +206,7 @@ public class BottomPokedexPanel extends JPanel{
         goId.setText("");
     }
     public int getIDFromNom(Database db){
-        int id = (int) db.getFromDB("SELECT id FROM pokedex WHERE UPPER(name) LIKE UPPER('"+goNom.getText()+"')").get(0)[0];
+        int id = (int) db.getFromDB("SELECT id FROM pokedex WHERE UPPER(name) LIKE UPPER('"+goNom.getText()+"') ORDER BY id ASC").get(0)[0];
         System.out.println("ID récupéré : "+id);
         return id;
     }

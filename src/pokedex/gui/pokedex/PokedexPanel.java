@@ -68,7 +68,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
     }
 
     public void setUtilisateur(String utilisateur) {
-        bottomPanel.setUtilisateur(utilisateur);
+        bottomPanel.setUser(utilisateur);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
                     JFrame frame = new JFrame("");
                     ImageIcon icon = new ImageIcon(getClass().getResource("/images/icones/PikachuGif.gif"));
                     Object[] options = {"Get coronavirus", "OK Boomer"};
-                    JOptionPane.showOptionDialog(frame, "Le Pokemon '" + bottomPanel.goNom.getText() + "' n'existe pas\n"
+                    JOptionPane.showOptionDialog(frame, "Le Pokemon '" + bottomPanel.goName.getText() + "' n'existe pas\n"
                             + "Veuillez entrer un nom valide", "Pokemon introuvable", JOptionPane.YES_NO_CANCEL_OPTION,
                             JOptionPane.QUESTION_MESSAGE, icon, options, options[1]);
                 }

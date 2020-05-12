@@ -32,16 +32,16 @@ public class AbilityPanel extends JPanel implements ActionListener {
     Database db;
     Label name, description1, description2;
     JComboBox<InfoButton> selector;
-    InfoButton modification, suppression;
-    JButton ajout;
+    InfoButton modification, delete;
+    JButton add;
     MainPanel parent;
 
     public AbilityPanel(Database db, MainPanel p) {
-        
+
         super();
         parent = p;
         this.db = db;
-        name = new Label("Talent : ",true);
+        name = new Label("Talent : ", true);
         description1 = new Label("", true);
         description1.setPreferredSize(new Dimension(1, 50));
         description2 = new Label("", true);
@@ -49,7 +49,6 @@ public class AbilityPanel extends JPanel implements ActionListener {
         selector = new JComboBox();
         selector.setBackground(Color.GRAY);
         selector.setForeground(Color.WHITE);
-        
 
         InfoButton selectorButton;
         ArrayList<Object[]> abilityNames = db.getFromDB("SELECT id,name FROM ability");
@@ -57,14 +56,14 @@ public class AbilityPanel extends JPanel implements ActionListener {
             selectorButton = new InfoButton((String) abilityNames.get(i)[1], (Integer) abilityNames.get(i)[0]);
             selector.addItem(selectorButton);
         }
-        
-        ajout = new JButton("Ajouter un nouveau talent");
-        ajout.setForeground(Color.white);
-        ajout.setBackground(Color.gray);
-        ajout.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-        
+
+        add = new JButton("Ajouter un nouveau talent");
+        add.setForeground(Color.white);
+        add.setBackground(Color.gray);
+        add.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+
         modification = new InfoButton("Modifier le talent " + abilityNames.get(0)[1].toString(), 1, true);
-        suppression = new InfoButton("Supprimer le talent " + abilityNames.get(0)[1].toString(), 1, true);
+        delete = new InfoButton("Supprimer le talent " + abilityNames.get(0)[1].toString(), 1, true);
 
         selector.setActionCommand(Action.GET_ABILITY.name());
         selector.addActionListener(this);
@@ -87,11 +86,11 @@ public class AbilityPanel extends JPanel implements ActionListener {
         c.gridy++;
         add(description2, c);
         c.gridy = c.gridy + 3;
-        add(ajout, c);
+        add(add, c);
         c.gridy++;
         add(modification, c);
         c.gridy++;
-        add(suppression, c);
+        add(delete, c);
 
         setId(1);
     }
@@ -101,23 +100,23 @@ public class AbilityPanel extends JPanel implements ActionListener {
 
         //name.setText(currentAbility.name+" ("+currentAbility.en_name+")");
         selector.setSelectedIndex(id - 1);
-        description1.setText("<html>"+currentAbility.description[0]+"</html>");
-        description2.setText("<html>"+currentAbility.description[1]+"</html>");
+        description1.setText("<html>" + currentAbility.description[0] + "</html>");
+        description2.setText("<html>" + currentAbility.description[1] + "</html>");
         modification.setText("Modifier le talent " + currentAbility.name);
         modification.setId(id);
-        suppression.setText("Supprimer le talent " + currentAbility.name);
-        suppression.setId(id);
+        delete.setText("Supprimer le talent " + currentAbility.name);
+        delete.setId(id);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         switch (Action.valueOf(e.getActionCommand())) {
             case GET_ABILITY:
                 InfoButton abilityButton = (InfoButton) selector.getSelectedItem();
                 setId(abilityButton.getId());
                 break;
-            case START_ABILITY_MODIFICATION :
+            case START_ABILITY_MODIFICATION:
                 parent.addTab(new AbilityModificationPanel(modification.getId(), parent), "Modification de " + parent.db.getFromDB("SELECT * FROM ability WHERE id=" + modification.getId(), Ability.class).get(0).name, 1);
                 break;
         }

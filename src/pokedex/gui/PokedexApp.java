@@ -89,8 +89,7 @@ public class PokedexApp extends JFrame {
         for (Object[] row : listPokemonPokedex) {
             System.out.println("" + row);
         }
-           
-        
+
         /*//Test de la fonction modification
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};

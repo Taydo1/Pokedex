@@ -29,8 +29,8 @@ import pokedex.gui.type.TypePanel;
  */
 public class MainPanel extends JPanel implements ActionListener {
 
-    JComboBox choix;
-    String utilisateur;
+    JComboBox choice;
+    String user;
     private JTabbedPane tabbedPane;
     public Database db;
     public PokedexPanel pokedexPanel;
@@ -39,7 +39,7 @@ public class MainPanel extends JPanel implements ActionListener {
     public AbilityPanel abilityPanel;
     PokedexApp parent;
 
-    public ArrayList<Component> ongletsDresseur, ongletsProfesseur;
+    public ArrayList<Component> trainerTabs, professorTabs;
 
     MainPanel(Database db, PokedexApp p) {
         parent = p;
@@ -47,8 +47,8 @@ public class MainPanel extends JPanel implements ActionListener {
         setLayout(new BorderLayout());
 
         tabbedPane = new JTabbedPane();
-        ongletsDresseur = new ArrayList<>();
-        ongletsProfesseur = new ArrayList<>();
+        trainerTabs = new ArrayList<>();
+        professorTabs = new ArrayList<>();
 
         pokedexPanel = new PokedexPanel(db, this);
         typePanel = new TypePanel(db, this);
@@ -59,49 +59,49 @@ public class MainPanel extends JPanel implements ActionListener {
         tabbedPane.addTab("Talent", abilityPanel);
         tabbedPane.addTab("Pokemon", pokemonPanel);
 
-        String[] personnes = new String[]{"Visiteur", "Dresseur", "Professeur"};
-        choix = new JComboBox<>(personnes);
-        choix.setActionCommand(Action.CHANGE_USER.name());
-        choix.addActionListener(this);
-        add(choix, BorderLayout.NORTH);
+        String[] users = new String[]{"Visiteur", "Dresseur", "Professeur"};
+        choice = new JComboBox<>(users);
+        choice.setActionCommand(Action.CHANGE_USER.name());
+        choice.addActionListener(this);
+        add(choice, BorderLayout.NORTH);
 
         add(tabbedPane, BorderLayout.CENTER);
 
-        utilisateur = personnes[0];
+        user = users[0];
     }
 
     private void changeUser(JComboBox comboBox) {
-        String selection = (String) choix.getSelectedItem();
-        String mdp;
-        if (!utilisateur.equals(selection)) {
+        String selection = (String) choice.getSelectedItem();
+        String password;
+        if (!user.equals(selection)) {
             if (selection.equals("Visiteur")) {
-                mdp = "visiteur";
+                password = "visiteur";
             } else {
-                mdp = getPassword();
+                password = getPassword();
             }
 
-            if (mdp != null && mdp.toLowerCase().equals(selection.toLowerCase())) {
-                if("Visiteur".equals(selection)){
-                    for (Component onglet : ongletsDresseur) {
-                        tabbedPane.remove(onglet);
+            if (password != null && password.toLowerCase().equals(selection.toLowerCase())) {
+                if ("Visiteur".equals(selection)) {
+                    for (Component tab : trainerTabs) {
+                        tabbedPane.remove(tab);
                     }
-                    ongletsDresseur.clear();
+                    trainerTabs.clear();
                 }
-                if("Visiteur".equals(selection) || "Dresseur".equals(selection)){
-                    for (Component onglet : ongletsProfesseur) {
-                        tabbedPane.remove(onglet);
+                if ("Visiteur".equals(selection) || "Dresseur".equals(selection)) {
+                    for (Component tab : professorTabs) {
+                        tabbedPane.remove(tab);
                     }
-                    ongletsProfesseur.clear();
-                    ongletsDresseur.removeAll(ongletsProfesseur);
+                    professorTabs.clear();
+                    trainerTabs.removeAll(professorTabs);
                 }
                 tabbedPane.setSelectedComponent(pokedexPanel);
-                utilisateur = selection;
-                pokedexPanel.setUtilisateur(utilisateur);
-            } else if (mdp != null) {
-                comboBox.setSelectedItem(utilisateur);
+                user = selection;
+                pokedexPanel.setUtilisateur(user);
+            } else if (password != null) {
+                comboBox.setSelectedItem(user);
                 JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
             } else {
-                comboBox.setSelectedItem(utilisateur);
+                comboBox.setSelectedItem(user);
             }
         }
     }
@@ -152,26 +152,26 @@ public class MainPanel extends JPanel implements ActionListener {
                 break;
         }
     }
-    
+
     public static final int PROFESSOR_TAB = 1;
     public static final int TRAINER_TAB = 2;
-    
-    public void addTab(JPanel tab, String tabName, int tabGroup){
+
+    public void addTab(JPanel tab, String tabName, int tabGroup) {
         tabbedPane.add(tabName, tab);
         tabbedPane.setSelectedComponent(tab);
-        switch(tabGroup){
+        switch (tabGroup) {
             case PROFESSOR_TAB:
-               ongletsProfesseur.add(tab);
+                professorTabs.add(tab);
             case TRAINER_TAB:
-                ongletsDresseur.add(tab);
+                trainerTabs.add(tab);
                 break;
         }
     }
-    
-    public void removeTab(JPanel tab, JPanel tabToSelect){
+
+    public void removeTab(JPanel tab, JPanel tabToSelect) {
         tabbedPane.remove(tab);
-        ongletsDresseur.remove(tab);
-        ongletsProfesseur.remove(tab);
+        trainerTabs.remove(tab);
+        professorTabs.remove(tab);
         tabbedPane.setSelectedComponent(tabToSelect);
     }
 }

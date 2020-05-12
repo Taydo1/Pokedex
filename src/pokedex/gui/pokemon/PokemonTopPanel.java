@@ -135,7 +135,7 @@ public class PokemonTopPanel extends JPanel {
             } else {
                 type2.setVisible(false);
             }
-            ability.setText("Talent :"+currentPokemon.getAbilityName(db));
+            ability.setText("Talent : "+currentPokemon.getAbilityName(db));
             ability.setId(currentPokemon.id_ability);
             if (currentPokemon.id_trainer != 0) {
                 trainer.setText(currentPokemon.getTrainerName(db));

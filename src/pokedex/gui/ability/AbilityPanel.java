@@ -73,7 +73,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
     }
 
     public void setId(int id) {
-        Ability currentAbility = db.getFromDB("SELECT * FROM ability WHERE id=" + String.valueOf(id), Ability.class).get(0);
+        Ability currentAbility = db.getFromDB("SELECT * FROM ability WHERE id=" + id, Ability.class).get(0);
 
         //name.setText(currentAbility.name+" ("+currentAbility.en_name+")");
         selector.setSelectedIndex(id - 1);

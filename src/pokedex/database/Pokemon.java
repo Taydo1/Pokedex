@@ -7,6 +7,7 @@ package pokedex.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -16,8 +17,8 @@ import java.util.Locale;
 public class Pokemon extends DBElement {
 
     public String name;
-    int id, level, health;
-    int id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability;
+    public int id, level, health;
+    public int id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability;
 
     public Pokemon(String name, int level, int health, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
         this.id = -1;
@@ -59,7 +60,51 @@ public class Pokemon extends DBElement {
     }
 
     @Override
-    public void modifyInDB(Database db){
+    public void modifyInDB(Database db) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getPokedexName(Database db) {
+        ArrayList<Object[]> list = db.getFromDB("Select p.name from pokedex p join pokemon pm ON pm.id_pokedex=p.id WHERE pm.id =" + id);
+        String valeurDonne = (String) list.get(0)[0];
+        return valeurDonne;
+    }
+
+    public String getTypeName(Database db, int typeNb) {
+        ArrayList<Object[]> list = db.getFromDB("Select t.name from type t join pokedex p on p.id_type" + typeNb + " = t.id join pokemon pm on pm.id_pokedex=p.id WHERE pm.id =" + id);
+        if (list.isEmpty()) {
+            return "";
+        }
+        String valeurDonne = (String) list.get(0)[0];
+        return valeurDonne;
+    }
+
+    public int getTypeId(Database db, int typeNb) {
+        ArrayList<Object[]> list = db.getFromDB("Select p.id_type" + typeNb + " from pokedex p join pokemon pm ON pm.id_pokedex=p.id WHERE pm.id =" + id);
+        return (int) list.get(0)[0];
+    }
+
+    public String getAbilityName(Database db) {
+        ArrayList<Object[]> list = db.getFromDB("Select name from ability WHERE id =" + id_ability);
+        String valeurDonne = (String) list.get(0)[0];
+        return valeurDonne;
+    }
+
+    public String getTrainerName(Database db) {
+        ArrayList<Object[]> list = db.getFromDB("Select t.name from trainer t join pokemon p on p.id_trainer=t.id WHERE p.id =" + id);
+        if (list.isEmpty()) {
+            return "";
+        }
+        String valeurDonne = (String) list.get(0)[0];
+        return valeurDonne;
+    }
+
+    public String getMoveName(Database db, int moveNb) {
+        ArrayList<Object[]> list = db.getFromDB("Select m.name from move m join pokemon p on p.id_move"+moveNb+"=m.id WHERE p.id =" + id);
+        if (list.isEmpty()) {
+            return "";
+        }
+        String valeurDonne = (String) list.get(0)[0];
+        return valeurDonne;
     }
 }

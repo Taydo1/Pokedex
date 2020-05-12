@@ -26,8 +26,8 @@ public class PokedexApp extends JFrame {
     public PokedexApp() {
 
         setupDB(false);
-        setupWindow();
         //testRequest();
+        setupWindow();
     }
 
     private void setupDB(boolean toBeCreated) {
@@ -59,8 +59,10 @@ public class PokedexApp extends JFrame {
     }
 
     private void testRequest() {
-        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 110, 188);
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 188, 110);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest());
+        Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, -1, 1, 3, -1, -1, 188, 17);
+        db.executeUpdate("INSERT INTO Pokemon VALUES " + corona2.getInsertSubRequest());
 
         ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
@@ -89,7 +91,7 @@ public class PokedexApp extends JFrame {
         }
            
         
-        //Test de la fonction modification
+        /*//Test de la fonction modification
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};
@@ -106,7 +108,7 @@ public class PokedexApp extends JFrame {
         listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
-        }
+        }*/
     }
 
     /**

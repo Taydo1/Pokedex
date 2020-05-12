@@ -378,7 +378,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
                         Float.parseFloat(taille.getText().replace(',', '.')), Float.parseFloat(poids.getText().replace(',', '.')),
                         (float)temp, r, s, m).modifyInDB(parent.db);
 
-                parent.pokedexPanel.goToID(parent.pokedexPanel.idActuel);
+                parent.pokedexPanel.setId(parent.pokedexPanel.idActuel);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
             case DISCARD_POKEDEX_MODIFICATION:

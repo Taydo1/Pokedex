@@ -85,6 +85,6 @@ CREATE TABLE pokemon(
 	id_move2 int REFERENCES move(id),
 	id_move3 int REFERENCES move(id),
 	id_move4 int REFERENCES move(id),
-	id_ability int REFERENCES ability(id),
-	id_pokedex int REFERENCES pokedex(id)
+	id_pokedex int REFERENCES pokedex(id),
+	id_ability int REFERENCES ability(id)
 );

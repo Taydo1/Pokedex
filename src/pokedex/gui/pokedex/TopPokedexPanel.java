@@ -102,11 +102,11 @@ public class TopPokedexPanel extends JPanel {
         ability3.setActionCommand(Action.GET_ABILITY.name());
         ability4.addActionListener((MainPanel) parent.parent);
         ability4.setActionCommand(Action.GET_ABILITY.name());
-        evolution1.addActionListener(parent);
+        evolution1.addActionListener(parent.parent);
         evolution1.setActionCommand(Action.GET_POKEDEX.name());
-        evolution2.addActionListener(parent);
+        evolution2.addActionListener(parent.parent);
         evolution2.setActionCommand(Action.GET_POKEDEX.name());
-        sousEvolution1.addActionListener(parent);
+        sousEvolution1.addActionListener(parent.parent);
         sousEvolution1.setActionCommand(Action.GET_POKEDEX.name());
 
         setLayout(new GridBagLayout());

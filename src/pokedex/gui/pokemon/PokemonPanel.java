@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import pokedex.database.Database;
+import pokedex.gui.Action;
+import pokedex.gui.InfoButton;
 import pokedex.gui.MainPanel;
 
 /**
@@ -19,15 +21,23 @@ import pokedex.gui.MainPanel;
 public class PokemonPanel extends JPanel implements ActionListener{
 
     PokemonTopPanel topPanel;
+    MainPanel parent;
     public PokemonPanel(Database db, MainPanel parent) {
+        this.parent = parent;
         setLayout(new BorderLayout());
         topPanel = new PokemonTopPanel(db, this);
         add(topPanel, BorderLayout.NORTH);
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent e) {
+        InfoButton source;
+        switch(Action.valueOf(e.getActionCommand())){
+            case GET_POKEMON:
+                source=(InfoButton) topPanel.selector.getSelectedItem();
+                topPanel.setId(source.getId());
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -48,11 +48,11 @@ public class PokedexPanel extends JPanel implements ActionListener {
         add(topPanel, BorderLayout.NORTH);
 
         imageName = "image";
-        goToID(idActuel);
+        setId(idActuel);
 
     }
 
-    public void goToID(int id) {
+    public void setId(int id) {
         //Go to id
         try {
             selectionPanel.setId(id, db);
@@ -75,14 +75,14 @@ public class PokedexPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (Action.valueOf(e.getActionCommand())) {
             case UP:
-                goToID(idActuel + 1);
+                setId(idActuel + 1);
                 break;
             case DOWN:
-                goToID(idActuel - 1);
+                setId(idActuel - 1);
                 break;
             case GO: {
                 try {
-                    goToID(selectionPanel.getGoId());
+                    setId(selectionPanel.getGoId());
                     selectionPanel.clearGoId();
                 } catch (NumberFormatException ex) {
                 }
@@ -90,19 +90,15 @@ public class PokedexPanel extends JPanel implements ActionListener {
             }
             case IMAGE_NORMAL:
                 imageName = "image";
-                goToID(idActuel);
+                setId(idActuel);
                 break;
             case IMAGE_SHINY:
                 imageName = "image_shiny";
-                goToID(idActuel);
+                setId(idActuel);
                 break;
             case IMAGE_MEGA:
                 imageName = "image_mega";
-                goToID(idActuel);
-                break;
-            case GET_POKEDEX:
-                InfoButton source = (InfoButton) e.getSource();
-                goToID(source.getId());
+                setId(idActuel);
                 break;
             case START_POKEDEX_MODIFICATION:
                 ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(idActuel), Pokedex.class);
@@ -113,7 +109,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 break;
             case GO_NOM:{
                 try{
-                    goToID(selectionPanel.getIDFromNom(db));
+                    setId(selectionPanel.getIDFromNom(db));
                     
                 } catch (NumberFormatException | IndexOutOfBoundsException ex)
                 {

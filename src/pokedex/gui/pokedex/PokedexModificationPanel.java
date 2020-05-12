@@ -35,7 +35,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
     JComboBox type1, type2, generation, talent1, talent2, talent3, talent4, preEvolution, evolution1, evolution2, rarete, shiny, mega;
     JTextField nomfr, nomen, classification;
     JFormattedTextField taille, poids, pourcentage;
-    JButton saveBouton, discardBouton;
+    JButton saveButton, discardButton;
     MainPanel parent;
     int idModif;
 
@@ -245,20 +245,20 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         panMega.setBorder(BorderFactory.createTitledBorder("Le pokémon a une forme méga ?"));
         panMega.add(mega);
 
-        saveBouton = new JButton("SAVE");
-        saveBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        saveBouton.addActionListener(this);
-        saveBouton.setActionCommand(Action.SAVE_POKEDEX_MODIFICATION.name());
-        discardBouton = new JButton("DISCARD");
-        discardBouton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        discardBouton.addActionListener(this);
-        discardBouton.setActionCommand(Action.DISCARD_POKEDEX_MODIFICATION.name());
+        saveButton = new JButton("SAVE");
+        saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        saveButton.addActionListener(this);
+        saveButton.setActionCommand(Action.SAVE_POKEDEX_MODIFICATION.name());
+        discardButton = new JButton("DISCARD");
+        discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
+        discardButton.addActionListener(this);
+        discardButton.setActionCommand(Action.DISCARD_POKEDEX_MODIFICATION.name());
 
         JPanel savePanel = new JPanel();
-        savePanel.add(saveBouton);
+        savePanel.add(saveButton);
         savePanel.setBackground(Color.white);
         JPanel discardPanel = new JPanel();
-        discardPanel.add(discardBouton);
+        discardPanel.add(discardButton);
         discardPanel.setBackground(Color.white);
 
         setLayout(new GridBagLayout());
@@ -338,8 +338,8 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         rarete.setPreferredSize(new Dimension(dimx, dimy));
         shiny.setPreferredSize(new Dimension(dimx, dimy));
         mega.setPreferredSize(new Dimension(dimx, dimy));
-        saveBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
-        discardBouton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
+        saveButton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
+        discardButton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
     }
 
     @Override

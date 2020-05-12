@@ -22,7 +22,14 @@ public class Ability extends DBElement {
 
     public Ability() {
     }
-
+    
+    public Ability(int id, String name,String en_name, String description1, String description2) {
+        this.id = id;
+        this.name = name;
+        this.en_name = en_name;
+        this.description = new String[]{description1, description2};
+    }
+    
     public Ability(String name, String description1, String description2) {
         this.id = -1;
         this.name = name;
@@ -58,6 +65,8 @@ public class Ability extends DBElement {
 
     @Override
     public void modifyInDB(Database db) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] colonnes = new String[]{"name", "en_name", "description1", "description2"};
+        Object[] valeurs = new Object[]{this.name, this.en_name, this.description[0], this.description[1]};
+        db.modify("ability", this.id, colonnes, valeurs);
     }
 }

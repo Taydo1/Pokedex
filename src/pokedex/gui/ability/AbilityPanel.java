@@ -34,9 +34,12 @@ public class AbilityPanel extends JPanel implements ActionListener {
     JComboBox<InfoButton> selector;
     InfoButton modification, suppression;
     JButton ajout;
+    MainPanel parent;
 
-    public AbilityPanel(Database db, MainPanel parent) {
+    public AbilityPanel(Database db, MainPanel p) {
+        
         super();
+        parent = p;
         this.db = db;
         name = new Label("Talent : ",true);
         description1 = new Label("", true);
@@ -100,7 +103,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
         selector.setSelectedIndex(id - 1);
         description1.setText("<html>"+currentAbility.description[0]+"</html>");
         description2.setText("<html>"+currentAbility.description[1]+"</html>");
-        modification.setText("Modifiier le talent " + currentAbility.name);
+        modification.setText("Modifier le talent " + currentAbility.name);
         modification.setId(id);
         suppression.setText("Supprimer le talent " + currentAbility.name);
         suppression.setId(id);
@@ -115,7 +118,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
                 setId(abilityButton.getId());
                 break;
             case START_ABILITY_MODIFICATION :
-                    System.out.println(modification.getId());
+                parent.addTab(new AbilityModificationPanel(modification.getId(), parent), "Modification de " + parent.db.getFromDB("SELECT * FROM ability WHERE id=" + modification.getId(), Ability.class).get(0).name, 1);
                 break;
         }
     }

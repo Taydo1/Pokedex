@@ -36,7 +36,7 @@ public class MainPanel extends JPanel implements ActionListener {
     public PokedexPanel pokedexPanel;
     public TypePanel typePanel;
     public PokemonPanel pokemonPanel;
-    AbilityPanel abilityPanel;
+    public AbilityPanel abilityPanel;
     PokedexApp parent;
 
     public ArrayList<Component> ongletsDresseur, ongletsProfesseur;
@@ -153,8 +153,9 @@ public class MainPanel extends JPanel implements ActionListener {
         }
     }
     
-    public static final int PROFESSOR_TAB=1;
-    public static final int TRAINER_TAB=2;
+    public static final int PROFESSOR_TAB = 1;
+    public static final int TRAINER_TAB = 2;
+    
     public void addTab(JPanel tab, String tabName, int tabGroup){
         tabbedPane.add(tabName, tab);
         tabbedPane.setSelectedComponent(tab);

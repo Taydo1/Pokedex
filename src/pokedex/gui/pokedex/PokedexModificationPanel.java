@@ -112,25 +112,25 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         panTalent4.add(talent4);
 
         ArrayList<Object[]> listType = parent.db.getFromDB("SELECT name FROM type ORDER BY id ASC");
-        String[] types = new String[listType.size() + 1];
-        types[0] = "";
+        ArrayList<String> types = new ArrayList();
         for (int i = 1; i <= listType.size(); i++) {
-            types[i] = (String) listType.get(i - 1)[0];
+            types.add((String) listType.get(i - 1)[0]);
         }
 
         //Type n°1
         JPanel panType1 = new JPanel();
         panType1.setBackground(Color.white);
-        type1 = new JComboBox<>(types);
-        type1.setSelectedItem(types[currentPokedex.id_type1]);
+        type1 = new JComboBox<>(types.toArray());
+        type1.setSelectedItem(types.get(currentPokedex.id_type1-1));
         panType1.setBorder(BorderFactory.createTitledBorder("Type n°1 du pokémon"));
         panType1.add(type1);
 
         //Type n°2
+        types.add(0,"");
         JPanel panType2 = new JPanel();
         panType2.setBackground(Color.white);
-        type2 = new JComboBox<>(types);
-        type2.setSelectedItem(types[currentPokedex.id_type2]);
+        type2 = new JComboBox<>(types.toArray());
+        type2.setSelectedItem(types.get(currentPokedex.id_type2));
         panType2.setBorder(BorderFactory.createTitledBorder("Type n°2 du pokémon"));
         panType2.add(type2);
 
@@ -370,7 +370,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
                 }
                 double temp = (double)pourcentage.getValue();
                 new Pokedex(idModif, nomfr.getText(), nomen.getText(), classification.getText(),
-                        type1.getSelectedIndex(), type2.getSelectedIndex(),
+                        type1.getSelectedIndex()+1, type2.getSelectedIndex(),
                         talent1.getSelectedIndex(), talent2.getSelectedIndex(), 
                         talent3.getSelectedIndex(), talent4.getSelectedIndex(), 
                         generation.getSelectedIndex()+1, preEvolution.getSelectedIndex(), 

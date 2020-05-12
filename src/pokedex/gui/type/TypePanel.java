@@ -191,9 +191,7 @@ public class TypePanel extends JPanel implements ActionListener {
             case START_TYPE_MODIFICATION:
                 InfoButton source = (InfoButton) e.getSource();
                 String typeName = (String) db.getFromDB("SELECT name FROM type WHERE id=" + source.getId()).get(0)[0];
-                parent.fenetreModificationType = new TypeModificationPanel(source.getId(), parent);
-                parent.tabbedPane.add("Modification du type " + typeName, parent.fenetreModificationType);
-                parent.tabbedPane.setSelectedComponent(parent.fenetreModificationType);
+                parent.addTab(new TypeModificationPanel(source.getId(), parent), "Modification du type " + typeName, parent.PROFESSOR_TAB);
                 break;
         }
     }

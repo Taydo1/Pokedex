@@ -169,7 +169,7 @@ public class PokemonTopPanel extends JPanel {
                 move4.setVisible(false);
             }
             level.setText("Niveau : " + currentPokemon.level);
-            health.setText("Niveau : " + currentPokemon.health);
+            health.setText("Vie : " + currentPokemon.health);
             type.setText("Type : ");
             move.setText("Attaque : ");
         }

@@ -103,9 +103,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
             case START_POKEDEX_MODIFICATION:
                 ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(idActuel), Pokedex.class);
                 String name = listname.get(0).name;
-                parent.fenetreModificationPokedex = new PokedexModificationPanel(idActuel, parent);
-                parent.tabbedPane.add("Modification de" + name, parent.fenetreModificationPokedex);
-                parent.tabbedPane.setSelectedComponent(parent.fenetreModificationPokedex);
+                parent.addTab(new PokedexModificationPanel(idActuel, parent), "Modification de" + name, MainPanel.PROFESSOR_TAB);
                 break;
             case GO_NOM:{
                 try{

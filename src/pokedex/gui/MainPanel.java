@@ -6,10 +6,12 @@
 package pokedex.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -37,16 +39,17 @@ public class MainPanel extends JPanel implements ActionListener {
     public PokemonPanel pokemonPanel;
     AbilityPanel abilityPanel;
     PokedexApp parent;
-    public PokedexModificationPanel fenetreModificationPokedex;
-    public TypeModificationPanel fenetreModificationType;
+
+    public ArrayList<Component> ongletsDresseur, ongletsProfesseur;
 
     MainPanel(Database db, PokedexApp p) {
-
         parent = p;
         this.db = db;
         setLayout(new BorderLayout());
 
         tabbedPane = new JTabbedPane();
+        ongletsDresseur = new ArrayList<>();
+        ongletsProfesseur = new ArrayList<>();
 
         pokedexPanel = new PokedexPanel(db, this);
         typePanel = new TypePanel(db, this);
@@ -71,28 +74,37 @@ public class MainPanel extends JPanel implements ActionListener {
     private void changeUser(JComboBox comboBox) {
         String selection = (String) choix.getSelectedItem();
         String mdp;
-        if (selection.equals("Visiteur")) {
-            mdp = "visiteur";
-        } else {
-            mdp = getPassword();
-        }
+        if (!utilisateur.equals(selection)) {
+            if (selection.equals("Visiteur")) {
+                mdp = "visiteur";
+            } else {
+                mdp = getPassword();
+            }
 
-        if (mdp != null && mdp.toLowerCase().equals(selection.toLowerCase())) {
-            if (!utilisateur.equals(selection)) {
-                while (tabbedPane.getTabCount() > 2) {
-                    tabbedPane.remove(2);
+            if (mdp != null && mdp.toLowerCase().equals(selection.toLowerCase())) {
+                if("Visiteur".equals(selection)){
+                    for (Component onglet : ongletsDresseur) {
+                        tabbedPane.remove(onglet);
+                    }
+                    ongletsDresseur.clear();
+                }
+                if("Visiteur".equals(selection) || "Dresseur".equals(selection)){
+                    for (Component onglet : ongletsProfesseur) {
+                        tabbedPane.remove(onglet);
+                    }
+                    ongletsProfesseur.clear();
+                    ongletsDresseur.removeAll(ongletsProfesseur);
                 }
                 tabbedPane.setSelectedComponent(pokedexPanel);
+                utilisateur = selection;
+                pokedexPanel.setUtilisateur(utilisateur);
+            } else if (mdp != null) {
+                comboBox.setSelectedItem(utilisateur);
+                JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
+            } else {
+                comboBox.setSelectedItem(utilisateur);
             }
-            utilisateur = selection;
-            pokedexPanel.setUtilisateur(utilisateur);
-        } else if (mdp != null) {
-            comboBox.setSelectedItem(utilisateur);
-            JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
-        } else {
-            comboBox.setSelectedItem(utilisateur);
         }
-
     }
 
     private String getPassword() {
@@ -140,5 +152,25 @@ public class MainPanel extends JPanel implements ActionListener {
                 tabbedPane.setSelectedComponent(pokedexPanel);
                 break;
         }
+    }
+    
+    public static final int PROFESSOR_TAB=1;
+    public static final int TRAINER_TAB=2;
+    public void addTab(JPanel tab, String tabName, int tabGroup){
+        tabbedPane.add(tabName, tab);
+        tabbedPane.setSelectedComponent(tab);
+        switch(tabGroup){
+            case PROFESSOR_TAB:
+               ongletsProfesseur.add(tab);
+            case TRAINER_TAB:
+                ongletsDresseur.add(tab);
+                break;
+        }
+    }
+    
+    public void removeTab(JPanel tab){
+        tabbedPane.remove(tab);
+        ongletsDresseur.remove(tab);
+        ongletsProfesseur.remove(tab);
     }
 }

@@ -26,8 +26,8 @@ public class PokedexPanel extends JPanel implements ActionListener {
 
     Database db;
     ImagePanel imagePanel;
-    BottomPokedexPanel bottomPanel;
-    TopPokedexPanel topPanel;
+    PokedexBottomPanel bottomPanel;
+    PokedexTopPanel topPanel;
     String imageName;
     MainPanel parent;
 
@@ -42,9 +42,9 @@ public class PokedexPanel extends JPanel implements ActionListener {
         currentId = 16;
         imagePanel = new ImagePanel();
         add(imagePanel, BorderLayout.CENTER);
-        bottomPanel = new BottomPokedexPanel("Visiteur", this);
+        bottomPanel = new PokedexBottomPanel("Visiteur", this);
         add(bottomPanel, BorderLayout.SOUTH);
-        topPanel = new TopPokedexPanel(this);
+        topPanel = new PokedexTopPanel(this);
         add(topPanel, BorderLayout.NORTH);
 
         imageName = "image";

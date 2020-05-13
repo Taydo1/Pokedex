@@ -18,10 +18,11 @@ import pokedex.gui.MainPanel;
  *
  * @author Leon
  */
-public class PokemonPanel extends JPanel implements ActionListener{
+public class PokemonPanel extends JPanel implements ActionListener {
 
     PokemonTopPanel topPanel;
     MainPanel parent;
+
     public PokemonPanel(Database db, MainPanel parent) {
         this.parent = parent;
         setLayout(new BorderLayout());
@@ -29,15 +30,19 @@ public class PokemonPanel extends JPanel implements ActionListener{
         add(topPanel, BorderLayout.NORTH);
     }
 
+    public void setUser(String user) {
+        topPanel.setUser(user);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         InfoButton source;
-        switch(Action.valueOf(e.getActionCommand())){
+        switch (Action.valueOf(e.getActionCommand())) {
             case GET_POKEMON:
-                source=(InfoButton) topPanel.selector.getSelectedItem();
+                source = (InfoButton) topPanel.selector.getSelectedItem();
                 topPanel.setId(source.getId());
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

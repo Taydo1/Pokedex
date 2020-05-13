@@ -67,7 +67,8 @@ public class MainPanel extends JPanel implements ActionListener {
 
         add(tabbedPane, BorderLayout.CENTER);
 
-        user = users[0];
+        user = "";
+        changeUser(choice);
     }
 
     private void changeUser(JComboBox comboBox) {
@@ -97,8 +98,8 @@ public class MainPanel extends JPanel implements ActionListener {
                 user = selection;
                 pokedexPanel.setUser(user);
                 typePanel.setUser(user);
-                //abilityPanel.setUser(user);
-                //pokemonPanel.setUser(user);
+                abilityPanel.setUser(user);
+                pokemonPanel.setUser(user);
             } else if (password != null) {
                 comboBox.setSelectedItem(user);
                 JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -144,6 +145,7 @@ public class MainPanel extends JPanel implements ActionListener {
                 break;
             case GET_ABILITY:
                 source = (InfoButton) e.getSource();
+                System.out.println(""+source.getId());
                 abilityPanel.setId(source.getId());
                 tabbedPane.setSelectedComponent(abilityPanel);
                 break;

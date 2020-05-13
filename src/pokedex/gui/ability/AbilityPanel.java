@@ -51,7 +51,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
         selector.setForeground(Color.WHITE);
 
         InfoButton selectorButton;
-        ArrayList<Object[]> abilityNames = db.getFromDB("SELECT id,name FROM ability");
+        ArrayList<Object[]> abilityNames = db.getFromDB("SELECT id,name FROM ability ORDER by id ASC");
         for (int i = 0; i < abilityNames.size(); i++) {
             selectorButton = new InfoButton((String) abilityNames.get(i)[1], (Integer) abilityNames.get(i)[0]);
             selector.addItem(selectorButton);
@@ -106,6 +106,18 @@ public class AbilityPanel extends JPanel implements ActionListener {
         modification.setId(id);
         delete.setText("Supprimer le talent " + currentAbility.name);
         delete.setId(id);
+    }
+
+    public void setUser(String user) {
+        switch (user.toLowerCase()) {
+            case "professeur":
+                modification.setEnabled(true);
+                break;
+            case "dresseur":
+            case "visiteur":
+                modification.setEnabled(false);
+                break;
+        }
     }
 
     @Override

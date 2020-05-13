@@ -135,7 +135,7 @@ public class PokemonTopPanel extends JPanel {
             } else {
                 type2.setVisible(false);
             }
-            ability.setText("Talent : "+currentPokemon.getAbilityName(db));
+            ability.setText("Talent : " + currentPokemon.getAbilityName(db));
             ability.setId(currentPokemon.id_ability);
             if (currentPokemon.id_trainer != 0) {
                 trainer.setText(currentPokemon.getTrainerName(db));
@@ -173,12 +173,18 @@ public class PokemonTopPanel extends JPanel {
             type.setText("Type : ");
             move.setText("Attaque : ");
         }
-        /*    
-        JComboBox<InfoButton> selector;
-        
-        Label level, health, type, move;
-        Database db;
-         */
-        //selector.setSelectedIndex(id - 1);
     }
+
+    public void setUser(String user) {
+        /*switch (user.toLowerCase()) {
+            case "professeur":
+                modification.setEnabled(true);
+                break;
+            case "dresseur":
+            case "visiteur":
+                modification.setEnabled(false);
+                break;
+        }*/
+    }
+
 }

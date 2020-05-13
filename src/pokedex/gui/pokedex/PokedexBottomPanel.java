@@ -27,7 +27,8 @@ public class PokedexBottomPanel extends JPanel {
 
     JPanel left, right, goIdPanel, goNamePanel;
     Label currentId, goIdLabel, goNameLabel;
-    JButton up, down, goIdButton, modification, add, delete, manage, goNameButton;
+    JButton up, down;
+    StyledButton goIdButton, modification, add, delete, manage, goNameButton;
     JTextField goId, goName;
     String user;
 
@@ -44,27 +45,13 @@ public class PokedexBottomPanel extends JPanel {
         down = new JButton(new ImageIcon(getClass().getResource("/images/icones/fleche_bas.png")));
         down.setContentAreaFilled(false);
         down.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        goIdButton = new JButton("GO to ID");
-        goIdButton.setBackground(Color.gray);
-        goIdButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        modification = new JButton("");
-        modification.setBackground(Color.gray);
-        modification.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        modification.setForeground(Color.black);
+        goIdButton = new StyledButton("GO to ID");
+        modification = new StyledButton("");
         modification.addActionListener(parent);
         modification.setActionCommand(Action.START_POKEDEX_MODIFICATION.name());
-        add = new JButton("Ajouter un pokémon");
-        add.setBackground(Color.gray);
-        add.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        add.setForeground(Color.black);
-        delete = new JButton("");
-        delete.setBackground(Color.gray);
-        delete.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        delete.setForeground(Color.black);
-        manage = new JButton("Gérer l'équipe");
-        manage.setBackground(Color.gray);
-        manage.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-        manage.setForeground(Color.black);
+        add = new StyledButton("Ajouter un pokémon");
+        delete = new StyledButton("");
+        manage = new StyledButton("Gérer l'équipe");
         goId = new JTextField();
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);
@@ -75,10 +62,7 @@ public class PokedexBottomPanel extends JPanel {
         goName.setForeground(Color.white);
         goName.setColumns(3);
         goNameLabel = new Label("Search by name:");
-        goNameButton = new JButton("Search name");
-        goNameButton.setBackground(Color.gray);
-        goNameButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
-
+        goNameButton = new StyledButton("Search name");
         goIdButton.addActionListener(parent);
         goId.addActionListener(parent);
         up.addActionListener(parent);

@@ -52,6 +52,7 @@ public class PokemonTopPanel extends JPanel {
 
         InfoButton selectorButton;
         ArrayList<Object[]> pokemonList = db.getFromDB("SELECT id,name FROM pokemon");
+        pokemonList.add(0, new Object[]{0, ""});
         for (int i = 0; i < pokemonList.size(); i++) {
             selectorButton = new InfoButton((String) pokemonList.get(i)[1], (Integer) pokemonList.get(i)[0]);
             selector.addItem(selectorButton);
@@ -110,12 +111,36 @@ public class PokemonTopPanel extends JPanel {
         add(level, c);
         c.gridy++;
         add(health, c);
-        setId(1);
+
+        setId(-1);
+    }
+
+    private int findSelectorId(int id) {
+        System.out.println("" + id);
+        for (int i = 0; i < selector.getItemCount(); i++) {
+            InfoButton item = selector.getItemAt(i);
+            System.out.println("" + item.getId());
+            if (item.getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void setId(int id) {
         ArrayList<Pokemon> currentPokemonList = db.getFromDB("SELECT * FROM pokemon WHERE id=" + id, Pokemon.class);
         if (!currentPokemonList.isEmpty()) {
+            move1.setEnabled(true);
+            move2.setEnabled(true);
+            move3.setEnabled(true);
+            move4.setEnabled(true);
+            name.setEnabled(true);
+            type1.setEnabled(true);
+            type2.setEnabled(true);
+            ability.setEnabled(true);
+            trainer.setEnabled(true);
+
+            selector.setSelectedIndex(findSelectorId(id));
             Pokemon currentPokemon = currentPokemonList.get(0);
             String pokedexName = currentPokemon.getPokedexName(db);
             if (currentPokemon.name.equals(pokedexName)) {
@@ -172,6 +197,31 @@ public class PokemonTopPanel extends JPanel {
             health.setText("Vie : " + currentPokemon.health);
             type.setText("Type : ");
             move.setText("Attaque : ");
+        } else {
+            level.setText("");
+            health.setText("");
+            type.setText("");
+            move.setText("");
+            move1.setText("");
+            move2.setText("");
+            move3.setText("");
+            move4.setText("");
+            ability.setText("");
+            name.setText("");
+            type1.setText("");
+            type2.setText("");
+            trainer.setText("");
+
+            move1.setEnabled(false);
+            move2.setEnabled(false);
+            move3.setEnabled(false);
+            move4.setEnabled(false);
+            name.setEnabled(false);
+            type1.setEnabled(false);
+            type2.setEnabled(false);
+            ability.setEnabled(false);
+            trainer.setEnabled(false);
+
         }
     }
 

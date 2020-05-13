@@ -270,7 +270,6 @@ public class PokedexTopPanel extends JPanel {
             evolution2.setVisible(false);
         }
 
-        this.repaint();
     }
 
     public void setColor(Color bgColor) {

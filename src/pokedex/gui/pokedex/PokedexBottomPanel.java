@@ -30,7 +30,6 @@ public class PokedexBottomPanel extends JPanel {
     JButton up, down;
     StyledButton goIdButton, modification, add, delete, manage, goNameButton;
     JTextField goId, goName;
-    String user;
 
     public PokedexBottomPanel(String utilisateur, PokedexPanel parent) {
 
@@ -133,32 +132,26 @@ public class PokedexBottomPanel extends JPanel {
     }
 
     public void setUser(String user) {
-        this.user = user.substring(0, 1).toUpperCase() + user.substring(1);
-        switch (this.user) {
-            case "Professeur":
+        switch (user.toLowerCase()) {
+            case "professeur":
                 add.setEnabled(true);
                 modification.setEnabled(true);
                 manage.setEnabled(false);
                 delete.setEnabled(true);
                 break;
-            case "Dresseur":
+            case "dresseur":
                 add.setEnabled(true);
                 modification.setEnabled(false);
                 manage.setEnabled(true);
                 delete.setEnabled(false);
                 break;
-            case "Visiteur":
+            case "visiteur":
                 add.setEnabled(false);
                 modification.setEnabled(false);
                 manage.setEnabled(false);
                 delete.setEnabled(false);
                 break;
         }
-        this.repaint();
-    }
-
-    public String getUser() {
-        return user;
     }
 
     public void setId(int id, Database db) {
@@ -177,7 +170,6 @@ public class PokedexBottomPanel extends JPanel {
             down.setEnabled(true);
             up.setEnabled(true);
         }
-        this.repaint();
     }
 
     public int getGoId() throws NumberFormatException {

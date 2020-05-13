@@ -177,7 +177,20 @@ public class TypePanel extends JPanel implements ActionListener {
                 vs_type[i].setForeground(efficace);
             }
         }
-        parent.repaint();
+    }
+    
+    public void setUser(String user){
+        switch (user.toLowerCase()) {
+            case "professeur":
+                modificationType1.setEnabled(true);
+                modificationType2.setEnabled(true);
+                break;
+            case "dresseur":
+            case "visiteur":
+                modificationType1.setEnabled(false);
+                modificationType2.setEnabled(false);
+                break;
+        }
     }
 
     @Override
@@ -201,7 +214,5 @@ public class TypePanel extends JPanel implements ActionListener {
         InfoButton typeButton2 = (InfoButton) type2selector.getSelectedItem();
         this.setId(typeButton1.getId(), typeButton2.getId());
         this.setNames();
-        this.repaint();
-        this.revalidate();
     }
 }

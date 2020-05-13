@@ -57,8 +57,6 @@ public class PokedexPanel extends JPanel implements ActionListener {
         try {
             bottomPanel.setId(id, db);
             topPanel.setId(id, db);
-            String imageRequest;
-            //switch
             Image image = db.getImage("SELECT " + imageName + " FROM pokedex WHERE id=" + id);
             imagePanel.setImage(image);
             currentId = id;
@@ -67,7 +65,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
         }
     }
 
-    public void setUtilisateur(String utilisateur) {
+    public void setUser(String utilisateur) {
         bottomPanel.setUser(utilisateur);
     }
 

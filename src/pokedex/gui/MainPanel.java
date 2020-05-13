@@ -94,9 +94,11 @@ public class MainPanel extends JPanel implements ActionListener {
                     professorTabs.clear();
                     trainerTabs.removeAll(professorTabs);
                 }
-                tabbedPane.setSelectedComponent(pokedexPanel);
                 user = selection;
-                pokedexPanel.setUtilisateur(user);
+                pokedexPanel.setUser(user);
+                typePanel.setUser(user);
+                //abilityPanel.setUser(user);
+                //pokemonPanel.setUser(user);
             } else if (password != null) {
                 comboBox.setSelectedItem(user);
                 JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);

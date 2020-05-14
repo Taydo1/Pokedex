@@ -1,5 +1,5 @@
-CREATE SCHEMA $schemaName$;
-SET search_path TO $schemaName$;
+CREATE SCHEMA pokedex;
+SET search_path TO pokedex;
 
 CREATE TABLE type(
 	id serial PRIMARY KEY,

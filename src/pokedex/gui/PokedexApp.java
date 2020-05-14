@@ -25,19 +25,10 @@ public class PokedexApp extends JFrame {
 
     public PokedexApp() {
 
-        setupDB(false);
-        //testRequest();
-        setupWindow();
-    }
-
-    private void setupDB(boolean toBeCreated) {
         db = new Database();
-        if (toBeCreated) {
-            createDB();
-        } else {
-            db.connectDB(dbName);
-            db.executeUpdate("SET search_path TO " + schemaName);
-        }
+        db.setupDB(dbName,schemaName,false);
+        testRequest();
+        setupWindow();
     }
 
     private void setupWindow() {
@@ -52,19 +43,13 @@ public class PokedexApp extends JFrame {
         setVisible(true);
     }
 
-    public void createDB() {
-        db.createDB(dbName);
-        db.executeFile("ressources/creation_tables.sql", schemaName);
-        db.importAll();
-    }
-
     private void testRequest() {
         Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 188, 110);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest());
         Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, -1, 1, 3, -1, -1, 188, 17);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona2.getInsertSubRequest());
 
-        ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
+        /*ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
         }
@@ -88,7 +73,7 @@ public class PokedexApp extends JFrame {
         ArrayList<Object[]> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
         for (Object[] row : listPokemonPokedex) {
             System.out.println("" + row);
-        }
+        }*/
 
         /*//Test de la fonction modification
         int[] tableau = {1, 1};

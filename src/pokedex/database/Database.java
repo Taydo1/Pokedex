@@ -38,6 +38,16 @@ public class Database {
 
     private Statement st;
     private Connection conn;
+    
+    public void setupDB(String dbName,String schemaName, boolean toBeCreated) {
+        if (toBeCreated) {
+            createDB(dbName);
+        } else {
+            connectDB(dbName);
+            executeUpdate("SET search_path TO " + schemaName);
+        }
+    }
+
 
     public void connectDB(String dbName) {
         try {
@@ -45,38 +55,33 @@ public class Database {
                     "hugoquentinleon");
             st = conn.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            createDB(dbName);
         }
     }
 
     public void createDB(String dbName) {
-        try {
-            connectDB("");
-            st.executeUpdate("DROP database IF EXISTS " + dbName);
-            st.executeUpdate("CREATE database " + dbName);
-            connectDB(dbName);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        connectDB("");
+        executeUpdate("DROP database IF EXISTS " + dbName);
+        executeUpdate("CREATE database " + dbName);
+        connectDB(dbName);
+        executeFile("ressources/creation_tables.sql");
+        importAll();
     }
 
-    public void executeFile(String fileName, String replace) {
+    public void executeFile(String fileName) {
         String file = "";
         String lign;
-        try {
-            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                while ((lign = br.readLine()) != null) {
-                    file += " " + lign;
-                }
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            while ((lign = br.readLine()) != null) {
+                file += " " + lign;
             }
 
             String[] commands = file.split(";");
             for (int i = 0; i < commands.length; i++) {
-                commands[i] = commands[i].replaceAll("\\$[^\\$]*\\$", replace);
                 // System.out.println(commands[i]);
-                st.executeUpdate(commands[i]);
+                executeUpdate(commands[i]);
             }
-        } catch (IOException | SQLException ex) {
+        }catch (IOException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -174,16 +179,12 @@ public class Database {
     }
 
     public void printTable(String tableName) {
-        try {
-            ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
-            DBTablePrinter.printResultSet(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ResultSet rs = executeQuery("SELECT * FROM " + tableName);
+        DBTablePrinter.printResultSet(rs);
     }
 
     public void executeUpdate(String request) {
-        // System.out.println(request);
+        //System.out.println(request);
         try {
             st.executeUpdate(request);
         } catch (SQLException ex) {

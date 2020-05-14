@@ -42,7 +42,10 @@ public class PokemonPanel extends JPanel implements ActionListener {
                 source = (InfoButton) topPanel.selector.getSelectedItem();
                 topPanel.setId(source.getId());
         }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void setId(int id){
+        topPanel.setId(id);
     }
 
 }

@@ -21,6 +21,7 @@ import pokedex.gui.pokedex.*;
 import pokedex.database.*;
 import pokedex.gui.ability.AbilityPanel;
 import pokedex.gui.pokemon.PokemonPanel;
+import pokedex.gui.trainer.TrainerPanel;
 import pokedex.gui.type.TypePanel;
 
 /**
@@ -35,8 +36,9 @@ public class MainPanel extends JPanel implements ActionListener {
     public Database db;
     public PokedexPanel pokedexPanel;
     public TypePanel typePanel;
-    public PokemonPanel pokemonPanel;
     public AbilityPanel abilityPanel;
+    public PokemonPanel pokemonPanel;
+    public TrainerPanel trainerPanel;
     PokedexApp parent;
 
     public ArrayList<Component> trainerTabs, professorTabs;
@@ -54,10 +56,12 @@ public class MainPanel extends JPanel implements ActionListener {
         typePanel = new TypePanel(db, this);
         abilityPanel = new AbilityPanel(db, this);
         pokemonPanel = new PokemonPanel(db, this);
+        trainerPanel = new TrainerPanel(db, this);
         tabbedPane.addTab("Pokedex", pokedexPanel);
         tabbedPane.addTab("Type", typePanel);
         tabbedPane.addTab("Talent", abilityPanel);
         tabbedPane.addTab("Pokemon", pokemonPanel);
+        tabbedPane.addTab("Trainer", trainerPanel);
 
         String[] users = new String[]{"Visiteur", "Dresseur", "Professeur"};
         choice = new JComboBox<>(users);
@@ -152,6 +156,16 @@ public class MainPanel extends JPanel implements ActionListener {
                 source = (InfoButton) e.getSource();
                 pokedexPanel.setId(source.getId());
                 tabbedPane.setSelectedComponent(pokedexPanel);
+                break;
+            case GET_POKEMON:
+                source = (InfoButton) e.getSource();
+                pokemonPanel.setId(source.getId());
+                tabbedPane.setSelectedComponent(pokemonPanel);
+                break;
+            case GET_TRAINER:
+                source = (InfoButton) e.getSource();
+                trainerPanel.setId(source.getId());
+                tabbedPane.setSelectedComponent(trainerPanel);
                 break;
         }
     }

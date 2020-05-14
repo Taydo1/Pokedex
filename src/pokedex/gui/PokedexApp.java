@@ -26,7 +26,7 @@ public class PokedexApp extends JFrame {
     public PokedexApp() {
 
         db = new Database();
-        db.setupDB(dbName,schemaName,false);
+        db.setupDB(dbName, schemaName, false);
         testRequest();
         setupWindow();
     }
@@ -44,10 +44,23 @@ public class PokedexApp extends JFrame {
     }
 
     private void testRequest() {
-        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, -1, 1, 3, 5, 8, 188, 110);
-        db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest());
-        Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, -1, 1, 3, -1, -1, 188, 17);
-        db.executeUpdate("INSERT INTO Pokemon VALUES " + corona2.getInsertSubRequest());
+        //db.executeUpdate("TRUNCATE TABLE ");
+        db.executeUpdate("TRUNCATE TABLE trainer,pokemon RESTART IDENTITY");
+        Trainer samet = new Trainer("Giga BOSS");
+        db.executeUpdate("INSERT INTO trainer VALUES " + samet.getInsertSubRequest());
+
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, 1, 1, 3, 5, 8, 188, 110);
+        Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, 1, 1, 3, -1, -1, 188, 17);
+        db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest() + "," + corona2.getInsertSubRequest());
+
+        db.printTable("trainer");
+
+        samet = db.getFromDB("SELECT * FROM trainer WHERE id=1", Trainer.class).get(0);
+        ArrayList<Pokemon> pokeDeSamet = samet.getPokemons(db);
+        for (Pokemon pokemon : pokeDeSamet) {
+            System.out.println("" + pokemon);
+        }
+        System.out.println("fini");
 
         /*ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
@@ -75,7 +88,7 @@ public class PokedexApp extends JFrame {
             System.out.println("" + row);
         }*/
 
-        /*//Test de la fonction modification
+ /*//Test de la fonction modification
         int[] tableau = {1, 1};
         String[] tableau2 = {"level", "name"};
         Object[] tableau3 = {4, "Coronovarus"};

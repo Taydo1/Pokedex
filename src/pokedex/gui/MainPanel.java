@@ -145,7 +145,6 @@ public class MainPanel extends JPanel implements ActionListener {
                 break;
             case GET_ABILITY:
                 source = (InfoButton) e.getSource();
-                System.out.println(""+source.getId());
                 abilityPanel.setId(source.getId());
                 tabbedPane.setSelectedComponent(abilityPanel);
                 break;

@@ -7,6 +7,7 @@ package pokedex.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -15,8 +16,8 @@ import java.util.Map;
  */
 public class Move extends DBElement {
 
-    String name, en_name, category;
-    int id, id_type, pp, power, accuracy;
+    public String name, en_name, category;
+    public int id, id_type, pp, power, accuracy;
 
     public Move() {
     }
@@ -71,4 +72,11 @@ public class Move extends DBElement {
     public void modifyInDB(Database db) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String getTypeName(Database db) {
+        ArrayList<Object[]> list = db.getFromDB("Select t.name from type t join move m on m.id_type = t.id WHERE m.id =" + id);
+        String valeurDonne = (String) list.get(0)[0];
+        return valeurDonne;
+    }
+
 }

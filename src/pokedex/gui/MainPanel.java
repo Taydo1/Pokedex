@@ -20,6 +20,7 @@ import javax.swing.JTabbedPane;
 import pokedex.gui.pokedex.*;
 import pokedex.database.*;
 import pokedex.gui.ability.AbilityPanel;
+import pokedex.gui.move.MovePanel;
 import pokedex.gui.pokemon.PokemonPanel;
 import pokedex.gui.trainer.TrainerPanel;
 import pokedex.gui.type.TypePanel;
@@ -37,6 +38,7 @@ public class MainPanel extends JPanel implements ActionListener {
     public PokedexPanel pokedexPanel;
     public TypePanel typePanel;
     public AbilityPanel abilityPanel;
+    public MovePanel movePanel;
     public PokemonPanel pokemonPanel;
     public TrainerPanel trainerPanel;
     PokedexApp parent;
@@ -55,11 +57,13 @@ public class MainPanel extends JPanel implements ActionListener {
         pokedexPanel = new PokedexPanel(db, this);
         typePanel = new TypePanel(db, this);
         abilityPanel = new AbilityPanel(db, this);
+        movePanel = new MovePanel(db, this);
         pokemonPanel = new PokemonPanel(db, this);
         trainerPanel = new TrainerPanel(db, this);
         tabbedPane.addTab("Pokedex", pokedexPanel);
         tabbedPane.addTab("Type", typePanel);
         tabbedPane.addTab("Talent", abilityPanel);
+        tabbedPane.addTab("Capacité", movePanel);
         tabbedPane.addTab("Pokemon", pokemonPanel);
         tabbedPane.addTab("Trainer", trainerPanel);
 
@@ -105,6 +109,7 @@ public class MainPanel extends JPanel implements ActionListener {
                 abilityPanel.setUser(user);
                 pokemonPanel.setUser(user);
                 trainerPanel.setUser(user);
+                movePanel.setUser(user);
             } else if (password != null) {
                 comboBox.setSelectedItem(user);
                 JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -152,6 +157,11 @@ public class MainPanel extends JPanel implements ActionListener {
                 source = (InfoButton) e.getSource();
                 abilityPanel.setId(source.getId());
                 tabbedPane.setSelectedComponent(abilityPanel);
+                break;
+            case GET_MOVE:
+                source = (InfoButton) e.getSource();
+                movePanel.setId(source.getId());
+                tabbedPane.setSelectedComponent(movePanel);
                 break;
             case GET_POKEDEX:
                 source = (InfoButton) e.getSource();

@@ -104,6 +104,7 @@ public class MainPanel extends JPanel implements ActionListener {
                 typePanel.setUser(user);
                 abilityPanel.setUser(user);
                 pokemonPanel.setUser(user);
+                trainerPanel.setUser(user);
             } else if (password != null) {
                 comboBox.setSelectedItem(user);
                 JOptionPane.showMessageDialog(null, "Mauvais mot de passe, sry !", "Erreur", JOptionPane.ERROR_MESSAGE);

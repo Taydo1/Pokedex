@@ -109,7 +109,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
             if (pokemonOfCurrentTrainer.size() > 1) {
                 pokemonLabel.setVisible(true);
                 pokemonLabel.setText("Pokemons");
-            }else if (pokemonOfCurrentTrainer.size() > 0) {
+            } else if (pokemonOfCurrentTrainer.size() > 0) {
                 pokemonLabel.setVisible(true);
                 pokemonLabel.setText("Pokemon");
             }
@@ -118,63 +118,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 pokemons[i].setId(pokemonOfCurrentTrainer.get(i).id);
                 pokemons[i].setText(pokemonOfCurrentTrainer.get(i).name);
             }
-
-            /*selector.setSelectedIndex(findSelectorId(id));
-            String pokedexName = currentTrainer.getPokedexName(db);
-            if (currentTrainer.name.equals(pokedexName)) {
-                name.setText(currentTrainer.name);
-            } else {
-                name.setText(currentTrainer.name + " (" + pokedexName + ")");
-            }
-            name.setId(currentTrainer.id_pokedex);
-
-            type1.setText(currentTrainer.getTypeName(db, 1));
-            type1.setId(currentTrainer.getTypeId(db, 1));
-            int id_type2 = currentTrainer.getTypeId(db, 2);
-            if (id_type2 != 0) {
-                type2.setVisible(true);
-                type2.setText(currentTrainer.getTypeName(db, 2));
-                type2.setId(id_type2);
-            } else {
-                type2.setVisible(false);
-            }
-            ability.setText("Talent : " + currentTrainer.getAbilityName(db));
-            ability.setId(currentTrainer.id_ability);
-            if (currentTrainer.id_trainer != 0) {
-                trainer.setText(currentTrainer.getTrainerName(db));
-                trainer.setId(currentTrainer.id_trainer);
-                trainer.setVisible(true);
-            } else {
-                trainer.setVisible(false);
-            }
-
-            move1.setText(currentTrainer.getMoveName(db, 1));
-            move1.setId(currentTrainer.id_move1);
-            if (currentTrainer.id_move2 != 0) {
-                move2.setText(currentTrainer.getMoveName(db, 2));
-                move2.setId(currentTrainer.id_move2);
-                move2.setVisible(true);
-            } else {
-                move2.setVisible(false);
-            }
-            if (currentTrainer.id_move3 != 0) {
-                move3.setText(currentTrainer.getMoveName(db, 3));
-                move3.setId(currentTrainer.id_move3);
-                move3.setVisible(true);
-            } else {
-                move3.setVisible(false);
-            }
-            if (currentTrainer.id_move4 != 0) {
-                move4.setText(currentTrainer.getMoveName(db, 4));
-                move4.setId(currentTrainer.id_move4);
-                move4.setVisible(true);
-            } else {
-                move4.setVisible(false);
-            }
-            level.setText("Niveau : " + currentTrainer.level);
-            health.setText("Vie : " + currentTrainer.health);
-            type.setText("Type : ");
-            move.setText("Attaque : ");*/
+            selector.setSelectedIndex(findSelectorId(id));
         }
     }
 

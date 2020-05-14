@@ -30,7 +30,7 @@ import pokedex.gui.MainPanel;
 public class AbilityPanel extends JPanel implements ActionListener {
 
     Database db;
-    Label name, description1, description2;
+    Label title, description1, description2;
     JComboBox<InfoButton> selector;
     InfoButton modification, delete;
     JButton add;
@@ -41,7 +41,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
         super();
         parent = p;
         this.db = db;
-        name = new Label("Talent : ", true);
+        title = new Label("Talent : ", true);
         description1 = new Label("", true);
         description1.setPreferredSize(new Dimension(1, 50));
         description2 = new Label("", true);
@@ -76,7 +76,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
-        add(name, c);
+        add(title, c);
         c.gridx = 1;
         add(selector, c);
         c.gridy++;
@@ -98,7 +98,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
     public void setId(int id) {
         Ability currentAbility = db.getFromDB("SELECT * FROM ability WHERE id=" + id, Ability.class).get(0);
 
-        //name.setText(currentAbility.name+" ("+currentAbility.en_name+")");
+        //name.setText(currentAbility.title+" ("+currentAbility.en_name+")");
         selector.setSelectedIndex(id - 1);
         description1.setText("<html>" + currentAbility.description[0] + "</html>");
         description2.setText("<html>" + currentAbility.description[1] + "</html>");
@@ -129,7 +129,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
                 setId(abilityButton.getId());
                 break;
             case START_ABILITY_MODIFICATION:
-                parent.addTab(new AbilityModificationPanel(modification.getId(), parent), "Modification de " + parent.db.getFromDB("SELECT * FROM ability WHERE id=" + modification.getId(), Ability.class).get(0).name, 1);
+                parent.addTab(new AbilityModificationPanel(modification.getId(), parent), "Modification de " + db.getFromDB("SELECT * FROM ability WHERE id=" + modification.getId(), Ability.class).get(0).name, 1);
                 break;
         }
     }

@@ -222,17 +222,4 @@ public class PokemonTopPanel extends JPanel {
 
         }
     }
-
-    public void setUser(String user) {
-        /*switch (user.toLowerCase()) {
-            case "professeur":
-                modification.setEnabled(true);
-                break;
-            case "dresseur":
-            case "visiteur":
-                modification.setEnabled(false);
-                break;
-        }*/
-    }
-
 }

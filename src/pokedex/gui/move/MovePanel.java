@@ -134,6 +134,7 @@ public class MovePanel extends JPanel implements ActionListener {
         type.setText("Type : " + currentMove.getTypeName(db));
         
         modification.setText("Modifier la capacité "+currentMove.name);
+        modification.setId(id);
     }
 
     public void setUser(String user) {

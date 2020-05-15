@@ -248,11 +248,11 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveButton.addActionListener(this);
-        saveButton.setActionCommand(Action.SAVE_POKEDEX_MODIFICATION.name());
+        saveButton.setActionCommand(Action.SAVE_MODIFICATION.name());
         discardButton = new JButton("DISCARD");
         discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardButton.addActionListener(this);
-        discardButton.setActionCommand(Action.DISCARD_POKEDEX_MODIFICATION.name());
+        discardButton.setActionCommand(Action.DISCARD_MODIFICATION.name());
 
         JPanel savePanel = new JPanel();
         savePanel.add(saveButton);
@@ -346,7 +346,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
     public void actionPerformed(ActionEvent e) {
         InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
-            case SAVE_POKEDEX_MODIFICATION:
+            case SAVE_MODIFICATION:
                 //Traduit les Oui/Non en booléen
                 int r;
                 boolean s,
@@ -382,7 +382,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
                 parent.pokedexPanel.setId(parent.pokedexPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
-            case DISCARD_POKEDEX_MODIFICATION:
+            case DISCARD_MODIFICATION:
                 parent.removeTab(this, parent.pokedexPanel);
                 break;
         }

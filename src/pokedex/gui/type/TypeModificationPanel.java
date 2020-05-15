@@ -85,11 +85,11 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveButton.addActionListener(this);
-        saveButton.setActionCommand(Action.SAVE_TYPE_MODIFICATION.name());
+        saveButton.setActionCommand(Action.SAVE_MODIFICATION.name());
         discardButton = new JButton("DISCARD");
         discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardButton.addActionListener(this);
-        discardButton.setActionCommand(Action.DISCARD_TYPE_MODIFICATION.name());
+        discardButton.setActionCommand(Action.DISCARD_MODIFICATION.name());
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -191,7 +191,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
     public void actionPerformed(ActionEvent e) {
         InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
-            case SAVE_TYPE_MODIFICATION:
+            case SAVE_MODIFICATION:
                 float[] vs = new float[18];
                 for (int i = 0; i < 18; i++) {
                     vs[i] = stringToFaiblesse(vsSelectors[i].getSelectedItem().toString());
@@ -200,7 +200,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
 
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.typePanel.update();
-            case DISCARD_TYPE_MODIFICATION:
+            case DISCARD_MODIFICATION:
                 parent.removeTab(this, parent.typePanel);
                 break;
         }

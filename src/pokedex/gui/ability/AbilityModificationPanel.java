@@ -75,11 +75,11 @@ public class AbilityModificationPanel extends JPanel implements ActionListener {
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveButton.addActionListener(this);
-        saveButton.setActionCommand(Action.SAVE_ABILITY_MODIFICATION.name());
+        saveButton.setActionCommand(Action.SAVE_MODIFICATION.name());
         discardButton = new JButton("DISCARD");
         discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardButton.addActionListener(this);
-        discardButton.setActionCommand(Action.DISCARD_ABILITY_MODIFICATION.name());
+        discardButton.setActionCommand(Action.DISCARD_MODIFICATION.name());
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -109,14 +109,14 @@ public class AbilityModificationPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         switch (Action.valueOf(e.getActionCommand())) {
-            case SAVE_ABILITY_MODIFICATION:
+            case SAVE_MODIFICATION:
 
                 new Ability(idModif, name.getText(), enName.getText(), descriptionFight.getText(),
                         descriptionOutFight.getText()).modifyInDB(parent.db);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.abilityPanel.setId(idModif);
 
-            case DISCARD_ABILITY_MODIFICATION:
+            case DISCARD_MODIFICATION:
                 parent.removeTab(this, parent.abilityPanel);
                 break;
         }

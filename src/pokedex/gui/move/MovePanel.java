@@ -58,6 +58,8 @@ public class MovePanel extends JPanel implements ActionListener {
 
         selector.setActionCommand(Action.GET_MOVE.name());
         selector.addActionListener(this);
+        type.setActionCommand(Action.GET_TYPE.name());
+        type.addActionListener(parent);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

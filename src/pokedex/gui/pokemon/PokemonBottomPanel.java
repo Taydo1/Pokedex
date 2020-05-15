@@ -9,7 +9,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.Database;
-import pokedex.database.Pokemon;
+import pokedex.gui.Action;
 import pokedex.gui.InfoButton;
 import pokedex.gui.pokedex.StyledButton;
 
@@ -35,6 +35,13 @@ public class PokemonBottomPanel extends JPanel {
         add(add);
         add(modification);
         add(delete);
+        
+        add.addActionListener(parent);
+        modification.addActionListener(parent);
+        delete.addActionListener(parent);
+        add.setActionCommand(Action.START_POKEMON_INSERTION.name());
+        modification.setActionCommand(Action.START_POKEMON_MODIFICATION.name());
+        delete.setActionCommand(Action.DELETE_POKEMON.name());
     }
 
     public void setUser(String user) {
@@ -71,5 +78,4 @@ public class PokemonBottomPanel extends JPanel {
             delete.setVisible(false);
         }
     }
-
 }

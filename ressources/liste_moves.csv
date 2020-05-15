@@ -1,743 +1,743 @@
 name;en_name;type;category;pp;power;accuracy
-Écras'Face;Pound;Normal;Physical;35;40;100
-Poing-Karaté;Karate Chop;Fighting;Physical;25;50;100
-Torgnoles;Double Slap;Normal;Physical;10;15;85
-Poing Comète;Comet Punch;Normal;Physical;15;18;85
-Ultimapoing;Mega Punch;Normal;Physical;20;80;85
-Jackpot;Pay Day;Normal;Physical;20;40;100
-Poing De Feu;Fire Punch;Fire;Physical;15;75;100
-Poing-Glace;Ice Punch;Ice;Physical;15;75;100
-Poing-Éclair;Thunder Punch;Electric;Physical;15;75;100
-Griffe;Scratch;Normal;Physical;35;40;100
-Force Poigne;Vise Grip;Normal;Physical;30;55;100
-Guillotine;Guillotine;Normal;Physical;5;1000000;30
-Coupe-Vent;Razor Wind;Normal;Special;10;80;100
-Danse-Lames;Swords Dance;Normal;Status;20;-1;-1
-Coupe;Cut;Normal;Physical;30;50;95
-Tornade;Gust;Flying;Special;35;40;100
-Cru-Aile;Wing Attack;Flying;Physical;35;60;100
-Cyclone;Whirlwind;Normal;Status;20;-1;-1
-Vol;Fly;Flying;Physical;15;90;95
-Étreinte;Bind;Normal;Physical;202;15;85
-Souplesse;Slam;Normal;Physical;20;80;75
-Fouet Lianes;Vine Whip;Grass;Physical;25;45;100
-Écrasement;Stomp;Normal;Physical;20;65;100
-Double Pied;Double Kick;Fighting;Physical;30;30;100
-Ultimawashi;Mega Kick;Normal;Physical;5;120;75
-Pied Sauté;Jump Kick;Fighting;Physical;10;100;95
-Mawashi Geri;Rolling Kick;Fighting;Physical;15;60;85
-Jet de Sable;Sand Attack;Ground;Status;15;-1;100
-Coup d'Boule;Headbutt;Normal;Physical;15;70;100
-Koud'Korne;Horn Attack;Normal;Physical;25;65;100
-Furie;Fury Attack;Normal;Physical;20;15;85
-Empal'Korne;Horn Drill;Normal;Physical;5;1000000;30
-Charge;Tackle;Normal;Physical;35;40;100
-Plaquage;Body Slam;Normal;Physical;15;85;100
-Ligotage;Wrap;Normal;Physical;20;15;90
-Bélier;Take Down;Normal;Physical;20;90;85
-Mania;Thrash;Normal;Physical;10;120;100
-Damoclès;Double-Edge;Normal;Physical;15;120;100
-Mimi-Queue;Tail Whip;Normal;Status;30;-1;100
-Dard-Venin;Poison Sting;Poison;Physical;35;15;100
-Double-Dard;Twineedle;Bug;Physical;20;25;100
-Dard-Nuée;Pin Missile;Bug;Physical;20;25;95
-Groz'Yeux;Leer;Normal;Status;30;-1;100
-Morsure;Bite;Dark;Physical;25;60;100
-Rugissement;Growl;Normal;Status;40;-1;100
-Hurlement;Roar;Normal;Status;20;-1;-1
-Berceuse;Sing;Normal;Status;15;-1;55
-Ultrason;Supersonic;Normal;Status;20;-1;55
-Sonicboom;Sonic Boom;Normal;Special;20;-1;90
-Entrave;Disable;Normal;Status;20;-1;100
-Acide;Acid;Poison;Special;30;40;100
-Flammèche;Ember;Fire;Special;25;40;100
-Lance-Flammes;Flamethrower;Fire;Special;15;90;100
-Brume;Mist;Ice;Status;30;-1;-1
-Pistolet à O;Water Gun;Water;Special;25;40;100
-Hydrocanon;Hydro Pump;Water;Special;5;110;80
-Surf;Surf;Water;Special;15;90;100
-Laser Glace;Ice Beam;Ice;Special;10;90;100
-Blizzard;Blizzard;Ice;Special;5;110;70
-Rafale Psy;Psybeam;Psychic;Special;20;65;100
-Bulles d'O;Bubble Beam;Water;Special;20;65;100
-Onde Boréale;Aurora Beam;Ice;Special;20;65;100
-Ultralaser;Hyper Beam;Normal;Special;5;150;90
-Picpic;Peck;Flying;Physical;35;35;100
-Bec Vrille;Drill Peck;Flying;Physical;20;80;100
-Sacrifice;Submission;Fighting;Physical;20;80;80
-Balayage;Low Kick;Fighting;Physical;20;-1;100
-Riposte;Counter;Fighting;Physical;20;-1;100
-Frappe Atlas;Seismic Toss;Fighting;Physical;20;-1;100
-Force;Strength;Normal;Physical;15;80;100
-Vol-Vie;Absorb;Grass;Special;25;20;100
-Méga-Sangsue;Mega Drain;Grass;Special;15;40;100
-Vampigraine;Leech Seed;Grass;Status;10;-1;90
-Croissance;Growth;Normal;Status;20;-1;-1
-Tranch'Herbe;Razor Leaf;Grass;Physical;25;55;95
-Lance-Soleil;Solar Beam;Grass;Special;10;120;100
-Poudre Toxik;Poison Powder;Poison;Status;35;-1;75
-Para-Spore;Stun Spore;Grass;Status;30;-1;75
-Poudre Dodo;Sleep Powder;Grass;Status;15;-1;75
-Danse-Fleur;Petal Dance;Grass;Special;10;120;100
-Sécrétion;String Shot;Bug;Status;40;-1;95
-Draco-Rage;Dragon Rage;Dragon;Special;10;-1;100
-Danse Flamme;Fire Spin;Fire;Special;15;35;85
-Éclair;Thunder Shock;Electric;Special;30;40;100
-Tonnerre;Thunderbolt;Electric;Special;15;90;100
-Cage-Éclair;Thunder Wave;Electric;Status;20;-1;90
-Fatal-Foudre;Thunder;Electric;Special;10;110;70
-Jet-Pierres;Rock Throw;Rock;Physical;15;50;90
-Séisme;Earthquake;Ground;Physical;10;100;100
-Abîme;Fissure;Ground;Physical;5;1000000;30
-Tunnel;Dig;Ground;Physical;10;80;100
-Toxik;Toxic;Poison;Status;10;-1;90
-Choc Mental;Confusion;Psychic;Special;25;50;100
-Psyko;Psychic;Psychic;Special;10;90;100
-Hypnose;Hypnosis;Psychic;Status;20;-1;60
-Yoga;Meditate;Psychic;Status;40;-1;-1
-Hâte;Agility;Psychic;Status;30;-1;-1
-Vive-Attaque;Quick Attack;Normal;Physical;30;40;100
-Frénésie;Rage;Normal;Physical;20;20;100
-Téléport;Teleport;Psychic;Status;20;-1;-1
-Ombre Nocturne;Night Shade;Ghost;Special;15;-1;100
-Copie;Mimic;Normal;Status;10;-1;-1
-Grincement;Screech;Normal;Status;40;-1;85
-Reflet;Double Team;Normal;Status;15;-1;-1
-Soin;Recover;Normal;Status;10;-1;-1
-Armure;Harden;Normal;Status;30;-1;-1
-Lilliput;Minimize;Normal;Status;10;-1;-1
-Brouillard;Smokescreen;Normal;Status;20;-1;100
-Onde Folie;Confuse Ray;Ghost;Status;10;-1;100
-Repli;Withdraw;Water;Status;40;-1;-1
-Boul'Armure;Defense Curl;Normal;Status;40;-1;-1
-Bouclier;Barrier;Psychic;Status;20;-1;-1
-Mur Lumière;Light Screen;Psychic;Status;30;-1;-1
-Buée Noire;Haze;Ice;Status;30;-1;-1
-Protection;Reflect;Psychic;Status;20;-1;-1
-Puissance;Focus Energy;Normal;Status;30;-1;-1
-Patience;Bide;Normal;Physical;10;-1;-1
-Métronome;Metronome;Normal;Status;10;-1;-1
-Mimique;Mirror Move;Flying;Status;20;-1;-1
-Destruction;Self-Destruct;Normal;Physical;5;200;100
-Bomb'Oeuf;Egg Bomb;Normal;Physical;10;100;75
-Léchouille;Lick;Ghost;Physical;30;30;100
-Purédpois;Smog;Poison;Special;20;30;70
-Détritus;Sludge;Poison;Special;20;65;100
-Masse d'Os;Bone Club;Ground;Physical;20;65;85
-Déflagration;Fire Blast;Fire;Special;5;110;85
-Cascade;Waterfall;Water;Physical;15;80;100
-Claquoir;Clamp;Water;Physical;15;35;85
-Météores;Swift;Normal;Special;20;60;-1
-Coud'Krâne;Skull Bash;Normal;Physical;10;130;100
-Picanon;Spike Cannon;Normal;Physical;15;20;100
-Constriction;Constrict;Normal;Physical;35;10;100
-Amnésie;Amnesia;Psychic;Status;20;-1;-1
-Télékinésie;Kinesis;Psychic;Status;15;-1;80
-E-Coque;Soft-Boiled;Normal;Status;10;-1;-1
-Pied Voltige;High Jump Kick;Fighting;Physical;10;130;90
-Regard Médusant;Glare;Normal;Status;30;-1;100
-Dévorêve;Dream Eater;Psychic;Special;15;100;100
-Gaz Toxik;Poison Gas;Poison;Status;40;-1;90
-Pilonnage;Barrage;Normal;Physical;20;15;85
-Vampirisme;Leech Life;Bug;Physical;10;80;100
-Grobisou;Lovely Kiss;Normal;Status;10;-1;75
-Piqué;Sky Attack;Flying;Physical;5;140;90
-Morphing;Transform;Normal;Status;10;-1;-1
-Écume;Bubble;Water;Special;30;40;100
-Uppercut;Dizzy Punch;Normal;Physical;10;70;100
-Spore;Spore;Grass;Status;15;-1;100
-Flash;Flash;Normal;Status;20;-1;100
-Vague Psy;Psywave;Psychic;Special;15;-1;100
-Trempette;Splash;Normal;Status;40;-1;-1
-Acidarmure;Acid Armor;Poison;Status;20;-1;-1
-Pince-Masse;Crabhammer;Water;Physical;10;100;90
-Explosion;Explosion;Normal;Physical;5;250;100
-Combo-Griffe;Fury Swipes;Normal;Physical;15;18;80
-Osmerang;Bonemerang;Ground;Physical;10;50;90
-Repos;Rest;Psychic;Status;10;-1;-1
-Éboulement;Rock Slide;Rock;Physical;10;75;90
-Croc de Mort;Hyper Fang;Normal;Physical;15;80;90
-Affûtage;Sharpen;Normal;Status;30;-1;-1
-Adaptation;Conversion;Normal;Status;30;-1;-1
-Triplattaque;Tri Attack;Normal;Special;10;80;100
-Croc Fatal;Super Fang;Normal;Physical;10;-1;90
-Tranche;Slash;Normal;Physical;20;70;100
-Clonage;Substitute;Normal;Status;10;-1;-1
-Lutte;Struggle;Normal;Physical;1;50;-1
-Gribouille;Sketch;Normal;Status;1;-1;-1
-Triple Pied;Triple Kick;Fighting;Physical;10;10;90
-Larcin;Thief;Dark;Physical;25;60;100
-Toile;Spider Web;Bug;Status;10;-1;-1
-Lire-Esprit;Mind Reader;Normal;Status;5;-1;-1
-Cauchemar;Nightmare;Ghost;Status;15;-1;100
-Roue de Feu;Flame Wheel;Fire;Physical;25;60;100
-Ronflement;Snore;Normal;Special;15;50;100
-Malédiction;Curse;Ghost;Status;10;-1;-1
-Fléau;Flail;Normal;Physical;15;-1;100
-Conversion 2;Conversion 2;Normal;Status;30;-1;-1
-Aéroblast;Aeroblast;Flying;Special;5;100;95
-Spore Coton;Cotton Spore;Grass;Status;40;-1;100
-Contre;Reversal;Fighting;Physical;15;-1;100
-Dépit;Spite;Ghost;Status;10;-1;100
-Poudreuse;Powder Snow;Ice;Special;25;40;100
-Abri;Protect;Normal;Status;10;-1;-1
-Mach Punch;Mach Punch;Fighting;Physical;30;40;100
-Grimace;Scary Face;Normal;Status;10;-1;100
-Feinte;Feint Attack;Dark;Physical;20;60;-1
-Doux Baiser;Sweet Kiss;Fairy;Status;10;-1;75
-Cognobidon;Belly Drum;Normal;Status;10;-1;-1
-Bomb-Beurk;Sludge Bomb;Poison;Special;10;90;100
-Coud'Boue;Mud-Slap;Ground;Special;10;20;100
-Octazooka;Octazooka;Water;Special;10;65;85
-Picots;Spikes;Ground;Status;20;-1;-1
-Élecanon;Zap Cannon;Electric;Special;5;120;50
-Clairvoyance;Foresight;Normal;Status;40;-1;-1
-Prélèvem. Destin;Destiny Bond;Ghost;Status;5;-1;-1
-Requiem;Perish Song;Normal;Status;5;-1;-1
-Vent Glace;Icy Wind;Ice;Special;15;55;95
-Détection;Detect;Fighting;Status;5;-1;-1
-Charge-Os;Bone Rush;Ground;Physical;10;25;90
-Verrouillage;Lock-On;Normal;Status;5;-1;-1
-Colère;Outrage;Dragon;Physical;10;120;100
-Tempête de Sable;Sandstorm;Rock;Status;10;-1;-1
-Giga-Sangsue;Giga Drain;Grass;Special;10;75;100
-Ténacité;Endure;Normal;Status;10;-1;-1
-Charme;Charm;Fairy;Status;20;-1;100
-Roulade;Rollout;Rock;Physical;20;30;90
-Faux-Chage;False Swipe;Normal;Physical;40;40;100
-Vantardise;Swagger;Normal;Status;15;-1;85
-Lait à Boire;Milk Drink;Normal;Status;10;-1;-1
-Étincelle;Spark;Electric;Physical;20;65;100
-Taillade;Fury Cutter;Bug;Physical;20;40;95
-Aile D'Acier;Steel Wing;Steel;Physical;25;70;90
-Regard Noir;Mean Look;Normal;Status;5;-1;-1
-Attraction;Attract;Normal;Status;15;-1;100
-Blabla Dodo;Sleep Talk;Normal;Status;10;-1;-1
-Glas De Soin;Heal Bell;Normal;Status;5;-1;-1
-Retour;Return;Normal;Physical;20;-1;100
-Cadeau;Present;Normal;Physical;15;-1;90
-Frustration;Frustration;Normal;Physical;20;-1;100
-Rune Protect;Safeguard;Normal;Status;25;-1;-1
-Balance;Pain Split;Normal;Status;20;-1;-1
-Feu Sacré;Sacred Fire;Fire;Physical;5;100;95
-Ampleur;Magnitude;Ground;Physical;30;-1;100
-Dynamopoing;Dynamic Punch;Fighting;Physical;5;100;50
-Mégacorne;Megahorn;Bug;Physical;10;120;85
-Dracosouffle;Dragon Breath;Dragon;Special;20;60;100
-Relais;Baton Pass;Normal;Status;40;-1;-1
-Encore;Encore;Normal;Status;5;-1;100
-Poursuite;Pursuit;Dark;Physical;20;40;100
-Tour Rapide;Rapid Spin;Normal;Physical;40;50;100
-Doux Parfum;Sweet Scent;Normal;Status;20;-1;100
-Queue de Fer;Iron Tail;Steel;Physical;15;100;75
-Griffe Acier;Metal Claw;Steel;Physical;35;50;95
-Corps Perdu;Vital Throw;Fighting;Physical;10;70;-1
-Aurore;Morning Sun;Normal;Status;5;-1;-1
-Synthèse;Synthesis;Grass;Status;5;-1;-1
-Rayon Lune;Moonlight;Fairy;Status;5;-1;-1
-Puissance Cachée;Hidden Power;Normal;Special;15;60;100
-Coup-Croix;Cross Chop;Fighting;Physical;5;100;80
-Ouragan;Twister;Dragon;Special;20;40;100
-Danse Pluie;Rain Dance;Water;Status;5;-1;-1
-Zenith;Sunny Day;Fire;Status;5;-1;-1
-Mâchouille;Crunch;Dark;Physical;15;80;100
-Voile Miroir;Mirror Coat;Psychic;Special;20;-1;100
-Boost;Psych Up;Normal;Status;10;-1;-1
-Vitesse Extrême;Extreme Speed;Normal;Physical;5;80;100
-Pouvoir Antique;Ancient Power;Rock;Special;5;60;100
-Ball'Ombre;Shadow Ball;Ghost;Special;15;80;100
-Prescience;Future Sight;Psychic;Special;10;120;100
-Éclate-Roc;Rock Smash;Fighting;Physical;15;40;100
-Siphon;Whirlpool;Water;Special;15;35;85
-Baston;Beat Up;Dark;Physical;10;-1;100
-Bluff;Fake Out;Normal;Physical;10;40;100
-Brouhaha;Uproar;Normal;Special;10;90;100
-Stockage;Stockpile;Normal;Status;20;-1;-1
-Relâche;Spit Up;Normal;Special;10;-1;100
-Avale;Swallow;Normal;Status;10;-1;-1
-Canicule;Heat Wave;Fire;Special;10;95;90
-Grêle;Hail;Ice;Status;10;-1;-1
-Tourmente;Torment;Dark;Status;15;-1;100
-Flatterie;Flatter;Dark;Status;15;-1;100
-Feu Follet;Will-O-Wisp;Fire;Status;15;-1;85
-Souvenir;Memento;Dark;Status;10;-1;100
-Facade;Facade;Normal;Physical;20;70;100
-Mitra-Poing;Focus Punch;Fighting;Physical;20;150;100
-Stimulant;Smelling Salts;Normal;Physical;10;70;100
-Par Ici;Follow Me;Normal;Status;20;-1;-1
-Force-Nature;Nature Power;Normal;Status;20;-1;-1
-Chargeur;Charge;Electric;Status;20;-1;-1
-Provoc;Taunt;Dark;Status;20;-1;100
-Coup d'Main;Helping Hand;Normal;Status;20;-1;-1
-Tourmagik;Trick;Psychic;Status;10;-1;100
-Imitation;Role Play;Psychic;Status;10;-1;-1
-Voeu;Wish;Normal;Status;10;-1;-1
-Assistance;Assist;Normal;Status;20;-1;-1
-Racines;Ingrain;Grass;Status;20;-1;-1
-Surpuissance;Superpower;Fighting;Physical;5;120;100
-Reflet Magik;Magic Coat;Psychic;Status;15;-1;-1
-Recyclage;Recycle;Normal;Status;10;-1;-1
-Vendetta;Revenge;Fighting;Physical;10;60;100
-Casse-Brique;Brick Break;Fighting;Physical;15;75;100
-Bâillement;Yawn;Normal;Status;10;-1;-1
-Sabotage;Knock Off;Dark;Physical;20;65;100
-Effort;Endeavor;Normal;Physical;5;-1;100
-Éruption;Eruption;Fire;Special;5;150;100
-Échange;Skill Swap;Psychic;Status;10;-1;-1
-Possessif;Imprison;Psychic;Status;10;-1;-1
-Régénération;Refresh;Normal;Status;20;-1;-1
-Rancune;Grudge;Ghost;Status;5;-1;-1
-Saisie;Snatch;Dark;Status;10;-1;-1
-Force Cachée;Secret Power;Normal;Physical;20;70;100
-Plongée;Dive;Water;Physical;10;80;100
-Cogne;Arm Thrust;Fighting;Physical;20;15;100
-Camouflage;Camouflage;Normal;Status;20;-1;-1
-Lumiqueue;Tail Glow;Bug;Status;20;-1;-1
-Lumi-Éclat;Luster Purge;Psychic;Special;5;70;100
-Ball'Brume;Mist Ball;Psychic;Special;5;70;100
-Danse-Plume;Feather Dance;Flying;Status;15;-1;100
-Danse-Folle;Teeter Dance;Normal;Status;20;-1;100
-Pied Brûleur;Blaze Kick;Fire;Physical;10;85;90
-Lance-Boue;Mud Sport;Ground;Status;15;-1;-1
-Ball'Glace;Ice Ball;Ice;Physical;20;30;90
-Poing Dard;Needle Arm;Grass;Physical;15;60;100
-Paresse;Slack Off;Normal;Status;10;-1;-1
-Mégaphone;Hyper Voice;Normal;Special;10;90;100
-Crochet Venin;Poison Fang;Poison;Physical;15;50;100
-Éclate Griffe;Crush Claw;Normal;Physical;10;75;95
-Rafale Feu;Blast Burn;Fire;Special;5;150;90
-Hydroblast;Hydro Cannon;Water;Special;5;150;90
-Poing Météore;Meteor Mash;Steel;Physical;10;90;90
-Étonnement;Astonish;Ghost;Physical;15;30;100
-Ball'Météo;Weather Ball;Normal;Special;10;50;100
-Aromathérapie;Aromatherapy;Grass;Status;5;-1;-1
-Croco Larme;Fake Tears;Dark;Status;20;-1;100
-Tranch'Air;Air Cutter;Flying;Special;25;60;95
-Surchauffe;Overheat;Fire;Special;5;130;90
-Flair;Odor Sleuth;Normal;Status;40;-1;-1
-Tomberoche;Rock Tomb;Rock;Physical;15;60;95
-Vent Argenté;Silver Wind;Bug;Special;5;60;100
-Strido-Son;Metal Sound;Steel;Status;40;-1;85
-Siffl'Herbe;Grass Whistle;Grass;Status;15;-1;55
-Chatouille;Tickle;Normal;Status;20;-1;100
-Force Cosmik;Cosmic Power;Psychic;Status;20;-1;-1
-Giclédo;Water Spout;Water;Special;5;150;100
-Rayon Signal;Signal Beam;Bug;Special;15;75;100
-Poing Ombre;Shadow Punch;Ghost;Physical;20;60;-1
-Extrasenseur;Extrasensory;Psychic;Special;20;80;100
-Stratopercut;Sky Uppercut;Fighting;Physical;15;85;90
-Tourbi-Sable;Sand Tomb;Ground;Physical;15;35;85
-Glaciation;Sheer Cold;Ice;Special;5;1000000;30
-Ocroupi;Muddy Water;Water;Special;10;90;85
-Balle Graine;Bullet Seed;Grass;Physical;30;25;100
-Aéropique;Aerial Ace;Flying;Physical;20;60;-1
-Stalagtite;Icicle Spear;Ice;Physical;30;25;100
-Mur de Fer;Iron Defense;Steel;Status;15;-1;-1
-Barrage;Block;Normal;Status;5;-1;-1
-Grondement;Howl;Normal;Status;40;-1;-1
-Dracogriffe;Dragon Claw;Dragon;Physical;15;80;100
-Végé-Attak;Frenzy Plant;Grass;Special;5;150;90
-Gonflette;Bulk Up;Fighting;Status;20;-1;-1
-Rebond;Bounce;Flying;Physical;5;85;85
-Tir de Boue;Mud Shot;Ground;Special;15;55;95
-Queue-Poison;Poison Tail;Poison;Physical;25;50;100
-Implore;Covet;Normal;Physical;25;60;100
-Électacle;Volt Tackle;Electric;Physical;15;120;100
-Feuille Magik;Magical Leaf;Grass;Special;20;60;-1
-Tourniquet;Water Sport;Water;Status;15;-1;-1
-Plénitude;Calm Mind;Psychic;Status;20;-1;-1
-Lame-Feuille;Leaf Blade;Grass;Physical;15;90;100
-Danse Draco;Dragon Dance;Dragon;Status;20;-1;-1
-Boule Roc;Rock Blast;Rock;Physical;10;25;90
-Onde de Choc;Shock Wave;Electric;Special;20;60;-1
-Vibraqua;Water Pulse;Water;Special;20;60;100
-Carnareket;Doom Desire;Steel;Special;5;140;100
-Psycho Boost;Psycho Boost;Psychic;Special;5;140;90
-Atterrissage;Roost;Flying;Status;10;-1;-1
-Gravité;Gravity;Psychic;Status;5;-1;-1
-Oeil Miracle;Miracle Eye;Psychic;Status;40;-1;-1
-Réveil Forcé;Wake-Up Slap;Fighting;Physical;10;70;100
-Marto-Poing;Hammer Arm;Fighting;Physical;10;100;90
-Gyroballe;Gyro Ball;Steel;Physical;5;-1;100
-Voeu Soin;Healing Wish;Psychic;Status;10;-1;-1
-Saumure;Brine;Water;Special;10;65;100
-Don naturel;Natural Gift;Normal;Physical;15;-1;100
-Ruse;Feint;Normal;Physical;10;30;100
-Picore;Pluck;Flying;Physical;20;60;100
-Vent Arrière;Tailwind;Flying;Status;15;-1;-1
-Acupression;Acupressure;Normal;Status;30;-1;-1
-Fulmifer;Metal Burst;Steel;Physical;10;-1;100
-Demi-Tour;U-turn;Bug;Physical;20;70;100
-Close Combat;Close Combat;Fighting;Physical;5;120;100
-Représailles;Payback;Dark;Physical;10;50;100
-Assurance;Assurance;Dark;Physical;10;60;100
-Embargo;Embargo;Dark;Status;15;-1;100
-Dégommage;Fling;Dark;Physical;10;-1;100
-Échange Psy;Psycho Shift;Psychic;Status;10;-1;100
-Atout;Trump Card;Normal;Special;5;-1;-1
-Anti-Soin;Heal Block;Psychic;Status;15;-1;100
-Essorage;Wring Out;Normal;Special;5;-1;100
-Astuce Force;Power Trick;Psychic;Status;10;-1;-1
-Suc Digestif;Gastro Acid;Poison;Status;10;-1;100
-Air Veinard;Lucky Chant;Normal;Status;30;-1;-1
-Moi d'abord;Me First;Normal;Status;20;-1;-1
-Photocopie;Copycat;Normal;Status;20;-1;-1
-Permuforce;Power Swap;Psychic;Status;10;-1;-1
-Permugarde;Guard Swap;Psychic;Status;10;-1;-1
-Punition;Punishment;Dark;Physical;5;-1;100
-Dernier Recours;Last Resort;Normal;Physical;5;140;100
-Soucigraine;Worry Seed;Grass;Status;10;-1;100
-Coup Bas;Sucker Punch;Dark;Physical;5;70;100
-Pics Toxik;Toxic Spikes;Poison;Status;20;-1;-1
-Permucoeur;Heart Swap;Psychic;Status;10;-1;-1
-Anneau Hydro;Aqua Ring;Water;Status;20;-1;-1
-Vol Magnétik;Magnet Rise;Electric;Status;10;-1;-1
-Boutefeu;Flare Blitz;Fire;Physical;15;120;100
-Forte-Paume;Force Palm;Fighting;Physical;10;60;100
-Aurasphère;Aura Sphere;Fighting;Special;20;80;-1
-Poliroche;Rock Polish;Rock;Status;20;-1;-1
-Direct Toxik;Poison Jab;Poison;Physical;20;80;100
-Vibrobscur;Dark Pulse;Dark;Special;15;80;100
-Tranche-Nuit;Night Slash;Dark;Physical;15;70;100
-Hydroqueue;Aqua Tail;Water;Physical;10;90;90
-Canon Graine;Seed Bomb;Grass;Physical;15;80;100
-Lame d'Air;Air Slash;Flying;Special;15;75;95
-Plaie-Croix;X-Scissor;Bug;Physical;15;80;100
-Bourdon;Bug Buzz;Bug;Special;10;90;100
-Dracochoc;Dragon Pulse;Dragon;Special;10;85;100
-Dracocharge;Dragon Rush;Dragon;Physical;10;100;75
-Rayon Gemme;Power Gem;Rock;Special;20;80;100
-Vampipoing;Drain Punch;Fighting;Physical;10;75;100
-Onde Vide;Vacuum Wave;Fighting;Special;30;40;100
-Exploforce;Focus Blast;Fighting;Special;5;120;70
-Éco-Sphère;Energy Ball;Grass;Special;10;90;100
-Rapace;Brave Bird;Flying;Physical;15;120;100
-Telluriforce;Earth Power;Ground;Special;10;90;100
-Passe-Passe;Switcheroo;Dark;Status;10;-1;100
-Giga Impact;Giga Impact;Normal;Physical;5;150;90
-Machination;Nasty Plot;Dark;Status;20;-1;-1
-Pisto-Poing;Bullet Punch;Steel;Physical;30;40;100
-Avalanche;Avalanche;Ice;Physical;10;60;100
-Éclats Glace;Ice Shard;Ice;Physical;30;40;100
-Griffe Ombre;Shadow Claw;Ghost;Physical;15;70;100
-Crocs Éclair;Thunder Fang;Electric;Physical;15;65;95
-Crocs Givre;Ice Fang;Ice;Physical;15;65;95
-Crocs Feu;Fire Fang;Fire;Physical;15;65;95
-Ombre Portée;Shadow Sneak;Ghost;Physical;30;40;100
-Boue-Bombe;Mud Bomb;Ground;Special;10;65;85
-Coupe Psycho;Psycho Cut;Psychic;Physical;20;70;100
-Psykoud'Boul;Zen Headbutt;Psychic;Physical;15;80;90
-Miroi-Tir;Mirror Shot;Steel;Special;10;65;85
-Luminocanon;Flash Cannon;Steel;Special;10;80;100
-Escalade;Rock Climb;Normal;Physical;20;90;85
-Anti-Brume;Defog;Flying;Status;15;-1;-1
-Distorsion;Trick Room;Psychic;Status;5;-1;-1
-Draco Météore;Draco Meteor;Dragon;Special;5;130;90
-Coup d'Jus;Discharge;Electric;Special;15;80;100
-Ébullilave;Lava Plume;Fire;Special;15;80;100
-Tempête Verte;Leaf Storm;Grass;Special;5;130;90
-Mégafouet;Power Whip;Grass;Physical;10;120;85
-Roc-Boulet;Rock Wrecker;Rock;Physical;5;150;90
-Poison-Croix;Cross Poison;Poison;Physical;20;70;100
-Détricanon;Gunk Shot;Poison;Physical;5;120;80
-Tête de Fer;Iron Head;Steel;Physical;15;80;100
-Bombaimant;Magnet Bomb;Steel;Physical;20;60;-1
-Lame de Roc;Stone Edge;Rock;Physical;5;100;80
-Séduction;Captivate;Normal;Status;20;-1;100
-Piège de Roc;Stealth Rock;Rock;Status;20;-1;-1
-Noeud Herbe;Grass Knot;Grass;Special;20;-1;100
-Babil;Chatter;Flying;Special;20;65;100
-Jugement;Judgment;Normal;Special;10;100;100
-Piqûre;Bug Bite;Bug;Physical;20;60;100
-Rayon Chargé;Charge Beam;Electric;Special;10;50;90
-Martobois;Wood Hammer;Grass;Physical;15;120;100
-Aqua-Jet;Aqua Jet;Water;Physical;20;40;100
-Appel Attaque;Attack Order;Bug;Physical;15;90;100
-Appel Défense;Defend Order;Bug;Status;10;-1;-1
-Appel Soins;Heal Order;Bug;Status;10;-1;-1
-Fracass'Tête;Head Smash;Rock;Physical;5;150;80
-Coup Double;Double Hit;Normal;Physical;10;35;90
-Hurle-Temps;Roar of Time;Dragon;Special;5;150;90
-Spatio-Rift;Spacial Rend;Dragon;Special;5;100;95
-Danse-Lune;Lunar Dance;Psychic;Status;10;-1;-1
-Presse;Crush Grip;Normal;Physical;5;-1;100
-Vortex Magma;Magma Storm;Fire;Special;5;100;75
-Trou Noir;Dark Void;Dark;Status;10;-1;50
-Fulmigraine;Seed Flare;Grass;Special;5;120;85
-Vent Mauvais;Ominous Wind;Ghost;Special;5;60;100
-Revenant;Shadow Force;Ghost;Physical;5;120;100
-Aiguisage;Hone Claws;Dark;Status;15;-1;-1
-Garde Large;Wide Guard;Rock;Status;10;-1;-1
-Partage Garde;Guard Split;Psychic;Status;10;-1;-1
-Partage Force;Power Split;Psychic;Status;10;-1;-1
-Zone Étrange;Wonder Room;Psychic;Status;10;-1;-1
-Choc Psy;Psyshock;Psychic;Special;10;80;100
-Choc Venin;Venoshock;Poison;Special;10;65;100
-Allègement;Autotomize;Steel;Status;15;-1;-1
-Poudre Fureur;Rage Powder;Bug;Status;20;-1;-1
-Lévikinésie;Telekinesis;Psychic;Status;15;-1;-1
-Zone Magique;Magic Room;Psychic;Status;10;-1;-1
-Anti-Air;Smack Down;Rock;Physical;15;50;100
-Yama Arashi;Storm Throw;Fighting;Physical;10;60;100
-Rebondifeu;Flame Burst;Fire;Special;15;70;100
-Cradovague;Sludge Wave;Poison;Special;10;95;100
-Papillodanse;Quiver Dance;Bug;Status;20;-1;-1
-Tacle lourd;Heavy Slam;Steel;Physical;10;-1;100
-Synchropeine;Synchronoise;Psychic;Special;10;120;100
-Boule Élek;Electro Ball;Electric;Special;10;-1;100
-Détrempage;Soak;Water;Status;20;-1;100
-Nitrocharge;Flame Charge;Fire;Physical;20;50;100
-Enroulement;Coil;Poison;Status;20;-1;-1
-Balayette;Low Sweep;Fighting;Physical;20;65;100
-Bombe Acide;Acid Spray;Poison;Special;20;40;100
-Tricherie;Foul Play;Dark;Physical;15;95;100
-Rayon Simple;Simple Beam;Normal;Status;15;-1;100
-Ten-danse;Entrainment;Normal;Status;15;-1;100
-Après Vous;After You;Normal;Status;15;-1;-1
-Chant Canon;Round;Normal;Special;15;60;100
-Écho;Echoed Voice;Normal;Special;15;40;100
-Attrition;Chip Away;Normal;Physical;20;70;100
-Bain de Smog;Clear Smog;Poison;Special;15;50;-1
-Force Ajoutée;Stored Power;Psychic;Special;10;20;100
-Prévention;Quick Guard;Fighting;Status;15;-1;-1
-Interversion;Ally Switch;Psychic;Status;15;-1;-1
-Ébullition;Scald;Water;Special;15;80;100
-Éxuviation;Shell Smash;Normal;Status;15;-1;-1
-Vibra Soin;Heal Pulse;Psychic;Status;10;-1;-1
-Châtiment;Hex;Ghost;Special;10;65;100
-Chute Libre;Sky Drop;Flying;Physical;10;60;100
-Chgt Vitesse;Shift Gear;Steel;Status;10;-1;-1
-Projection;Circle Throw;Fighting;Physical;10;60;90
-Calcination;Incinerate;Fire;Special;15;60;100
-À la Queue;Quash;Dark;Status;15;-1;100
-Acrobatie;Acrobatics;Flying;Physical;15;55;100
-Copie Type;Reflect Type;Normal;Status;15;-1;-1
-Vengeance;Retaliate;Normal;Physical;5;70;100
-Tout ou Rien;Final Gambit;Fighting;Special;5;-1;100
-Passe-Cadeau;Bestow;Normal;Status;15;-1;-1
-Feu d'Enfer;Inferno;Fire;Special;5;100;50
-Aire d'Eau;Water Pledge;Water;Special;10;80;100
-Aire de Feu;Fire Pledge;Fire;Special;10;80;100
-Aire d'Herbe;Grass Pledge;Grass;Special;10;80;100
-Change Éclair;Volt Switch;Electric;Special;20;70;100
-Survinsecte;Struggle Bug;Bug;Special;20;50;100
-Piétisol;Bulldoze;Ground;Physical;20;60;100
-Souffle Glacé;Frost Breath;Ice;Special;10;60;90
-Draco-Queue;Dragon Tail;Dragon;Physical;10;60;90
-Rengorgement;Work Up;Normal;Status;30;-1;-1
-Toile Élek;Electroweb;Electric;Special;15;55;95
-Éclair Fou;Wild Charge;Electric;Physical;15;90;100
-Tunnelier;Drill Run;Ground;Physical;10;80;95
-Double Baffe;Dual Chop;Dragon;Physical;15;40;90
-Crève-Coeur;Heart Stamp;Psychic;Physical;25;60;100
-Encornebois;Horn Leech;Grass;Physical;10;75;100
-Lame Sainte;Sacred Sword;Fighting;Physical;15;90;100
-Coquilame;Razor Shell;Water;Physical;10;75;95
-Tacle Feu;Heat Crash;Fire;Physical;10;-1;100
-Phytomixeur;Leaf Tornado;Grass;Special;10;65;90
-Bulldoboule;Steamroller;Bug;Physical;20;65;100
-Cotogarde;Cotton Guard;Grass;Status;10;-1;-1
-Explonuit;Night Daze;Dark;Special;10;85;95
-Frappe Psy;Psystrike;Psychic;Special;10;100;100
-Plumo-Queue;Tail Slap;Normal;Physical;10;25;85
-Vent Violent;Hurricane;Flying;Special;10;110;70
-Peignée;Head Charge;Normal;Physical;15;120;100
-Lancécrou;Gear Grind;Steel;Physical;15;50;85
-Incendie;Searing Shot;Fire;Special;5;100;100
-Techno-Buster;Techno Blast;Normal;Special;5;120;100
-Chant Antique;Relic Song;Normal;Special;10;75;100
-Lame Ointe;Secret Sword;Fighting;Special;10;85;100
-Ère Glaciaire;Glaciate;Ice;Special;10;65;95
-Charge Foudre;Bolt Strike;Electric;Physical;5;130;85
-Flamme Bleue;Blue Flare;Fire;Special;5;130;85
-Danse du Feu;Fiery Dance;Fire;Special;10;80;100
-Éclair Gelé;Freeze Shock;Ice;Physical;5;140;90
-Feu Glacé;Ice Burn;Ice;Special;5;140;90
-Aboiement;Snarl;Dark;Special;15;55;95
-Chute Glace;Icicle Crash;Ice;Physical;10;85;90
-Coup Victoire;V-create;Fire;Physical;5;180;95
-Flamme Croix;Fusion Flare;Fire;Special;5;100;100
-Eclair Croix;Fusion Bolt;Electric;Physical;5;100;100
-Flying Press;Flying Press;Fighting;Physical;10;100;95
-Tatamigaeshi;Mat Block;Fighting;Status;10;-1;-1
-Éructation;Belch;Poison;Special;10;120;90
-Fertilisation;Rototiller;Ground;Status;10;-1;-1
-Toile Gluante;Sticky Web;Bug;Status;20;-1;-1
-Dard Mortel;Fell Stinger;Bug;Physical;25;50;100
-Hantise;Phantom Force;Ghost;Physical;10;90;100
-Halloween;Trick-or-Treat;Ghost;Status;20;-1;100
-Râle Mâle;Noble Roar;Normal;Status;30;-1;100
-DélugePlasmique;Ion Deluge;Electric;Status;25;-1;-1
-Parabocharge;Parabolic Charge;Electric;Special;20;65;100
-Maléfice Sylvain;Forest's Curse;Grass;Status;20;-1;100
-Tempête Florale;Petal Blizzard;Grass;Physical;15;90;100
-Lyophilisation;Freeze-Dry;Ice;Special;20;70;100
-Voix Enjôleuse;Disarming Voice;Fairy;Special;15;40;-1
-Dernier Mot;Parting Shot;Dark;Status;20;-1;100
-Renversement;Topsy-Turvy;Dark;Status;20;-1;-1
-Vampibaiser;Draining Kiss;Fairy;Special;10;50;100
-Vigilance;Crafty Shield;Fairy;Status;10;-1;-1
-Garde Florale;Flower Shield;Fairy;Status;10;-1;-1
-Champ Herbu;Grassy Terrain;Grass;Status;10;-1;-1
-Champ Brumeux;Misty Terrain;Fairy;Status;10;-1;-1
-Électrisation;Electrify;Electric;Status;20;-1;-1
-Câlinerie;Play Rough;Fairy;Physical;10;90;90
-Vent Féérique;Fairy Wind;Fairy;Special;30;40;100
-Pouvoir Lunaire;Moonblast;Fairy;Special;15;95;100
-Bang Sonique;Boomburst;Normal;Special;10;140;100
-Verrou Enchanté;Fairy Lock;Fairy;Status;10;-1;-1
-Bouclier Royal;King's Shield;Steel;Status;10;-1;-1
-Camaraderie;Play Nice;Normal;Status;20;-1;-1
-Confidence;Confide;Normal;Status;20;-1;-1
-Orage Adamantin;Diamond Storm;Rock;Physical;5;100;95
-Jet de Vapeur;Steam Eruption;Water;Special;5;110;95
-TrouDimensionnel;Hyperspace Hole;Psychic;Special;5;80;-1
-Sheauriken;Water Shuriken;Water;Special;20;15;100
-Feu Ensorcelé;Mystical Fire;Fire;Special;10;75;100
-Pico-Défense;Spiky Shield;Grass;Status;10;-1;-1
-Brume Capiteuse;Aromatic Mist;Fairy;Status;20;-1;-1
-Ondes Étranges;Eerie Impulse;Electric;Status;15;-1;100
-Piège de Venin;Venom Drench;Poison;Status;20;-1;100
-Nuée de Poudre;Powder;Bug;Status;20;-1;100
-Géo-Contrôle;Geomancy;Fairy;Status;10;-1;-1
-Magné-Contrôle;Magnetic Flux;Electric;Status;20;-1;-1
-Étrennes;Happy Hour;Normal;Status;30;-1;-1
-Champ Électrifié;Electric Terrain;Electric;Status;10;-1;-1
-Éclat Magique;Dazzling Gleam;Fairy;Special;10;80;100
-Célébration;Celebrate;Normal;Status;40;-1;-1
-Mains Jointes;Hold Hands;Normal;Status;40;-1;-1
-Regard Touchant;Baby-Doll Eyes;Fairy;Status;30;-1;100
-Frotte-Frimousse;Nuzzle;Electric;Physical;20;20;100
-Retenue;Hold Back;Normal;Physical;40;40;100
-Harcèlement;Infestation;Bug;Special;20;20;100
-Poing Boost;Power-Up Punch;Fighting;Physical;20;40;100
-Mort-Ailes;Oblivion Wing;Flying;Special;10;80;100
-Myria-Fleches;Thousand Arrows;Ground;Physical;10;90;100
-Myria-Vagues;Thousand Waves;Ground;Physical;10;90;100
-Force Chtonienne;Land's Wrath;Ground;Physical;10;90;100
-Lumière du Néant;Light of Ruin;Fairy;Special;5;140;90
-Onde Originelle;Origin Pulse;Water;Special;10;110;85
-Lame Pangéenne;Precipice Blades;Ground;Physical;10;120;85
-Draco Ascension;Dragon Ascent;Flying;Physical;5;120;100
-Furie Dimension;Hyperspace Fury;Dark;Physical;5;100;-1
-Turbo-Charge Bulldozer;Breakneck Blitz;Normal;Physical;1;-1;-1
-Turbo-Charge Bulldozer;Breakneck Blitz;Normal;Special;1;-1;-1
-Combo Hyper-Furie;All-Out Pummeling;Fighting;Physical;1;-1;-1
-Combo Hyper-Furie;All-Out Pummeling;Fighting;Special;1;-1;-1
-Piqué Supersonique;Supersonic Skystrike;Flying;Physical;1;-1;-1
-Piqué Supersonique;Supersonic Skystrike;Flying;Special;1;-1;-1
-Déluge Causti-Toxique;Acid Downpour;Poison;Physical;1;-1;-1
-Déluge Causti-Toxique;Acid Downpour;Poison;Special;1;-1;-1
-Éruption Géo-Sismique;Tectonic Rage;Ground;Physical;1;-1;-1
-Éruption Géo-Sismique;Tectonic Rage;Ground;Special;1;-1;-1
-Apocalypse Gigalithique;Continental Crush;Rock;Physical;1;-1;-1
-Apocalypse Gigalithique;Continental Crush;Rock;Special;1;-1;-1
-Cocon Fatal;Savage Spin-Out;Bug;Physical;1;-1;-1
-Cocon Fatal;Savage Spin-Out;Bug;Special;1;-1;-1
-Appel des Ombres Éternelles;Never-Ending Nightmare;Ghost;Physical;1;-1;-1
-Appel des Ombres Éternelles;Never-Ending Nightmare;Ghost;Special;1;-1;-1
-Vrille Maximum;Corkscrew Crash;Steel;Physical;1;-1;-1
-Vrille Maximum;Corkscrew Crash;Steel;Special;1;-1;-1
-Pyro-Explosion Cataclysmique;Inferno Overdrive;Fire;Physical;1;-1;-1
-Pyro-Explosion Cataclysmique;Inferno Overdrive;Fire;Special;1;-1;-1
-Super Tourbillon Abyssal;Hydro Vortex;Water;Physical;1;-1;-1
-Super Tourbillon Abyssal;Hydro Vortex;Water;Special;1;-1;-1
-Pétalexplosion Éblouissante;Bloom Doom;Grass;Physical;1;-1;-1
-Pétalexplosion Éblouissante;Bloom Doom;Grass;Special;1;-1;-1
-Fulguro-Lance Gigavolt;Gigavolt Havoc;Electric;Physical;1;-1;-1
-Fulguro-Lance Gigavolt;Gigavolt Havoc;Electric;Special;1;-1;-1
-Psycho-Pulvérisation EX;Shattered Psyche;Psychic;Physical;1;-1;-1
-Psycho-Pulvérisation EX;Shattered Psyche;Psychic;Special;1;-1;-1
-Laser Cryogénique;Subzero Slammer;Ice;Physical;1;-1;-1
-Laser Cryogénique;Subzero Slammer;Ice;Special;1;-1;-1
-Chaos Draconique;Devastating Drake;Dragon;Physical;1;-1;-1
-Chaos Draconique;Devastating Drake;Dragon;Special;1;-1;-1
-Trou Noir des Ombres;Black Hole Eclipse;Dark;Physical;1;-1;-1
-Trou Noir des Ombres;Black Hole Eclipse;Dark;Special;1;-1;-1
-Impact Choupinova;Twinkle Tackle;Fairy;Physical;1;-1;-1
-Impact Choupinova;Twinkle Tackle;Fairy;Special;1;-1;-1
-Pikachute Foudroyante;Catastropika;Electric;Physical;1;210;-1
-Amass’Sable;Shore Up;Ground;Status;10;-1;-1
-Escarmouche;First Impression;Bug;Physical;10;90;100
-Blockhaus;Baneful Bunker;Poison;Status;10;-1;-1
-Tisse Ombre;Spirit Shackle;Ghost;Physical;10;80;100
-Dark Lariat;Darkest Lariat;Dark;Physical;10;85;100
-Aria de l’Écume;Sparkling Aria;Water;Special;10;90;100
-Marteau de Glace;Ice Hammer;Ice;Physical;10;100;90
-Soin Floral;Floral Healing;Fairy;Status;10;-1;-1
-Cavalerie Lourde;High Horsepower;Ground;Physical;10;95;95
-Vol-Force;Strength Sap;Grass;Status;10;-1;100
-Lame Solaire;Solar Blade;Grass;Physical;10;125;100
-Feuillage;Leafage;Grass;Physical;40;40;100
-Projecteur;Spotlight;Normal;Status;15;-1;-1
-Fil Toxique;Toxic Thread;Poison;Status;20;-1;100
-Affilage;Laser Focus;Normal;Status;30;-1;-1
-Engrenage;Gear Up;Steel;Status;20;-1;-1
-Exécu-Son;Throat Chop;Dark;Physical;15;80;100
-Boule Pollen;Pollen Puff;Bug;Special;15;90;100
-Ancrage;Anchor Shot;Steel;Physical;20;80;100
-Champ Psychique;Psychic Terrain;Psychic;Status;10;-1;-1
-Furie-Bond;Lunge;Bug;Physical;15;80;100
-Fouet de Feu;Fire Lash;Fire;Physical;15;80;100
-Arrogance;Power Trip;Dark;Physical;10;20;100
-Flamme Ultime;Burn Up;Fire;Special;5;130;100
-Permuvitesse;Speed Swap;Psychic;Status;10;-1;-1
-Estocorne;Smart Strike;Steel;Physical;10;70;-1
-Purification;Purify;Poison;Status;20;-1;-1
-Danse Éveil;Revelation Dance;Normal;Special;15;90;100
-Sanction Suprême;Core Enforcer;Dragon;Special;10;100;100
-Botte Sucrette;Trop Kick;Grass;Physical;15;70;100
-Sommation;Instruct;Psychic;Status;15;-1;-1
-Bec-Canon;Beak Blast;Flying;Physical;15;100;100
-Vibrécaille;Clanging Scales;Dragon;Special;5;110;100
-Draco-Marteau;Dragon Hammer;Dragon;Physical;15;90;100
-Centrifugifle;Brutal Swing;Dark;Physical;20;60;100
-Voile Aurore;Aurora Veil;Ice;Status;20;-1;-1
-Fureur des Plumes Spectrales;Sinister Arrow Raid;Ghost;Physical;1;180;-1
-Dark Body Press;Malicious Moonsault;Dark;Physical;1;180;-1
-Symphonie des Ondines;Oceanic Operetta;Water;Special;1;195;-1
-Colère du Gardien d’Alola;Guardian of Alola;Fairy;Special;1;-1;-1
-Fauche-Âme des Sept Étoiles;Soul-Stealing 7-Star Strike;Ghost;Physical;1;195;-1
-Électro-Surf Survolté;Stoked Sparksurfer;Electric;Special;1;175;-1
-Gare au Ronflex;Pulverizing Pancake;Normal;Physical;1;210;-1
-Neuf pour Un;Extreme Evoboost;Normal;Status;1;-1;-1
-Supernova Originelle;Genesis Supernova;Psychic;Special;1;185;-1
-Carapiège;Shell Trap;Fire;Special;5;150;100
-Canon Floral;Fleur Cannon;Fairy;Special;5;130;90
-Psycho-Croc;Psychic Fangs;Psychic;Physical;10;85;100
-Trépignement;Stomping Tantrum;Ground;Physical;10;75;100
-Os’Ombre;Shadow Bone;Ghost;Physical;10;85;100
-Vif Roc;Accelerock;Rock;Physical;20;40;100
-Aqua-Brèche;Liquidation;Water;Physical;10;85;100
-Laser Prisme;Prismatic Laser;Psychic;Special;10;160;100
-Clepto-Mânes;Spectral Thief;Ghost;Physical;10;90;100
-Choc Météore;Sunsteel Strike;Steel;Physical;5;100;100
-Rayon Spectral;Moongeist Beam;Ghost;Special;5;100;100
-Larme à l’Œil;Tearful Look;Normal;Status;20;-1;-1
-Électrikipik;Zing Zap;Electric;Physical;10;80;100
-Ire de la Nature;Nature's Madness;Fairy;Special;10;-1;90
-Coup Varia-Type;Multi-Attack;Normal;Physical;10;120;100
-Giga-Tonnerre;10,000,000 Volt Thunderbolt;Electric;Special;1;195;-1
-Caboche-Kaboum;Mind Blown;Fire;Special;5;150;100
-Plasma Punch;Plasma Fists;Electric;Physical;15;100;100
-Photo-Geyser;Photon Geyser;Psychic;Special;5;100;100
-Apocalypsis Luminis;Light That Burns the Sky;Psychic;Special;1;200;-1
-Hélio-Choc Dévastateur;Searing Sunraze Smash;Steel;Physical;1;200;-1
-Rayons Séléno-Explosifs;Menacing Moonraze Maelstrom;Ghost;Special;1;200;-1
-Patati-Patattrape;Let's Snuggle Forever;Fairy;Physical;1;190;-1
-Hurlement des Roches-Lames;Splintered Stormshards;Rock;Physical;1;190;-1
-Dracacophonie Flamboyante;Clangorous Soulblaze;Dragon;Special;1;185;-1
-Pika-Sprint;Zippy Zap;Electric;Physical;15;50;100
-Pika-Splash;Splishy Splash;Water;Special;15;90;100
-Pika-Piqué;Floaty Fall;Flying;Physical;15;90;95
-Pika-Fracas;Pika Papow;Electric;Special;20;-1;-1
-Évo-Thalasso;Bouncy Bubble;Water;Special;15;90;100
-Évo-Dynamo;Buzzy Buzz;Electric;Special;15;90;100
-Évo-Flambo;Sizzly Slide;Fire;Physical;15;90;100
-Évo-Psycho;Glitzy Glow;Psychic;Special;15;90;100
-Évo-Ténébro;Baddy Bad;Dark;Special;15;90;100
-Évo-Écolo;Sappy Seed;Grass;Physical;15;90;100
-Évo-Congélo;Freezy Frost;Ice;Special;15;90;100
-Évo-Fabulo;Sparkly Swirl;Fairy;Special;15;90;100
-Évo-Chardasso;Veevee Volley;Normal;Physical;20;-1;-1
-Écrous d'Poing;Double Iron Bash;Steel;Physical;5;60;100
+Écras'Face;Pound;Normal;Physique;35;40;1
+Poing-Karaté;Karate Chop;Fighting;Physique;25;50;1
+Torgnoles;Double Slap;Normal;Physique;10;15;0.85
+Poing Comète;Comet Punch;Normal;Physique;15;18;0.85
+Ultimapoing;Mega Punch;Normal;Physique;20;80;0.85
+Jackpot;Pay Day;Normal;Physique;20;40;1
+Poing De Feu;Fire Punch;Fire;Physique;15;75;1
+Poing-Glace;Ice Punch;Ice;Physique;15;75;1
+Poing-Éclair;Thunder Punch;Electric;Physique;15;75;1
+Griffe;Scratch;Normal;Physique;35;40;1
+Force Poigne;Vise Grip;Normal;Physique;30;55;1
+Guillotine;Guillotine;Normal;Physique;5;1000000;0.3
+Coupe-Vent;Razor Wind;Normal;Spéciale;10;80;1
+Danse-Lames;Swords Dance;Normal;Statut;20;-1;-1
+Coupe;Cut;Normal;Physique;30;50;0.95
+Tornade;Gust;Flying;Spéciale;35;40;1
+Cru-Aile;Wing Attack;Flying;Physique;35;60;1
+Cyclone;Whirlwind;Normal;Statut;20;-1;-1
+Vol;Fly;Flying;Physique;15;90;0.95
+Étreinte;Bind;Normal;Physique;202;15;0.85
+Souplesse;Slam;Normal;Physique;20;80;0.75
+Fouet Lianes;Vine Whip;Grass;Physique;25;45;1
+Écrasement;Stomp;Normal;Physique;20;65;1
+Double Pied;Double Kick;Fighting;Physique;30;30;1
+Ultimawashi;Mega Kick;Normal;Physique;5;120;0.75
+Pied Sauté;Jump Kick;Fighting;Physique;10;100;0.95
+Mawashi Geri;Rolling Kick;Fighting;Physique;15;60;0.85
+Jet de Sable;Sand Attack;Ground;Statut;15;-1;1
+Coup d'Boule;Headbutt;Normal;Physique;15;70;1
+Koud'Korne;Horn Attack;Normal;Physique;25;65;1
+Furie;Fury Attack;Normal;Physique;20;15;0.85
+Empal'Korne;Horn Drill;Normal;Physique;5;1000000;0.3
+Charge;Tackle;Normal;Physique;35;40;1
+Plaquage;Body Slam;Normal;Physique;15;85;1
+Ligotage;Wrap;Normal;Physique;20;15;0.9
+Bélier;Take Down;Normal;Physique;20;90;0.85
+Mania;Thrash;Normal;Physique;10;120;1
+Damoclès;Double-Edge;Normal;Physique;15;120;1
+Mimi-Queue;Tail Whip;Normal;Statut;30;-1;1
+Dard-Venin;Poison Sting;Poison;Physique;35;15;1
+Double-Dard;Twineedle;Bug;Physique;20;25;1
+Dard-Nuée;Pin Missile;Bug;Physique;20;25;0.95
+Groz'Yeux;Leer;Normal;Statut;30;-1;1
+Morsure;Bite;Dark;Physique;25;60;1
+Rugissement;Growl;Normal;Statut;40;-1;1
+Hurlement;Roar;Normal;Statut;20;-1;-1
+Berceuse;Sing;Normal;Statut;15;-1;0.55
+Ultrason;Supersonic;Normal;Statut;20;-1;0.55
+Sonicboom;Sonic Boom;Normal;Spéciale;20;-1;0.9
+Entrave;Disable;Normal;Statut;20;-1;1
+Acide;Acid;Poison;Spéciale;30;40;1
+Flammèche;Ember;Fire;Spéciale;25;40;1
+Lance-Flammes;Flamethrower;Fire;Spéciale;15;90;1
+Brume;Mist;Ice;Statut;30;-1;-1
+Pistolet à O;Water Gun;Water;Spéciale;25;40;1
+Hydrocanon;Hydro Pump;Water;Spéciale;5;110;0.8
+Surf;Surf;Water;Spéciale;15;90;1
+Laser Glace;Ice Beam;Ice;Spéciale;10;90;1
+Blizzard;Blizzard;Ice;Spéciale;5;110;0.7
+Rafale Psy;Psybeam;Psychic;Spéciale;20;65;1
+Bulles d'O;Bubble Beam;Water;Spéciale;20;65;1
+Onde Boréale;Aurora Beam;Ice;Spéciale;20;65;1
+Ultralaser;Hyper Beam;Normal;Spéciale;5;150;0.9
+Picpic;Peck;Flying;Physique;35;35;1
+Bec Vrille;Drill Peck;Flying;Physique;20;80;1
+Sacrifice;Submission;Fighting;Physique;20;80;0.8
+Balayage;Low Kick;Fighting;Physique;20;-1;1
+Riposte;Counter;Fighting;Physique;20;-1;1
+Frappe Atlas;Seismic Toss;Fighting;Physique;20;-1;1
+Force;Strength;Normal;Physique;15;80;1
+Vol-Vie;Absorb;Grass;Spéciale;25;20;1
+Méga-Sangsue;Mega Drain;Grass;Spéciale;15;40;1
+Vampigraine;Leech Seed;Grass;Statut;10;-1;0.9
+Croissance;Growth;Normal;Statut;20;-1;-1
+Tranch'Herbe;Razor Leaf;Grass;Physique;25;55;0.95
+Lance-Soleil;Solar Beam;Grass;Spéciale;10;120;1
+Poudre Toxik;Poison Powder;Poison;Statut;35;-1;0.75
+Para-Spore;Stun Spore;Grass;Statut;30;-1;0.75
+Poudre Dodo;Sleep Powder;Grass;Statut;15;-1;0.75
+Danse-Fleur;Petal Dance;Grass;Spéciale;10;120;1
+Sécrétion;String Shot;Bug;Statut;40;-1;0.95
+Draco-Rage;Dragon Rage;Dragon;Spéciale;10;-1;1
+Danse Flamme;Fire Spin;Fire;Spéciale;15;35;0.85
+Éclair;Thunder Shock;Electric;Spéciale;30;40;1
+Tonnerre;Thunderbolt;Electric;Spéciale;15;90;1
+Cage-Éclair;Thunder Wave;Electric;Statut;20;-1;0.9
+Fatal-Foudre;Thunder;Electric;Spéciale;10;110;0.7
+Jet-Pierres;Rock Throw;Rock;Physique;15;50;0.9
+Séisme;Earthquake;Ground;Physique;10;100;1
+Abîme;Fissure;Ground;Physique;5;1000000;0.3
+Tunnel;Dig;Ground;Physique;10;80;1
+Toxik;Toxic;Poison;Statut;10;-1;0.9
+Choc Mental;Confusion;Psychic;Spéciale;25;50;1
+Psyko;Psychic;Psychic;Spéciale;10;90;1
+Hypnose;Hypnosis;Psychic;Statut;20;-1;0.6
+Yoga;Meditate;Psychic;Statut;40;-1;-1
+Hâte;Agility;Psychic;Statut;30;-1;-1
+Vive-Attaque;Quick Attack;Normal;Physique;30;40;1
+Frénésie;Rage;Normal;Physique;20;20;1
+Téléport;Teleport;Psychic;Statut;20;-1;-1
+Ombre Nocturne;Night Shade;Ghost;Spéciale;15;-1;1
+Copie;Mimic;Normal;Statut;10;-1;-1
+Grincement;Screech;Normal;Statut;40;-1;0.85
+Reflet;Double Team;Normal;Statut;15;-1;-1
+Soin;Recover;Normal;Statut;10;-1;-1
+Armure;Harden;Normal;Statut;30;-1;-1
+Lilliput;Minimize;Normal;Statut;10;-1;-1
+Brouillard;Smokescreen;Normal;Statut;20;-1;1
+Onde Folie;Confuse Ray;Ghost;Statut;10;-1;1
+Repli;Withdraw;Water;Statut;40;-1;-1
+Boul'Armure;Defense Curl;Normal;Statut;40;-1;-1
+Bouclier;Barrier;Psychic;Statut;20;-1;-1
+Mur Lumière;Light Screen;Psychic;Statut;30;-1;-1
+Buée Noire;Haze;Ice;Statut;30;-1;-1
+Protection;Reflect;Psychic;Statut;20;-1;-1
+Puissance;Focus Energy;Normal;Statut;30;-1;-1
+Patience;Bide;Normal;Physique;10;-1;-1
+Métronome;Metronome;Normal;Statut;10;-1;-1
+Mimique;Mirror Move;Flying;Statut;20;-1;-1
+Destruction;Self-Destruct;Normal;Physique;5;200;1
+Bomb'Oeuf;Egg Bomb;Normal;Physique;10;100;0.75
+Léchouille;Lick;Ghost;Physique;30;30;1
+Purédpois;Smog;Poison;Spéciale;20;30;0.7
+Détritus;Sludge;Poison;Spéciale;20;65;1
+Masse d'Os;Bone Club;Ground;Physique;20;65;0.85
+Déflagration;Fire Blast;Fire;Spéciale;5;110;0.85
+Cascade;Waterfall;Water;Physique;15;80;1
+Claquoir;Clamp;Water;Physique;15;35;0.85
+Météores;Swift;Normal;Spéciale;20;60;-1
+Coud'Krâne;Skull Bash;Normal;Physique;10;130;1
+Picanon;Spike Cannon;Normal;Physique;15;20;1
+Constriction;Constrict;Normal;Physique;35;10;1
+Amnésie;Amnesia;Psychic;Statut;20;-1;-1
+Télékinésie;Kinesis;Psychic;Statut;15;-1;0.8
+E-Coque;Soft-Boiled;Normal;Statut;10;-1;-1
+Pied Voltige;High Jump Kick;Fighting;Physique;10;130;0.9
+Regard Médusant;Glare;Normal;Statut;30;-1;1
+Dévorêve;Dream Eater;Psychic;Spéciale;15;100;1
+Gaz Toxik;Poison Gas;Poison;Statut;40;-1;0.9
+Pilonnage;Barrage;Normal;Physique;20;15;0.85
+Vampirisme;Leech Life;Bug;Physique;10;80;1
+Grobisou;Lovely Kiss;Normal;Statut;10;-1;0.75
+Piqué;Sky Attack;Flying;Physique;5;140;0.9
+Morphing;Transform;Normal;Statut;10;-1;-1
+Écume;Bubble;Water;Spéciale;30;40;1
+Uppercut;Dizzy Punch;Normal;Physique;10;70;1
+Spore;Spore;Grass;Statut;15;-1;1
+Flash;Flash;Normal;Statut;20;-1;1
+Vague Psy;Psywave;Psychic;Spéciale;15;-1;1
+Trempette;Splash;Normal;Statut;40;-1;-1
+Acidarmure;Acid Armor;Poison;Statut;20;-1;-1
+Pince-Masse;Crabhammer;Water;Physique;10;100;0.9
+Explosion;Explosion;Normal;Physique;5;250;1
+Combo-Griffe;Fury Swipes;Normal;Physique;15;18;0.8
+Osmerang;Bonemerang;Ground;Physique;10;50;0.9
+Repos;Rest;Psychic;Statut;10;-1;-1
+Éboulement;Rock Slide;Rock;Physique;10;75;0.9
+Croc de Mort;Hyper Fang;Normal;Physique;15;80;0.9
+Affûtage;Sharpen;Normal;Statut;30;-1;-1
+Adaptation;Conversion;Normal;Statut;30;-1;-1
+Triplattaque;Tri Attack;Normal;Spéciale;10;80;1
+Croc Fatal;Super Fang;Normal;Physique;10;-1;0.9
+Tranche;Slash;Normal;Physique;20;70;1
+Clonage;Substitute;Normal;Statut;10;-1;-1
+Lutte;Struggle;Normal;Physique;1;50;-1
+Gribouille;Sketch;Normal;Statut;1;-1;-1
+Triple Pied;Triple Kick;Fighting;Physique;10;10;0.9
+Larcin;Thief;Dark;Physique;25;60;1
+Toile;Spider Web;Bug;Statut;10;-1;-1
+Lire-Esprit;Mind Reader;Normal;Statut;5;-1;-1
+Cauchemar;Nightmare;Ghost;Statut;15;-1;1
+Roue de Feu;Flame Wheel;Fire;Physique;25;60;1
+Ronflement;Snore;Normal;Spéciale;15;50;1
+Malédiction;Curse;Ghost;Statut;10;-1;-1
+Fléau;Flail;Normal;Physique;15;-1;1
+Conversion 2;Conversion 2;Normal;Statut;30;-1;-1
+Aéroblast;Aeroblast;Flying;Spéciale;5;100;0.95
+Spore Coton;Cotton Spore;Grass;Statut;40;-1;1
+Contre;Reversal;Fighting;Physique;15;-1;1
+Dépit;Spite;Ghost;Statut;10;-1;1
+Poudreuse;Powder Snow;Ice;Spéciale;25;40;1
+Abri;Protect;Normal;Statut;10;-1;-1
+Mach Punch;Mach Punch;Fighting;Physique;30;40;1
+Grimace;Scary Face;Normal;Statut;10;-1;1
+Feinte;Feint Attack;Dark;Physique;20;60;-1
+Doux Baiser;Sweet Kiss;Fairy;Statut;10;-1;0.75
+Cognobidon;Belly Drum;Normal;Statut;10;-1;-1
+Bomb-Beurk;Sludge Bomb;Poison;Spéciale;10;90;1
+Coud'Boue;Mud-Slap;Ground;Spéciale;10;20;1
+Octazooka;Octazooka;Water;Spéciale;10;65;0.85
+Picots;Spikes;Ground;Statut;20;-1;-1
+Élecanon;Zap Cannon;Electric;Spéciale;5;120;0.5
+Clairvoyance;Foresight;Normal;Statut;40;-1;-1
+Prélèvem. Destin;Destiny Bond;Ghost;Statut;5;-1;-1
+Requiem;Perish Song;Normal;Statut;5;-1;-1
+Vent Glace;Icy Wind;Ice;Spéciale;15;55;0.95
+Détection;Detect;Fighting;Statut;5;-1;-1
+Charge-Os;Bone Rush;Ground;Physique;10;25;0.9
+Verrouillage;Lock-On;Normal;Statut;5;-1;-1
+Colère;Outrage;Dragon;Physique;10;120;1
+Tempête de Sable;Sandstorm;Rock;Statut;10;-1;-1
+Giga-Sangsue;Giga Drain;Grass;Spéciale;10;75;1
+Ténacité;Endure;Normal;Statut;10;-1;-1
+Charme;Charm;Fairy;Statut;20;-1;1
+Roulade;Rollout;Rock;Physique;20;30;0.9
+Faux-Chage;False Swipe;Normal;Physique;40;40;1
+Vantardise;Swagger;Normal;Statut;15;-1;0.85
+Lait à Boire;Milk Drink;Normal;Statut;10;-1;-1
+Étincelle;Spark;Electric;Physique;20;65;1
+Taillade;Fury Cutter;Bug;Physique;20;40;0.95
+Aile D'Acier;Steel Wing;Steel;Physique;25;70;0.9
+Regard Noir;Mean Look;Normal;Statut;5;-1;-1
+Attraction;Attract;Normal;Statut;15;-1;1
+Blabla Dodo;Sleep Talk;Normal;Statut;10;-1;-1
+Glas De Soin;Heal Bell;Normal;Statut;5;-1;-1
+Retour;Return;Normal;Physique;20;-1;1
+Cadeau;Present;Normal;Physique;15;-1;0.9
+Frustration;Frustration;Normal;Physique;20;-1;1
+Rune Protect;Safeguard;Normal;Statut;25;-1;-1
+Balance;Pain Split;Normal;Statut;20;-1;-1
+Feu Sacré;Sacred Fire;Fire;Physique;5;100;0.95
+Ampleur;Magnitude;Ground;Physique;30;-1;1
+Dynamopoing;Dynamic Punch;Fighting;Physique;5;100;0.5
+Mégacorne;Megahorn;Bug;Physique;10;120;0.85
+Dracosouffle;Dragon Breath;Dragon;Spéciale;20;60;1
+Relais;Baton Pass;Normal;Statut;40;-1;-1
+Encore;Encore;Normal;Statut;5;-1;1
+Poursuite;Pursuit;Dark;Physique;20;40;1
+Tour Rapide;Rapid Spin;Normal;Physique;40;50;1
+Doux Parfum;Sweet Scent;Normal;Statut;20;-1;1
+Queue de Fer;Iron Tail;Steel;Physique;15;100;0.75
+Griffe Acier;Metal Claw;Steel;Physique;35;50;0.95
+Corps Perdu;Vital Throw;Fighting;Physique;10;70;-1
+Aurore;Morning Sun;Normal;Statut;5;-1;-1
+Synthèse;Synthesis;Grass;Statut;5;-1;-1
+Rayon Lune;Moonlight;Fairy;Statut;5;-1;-1
+Puissance Cachée;Hidden Power;Normal;Spéciale;15;60;1
+Coup-Croix;Cross Chop;Fighting;Physique;5;100;0.8
+Ouragan;Twister;Dragon;Spéciale;20;40;1
+Danse Pluie;Rain Dance;Water;Statut;5;-1;-1
+Zenith;Sunny Day;Fire;Statut;5;-1;-1
+Mâchouille;Crunch;Dark;Physique;15;80;1
+Voile Miroir;Mirror Coat;Psychic;Spéciale;20;-1;1
+Boost;Psych Up;Normal;Statut;10;-1;-1
+Vitesse Extrême;Extreme Speed;Normal;Physique;5;80;1
+Pouvoir Antique;Ancient Power;Rock;Spéciale;5;60;1
+Ball'Ombre;Shadow Ball;Ghost;Spéciale;15;80;1
+Prescience;Future Sight;Psychic;Spéciale;10;120;1
+Éclate-Roc;Rock Smash;Fighting;Physique;15;40;1
+Siphon;Whirlpool;Water;Spéciale;15;35;0.85
+Baston;Beat Up;Dark;Physique;10;-1;1
+Bluff;Fake Out;Normal;Physique;10;40;1
+Brouhaha;Uproar;Normal;Spéciale;10;90;1
+Stockage;Stockpile;Normal;Statut;20;-1;-1
+Relâche;Spit Up;Normal;Spéciale;10;-1;1
+Avale;Swallow;Normal;Statut;10;-1;-1
+Canicule;Heat Wave;Fire;Spéciale;10;95;0.9
+Grêle;Hail;Ice;Statut;10;-1;-1
+Tourmente;Torment;Dark;Statut;15;-1;1
+Flatterie;Flatter;Dark;Statut;15;-1;1
+Feu Follet;Will-O-Wisp;Fire;Statut;15;-1;0.85
+Souvenir;Memento;Dark;Statut;10;-1;1
+Facade;Facade;Normal;Physique;20;70;1
+Mitra-Poing;Focus Punch;Fighting;Physique;20;150;1
+Stimulant;Smelling Salts;Normal;Physique;10;70;1
+Par Ici;Follow Me;Normal;Statut;20;-1;-1
+Force-Nature;Nature Power;Normal;Statut;20;-1;-1
+Chargeur;Charge;Electric;Statut;20;-1;-1
+Provoc;Taunt;Dark;Statut;20;-1;1
+Coup d'Main;Helping Hand;Normal;Statut;20;-1;-1
+Tourmagik;Trick;Psychic;Statut;10;-1;1
+Imitation;Role Play;Psychic;Statut;10;-1;-1
+Voeu;Wish;Normal;Statut;10;-1;-1
+Assistance;Assist;Normal;Statut;20;-1;-1
+Racines;Ingrain;Grass;Statut;20;-1;-1
+Surpuissance;Superpower;Fighting;Physique;5;120;1
+Reflet Magik;Magic Coat;Psychic;Statut;15;-1;-1
+Recyclage;Recycle;Normal;Statut;10;-1;-1
+Vendetta;Revenge;Fighting;Physique;10;60;1
+Casse-Brique;Brick Break;Fighting;Physique;15;75;1
+Bâillement;Yawn;Normal;Statut;10;-1;-1
+Sabotage;Knock Off;Dark;Physique;20;65;1
+Effort;Endeavor;Normal;Physique;5;-1;1
+Éruption;Eruption;Fire;Spéciale;5;150;1
+Échange;Skill Swap;Psychic;Statut;10;-1;-1
+Possessif;Imprison;Psychic;Statut;10;-1;-1
+Régénération;Refresh;Normal;Statut;20;-1;-1
+Rancune;Grudge;Ghost;Statut;5;-1;-1
+Saisie;Snatch;Dark;Statut;10;-1;-1
+Force Cachée;Secret Power;Normal;Physique;20;70;1
+Plongée;Dive;Water;Physique;10;80;1
+Cogne;Arm Thrust;Fighting;Physique;20;15;1
+Camouflage;Camouflage;Normal;Statut;20;-1;-1
+Lumiqueue;Tail Glow;Bug;Statut;20;-1;-1
+Lumi-Éclat;Luster Purge;Psychic;Spéciale;5;70;1
+Ball'Brume;Mist Ball;Psychic;Spéciale;5;70;1
+Danse-Plume;Feather Dance;Flying;Statut;15;-1;1
+Danse-Folle;Teeter Dance;Normal;Statut;20;-1;1
+Pied Brûleur;Blaze Kick;Fire;Physique;10;85;0.9
+Lance-Boue;Mud Sport;Ground;Statut;15;-1;-1
+Ball'Glace;Ice Ball;Ice;Physique;20;30;0.9
+Poing Dard;Needle Arm;Grass;Physique;15;60;1
+Paresse;Slack Off;Normal;Statut;10;-1;-1
+Mégaphone;Hyper Voice;Normal;Spéciale;10;90;1
+Crochet Venin;Poison Fang;Poison;Physique;15;50;1
+Éclate Griffe;Crush Claw;Normal;Physique;10;75;0.95
+Rafale Feu;Blast Burn;Fire;Spéciale;5;150;0.9
+Hydroblast;Hydro Cannon;Water;Spéciale;5;150;0.9
+Poing Météore;Meteor Mash;Steel;Physique;10;90;0.9
+Étonnement;Astonish;Ghost;Physique;15;30;1
+Ball'Météo;Weather Ball;Normal;Spéciale;10;50;1
+Aromathérapie;Aromatherapy;Grass;Statut;5;-1;-1
+Croco Larme;Fake Tears;Dark;Statut;20;-1;1
+Tranch'Air;Air Cutter;Flying;Spéciale;25;60;0.95
+Surchauffe;Overheat;Fire;Spéciale;5;130;0.9
+Flair;Odor Sleuth;Normal;Statut;40;-1;-1
+Tomberoche;Rock Tomb;Rock;Physique;15;60;0.95
+Vent Argenté;Silver Wind;Bug;Spéciale;5;60;1
+Strido-Son;Metal Sound;Steel;Statut;40;-1;0.85
+Siffl'Herbe;Grass Whistle;Grass;Statut;15;-1;0.55
+Chatouille;Tickle;Normal;Statut;20;-1;1
+Force Cosmik;Cosmic Power;Psychic;Statut;20;-1;-1
+Giclédo;Water Spout;Water;Spéciale;5;150;1
+Rayon Signal;Signal Beam;Bug;Spéciale;15;75;1
+Poing Ombre;Shadow Punch;Ghost;Physique;20;60;-1
+Extrasenseur;Extrasensory;Psychic;Spéciale;20;80;1
+Stratopercut;Sky Uppercut;Fighting;Physique;15;85;0.9
+Tourbi-Sable;Sand Tomb;Ground;Physique;15;35;0.85
+Glaciation;Sheer Cold;Ice;Spéciale;5;1000000;0.3
+Ocroupi;Muddy Water;Water;Spéciale;10;90;0.85
+Balle Graine;Bullet Seed;Grass;Physique;30;25;1
+Aéropique;Aerial Ace;Flying;Physique;20;60;-1
+Stalagtite;Icicle Spear;Ice;Physique;30;25;1
+Mur de Fer;Iron Defense;Steel;Statut;15;-1;-1
+Barrage;Block;Normal;Statut;5;-1;-1
+Grondement;Howl;Normal;Statut;40;-1;-1
+Dracogriffe;Dragon Claw;Dragon;Physique;15;80;1
+Végé-Attak;Frenzy Plant;Grass;Spéciale;5;150;0.9
+Gonflette;Bulk Up;Fighting;Statut;20;-1;-1
+Rebond;Bounce;Flying;Physique;5;85;0.85
+Tir de Boue;Mud Shot;Ground;Spéciale;15;55;0.95
+Queue-Poison;Poison Tail;Poison;Physique;25;50;1
+Implore;Covet;Normal;Physique;25;60;1
+Électacle;Volt Tackle;Electric;Physique;15;120;1
+Feuille Magik;Magical Leaf;Grass;Spéciale;20;60;-1
+Tourniquet;Water Sport;Water;Statut;15;-1;-1
+Plénitude;Calm Mind;Psychic;Statut;20;-1;-1
+Lame-Feuille;Leaf Blade;Grass;Physique;15;90;1
+Danse Draco;Dragon Dance;Dragon;Statut;20;-1;-1
+Boule Roc;Rock Blast;Rock;Physique;10;25;0.9
+Onde de Choc;Shock Wave;Electric;Spéciale;20;60;-1
+Vibraqua;Water Pulse;Water;Spéciale;20;60;1
+Carnareket;Doom Desire;Steel;Spéciale;5;140;1
+Psycho Boost;Psycho Boost;Psychic;Spéciale;5;140;0.9
+Atterrissage;Roost;Flying;Statut;10;-1;-1
+Gravité;Gravity;Psychic;Statut;5;-1;-1
+Oeil Miracle;Miracle Eye;Psychic;Statut;40;-1;-1
+Réveil Forcé;Wake-Up Slap;Fighting;Physique;10;70;1
+Marto-Poing;Hammer Arm;Fighting;Physique;10;100;0.9
+Gyroballe;Gyro Ball;Steel;Physique;5;-1;1
+Voeu Soin;Healing Wish;Psychic;Statut;10;-1;-1
+Saumure;Brine;Water;Spéciale;10;65;1
+Don naturel;Natural Gift;Normal;Physique;15;-1;1
+Ruse;Feint;Normal;Physique;10;30;1
+Picore;Pluck;Flying;Physique;20;60;1
+Vent Arrière;Tailwind;Flying;Statut;15;-1;-1
+Acupression;Acupressure;Normal;Statut;30;-1;-1
+Fulmifer;Metal Burst;Steel;Physique;10;-1;1
+Demi-Tour;U-turn;Bug;Physique;20;70;1
+Close Combat;Close Combat;Fighting;Physique;5;120;1
+Représailles;Payback;Dark;Physique;10;50;1
+Assurance;Assurance;Dark;Physique;10;60;1
+Embargo;Embargo;Dark;Statut;15;-1;1
+Dégommage;Fling;Dark;Physique;10;-1;1
+Échange Psy;Psycho Shift;Psychic;Statut;10;-1;1
+Atout;Trump Card;Normal;Spéciale;5;-1;-1
+Anti-Soin;Heal Block;Psychic;Statut;15;-1;1
+Essorage;Wring Out;Normal;Spéciale;5;-1;1
+Astuce Force;Power Trick;Psychic;Statut;10;-1;-1
+Suc Digestif;Gastro Acid;Poison;Statut;10;-1;1
+Air Veinard;Lucky Chant;Normal;Statut;30;-1;-1
+Moi d'abord;Me First;Normal;Statut;20;-1;-1
+Photocopie;Copycat;Normal;Statut;20;-1;-1
+Permuforce;Power Swap;Psychic;Statut;10;-1;-1
+Permugarde;Guard Swap;Psychic;Statut;10;-1;-1
+Punition;Punishment;Dark;Physique;5;-1;1
+Dernier Recours;Last Resort;Normal;Physique;5;140;1
+Soucigraine;Worry Seed;Grass;Statut;10;-1;1
+Coup Bas;Sucker Punch;Dark;Physique;5;70;1
+Pics Toxik;Toxic Spikes;Poison;Statut;20;-1;-1
+Permucoeur;Heart Swap;Psychic;Statut;10;-1;-1
+Anneau Hydro;Aqua Ring;Water;Statut;20;-1;-1
+Vol Magnétik;Magnet Rise;Electric;Statut;10;-1;-1
+Boutefeu;Flare Blitz;Fire;Physique;15;120;1
+Forte-Paume;Force Palm;Fighting;Physique;10;60;1
+Aurasphère;Aura Sphere;Fighting;Spéciale;20;80;-1
+Poliroche;Rock Polish;Rock;Statut;20;-1;-1
+Direct Toxik;Poison Jab;Poison;Physique;20;80;1
+Vibrobscur;Dark Pulse;Dark;Spéciale;15;80;1
+Tranche-Nuit;Night Slash;Dark;Physique;15;70;1
+Hydroqueue;Aqua Tail;Water;Physique;10;90;0.9
+Canon Graine;Seed Bomb;Grass;Physique;15;80;1
+Lame d'Air;Air Slash;Flying;Spéciale;15;75;0.95
+Plaie-Croix;X-Scissor;Bug;Physique;15;80;1
+Bourdon;Bug Buzz;Bug;Spéciale;10;90;1
+Dracochoc;Dragon Pulse;Dragon;Spéciale;10;85;1
+Dracocharge;Dragon Rush;Dragon;Physique;10;100;0.75
+Rayon Gemme;Power Gem;Rock;Spéciale;20;80;1
+Vampipoing;Drain Punch;Fighting;Physique;10;75;1
+Onde Vide;Vacuum Wave;Fighting;Spéciale;30;40;1
+Exploforce;Focus Blast;Fighting;Spéciale;5;120;0.7
+Éco-Sphère;Energy Ball;Grass;Spéciale;10;90;1
+Rapace;Brave Bird;Flying;Physique;15;120;1
+Telluriforce;Earth Power;Ground;Spéciale;10;90;1
+Passe-Passe;Switcheroo;Dark;Statut;10;-1;1
+Giga Impact;Giga Impact;Normal;Physique;5;150;0.9
+Machination;Nasty Plot;Dark;Statut;20;-1;-1
+Pisto-Poing;Bullet Punch;Steel;Physique;30;40;1
+Avalanche;Avalanche;Ice;Physique;10;60;1
+Éclats Glace;Ice Shard;Ice;Physique;30;40;1
+Griffe Ombre;Shadow Claw;Ghost;Physique;15;70;1
+Crocs Éclair;Thunder Fang;Electric;Physique;15;65;0.95
+Crocs Givre;Ice Fang;Ice;Physique;15;65;0.95
+Crocs Feu;Fire Fang;Fire;Physique;15;65;0.95
+Ombre Portée;Shadow Sneak;Ghost;Physique;30;40;1
+Boue-Bombe;Mud Bomb;Ground;Spéciale;10;65;0.85
+Coupe Psycho;Psycho Cut;Psychic;Physique;20;70;1
+Psykoud'Boul;Zen Headbutt;Psychic;Physique;15;80;0.9
+Miroi-Tir;Mirror Shot;Steel;Spéciale;10;65;0.85
+Luminocanon;Flash Cannon;Steel;Spéciale;10;80;1
+Escalade;Rock Climb;Normal;Physique;20;90;0.85
+Anti-Brume;Defog;Flying;Statut;15;-1;-1
+Distorsion;Trick Room;Psychic;Statut;5;-1;-1
+Draco Météore;Draco Meteor;Dragon;Spéciale;5;130;0.9
+Coup d'Jus;Discharge;Electric;Spéciale;15;80;1
+Ébullilave;Lava Plume;Fire;Spéciale;15;80;1
+Tempête Verte;Leaf Storm;Grass;Spéciale;5;130;0.9
+Mégafouet;Power Whip;Grass;Physique;10;120;0.85
+Roc-Boulet;Rock Wrecker;Rock;Physique;5;150;0.9
+Poison-Croix;Cross Poison;Poison;Physique;20;70;1
+Détricanon;Gunk Shot;Poison;Physique;5;120;0.8
+Tête de Fer;Iron Head;Steel;Physique;15;80;1
+Bombaimant;Magnet Bomb;Steel;Physique;20;60;-1
+Lame de Roc;Stone Edge;Rock;Physique;5;100;0.8
+Séduction;Captivate;Normal;Statut;20;-1;1
+Piège de Roc;Stealth Rock;Rock;Statut;20;-1;-1
+Noeud Herbe;Grass Knot;Grass;Spéciale;20;-1;1
+Babil;Chatter;Flying;Spéciale;20;65;1
+Jugement;Judgment;Normal;Spéciale;10;100;1
+Piqûre;Bug Bite;Bug;Physique;20;60;1
+Rayon Chargé;Charge Beam;Electric;Spéciale;10;50;0.9
+Martobois;Wood Hammer;Grass;Physique;15;120;1
+Aqua-Jet;Aqua Jet;Water;Physique;20;40;1
+Appel Attaque;Attack Order;Bug;Physique;15;90;1
+Appel Défense;Defend Order;Bug;Statut;10;-1;-1
+Appel Soins;Heal Order;Bug;Statut;10;-1;-1
+Fracass'Tête;Head Smash;Rock;Physique;5;150;0.8
+Coup Double;Double Hit;Normal;Physique;10;35;0.9
+Hurle-Temps;Roar of Time;Dragon;Spéciale;5;150;0.9
+Spatio-Rift;Spacial Rend;Dragon;Spéciale;5;100;0.95
+Danse-Lune;Lunar Dance;Psychic;Statut;10;-1;-1
+Presse;Crush Grip;Normal;Physique;5;-1;1
+Vortex Magma;Magma Storm;Fire;Spéciale;5;100;0.75
+Trou Noir;Dark Void;Dark;Statut;10;-1;0.5
+Fulmigraine;Seed Flare;Grass;Spéciale;5;120;0.85
+Vent Mauvais;Ominous Wind;Ghost;Spéciale;5;60;1
+Revenant;Shadow Force;Ghost;Physique;5;120;1
+Aiguisage;Hone Claws;Dark;Statut;15;-1;-1
+Garde Large;Wide Guard;Rock;Statut;10;-1;-1
+Partage Garde;Guard Split;Psychic;Statut;10;-1;-1
+Partage Force;Power Split;Psychic;Statut;10;-1;-1
+Zone Étrange;Wonder Room;Psychic;Statut;10;-1;-1
+Choc Psy;Psyshock;Psychic;Spéciale;10;80;1
+Choc Venin;Venoshock;Poison;Spéciale;10;65;1
+Allègement;Autotomize;Steel;Statut;15;-1;-1
+Poudre Fureur;Rage Powder;Bug;Statut;20;-1;-1
+Lévikinésie;Telekinesis;Psychic;Statut;15;-1;-1
+Zone Magique;Magic Room;Psychic;Statut;10;-1;-1
+Anti-Air;Smack Down;Rock;Physique;15;50;1
+Yama Arashi;Storm Throw;Fighting;Physique;10;60;1
+Rebondifeu;Flame Burst;Fire;Spéciale;15;70;1
+Cradovague;Sludge Wave;Poison;Spéciale;10;95;1
+Papillodanse;Quiver Dance;Bug;Statut;20;-1;-1
+Tacle lourd;Heavy Slam;Steel;Physique;10;-1;1
+Synchropeine;Synchronoise;Psychic;Spéciale;10;120;1
+Boule Élek;Electro Ball;Electric;Spéciale;10;-1;1
+Détrempage;Soak;Water;Statut;20;-1;1
+Nitrocharge;Flame Charge;Fire;Physique;20;50;1
+Enroulement;Coil;Poison;Statut;20;-1;-1
+Balayette;Low Sweep;Fighting;Physique;20;65;1
+Bombe Acide;Acid Spray;Poison;Spéciale;20;40;1
+Tricherie;Foul Play;Dark;Physique;15;95;1
+Rayon Simple;Simple Beam;Normal;Statut;15;-1;1
+Ten-danse;Entrainment;Normal;Statut;15;-1;1
+Après Vous;After You;Normal;Statut;15;-1;-1
+Chant Canon;Round;Normal;Spéciale;15;60;1
+Écho;Echoed Voice;Normal;Spéciale;15;40;1
+Attrition;Chip Away;Normal;Physique;20;70;1
+Bain de Smog;Clear Smog;Poison;Spéciale;15;50;-1
+Force Ajoutée;Stored Power;Psychic;Spéciale;10;20;1
+Prévention;Quick Guard;Fighting;Statut;15;-1;-1
+Interversion;Ally Switch;Psychic;Statut;15;-1;-1
+Ébullition;Scald;Water;Spéciale;15;80;1
+Éxuviation;Shell Smash;Normal;Statut;15;-1;-1
+Vibra Soin;Heal Pulse;Psychic;Statut;10;-1;-1
+Châtiment;Hex;Ghost;Spéciale;10;65;1
+Chute Libre;Sky Drop;Flying;Physique;10;60;1
+Chgt Vitesse;Shift Gear;Steel;Statut;10;-1;-1
+Projection;Circle Throw;Fighting;Physique;10;60;0.9
+Calcination;Incinerate;Fire;Spéciale;15;60;1
+À la Queue;Quash;Dark;Statut;15;-1;1
+Acrobatie;Acrobatics;Flying;Physique;15;55;1
+Copie Type;Reflect Type;Normal;Statut;15;-1;-1
+Vengeance;Retaliate;Normal;Physique;5;70;1
+Tout ou Rien;Final Gambit;Fighting;Spéciale;5;-1;1
+Passe-Cadeau;Bestow;Normal;Statut;15;-1;-1
+Feu d'Enfer;Inferno;Fire;Spéciale;5;100;0.5
+Aire d'Eau;Water Pledge;Water;Spéciale;10;80;1
+Aire de Feu;Fire Pledge;Fire;Spéciale;10;80;1
+Aire d'Herbe;Grass Pledge;Grass;Spéciale;10;80;1
+Change Éclair;Volt Switch;Electric;Spéciale;20;70;1
+Survinsecte;Struggle Bug;Bug;Spéciale;20;50;1
+Piétisol;Bulldoze;Ground;Physique;20;60;1
+Souffle Glacé;Frost Breath;Ice;Spéciale;10;60;0.9
+Draco-Queue;Dragon Tail;Dragon;Physique;10;60;0.9
+Rengorgement;Work Up;Normal;Statut;30;-1;-1
+Toile Élek;Electroweb;Electric;Spéciale;15;55;0.95
+Éclair Fou;Wild Charge;Electric;Physique;15;90;1
+Tunnelier;Drill Run;Ground;Physique;10;80;0.95
+Double Baffe;Dual Chop;Dragon;Physique;15;40;0.9
+Crève-Coeur;Heart Stamp;Psychic;Physique;25;60;1
+Encornebois;Horn Leech;Grass;Physique;10;75;1
+Lame Sainte;Sacred Sword;Fighting;Physique;15;90;1
+Coquilame;Razor Shell;Water;Physique;10;75;0.95
+Tacle Feu;Heat Crash;Fire;Physique;10;-1;1
+Phytomixeur;Leaf Tornado;Grass;Spéciale;10;65;0.9
+Bulldoboule;Steamroller;Bug;Physique;20;65;1
+Cotogarde;Cotton Guard;Grass;Statut;10;-1;-1
+Explonuit;Night Daze;Dark;Spéciale;10;85;0.95
+Frappe Psy;Psystrike;Psychic;Spéciale;10;100;1
+Plumo-Queue;Tail Slap;Normal;Physique;10;25;0.85
+Vent Violent;Hurricane;Flying;Spéciale;10;110;0.7
+Peignée;Head Charge;Normal;Physique;15;120;1
+Lancécrou;Gear Grind;Steel;Physique;15;50;0.85
+Incendie;Searing Shot;Fire;Spéciale;5;100;1
+Techno-Buster;Techno Blast;Normal;Spéciale;5;120;1
+Chant Antique;Relic Song;Normal;Spéciale;10;75;1
+Lame Ointe;Secret Sword;Fighting;Spéciale;10;85;1
+Ère Glaciaire;Glaciate;Ice;Spéciale;10;65;0.95
+Charge Foudre;Bolt Strike;Electric;Physique;5;130;0.85
+Flamme Bleue;Blue Flare;Fire;Spéciale;5;130;0.85
+Danse du Feu;Fiery Dance;Fire;Spéciale;10;80;1
+Éclair Gelé;Freeze Shock;Ice;Physique;5;140;0.9
+Feu Glacé;Ice Burn;Ice;Spéciale;5;140;0.9
+Aboiement;Snarl;Dark;Spéciale;15;55;0.95
+Chute Glace;Icicle Crash;Ice;Physique;10;85;0.9
+Coup Victoire;V-create;Fire;Physique;5;180;0.95
+Flamme Croix;Fusion Flare;Fire;Spéciale;5;100;1
+Eclair Croix;Fusion Bolt;Electric;Physique;5;100;1
+Flying Press;Flying Press;Fighting;Physique;10;100;0.95
+Tatamigaeshi;Mat Block;Fighting;Statut;10;-1;-1
+Éructation;Belch;Poison;Spéciale;10;120;0.9
+Fertilisation;Rototiller;Ground;Statut;10;-1;-1
+Toile Gluante;Sticky Web;Bug;Statut;20;-1;-1
+Dard Mortel;Fell Stinger;Bug;Physique;25;50;1
+Hantise;Phantom Force;Ghost;Physique;10;90;1
+Halloween;Trick-or-Treat;Ghost;Statut;20;-1;1
+Râle Mâle;Noble Roar;Normal;Statut;30;-1;1
+DélugePlasmique;Ion Deluge;Electric;Statut;25;-1;-1
+Parabocharge;Parabolic Charge;Electric;Spéciale;20;65;1
+Maléfice Sylvain;Forest's Curse;Grass;Statut;20;-1;1
+Tempête Florale;Petal Blizzard;Grass;Physique;15;90;1
+Lyophilisation;Freeze-Dry;Ice;Spéciale;20;70;1
+Voix Enjôleuse;Disarming Voice;Fairy;Spéciale;15;40;-1
+Dernier Mot;Parting Shot;Dark;Statut;20;-1;1
+Renversement;Topsy-Turvy;Dark;Statut;20;-1;-1
+Vampibaiser;Draining Kiss;Fairy;Spéciale;10;50;1
+Vigilance;Crafty Shield;Fairy;Statut;10;-1;-1
+Garde Florale;Flower Shield;Fairy;Statut;10;-1;-1
+Champ Herbu;Grassy Terrain;Grass;Statut;10;-1;-1
+Champ Brumeux;Misty Terrain;Fairy;Statut;10;-1;-1
+Électrisation;Electrify;Electric;Statut;20;-1;-1
+Câlinerie;Play Rough;Fairy;Physique;10;90;0.9
+Vent Féérique;Fairy Wind;Fairy;Spéciale;30;40;1
+Pouvoir Lunaire;Moonblast;Fairy;Spéciale;15;95;1
+Bang Sonique;Boomburst;Normal;Spéciale;10;140;1
+Verrou Enchanté;Fairy Lock;Fairy;Statut;10;-1;-1
+Bouclier Royal;King's Shield;Steel;Statut;10;-1;-1
+Camaraderie;Play Nice;Normal;Statut;20;-1;-1
+Confidence;Confide;Normal;Statut;20;-1;-1
+Orage Adamantin;Diamond Storm;Rock;Physique;5;100;0.95
+Jet de Vapeur;Steam Eruption;Water;Spéciale;5;110;0.95
+TrouDimensionnel;Hyperspace Hole;Psychic;Spéciale;5;80;-1
+Sheauriken;Water Shuriken;Water;Spéciale;20;15;1
+Feu Ensorcelé;Mystical Fire;Fire;Spéciale;10;75;1
+Pico-Défense;Spiky Shield;Grass;Statut;10;-1;-1
+Brume Capiteuse;Aromatic Mist;Fairy;Statut;20;-1;-1
+Ondes Étranges;Eerie Impulse;Electric;Statut;15;-1;1
+Piège de Venin;Venom Drench;Poison;Statut;20;-1;1
+Nuée de Poudre;Powder;Bug;Statut;20;-1;1
+Géo-Contrôle;Geomancy;Fairy;Statut;10;-1;-1
+Magné-Contrôle;Magnetic Flux;Electric;Statut;20;-1;-1
+Étrennes;Happy Hour;Normal;Statut;30;-1;-1
+Champ Électrifié;Electric Terrain;Electric;Statut;10;-1;-1
+Éclat Magique;Dazzling Gleam;Fairy;Spéciale;10;80;1
+Célébration;Celebrate;Normal;Statut;40;-1;-1
+Mains Jointes;Hold Hands;Normal;Statut;40;-1;-1
+Regard Touchant;Baby-Doll Eyes;Fairy;Statut;30;-1;1
+Frotte-Frimousse;Nuzzle;Electric;Physique;20;20;1
+Retenue;Hold Back;Normal;Physique;40;40;1
+Harcèlement;Infestation;Bug;Spéciale;20;20;1
+Poing Boost;Power-Up Punch;Fighting;Physique;20;40;1
+Mort-Ailes;Oblivion Wing;Flying;Spéciale;10;80;1
+Myria-Fleches;Thousand Arrows;Ground;Physique;10;90;1
+Myria-Vagues;Thousand Waves;Ground;Physique;10;90;1
+Force Chtonienne;Land's Wrath;Ground;Physique;10;90;1
+Lumière du Néant;Light of Ruin;Fairy;Spéciale;5;140;0.9
+Onde Originelle;Origin Pulse;Water;Spéciale;10;110;0.85
+Lame Pangéenne;Precipice Blades;Ground;Physique;10;120;0.85
+Draco Ascension;Dragon Ascent;Flying;Physique;5;120;1
+Furie Dimension;Hyperspace Fury;Dark;Physique;5;100;-1
+Turbo-Charge Bulldozer;Breakneck Blitz;Normal;Physique;1;-1;-1
+Turbo-Charge Bulldozer;Breakneck Blitz;Normal;Spéciale;1;-1;-1
+Combo Hyper-Furie;All-Out Pummeling;Fighting;Physique;1;-1;-1
+Combo Hyper-Furie;All-Out Pummeling;Fighting;Spéciale;1;-1;-1
+Piqué Supersonique;Supersonic Skystrike;Flying;Physique;1;-1;-1
+Piqué Supersonique;Supersonic Skystrike;Flying;Spéciale;1;-1;-1
+Déluge Causti-Toxique;Acid Downpour;Poison;Physique;1;-1;-1
+Déluge Causti-Toxique;Acid Downpour;Poison;Spéciale;1;-1;-1
+Éruption Géo-Sismique;Tectonic Rage;Ground;Physique;1;-1;-1
+Éruption Géo-Sismique;Tectonic Rage;Ground;Spéciale;1;-1;-1
+Apocalypse Gigalithique;Continental Crush;Rock;Physique;1;-1;-1
+Apocalypse Gigalithique;Continental Crush;Rock;Spéciale;1;-1;-1
+Cocon Fatal;Savage Spin-Out;Bug;Physique;1;-1;-1
+Cocon Fatal;Savage Spin-Out;Bug;Spéciale;1;-1;-1
+Appel des Ombres Éternelles;Never-Ending Nightmare;Ghost;Physique;1;-1;-1
+Appel des Ombres Éternelles;Never-Ending Nightmare;Ghost;Spéciale;1;-1;-1
+Vrille Maximum;Corkscrew Crash;Steel;Physique;1;-1;-1
+Vrille Maximum;Corkscrew Crash;Steel;Spéciale;1;-1;-1
+Pyro-Explosion Cataclysmique;Inferno Overdrive;Fire;Physique;1;-1;-1
+Pyro-Explosion Cataclysmique;Inferno Overdrive;Fire;Spéciale;1;-1;-1
+Super Tourbillon Abyssal;Hydro Vortex;Water;Physique;1;-1;-1
+Super Tourbillon Abyssal;Hydro Vortex;Water;Spéciale;1;-1;-1
+Pétalexplosion Éblouissante;Bloom Doom;Grass;Physique;1;-1;-1
+Pétalexplosion Éblouissante;Bloom Doom;Grass;Spéciale;1;-1;-1
+Fulguro-Lance Gigavolt;Gigavolt Havoc;Electric;Physique;1;-1;-1
+Fulguro-Lance Gigavolt;Gigavolt Havoc;Electric;Spéciale;1;-1;-1
+Psycho-Pulvérisation EX;Shattered Psyche;Psychic;Physique;1;-1;-1
+Psycho-Pulvérisation EX;Shattered Psyche;Psychic;Spéciale;1;-1;-1
+Laser Cryogénique;Subzero Slammer;Ice;Physique;1;-1;-1
+Laser Cryogénique;Subzero Slammer;Ice;Spéciale;1;-1;-1
+Chaos Draconique;Devastating Drake;Dragon;Physique;1;-1;-1
+Chaos Draconique;Devastating Drake;Dragon;Spéciale;1;-1;-1
+Trou Noir des Ombres;Black Hole Eclipse;Dark;Physique;1;-1;-1
+Trou Noir des Ombres;Black Hole Eclipse;Dark;Spéciale;1;-1;-1
+Impact Choupinova;Twinkle Tackle;Fairy;Physique;1;-1;-1
+Impact Choupinova;Twinkle Tackle;Fairy;Spéciale;1;-1;-1
+Pikachute Foudroyante;Catastropika;Electric;Physique;1;210;-1
+Amass’Sable;Shore Up;Ground;Statut;10;-1;-1
+Escarmouche;First Impression;Bug;Physique;10;90;1
+Blockhaus;Baneful Bunker;Poison;Statut;10;-1;-1
+Tisse Ombre;Spirit Shackle;Ghost;Physique;10;80;1
+Dark Lariat;Darkest Lariat;Dark;Physique;10;85;1
+Aria de l’Écume;Sparkling Aria;Water;Spéciale;10;90;1
+Marteau de Glace;Ice Hammer;Ice;Physique;10;100;0.9
+Soin Floral;Floral Healing;Fairy;Statut;10;-1;-1
+Cavalerie Lourde;High Horsepower;Ground;Physique;10;95;0.95
+Vol-Force;Strength Sap;Grass;Statut;10;-1;1
+Lame Solaire;Solar Blade;Grass;Physique;10;125;1
+Feuillage;Leafage;Grass;Physique;40;40;1
+Projecteur;Spotlight;Normal;Statut;15;-1;-1
+Fil Toxique;Toxic Thread;Poison;Statut;20;-1;1
+Affilage;Laser Focus;Normal;Statut;30;-1;-1
+Engrenage;Gear Up;Steel;Statut;20;-1;-1
+Exécu-Son;Throat Chop;Dark;Physique;15;80;1
+Boule Pollen;Pollen Puff;Bug;Spéciale;15;90;1
+Ancrage;Anchor Shot;Steel;Physique;20;80;1
+Champ Psychique;Psychic Terrain;Psychic;Statut;10;-1;-1
+Furie-Bond;Lunge;Bug;Physique;15;80;1
+Fouet de Feu;Fire Lash;Fire;Physique;15;80;1
+Arrogance;Power Trip;Dark;Physique;10;20;1
+Flamme Ultime;Burn Up;Fire;Spéciale;5;130;1
+Permuvitesse;Speed Swap;Psychic;Statut;10;-1;-1
+Estocorne;Smart Strike;Steel;Physique;10;70;-1
+Purification;Purify;Poison;Statut;20;-1;-1
+Danse Éveil;Revelation Dance;Normal;Spéciale;15;90;1
+Sanction Suprême;Core Enforcer;Dragon;Spéciale;10;100;1
+Botte Sucrette;Trop Kick;Grass;Physique;15;70;1
+Sommation;Instruct;Psychic;Statut;15;-1;-1
+Bec-Canon;Beak Blast;Flying;Physique;15;100;1
+Vibrécaille;Clanging Scales;Dragon;Spéciale;5;110;1
+Draco-Marteau;Dragon Hammer;Dragon;Physique;15;90;1
+Centrifugifle;Brutal Swing;Dark;Physique;20;60;1
+Voile Aurore;Aurora Veil;Ice;Statut;20;-1;-1
+Fureur des Plumes Spectrales;Sinister Arrow Raid;Ghost;Physique;1;180;-1
+Dark Body Press;Malicious Moonsault;Dark;Physique;1;180;-1
+Symphonie des Ondines;Oceanic Operetta;Water;Spéciale;1;195;-1
+Colère du Gardien d’Alola;Guardian of Alola;Fairy;Spéciale;1;-1;-1
+Fauche-Âme des Sept Étoiles;Soul-Stealing 7-Star Strike;Ghost;Physique;1;195;-1
+Électro-Surf Survolté;Stoked Sparksurfer;Electric;Spéciale;1;175;-1
+Gare au Ronflex;Pulverizing Pancake;Normal;Physique;1;210;-1
+Neuf pour Un;Extreme Evoboost;Normal;Statut;1;-1;-1
+Supernova Originelle;Genesis Supernova;Psychic;Spéciale;1;185;-1
+Carapiège;Shell Trap;Fire;Spéciale;5;150;1
+Canon Floral;Fleur Cannon;Fairy;Spéciale;5;130;0.9
+Psycho-Croc;Psychic Fangs;Psychic;Physique;10;85;1
+Trépignement;Stomping Tantrum;Ground;Physique;10;75;1
+Os’Ombre;Shadow Bone;Ghost;Physique;10;85;1
+Vif Roc;Accelerock;Rock;Physique;20;40;1
+Aqua-Brèche;Liquidation;Water;Physique;10;85;1
+Laser Prisme;Prismatic Laser;Psychic;Spéciale;10;160;1
+Clepto-Mânes;Spectral Thief;Ghost;Physique;10;90;1
+Choc Météore;Sunsteel Strike;Steel;Physique;5;100;1
+Rayon Spectral;Moongeist Beam;Ghost;Spéciale;5;100;1
+Larme à l’Œil;Tearful Look;Normal;Statut;20;-1;-1
+Électrikipik;Zing Zap;Electric;Physique;10;80;1
+Ire de la Nature;Nature's Madness;Fairy;Spéciale;10;-1;0.9
+Coup Varia-Type;Multi-Attack;Normal;Physique;10;120;1
+Giga-Tonnerre;10.000.000 Volt Thunderbolt;Electric;Spéciale;1;195;-1
+Caboche-Kaboum;Mind Blown;Fire;Spéciale;5;150;1
+Plasma Punch;Plasma Fists;Electric;Physique;15;100;1
+Photo-Geyser;Photon Geyser;Psychic;Spéciale;5;100;1
+Apocalypsis Luminis;Light That Burns the Sky;Psychic;Spéciale;1;200;-1
+Hélio-Choc Dévastateur;Searing Sunraze Smash;Steel;Physique;1;200;-1
+Rayons Séléno-Explosifs;Menacing Moonraze Maelstrom;Ghost;Spéciale;1;200;-1
+Patati-Patattrape;Let's Snuggle Forever;Fairy;Physique;1;190;-1
+Hurlement des Roches-Lames;Splintered Stormshards;Rock;Physique;1;190;-1
+Dracacophonie Flamboyante;Clangorous Soulblaze;Dragon;Spéciale;1;185;-1
+Pika-Sprint;Zippy Zap;Electric;Physique;15;50;1
+Pika-Splash;Splishy Splash;Water;Spéciale;15;90;1
+Pika-Piqué;Floaty Fall;Flying;Physique;15;90;0.95
+Pika-Fracas;Pika Papow;Electric;Spéciale;20;-1;-1
+Évo-Thalasso;Bouncy Bubble;Water;Spéciale;15;90;1
+Évo-Dynamo;Buzzy Buzz;Electric;Spéciale;15;90;1
+Évo-Flambo;Sizzly Slide;Fire;Physique;15;90;1
+Évo-Psycho;Glitzy Glow;Psychic;Spéciale;15;90;1
+Évo-Ténébro;Baddy Bad;Dark;Spéciale;15;90;1
+Évo-Écolo;Sappy Seed;Grass;Physique;15;90;1
+Évo-Congélo;Freezy Frost;Ice;Spéciale;15;90;1
+Évo-Fabulo;Sparkly Swirl;Fairy;Spéciale;15;90;1
+Évo-Chardasso;Veevee Volley;Normal;Physique;20;-1;-1
+Écrous d'Poing;Double Iron Bash;Steel;Physique;5;60;1

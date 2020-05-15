@@ -33,7 +33,7 @@ CREATE TABLE move(
 	category varchar(10),
 	pp int,
 	power int,
-	accuracy int
+	accuracy numeric
 );
 
 CREATE TABLE ability(

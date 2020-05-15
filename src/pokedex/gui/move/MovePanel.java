@@ -100,12 +100,27 @@ public class MovePanel extends JPanel implements ActionListener {
 
         //name.setText(currentAbility.title+" ("+currentAbility.en_name+")");
         selector.setSelectedIndex(findSelectorId(id));
-        category.setText("Categorie : "+currentMove.category);
-        pp.setText("PP : "+currentMove.pp);
-        power.setText("Puissance : "+currentMove.power);
-        accuracy.setText("Précision : "+currentMove.accuracy);
+        if (currentMove.category.equals("Statut")) {
+            category.setText("Capacité de " + currentMove.category.toLowerCase());
+        } else {
+            category.setText("Capacité " + currentMove.category.toLowerCase());
+        }
+        pp.setText("PP : " + currentMove.pp);
+
+        if (currentMove.power != -1) {
+            power.setVisible(true);
+            power.setText("Puissance : " + currentMove.power);
+        } else {
+            power.setVisible(false);
+        }
+        
+        if (currentMove.accuracy != -1) {
+            accuracy.setText("Précision : " + currentMove.accuracy*100+"%");
+        } else {
+            accuracy.setText("Précision inconnue");
+        }
         type.setId(currentMove.id_type);
-        type.setText("Type : "+currentMove.getTypeName(db));
+        type.setText("Type : " + currentMove.getTypeName(db));
     }
 
     public void setUser(String user) {

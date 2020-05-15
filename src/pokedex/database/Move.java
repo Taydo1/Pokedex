@@ -8,6 +8,7 @@ package pokedex.database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -17,12 +18,13 @@ import java.util.Map;
 public class Move extends DBElement {
 
     public String name, en_name, category;
-    public int id, id_type, pp, power, accuracy;
+    public int id, id_type, pp, power;
+    public float accuracy;
 
     public Move() {
     }
 
-    public Move(String name, String en_name, int id_type, String category, int pp, int power, int accuracy) {
+    public Move(String name, String en_name, int id_type, String category, int pp, int power, float accuracy) {
         this.id = -1;
         this.name = name;
         this.en_name = en_name;
@@ -43,7 +45,7 @@ public class Move extends DBElement {
         this.category = infos[3];
         this.pp = Integer.parseInt(infos[4]);
         this.power = Integer.parseInt(infos[5]);
-        this.accuracy = Integer.parseInt(infos[6]);
+        this.accuracy = Float.parseFloat(infos[6]);
     }
 
     public Move(ResultSet rs) throws SQLException {
@@ -54,7 +56,7 @@ public class Move extends DBElement {
         this.category = rs.getString("category");
         this.pp = rs.getInt("pp");
         this.power = rs.getInt("power");
-        this.accuracy = rs.getInt("accuracy");
+        this.accuracy = rs.getFloat("accuracy");
     }
 
     @Override
@@ -64,7 +66,7 @@ public class Move extends DBElement {
 
     @Override
     public String getInsertSubRequest() {
-        return String.format("(default, '%s', '%s', %d, '%s', %d, %d, %d)",
+        return String.format(Locale.ROOT,"(default, '%s', '%s', %d, '%s', %d, %d, %f)",
                 name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy);
     }
 

@@ -30,7 +30,7 @@ public class PokedexBottomPanel extends JPanel {
     JPanel left, right, goIdPanel, goNamePanel;
     Label currentId, goIdLabel, goNameLabel;
     JButton up, down;
-    StyledButton goIdButton, modification, manage, goNameButton;
+    StyledButton goIdButton, modification, goNameButton;
     JTextField goId, goName;
     
     public PokedexBottomPanel(String utilisateur, PokedexPanel parent) {
@@ -55,7 +55,6 @@ public class PokedexBottomPanel extends JPanel {
         modification = new StyledButton("");
         modification.addActionListener(parent);
         modification.setActionCommand(Action.START_POKEDEX_MODIFICATION.name());
-        manage = new StyledButton("Gérer l'équipe");
         goId = new JTextField();
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);
@@ -120,13 +119,12 @@ public class PokedexBottomPanel extends JPanel {
         left.add(goIdPanel);
         left.add(goNamePanel);
         left.add(modification);
-        left.add(manage);
-        left.setSize((int) (parent.getWidth() * 0.7), (int) (parent.getHeight() * 0.2));
+        left.setSize((int) (parent.getWidth() * 0.7), 1);
         
         right.add(up, BorderLayout.NORTH);
         right.add(currentId, BorderLayout.CENTER);
         right.add(down, BorderLayout.SOUTH);
-        right.setSize((int) (parent.getWidth() * 0.3), (int) (parent.getHeight() * 0.2));
+        right.setSize((int) (parent.getWidth() * 0.3), 1);
         
         setUser(utilisateur);
         c.fill = GridBagConstraints.BOTH;
@@ -142,15 +140,10 @@ public class PokedexBottomPanel extends JPanel {
         switch (user.toLowerCase()) {
             case "professeur":
                 modification.setEnabled(true);
-                manage.setEnabled(false);
                 break;
             case "dresseur":
-                modification.setEnabled(false);
-                manage.setEnabled(true);
-                break;
             case "visiteur":
                 modification.setEnabled(false);
-                manage.setEnabled(false);
                 break;
         }
     }

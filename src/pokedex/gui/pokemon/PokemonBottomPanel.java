@@ -5,9 +5,13 @@
  */
 package pokedex.gui.pokemon;
 
+import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.Database;
+import pokedex.database.Pokemon;
 import pokedex.gui.InfoButton;
+import pokedex.gui.pokedex.StyledButton;
 
 /**
  *
@@ -15,30 +19,57 @@ import pokedex.gui.InfoButton;
  */
 public class PokemonBottomPanel extends JPanel {
 
-    InfoButton add, modification, delete;
+    InfoButton modification, delete;
+    StyledButton add;
     Database db;
 
     public PokemonBottomPanel(Database db, PokemonPanel parent) {
         super();
         this.db = db;
 
-        modification =new InfoButton("", 0, true);
+        add = new StyledButton("Ajouter un Pokemon", true);
+        modification = new InfoButton("", 0, true);
+        delete = new InfoButton("", 0, true);
+
+        setLayout(new GridLayout(3, 1));
+        add(add);
+        add(modification);
+        add(delete);
     }
 
     public void setUser(String user) {
         switch (user.toLowerCase()) {
             case "professeur":
+                add.setEnabled(true);
                 modification.setEnabled(true);
+                delete.setEnabled(true);
                 break;
             case "dresseur":
-            case "visiteur":
+                add.setEnabled(true);
                 modification.setEnabled(false);
+                delete.setEnabled(true);
+                break;
+            case "visiteur":
+                add.setEnabled(false);
+                modification.setEnabled(false);
+                delete.setEnabled(false);
                 break;
         }
     }
-    
-    public void setId(int id){
-        
+
+    public void setId(int id) {
+        ArrayList<Object[]> currentNameList = db.getFromDB("SELECT name FROM pokemon WHERE id=" + id);
+        if (!currentNameList.isEmpty()) {
+            modification.setText("Modifier le Pokemon " + currentNameList.get(0)[0]);
+            modification.setId(id);
+            delete.setText("Supprimer le Pokemon " + currentNameList.get(0)[0]);
+            delete.setId(id);
+            modification.setVisible(true);
+            delete.setVisible(true);
+        }else{
+            modification.setVisible(false);
+            delete.setVisible(false);
+        }
     }
 
 }

@@ -111,8 +111,6 @@ public class PokemonTopPanel extends JPanel {
         add(level, c);
         c.gridy++;
         add(health, c);
-
-        setId(-1);
     }
 
     private int findSelectorId(int id) {

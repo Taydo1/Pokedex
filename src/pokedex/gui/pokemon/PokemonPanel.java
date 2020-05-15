@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.gui.Action;
@@ -38,6 +39,8 @@ public class PokemonPanel extends JPanel implements ActionListener {
         add(topPanel, BorderLayout.NORTH);
         add(imagePanel, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
+        
+        setId(-1);
     }
 
     public void setUser(String user) {
@@ -56,11 +59,14 @@ public class PokemonPanel extends JPanel implements ActionListener {
 
     public void setId(int id) {
         topPanel.setId(id);
-        
-        int idPokedex = (Integer)db.getFromDB("SELECT id_pokedex FROM pokemon p WHERE p.id="+id).get(0)[0];
-        Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + idPokedex);
-        System.out.println("LUL");
-        imagePanel.setImage(image);
+
+        ArrayList<Object[]> idList = db.getFromDB("SELECT id_pokedex FROM pokemon p WHERE p.id=" + id);
+        if (!idList.isEmpty()) {
+            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + idList.get(0)[0]);
+            imagePanel.setImage(image);
+        }else{
+            imagePanel.setImage(null);
+        }
         bottomPanel.setId(id);
     }
 

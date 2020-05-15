@@ -127,7 +127,7 @@ public class MovePanel extends JPanel implements ActionListener {
         if (currentMove.accuracy != -1) {
             accuracy.setText("Précision : " + currentMove.accuracy*100+"%");
         } else {
-            accuracy.setText("Précision inconnue");
+            accuracy.setText("Ne peut pas manquer sa cible");
         }
         
         type.setId(currentMove.id_type);

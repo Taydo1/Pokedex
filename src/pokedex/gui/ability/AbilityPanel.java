@@ -32,8 +32,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
     Database db;
     Label title, description1, description2;
     JComboBox<InfoButton> selector;
-    InfoButton modification, delete;
-    JButton add;
+    InfoButton modification;
     MainPanel parent;
 
     public AbilityPanel(Database db, MainPanel p) {
@@ -49,6 +48,8 @@ public class AbilityPanel extends JPanel implements ActionListener {
         selector = new JComboBox();
         selector.setBackground(Color.GRAY);
         selector.setForeground(Color.WHITE);
+        
+        Label blank = new Label("");
 
         InfoButton selectorButton;
         ArrayList<Object[]> abilityNames = db.getFromDB("SELECT id,name FROM ability ORDER by id ASC");
@@ -57,13 +58,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
             selector.addItem(selectorButton);
         }
 
-        add = new JButton("Ajouter un nouveau talent");
-        add.setForeground(Color.white);
-        add.setBackground(Color.gray);
-        add.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-
         modification = new InfoButton("Modifier le talent " + abilityNames.get(0)[1].toString(), 1, true);
-        delete = new InfoButton("Supprimer le talent " + abilityNames.get(0)[1].toString(), 1, true);
 
         selector.setActionCommand(Action.GET_ABILITY.name());
         selector.addActionListener(this);
@@ -85,12 +80,10 @@ public class AbilityPanel extends JPanel implements ActionListener {
         add(description1, c);
         c.gridy++;
         add(description2, c);
-        c.gridy = c.gridy + 3;
-        add(add, c);
+        c.gridy++;
+        add(blank, c);
         c.gridy++;
         add(modification, c);
-        c.gridy++;
-        add(delete, c);
 
         setId(1);
     }
@@ -104,8 +97,6 @@ public class AbilityPanel extends JPanel implements ActionListener {
         description2.setText("<html>" + currentAbility.description[1] + "</html>");
         modification.setText("Modifier le talent " + currentAbility.name);
         modification.setId(id);
-        delete.setText("Supprimer le talent " + currentAbility.name);
-        delete.setId(id);
     }
 
     public void setUser(String user) {
@@ -129,7 +120,10 @@ public class AbilityPanel extends JPanel implements ActionListener {
                 setId(abilityButton.getId());
                 break;
             case START_ABILITY_MODIFICATION:
-                parent.addTab(new AbilityModificationPanel(modification.getId(), parent), "Modification de " + db.getFromDB("SELECT * FROM ability WHERE id=" + modification.getId(), Ability.class).get(0).name, 1);
+                parent.addTab(
+                        new AbilityModificationPanel(modification.getId(), parent),
+                        "Modification de " + db.getFromDB("SELECT name FROM ability WHERE id=" + modification.getId()).get(0)[0], 1
+                );
                 break;
         }
     }

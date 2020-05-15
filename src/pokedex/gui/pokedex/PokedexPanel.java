@@ -86,6 +86,22 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 }
                 break;
             }
+            case GO_NOM: {
+                try {
+                    setId(bottomPanel.getIDFromNom(db));
+
+                } catch (NumberFormatException | IndexOutOfBoundsException ex) {
+                    System.out.println("Pokemon inexistant");
+                    JFrame frame = new JFrame("");
+                    ImageIcon icon = new ImageIcon(getClass().getResource("/images/icones/PikachuGif.gif"));
+                    Object[] options = {"Get coroned", "OK Boomer"};
+                    JOptionPane.showOptionDialog(frame, "Le Pokemon '" + bottomPanel.goName.getText() + "' n'existe pas\n"
+                            + "Veuillez entrer un nom valide", "Pokemon introuvable", JOptionPane.YES_NO_CANCEL_OPTION,
+                            JOptionPane.QUESTION_MESSAGE, icon, options, options[1]);
+                }
+                bottomPanel.clearGoNom();
+                break;
+            }
             case IMAGE_NORMAL:
                 imageName = "image";
                 setId(currentId);
@@ -101,24 +117,11 @@ public class PokedexPanel extends JPanel implements ActionListener {
             case START_POKEDEX_MODIFICATION:
                 ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(currentId), Pokedex.class);
                 String name = listname.get(0).name;
-                parent.addTab(new PokedexModificationPanel(currentId, parent), "Modification de" + name, MainPanel.PROFESSOR_TAB);
+                parent.addTab(
+                        new PokedexModificationPanel(currentId, parent),
+                        "Modification de" + name, MainPanel.PROFESSOR_TAB
+                );
                 break;
-            case GO_NOM: {
-                try {
-                    setId(bottomPanel.getIDFromNom(db));
-
-                } catch (NumberFormatException | IndexOutOfBoundsException ex) {
-                    System.out.println("Pokemon inexistant");
-                    JFrame frame = new JFrame("");
-                    ImageIcon icon = new ImageIcon(getClass().getResource("/images/icones/PikachuGif.gif"));
-                    Object[] options = {"Get coronavirus", "OK Boomer"};
-                    JOptionPane.showOptionDialog(frame, "Le Pokemon '" + bottomPanel.goName.getText() + "' n'existe pas\n"
-                            + "Veuillez entrer un nom valide", "Pokemon introuvable", JOptionPane.YES_NO_CANCEL_OPTION,
-                            JOptionPane.QUESTION_MESSAGE, icon, options, options[1]);
-                }
-                bottomPanel.clearGoNom();
-                break;
-            }
         }
     }
 }

@@ -29,21 +29,23 @@ public class MovePanel extends JPanel implements ActionListener {
     Database db;
     Label title, category, pp, power, accuracy;
     JComboBox<InfoButton> selector;
-    InfoButton type;
+    InfoButton type, modification;
     MainPanel parent;
 
-    public MovePanel(Database db, MainPanel p) {
+    public MovePanel(Database db, MainPanel parent) {
 
         super();
-        parent = p;
+        this.parent = parent;
         this.db = db;
         title = new Label("Capacité : ", true);
         category = new Label("", true);
         pp = new Label("", true);
         power = new Label("", true);
         accuracy = new Label("", true);
+        Label blank = new Label("");
 
         type = new InfoButton("", 0, true);
+        modification = new InfoButton("", 0, true);
 
         selector = new JComboBox();
         selector.setBackground(Color.GRAY);
@@ -60,6 +62,8 @@ public class MovePanel extends JPanel implements ActionListener {
         selector.addActionListener(this);
         type.setActionCommand(Action.GET_TYPE.name());
         type.addActionListener(parent);
+        modification.setActionCommand(Action.START_MOVE_MODIFICATION.name());
+        modification.addActionListener(this);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -82,6 +86,10 @@ public class MovePanel extends JPanel implements ActionListener {
         add(power, c);
         c.gridy++;
         add(accuracy, c);
+        c.gridy++;
+        add(blank, c);
+        c.gridy++;
+        add(modification, c);
 
         InfoButton firstButton = selector.getItemAt(0);
         setId(firstButton.getId());
@@ -121,18 +129,21 @@ public class MovePanel extends JPanel implements ActionListener {
         } else {
             accuracy.setText("Précision inconnue");
         }
+        
         type.setId(currentMove.id_type);
         type.setText("Type : " + currentMove.getTypeName(db));
+        
+        modification.setText("Modifier la capacité "+currentMove.name);
     }
 
     public void setUser(String user) {
         switch (user.toLowerCase()) {
             case "professeur":
-                //modification.setEnabled(true);
+                modification.setEnabled(true);
                 break;
             case "dresseur":
             case "visiteur":
-                //modification.setEnabled(false);
+                modification.setEnabled(false);
                 break;
         }
     }
@@ -144,6 +155,12 @@ public class MovePanel extends JPanel implements ActionListener {
             case GET_MOVE:
                 InfoButton abilityButton = (InfoButton) selector.getSelectedItem();
                 setId(abilityButton.getId());
+                break;
+            case START_MOVE_MODIFICATION:
+                parent.addTab(
+                        new MoveModificationPanel(modification.getId(), parent),
+                        "Modification de " + db.getFromDB("SELECT name FROM move WHERE id=" + modification.getId()).get(0)[0], 1
+                );
                 break;
         }
     }

@@ -5,6 +5,8 @@
  */
 package pokedex.gui;
 
+import pokedex.gui.widgets.InfoButton;
+import pokedex.gui.widgets.PasswordPanel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;

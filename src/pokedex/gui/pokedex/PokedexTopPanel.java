@@ -5,6 +5,9 @@
  */
 package pokedex.gui.pokedex;
 
+import pokedex.gui.widgets.Label;
+import pokedex.gui.widgets.InfoButton;
+import pokedex.gui.widgets.ToggleButton;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.gui.Action;
-import pokedex.gui.InfoButton;
+import pokedex.gui.widgets.InfoButton;
 import pokedex.gui.pokedex.StyledButton;
 
 /**

@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.database.Move;
 import pokedex.gui.Action;
-import pokedex.gui.InfoButton;
-import pokedex.gui.Label;
+import pokedex.gui.widgets.InfoButton;
+import pokedex.gui.widgets.Label;
 import pokedex.gui.MainPanel;
 
 /**

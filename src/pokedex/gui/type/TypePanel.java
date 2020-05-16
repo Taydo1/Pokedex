@@ -5,6 +5,8 @@
  */
 package pokedex.gui.type;
 
+import pokedex.gui.widgets.Label;
+import pokedex.gui.widgets.InfoButton;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;

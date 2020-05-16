@@ -9,6 +9,7 @@ package pokedex.gui.pokedex;
  *
  * @author Spectan
  */
+import pokedex.gui.widgets.InfoButton;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;

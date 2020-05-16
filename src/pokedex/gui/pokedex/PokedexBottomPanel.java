@@ -5,6 +5,7 @@
  */
 package pokedex.gui.pokedex;
 
+import pokedex.gui.widgets.Label;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;

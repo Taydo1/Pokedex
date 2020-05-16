@@ -54,7 +54,7 @@ public class PokedexBottomPanel extends JPanel {
         
         modification = new StyledButton("");
         modification.addActionListener(parent);
-        modification.setActionCommand(Action.START_POKEDEX_MODIFICATION.name());
+        modification.setActionCommand(Action.START_MODIFICATION.name());
         goId = new JTextField();
         goId.setBackground(Color.gray);
         goId.setForeground(Color.white);

@@ -20,6 +20,7 @@ import pokedex.gui.Action;
 import pokedex.gui.InfoButton;
 import pokedex.gui.Label;
 import pokedex.gui.MainPanel;
+import pokedex.gui.pokedex.StyledButton;
 
 /**
  *
@@ -28,13 +29,16 @@ import pokedex.gui.MainPanel;
 public class TrainerPanel extends JPanel implements ActionListener {
 
     JComboBox<InfoButton> selector;
-    InfoButton pokemons[];
-    Label name, pokemonLabel;
+    InfoButton pokemons[], modification, delete;
+    Label name, pokemonLabel, blank;
     Database db;
+    StyledButton add;
+    MainPanel parent;
 
     public TrainerPanel(Database db, MainPanel parent) {
         super();
         this.db = db;
+        this.parent = parent;
         pokemonLabel = new Label("", true);
 
         name = new Label("", true);
@@ -45,6 +49,18 @@ public class TrainerPanel extends JPanel implements ActionListener {
             pokemons[i].setActionCommand(Action.GET_POKEMON.name());
             pokemons[i].addActionListener(parent);
         }
+
+        blank = new Label();
+        add = new StyledButton("Ajouter un Pokemon", true);
+        modification = new InfoButton("", 0, true);
+        delete = new InfoButton("", 0, true);
+
+        add.addActionListener(this);
+        modification.addActionListener(this);
+        delete.addActionListener(this);
+        add.setActionCommand(Action.START_INSERTION.name());
+        modification.setActionCommand(Action.START_MODIFICATION.name());
+        delete.setActionCommand(Action.DELETE.name());
 
         selector = new JComboBox<>();
         selector.setBackground(Color.GRAY);
@@ -78,6 +94,14 @@ public class TrainerPanel extends JPanel implements ActionListener {
             c.gridy++;
             add(pokemons[i + 1], c);
         }
+        c.gridy++;
+        add(blank, c);
+        c.gridy++;
+        add(add, c);
+        c.gridy++;
+        add(modification, c);
+        c.gridy++;
+        add(delete, c);
         setId(-1);
     }
 
@@ -119,19 +143,37 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 pokemons[i].setText(pokemonOfCurrentTrainer.get(i).name);
             }
             selector.setSelectedIndex(findSelectorId(id));
+
+            modification.setText("Modifier le dresseur " + currentTrainer.name);
+            modification.setId(id);
+            delete.setText("Supprimer le dresseur " + currentTrainer.name);
+            delete.setId(id);
+            modification.setVisible(true);
+            delete.setVisible(true);
+        }else{
+            modification.setVisible(false);
+            delete.setVisible(false);
         }
     }
 
     public void setUser(String user) {
-        /*switch (user.toLowerCase()) {
+        switch (user.toLowerCase()) {
             case "professeur":
+                add.setEnabled(true);
                 modification.setEnabled(true);
+                delete.setEnabled(true);
                 break;
             case "dresseur":
-            case "visiteur":
+                add.setEnabled(true);
                 modification.setEnabled(false);
+                delete.setEnabled(true);
                 break;
-        }*/
+            case "visiteur":
+                add.setEnabled(false);
+                modification.setEnabled(false);
+                delete.setEnabled(false);
+                break;
+        }
     }
 
     @Override
@@ -141,6 +183,24 @@ public class TrainerPanel extends JPanel implements ActionListener {
             case GET_TRAINER:
                 source = (InfoButton) selector.getSelectedItem();
                 setId(source.getId());
+                break;
+            case START_MODIFICATION:
+                parent.addTab(
+                        new TrainerModifInsertPanel(modification.getId(), parent),
+                        "Modification de " + db.getFromDB("SELECT name FROM trainer WHERE id=" + modification.getId()).get(0)[0],
+                        MainPanel.PROFESSOR_TAB
+                );
+                break;
+            case START_INSERTION:
+                parent.addTab(
+                        new TrainerModifInsertPanel(parent),
+                        "Naissance d'un Dresseur",
+                        MainPanel.PROFESSOR_TAB
+                );
+                break;
+            case DELETE:
+                System.err.println("PAS ENCORE IMPLEMENTE");
+                break;
         }
     }
 

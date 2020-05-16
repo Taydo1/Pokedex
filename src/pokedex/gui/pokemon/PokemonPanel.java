@@ -55,21 +55,21 @@ public class PokemonPanel extends JPanel implements ActionListener {
                 source = (InfoButton) topPanel.selector.getSelectedItem();
                 setId(source.getId());
                 break;
-            case START_POKEMON_MODIFICATION:
+            case START_MODIFICATION:
                 parent.addTab(
                         new PokemonModifInsertPanel(bottomPanel.modification.getId(), parent),
                         "Modification de " + db.getFromDB("SELECT name FROM pokemon WHERE id=" + bottomPanel.modification.getId()).get(0)[0],
                         MainPanel.PROFESSOR_TAB
                 );
                 break;
-            case START_POKEMON_INSERTION:
+            case START_INSERTION:
                 parent.addTab(
                         new PokemonModifInsertPanel(parent),
                         "Naissance d'un Pokemon", 
                         MainPanel.PROFESSOR_TAB
                 );
                 break;
-            case DELETE_POKEMON:
+            case DELETE:
                 System.err.println("PAS ENCORE IMPLEMENTE");
                 break;
         }

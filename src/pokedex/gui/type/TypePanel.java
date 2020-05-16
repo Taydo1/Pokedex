@@ -69,8 +69,8 @@ public class TypePanel extends JPanel implements ActionListener {
 
         type1selector.setActionCommand(Action.GET_COMBINED_TYPE.name());
         type2selector.setActionCommand(Action.GET_COMBINED_TYPE.name());
-        modificationType1.setActionCommand(Action.START_TYPE_MODIFICATION.name());
-        modificationType2.setActionCommand(Action.START_TYPE_MODIFICATION.name());
+        modificationType1.setActionCommand(Action.START_MODIFICATION.name());
+        modificationType2.setActionCommand(Action.START_MODIFICATION.name());
         modificationType1.addActionListener(this);
         modificationType2.addActionListener(this);
         type1selector.addActionListener(this);
@@ -201,7 +201,7 @@ public class TypePanel extends JPanel implements ActionListener {
             case GET_COMBINED_TYPE:
                 setId(typeButton1.getId(), typeButton2.getId());
                 break;
-            case START_TYPE_MODIFICATION:
+            case START_MODIFICATION:
                 InfoButton source = (InfoButton) e.getSource();
                 String typeName = (String) db.getFromDB("SELECT name FROM type WHERE id=" + source.getId()).get(0)[0];
                 parent.addTab(

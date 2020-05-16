@@ -62,7 +62,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
 
         selector.setActionCommand(Action.GET_ABILITY.name());
         selector.addActionListener(this);
-        modification.setActionCommand(Action.START_ABILITY_MODIFICATION.name());
+        modification.setActionCommand(Action.START_MODIFICATION.name());
         modification.addActionListener(this);
 
         setLayout(new GridBagLayout());
@@ -119,7 +119,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
                 InfoButton abilityButton = (InfoButton) selector.getSelectedItem();
                 setId(abilityButton.getId());
                 break;
-            case START_ABILITY_MODIFICATION:
+            case START_MODIFICATION:
                 parent.addTab(
                         new AbilityModificationPanel(modification.getId(), parent),
                         "Modification de " + db.getFromDB("SELECT name FROM ability WHERE id=" + modification.getId()).get(0)[0], 1

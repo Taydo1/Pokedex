@@ -39,9 +39,9 @@ public class PokemonBottomPanel extends JPanel {
         add.addActionListener(parent);
         modification.addActionListener(parent);
         delete.addActionListener(parent);
-        add.setActionCommand(Action.START_POKEMON_INSERTION.name());
-        modification.setActionCommand(Action.START_POKEMON_MODIFICATION.name());
-        delete.setActionCommand(Action.DELETE_POKEMON.name());
+        add.setActionCommand(Action.START_INSERTION.name());
+        modification.setActionCommand(Action.START_MODIFICATION.name());
+        delete.setActionCommand(Action.DELETE.name());
     }
 
     public void setUser(String user) {

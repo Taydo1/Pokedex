@@ -52,11 +52,11 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         Pokedex currentPokedex = parent.db.getFromDB("SELECT * FROM pokedex WHERE id=" + idModif, Pokedex.class).get(0);
 
         //Le nom français
-        JPanel namPanel = new JPanel();
-        namPanel.setBackground(Color.white);
+        JPanel namePanel = new JPanel();
+        namePanel.setBackground(Color.white);
         name = new JTextField(currentPokedex.name);
-        namPanel.setBorder(BorderFactory.createTitledBorder("Nom du pokémon"));
-        namPanel.add(name);
+        namePanel.setBorder(BorderFactory.createTitledBorder("Nom du pokémon"));
+        namePanel.add(name);
 
         //Le nom anglais
         JPanel enNamePanel = new JPanel();
@@ -269,7 +269,7 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
         c.gridy = 0;
         c.weightx = 0.33;
         c.weighty = 0.14;
-        add(namPanel, c);
+        add(namePanel, c);
         c.gridx = 1;
         add(enNamePanel, c);
         c.gridx = 2;

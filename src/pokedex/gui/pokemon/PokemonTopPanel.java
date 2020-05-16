@@ -140,9 +140,17 @@ public class PokemonTopPanel extends JPanel {
             Pokemon currentPokemon = currentPokemonList.get(0);
             String pokedexName = currentPokemon.getPokedexName(db);
             if (currentPokemon.name.equals(pokedexName)) {
-                name.setText(currentPokemon.name);
+                if (currentPokemon.is_shiny) {
+                    name.setText(currentPokemon.name + " (Chromatique)");
+                } else {
+                    name.setText(currentPokemon.name);
+                }
             } else {
-                name.setText(currentPokemon.name + " (" + pokedexName + ")");
+                if (currentPokemon.is_shiny) {
+                    name.setText(currentPokemon.name + " (" + pokedexName + " Chromatique)");
+                } else {
+                    name.setText(currentPokemon.name + " (" + pokedexName + ")");
+                }
             }
             name.setId(currentPokemon.id_pokedex);
 

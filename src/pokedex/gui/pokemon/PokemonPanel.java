@@ -78,9 +78,15 @@ public class PokemonPanel extends JPanel implements ActionListener {
     public void setId(int id) {
         topPanel.setId(id);
 
-        ArrayList<Object[]> idList = db.getFromDB("SELECT id_pokedex FROM pokemon p WHERE p.id=" + id);
-        if (!idList.isEmpty()) {
-            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + idList.get(0)[0]);
+        ArrayList<Object[]> infos = db.getFromDB("SELECT id_pokedex, is_shiny FROM pokemon p WHERE p.id=" + id);
+        if (!infos.isEmpty()) {
+            String imgName;
+            if((Boolean)infos.get(0)[1]){
+                imgName="image_shiny";
+            }else{
+                imgName="image";
+            }
+            Image image = db.getImage("SELECT "+imgName+" FROM pokedex WHERE id=" + infos.get(0)[0]);
             imagePanel.setImage(image);
         }else{
             imagePanel.setImage(null);

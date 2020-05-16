@@ -20,9 +20,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import pokedex.database.Move;
+import pokedex.database.Pokedex;
 import pokedex.gui.Action;
 import pokedex.gui.MainPanel;
 
@@ -92,7 +94,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         categoryPanel.setBorder(BorderFactory.createTitledBorder("Catégorie de la capacité"));
         categoryPanel.add(category);
         
-        Object[] possibilitePP = new Object[]{0,5,10,15,20,25,30,35,40};
+        Object[] possibilitePP = new Object[]{0, 1, 5, 10, 15, 20, 25, 30, 35, 40};
         
         //PP de la capacité
         JPanel ppPanel = new JPanel();
@@ -102,7 +104,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         ppPanel.setBorder(BorderFactory.createTitledBorder("PP de base de la capacité"));
         ppPanel.add(pp);
         
-        NumberFormat formatPuissance = NumberFormat.getPercentInstance();
+        NumberFormat formatPuissance = NumberFormat.getInstance();
         formatPuissance.setMaximumFractionDigits(0);
         
         //Puissance de la capacité
@@ -123,11 +125,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         JPanel accuracyPanel = new JPanel();
         accuracyPanel.setBackground(Color.white);
         accuracy = new JComboBox<>(possibiliteAccuracy);
-        if (currentMove.accuracy == -1){
-            accuracy.setSelectedItem(possibiliteAccuracy[0]);
-        } else {
-            accuracy.setSelectedItem(currentMove.accuracy * 100);    
-        }
+        setSelectedAccuracy((int)(currentMove.accuracy*100));
         accuracyPanel.setBorder(BorderFactory.createTitledBorder("Précision de la capacité"));
         accuracyPanel.add(accuracy);
         
@@ -179,8 +177,8 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
     }
     
     public void updateDimension() {
-        int dimx = (this.getWidth() / 3) - 60;
-        int dimy = (this.getHeight() / 4) - 70;
+        int dimx = (this.getWidth() / 3) - 30;
+        int dimy = (this.getHeight() / 4) - 30;
         name.setPreferredSize(new Dimension(dimx, dimy));
         enName.setPreferredSize(new Dimension(dimx, dimy));
         type.setPreferredSize(new Dimension(dimx, dimy));
@@ -190,13 +188,31 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         accuracy.setPreferredSize(new Dimension(dimx, dimy));
         saveButton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
         discardButton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
-        
-        
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        switch (Action.valueOf(e.getActionCommand())) {
+            case SAVE_MODIFICATION:
+                
+                int p;
+                if (Integer.parseInt(power.getText()) == 0){
+                    p = -1;
+                } else {
+                    p = Integer.parseInt(power.getText());
+                }
+                
+                new Move(idModif, name.getText(), enName.getText(), type.getSelectedIndex() + 1,
+                        category.getSelectedItem().toString(), getSelectedPP(),
+                        p, getSelectedAccuracy()).modifyInDB(parent.db);
+
+                parent.movePanel.setId(parent.movePanel.idActuel);
+                JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+            case DISCARD_MODIFICATION:
+                parent.removeTab(this, parent.movePanel);
+                break;
+        }
     }
     
     @Override
@@ -214,5 +230,153 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
 
     @Override
     public void componentHidden(ComponentEvent arg0) {
+    }
+
+    private void setSelectedAccuracy(int a) {
+        switch (a) {
+            case -100 :
+                accuracy.setSelectedIndex(0);
+                break;
+            case 5 :
+                accuracy.setSelectedIndex(1);
+                break;
+            case 10 :
+                accuracy.setSelectedIndex(2);
+                break;
+            case 15 :
+                accuracy.setSelectedIndex(3);
+                break;
+            case 20 :
+                accuracy.setSelectedIndex(4);
+                break;
+            case 25 :
+                accuracy.setSelectedIndex(5);
+                break;
+            case 30 :
+                accuracy.setSelectedIndex(6);
+                break;
+            case 35 :
+                accuracy.setSelectedIndex(7);
+                break;
+            case 40 :
+                accuracy.setSelectedIndex(8);
+                break;
+            case 45 :
+                accuracy.setSelectedIndex(9);
+                break;
+            case 50 :
+                accuracy.setSelectedIndex(10);
+                break;
+            case 55 :
+                accuracy.setSelectedIndex(11);
+                break;
+            case 60 :
+                accuracy.setSelectedIndex(12);
+                break;
+            case 65 :
+                accuracy.setSelectedIndex(13);
+                break;
+            case 70 :
+                accuracy.setSelectedIndex(14);
+                break;
+            case 75 :
+                accuracy.setSelectedIndex(15);
+                break;
+            case 80 :
+                accuracy.setSelectedIndex(16);
+                break;
+            case 85 :
+                accuracy.setSelectedIndex(17);
+                break;
+            case 90 :
+                accuracy.setSelectedIndex(18);
+                break;
+            case 95 :
+                accuracy.setSelectedIndex(19);
+                break;
+            case 100 :
+                accuracy.setSelectedIndex(20);
+                break;
+            default :
+                break;
+        }
+    }
+    
+    private float getSelectedAccuracy() {
+        int a = accuracy.getSelectedIndex();
+        switch (a) {
+            case 0 :
+                return -1;
+            case 1 :
+                return (float)0.05;
+            case 2 :
+                return (float)0.10;
+            case 3 :
+                return (float)0.15;
+            case 4 :
+                return (float)0.20;
+            case 5 :
+                return (float)0.25;
+            case 6 :
+                return (float)0.30;
+            case 7 :
+                return (float)0.35;
+            case 8 :
+                return (float)0.40;
+            case 9 :
+                return (float)0.45;
+            case 10 :
+                return (float)0.50;
+            case 11 :
+                return (float)0.55;
+            case 12 :
+                return (float)0.60;
+            case 13 :
+                return (float)0.65;
+            case 14 :
+                return (float)0.70;
+            case 15 :
+                return (float)0.75;
+            case 16 :
+                return (float)0.80;
+            case 17 :
+                return (float)0.85;
+            case 18 :
+                return (float)0.90;
+            case 19 :
+                return (float)0.95;
+            case 20 :
+                return 1;
+            default :
+                return -1;
+        }
+    }
+    
+    private int getSelectedPP() {
+        int a = pp.getSelectedIndex();
+        switch (a) {
+            case 0 :
+                return 0;
+            case 1 :
+                return 1;
+            case 2 :
+                return 5;
+            case 3 :
+                return 10;
+            case 4 :
+                return 15;
+            case 5 :
+                return 20;
+            case 6 :
+                return 25;
+            case 7 :
+                return 30;
+            case 8 :
+                return 35;
+            case 9 :
+                return 40;
+            default :
+                return 0;
+        }
     }
 }

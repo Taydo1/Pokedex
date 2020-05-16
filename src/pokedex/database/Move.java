@@ -34,6 +34,17 @@ public class Move extends DBElement {
         this.power = power;
         this.accuracy = accuracy;
     }
+    
+    public Move(int id, String name, String en_name, int id_type, String category, int pp, int power, float accuracy) {
+        this.id = id;
+        this.name = name;
+        this.en_name = en_name;
+        this.id_type = id_type;
+        this.category = category;
+        this.pp = pp;
+        this.power = power;
+        this.accuracy = accuracy;
+    }
 
     public Move(String cvsLign, Map<String, Integer> type2id) {
         String[] infos = cvsLign.split(";");
@@ -72,7 +83,10 @@ public class Move extends DBElement {
 
     @Override
     public void modifyInDB(Database db) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        db.executeUpdate(String.format(Locale.ROOT, "UPDATE move SET name='%s', en_name='%s', "
+                + "id_type='%d', category='%s', pp='%d',"
+                + "power='%d', accuracy='%f' WHERE id='%d'",
+                name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy, id));
     }
 
     public String getTypeName(Database db) {

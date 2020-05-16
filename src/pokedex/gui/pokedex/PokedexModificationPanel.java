@@ -345,7 +345,6 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        InfoButton source;
         switch (Action.valueOf(e.getActionCommand())) {
             case SAVE_MODIFICATION:
                 //Traduit les Oui/Non en booléen

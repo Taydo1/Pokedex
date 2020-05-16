@@ -26,7 +26,7 @@ public class PokedexApp extends JFrame {
     public PokedexApp() {
 
         db = new Database();
-        db.setupDB(dbName, schemaName, true);
+        db.setupDB(dbName, schemaName, false);
         testRequest();
         setupWindow();
     }
@@ -49,8 +49,8 @@ public class PokedexApp extends JFrame {
         Trainer boss = new Trainer("Giga BOSS");
         db.executeUpdate("INSERT INTO trainer VALUES " + boss.getInsertSubRequest());
 
-        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, 1, 1, 3, 5, 8, 188, 110);
-        Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, 1, 1, 3, -1, -1, 188, 17);
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, false, 1, 1, 3, 5, 8, 188, 110);
+        Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, true, 1, 1, 3, -1, -1, 188, 110);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest() + "," + corona2.getInsertSubRequest());
 
         db.printTable("trainer");
@@ -115,10 +115,4 @@ public class PokedexApp extends JFrame {
         // TODO code application logic here
         new PokedexApp();
     }
-
-    /*
-INSERT INTO type VALUES (default, "Electrik",1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 1, 0.5, 1);
-INSERT INTO pokedex VALUES (172, 'Pichu', 'Pichu', 1, NULL, 'Pokémon Minisouris',  0.2, 2, NULL, 25),
-						   (25, 'Pikachu', 'Pikachu', 1, NULL, 'Pokémon Souris',  0.4, 6, 172, 26),
-						   (26, 'Raichu', 'Raichu', 1, NULL, 'Pokémon Souris',  0.8, 30, 25, NULL);*/
 }

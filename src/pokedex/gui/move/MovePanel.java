@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.database.Move;
 import pokedex.gui.Action;
-import pokedex.gui.InfoButton;
-import pokedex.gui.Label;
+import pokedex.gui.widgets.InfoButton;
+import pokedex.gui.widgets.Label;
 import pokedex.gui.MainPanel;
 
 /**
@@ -62,7 +62,7 @@ public class MovePanel extends JPanel implements ActionListener {
         selector.addActionListener(this);
         type.setActionCommand(Action.GET_TYPE.name());
         type.addActionListener(parent);
-        modification.setActionCommand(Action.START_MOVE_MODIFICATION.name());
+        modification.setActionCommand(Action.START_MODIFICATION.name());
         modification.addActionListener(this);
 
         setLayout(new GridBagLayout());
@@ -157,7 +157,7 @@ public class MovePanel extends JPanel implements ActionListener {
                 InfoButton abilityButton = (InfoButton) selector.getSelectedItem();
                 setId(abilityButton.getId());
                 break;
-            case START_MOVE_MODIFICATION:
+            case START_MODIFICATION:
                 parent.addTab(
                         new MoveModificationPanel(modification.getId(), parent),
                         "Modification de " + db.getFromDB("SELECT name FROM move WHERE id=" + modification.getId()).get(0)[0], 1

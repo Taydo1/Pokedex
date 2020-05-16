@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import pokedex.database.Type;
 import pokedex.gui.Action;
-import pokedex.gui.InfoButton;
+import pokedex.gui.widgets.InfoButton;
 import pokedex.gui.MainPanel;
 
 /**

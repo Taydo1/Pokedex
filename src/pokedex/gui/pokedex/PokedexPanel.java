@@ -114,7 +114,7 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 imageName = "image_mega";
                 setId(currentId);
                 break;
-            case START_POKEDEX_MODIFICATION:
+            case START_MODIFICATION:
                 ArrayList<Pokedex> listname = db.getFromDB("SELECT * FROM pokedex WHERE id=" + String.valueOf(currentId), Pokedex.class);
                 String name = listname.get(0).name;
                 parent.addTab(

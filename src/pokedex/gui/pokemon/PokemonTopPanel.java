@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.database.Pokemon;
 import pokedex.gui.Action;
-import pokedex.gui.InfoButton;
-import pokedex.gui.Label;
+import pokedex.gui.widgets.InfoButton;
+import pokedex.gui.widgets.Label;
 
 /**
  *
@@ -140,9 +140,17 @@ public class PokemonTopPanel extends JPanel {
             Pokemon currentPokemon = currentPokemonList.get(0);
             String pokedexName = currentPokemon.getPokedexName(db);
             if (currentPokemon.name.equals(pokedexName)) {
-                name.setText(currentPokemon.name);
+                if (currentPokemon.is_shiny) {
+                    name.setText(currentPokemon.name + " (Chromatique)");
+                } else {
+                    name.setText(currentPokemon.name);
+                }
             } else {
-                name.setText(currentPokemon.name + " (" + pokedexName + ")");
+                if (currentPokemon.is_shiny) {
+                    name.setText(currentPokemon.name + " (" + pokedexName + " Chromatique)");
+                } else {
+                    name.setText(currentPokemon.name + " (" + pokedexName + ")");
+                }
             }
             name.setId(currentPokemon.id_pokedex);
 

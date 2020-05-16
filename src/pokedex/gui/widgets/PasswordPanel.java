@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokedex.gui;
+package pokedex.gui.widgets;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -23,7 +23,7 @@ public class PasswordPanel extends JPanel {
      * "Hook" method that causes the JPasswordField to request focus the first
      * time this method is called.
      */
-    void gainedFocus() {
+    public void gainedFocus() {
         if (!gainedFocusBefore) {
             gainedFocusBefore = true;
             passwordField.requestFocusInWindow();

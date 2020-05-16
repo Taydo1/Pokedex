@@ -80,6 +80,7 @@ CREATE TABLE pokemon(
 	name varchar(20),
 	level int,
 	health int,
+	is_shiny boolean,
 	id_trainer int REFERENCES trainer(id),
 	id_move1 int REFERENCES move(id),
 	id_move2 int REFERENCES move(id),

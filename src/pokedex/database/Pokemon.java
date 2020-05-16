@@ -19,12 +19,14 @@ public class Pokemon extends DBElement {
     public String name;
     public int id, level, health;
     public int id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability;
+    public boolean is_shiny;
 
-    public Pokemon(String name, int level, int health, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
+    public Pokemon(String name, int level, int health, boolean is_shiny, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
         this.id = -1;
         this.name = name;
         this.level = level;
         this.health = health;
+        this.is_shiny = is_shiny;
         this.id_trainer = id_trainer;
         this.id_move1 = id_move1;
         this.id_move2 = id_move2;
@@ -39,6 +41,7 @@ public class Pokemon extends DBElement {
         this.name = rs.getString("name");
         this.level = rs.getInt("level");
         this.health = rs.getInt("health");
+        this.is_shiny = rs.getBoolean("is_shiny");
         this.id_trainer = rs.getInt("id_trainer");
         this.id_move1 = rs.getInt("id_move1");
         this.id_move2 = rs.getInt("id_move2");
@@ -50,13 +53,13 @@ public class Pokemon extends DBElement {
 
     @Override
     public String toString() {
-        return "Pokemon{" + "name=" + name + ", id=" + id + ", level=" + level + ", health=" + health + ", id_trainer=" + id_trainer + ", id_move1=" + id_move1 + ", id_move2=" + id_move2 + ", id_move3=" + id_move3 + ", id_move4=" + id_move4 + ", id_pokedex=" + id_pokedex + ", id_ability=" + id_ability + '}';
+        return "Pokemon{" + "name=" + name + ", id=" + id + ", level=" + level + ", health=" + health + ", id_trainer=" + id_trainer + ", id_move1=" + id_move1 + ", id_move2=" + id_move2 + ", id_move3=" + id_move3 + ", id_move4=" + id_move4 + ", id_pokedex=" + id_pokedex + ", id_ability=" + id_ability + ", is_shiny=" + is_shiny + '}';
     }
 
     @Override
     public String getInsertSubRequest() {
-        return String.format(Locale.ROOT, "(default, '%s', %d, %d, %s, %d, %s, %s, %s, %d, %d)",
-                name.replace("'", "''"), level, health, int2StringRequest(id_trainer), id_move1, int2StringRequest(id_move2), int2StringRequest(id_move3), int2StringRequest(id_move4), id_pokedex, id_ability);
+        return String.format(Locale.ROOT, "(default, '%s', %d, %d, %b, %s, %d, %s, %s, %s, %d, %d)",
+                name.replace("'", "''"), level, health, is_shiny, int2StringRequest(id_trainer), id_move1, int2StringRequest(id_move2), int2StringRequest(id_move3), int2StringRequest(id_move4), id_pokedex, id_ability);
     }
 
     @Override

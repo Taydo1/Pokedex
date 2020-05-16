@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.gui.Action;
 import pokedex.gui.ImagePanel;
-import pokedex.gui.InfoButton;
+import pokedex.gui.widgets.InfoButton;
 import pokedex.gui.MainPanel;
 
 /**
@@ -55,21 +55,21 @@ public class PokemonPanel extends JPanel implements ActionListener {
                 source = (InfoButton) topPanel.selector.getSelectedItem();
                 setId(source.getId());
                 break;
-            case START_POKEMON_MODIFICATION:
+            case START_MODIFICATION:
                 parent.addTab(
                         new PokemonModifInsertPanel(bottomPanel.modification.getId(), parent),
                         "Modification de " + db.getFromDB("SELECT name FROM pokemon WHERE id=" + bottomPanel.modification.getId()).get(0)[0],
                         MainPanel.PROFESSOR_TAB
                 );
                 break;
-            case START_POKEMON_INSERTION:
+            case START_INSERTION:
                 parent.addTab(
                         new PokemonModifInsertPanel(parent),
                         "Naissance d'un Pokemon", 
                         MainPanel.PROFESSOR_TAB
                 );
                 break;
-            case DELETE_POKEMON:
+            case DELETE:
                 System.err.println("PAS ENCORE IMPLEMENTE");
                 break;
         }
@@ -78,9 +78,15 @@ public class PokemonPanel extends JPanel implements ActionListener {
     public void setId(int id) {
         topPanel.setId(id);
 
-        ArrayList<Object[]> idList = db.getFromDB("SELECT id_pokedex FROM pokemon p WHERE p.id=" + id);
-        if (!idList.isEmpty()) {
-            Image image = db.getImage("SELECT image FROM pokedex WHERE id=" + idList.get(0)[0]);
+        ArrayList<Object[]> infos = db.getFromDB("SELECT id_pokedex, is_shiny FROM pokemon p WHERE p.id=" + id);
+        if (!infos.isEmpty()) {
+            String imgName;
+            if((Boolean)infos.get(0)[1]){
+                imgName="image_shiny";
+            }else{
+                imgName="image";
+            }
+            Image image = db.getImage("SELECT "+imgName+" FROM pokedex WHERE id=" + infos.get(0)[0]);
             imagePanel.setImage(image);
         }else{
             imagePanel.setImage(null);

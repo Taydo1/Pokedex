@@ -36,7 +36,7 @@ public class Pokemon extends DBElement {
         this.id_pokedex = id_pokedex;
     }
     
-    public Pokemon(int id, String name, int level, int health, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
+    public Pokemon(int id, String name, int level, int health, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_pokedex, int id_ability) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -78,10 +78,9 @@ public class Pokemon extends DBElement {
 
     @Override
     public void modifyInDB(Database db) {
-        db.executeUpdate(String.format(Locale.ROOT, "UPDATE pokemon SET name='%s', level='%d', "
-                + "health='%d', id_trainer='%d', id_move1='%d', id_move2='%d', id_move3='%d', "
-                + "id_move4='%d', id_pokedex='%d', id_ability='%d' WHERE id='%d'",
-                name.replace("'", "''"), level, health, id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability, id));
+        String[] colonnes = new String[]{"name", "level", "health", "id_trainer", "id_move1", "id_move2", "id_move3", "id_move4", "id_pokedex", "id_ability"};
+        Object [] valeurs = new Object[]{name, level, health, id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability};
+        db.modify("pokemon", id, colonnes, valeurs);
     }
 
     public String getPokedexName(Database db) {

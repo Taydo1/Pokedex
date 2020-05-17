@@ -33,4 +33,6 @@ public enum Action {
     SAVE_MODIFICATION,
     DISCARD_MODIFICATION,
     DELETE,
+    MOVE_CHANGE,
+    POKEDEX_CHANGE,
 }

@@ -35,6 +35,20 @@ public class Pokemon extends DBElement {
         this.id_ability = id_ability;
         this.id_pokedex = id_pokedex;
     }
+    
+    public Pokemon(int id, String name, int level, int health, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
+        this.id = id;
+        this.name = name;
+        this.level = level;
+        this.health = health;
+        this.id_trainer = id_trainer;
+        this.id_move1 = id_move1;
+        this.id_move2 = id_move2;
+        this.id_move3 = id_move3;
+        this.id_move4 = id_move4;
+        this.id_ability = id_ability;
+        this.id_pokedex = id_pokedex;
+    }
 
     public Pokemon(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
@@ -64,7 +78,10 @@ public class Pokemon extends DBElement {
 
     @Override
     public void modifyInDB(Database db) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        db.executeUpdate(String.format(Locale.ROOT, "UPDATE pokemon SET name='%s', level='%d', "
+                + "health='%d', id_trainer='%d', id_move1='%d', id_move2='%d', id_move3='%d', "
+                + "id_move4='%d', id_pokedex='%d', id_ability='%d' WHERE id='%d'",
+                name.replace("'", "''"), level, health, id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability, id));
     }
 
     public String getPokedexName(Database db) {

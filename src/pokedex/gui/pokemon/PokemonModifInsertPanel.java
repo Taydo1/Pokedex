@@ -251,8 +251,11 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
     public void actionPerformed(ActionEvent e) {
         switch (Action.valueOf(e.getActionCommand())) {
             case SAVE_MODIFICATION:
-                
-                
+                                
+                new Pokemon(idModif, name.getText(), level.getSelectedIndex() + 1, getHp(),
+                        trainer.getSelectedIndex() + 1, move1.getSelectedIndex() + 1, move2.getSelectedIndex(),
+                        move3.getSelectedIndex(), move4.getSelectedIndex(), pokedex.getSelectedIndex() + 1, getAbility(pokedex.getSelectedIndex() + 1))
+                        .modifyInDB(parent.db);
 
                 parent.pokemonPanel.setId(parent.pokemonPanel.idActuel);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -280,6 +283,21 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
     public void componentHidden(ComponentEvent arg0) {
     }
     
+    private int getAbility(int idpokedex){
+        
+        switch (ability.getSelectedIndex()){
+            case 0 :
+                return parent.db.getFromDB("SELECT * from pokedex WHERE id = " + idpokedex, Pokedex.class).get(0).id_ability1;
+            case 1 :
+                return parent.db.getFromDB("SELECT * from pokedex WHERE id = " + idpokedex, Pokedex.class).get(0).id_ability2;    
+            case 2 :
+                return parent.db.getFromDB("SELECT * from pokedex WHERE id = " + idpokedex, Pokedex.class).get(0).id_ability3;
+            case 3 :
+                return parent.db.getFromDB("SELECT * from pokedex WHERE id = " + idpokedex, Pokedex.class).get(0).id_ability4;
+            default :
+                return parent.db.getFromDB("SELECT * from pokedex WHERE id = " + idpokedex, Pokedex.class).get(0).id_ability1;
+        }
+    }
     private void setTalent(Pokedex pokedex) {
         if (pokedex.id_ability4 != 0){
             listTalent = new String[4];
@@ -301,5 +319,19 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
             listTalent[0] = parent.db.getFromDB("SELECT * from ability WHERE id = " + pokedex.id_ability1, Ability.class).get(0).name;
         }
         ability = new JComboBox<String>(listTalent);
+    }
+
+    private int getHp() {
+        String hp = "";
+        String healp = health.getText();
+        char c;
+        for(int i = 0 ; i < healp.length() ; i++){
+            c = healp.charAt(i);
+            if(c != ' ') {
+                hp += c;
+            }
+            System.out.println(hp);
+        }
+        return Integer.parseInt(hp);
     }
 }

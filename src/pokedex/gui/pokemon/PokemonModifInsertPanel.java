@@ -61,10 +61,10 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
     private void initComponentsModif() {
         
         //Liste des noms dans le pokédex
-        ArrayList<Pokedex> list_pokedex = parent.db.getFromDB("SELECT * from pokedex ORDER BY id ASC", Pokedex.class);
+        ArrayList<Object[]> list_pokedex = parent.db.getFromDB("SELECT name from pokedex ORDER BY id ASC");
         String[] listPokedex = new String[list_pokedex.size()];
         for (int i = 0; i < list_pokedex.size(); i++){
-            listPokedex[i] = list_pokedex.get(i).name; 
+            listPokedex[i] = (String) list_pokedex.get(i)[0]; 
         }
         
         //Liste des noms des dresseurs

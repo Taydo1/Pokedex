@@ -28,6 +28,7 @@ public class PokemonPanel extends JPanel implements ActionListener {
     ImagePanel imagePanel;
     MainPanel parent;
     Database db;
+    int idActuel;
 
     public PokemonPanel(Database db, MainPanel parent) {
         this.parent = parent;
@@ -77,6 +78,7 @@ public class PokemonPanel extends JPanel implements ActionListener {
 
     public void setId(int id) {
         topPanel.setId(id);
+        idActuel = id;
 
         ArrayList<Object[]> infos = db.getFromDB("SELECT id_pokedex, is_shiny FROM pokemon p WHERE p.id=" + id);
         if (!infos.isEmpty()) {

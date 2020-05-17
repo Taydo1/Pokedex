@@ -53,7 +53,7 @@ public class PokemonBottomPanel extends JPanel {
                 break;
             case "dresseur":
                 add.setEnabled(true);
-                modification.setEnabled(false);
+                modification.setEnabled(true);
                 delete.setEnabled(true);
                 break;
             case "visiteur":

@@ -400,7 +400,6 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
     }
 
     private void setMoveBox() {
-
         if (move2.getSelectedIndex() == 0) {
             if (move3.getSelectedIndex() != 0) {
                 move2.setSelectedIndex(move3.getSelectedIndex());
@@ -413,6 +412,8 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 move3.setEnabled(false);
                 move4.setEnabled(false);
             }
+        }else{
+            move3.setEnabled(true);
         }
         if (move3.getSelectedIndex() == 0) {
             if (move4.getSelectedIndex() != 0) {

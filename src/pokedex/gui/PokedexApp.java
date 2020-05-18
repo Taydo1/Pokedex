@@ -49,7 +49,7 @@ public class PokedexApp extends JFrame {
         Trainer boss = new Trainer("Giga BOSS");
         db.executeUpdate("INSERT INTO trainer VALUES " + boss.getInsertSubRequest());
 
-        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, false, 1, 1, 3, 5, 8, 188, 110);
+        Pokemon corona = new Pokemon("Coronavirus", 42, 1000, false, 1, 1, 3, 0, 0, 188, 110);
         Pokemon corona2 = new Pokemon("Coronavirus d'août", 69, 10000, true, 1, 1, 3, -1, -1, 188, 110);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest() + "," + corona2.getInsertSubRequest());
 

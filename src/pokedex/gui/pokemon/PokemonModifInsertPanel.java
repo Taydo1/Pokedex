@@ -287,7 +287,8 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                         getAbility(pokedex.getSelectedIndex() + 1), pokedex.getSelectedIndex() + 1);
 
                 if (isInsert) {
-                    parent.db.executeUpdate("INSERT INTO pokemon VALUES "+temp.getInsertSubRequest());
+                    parent.db.executeUpdate("INSERT INTO pokemon VALUES " + temp.getInsertSubRequest());
+                    parent.pokemonPanel.topPanel.addLastPokemonSelector();
                 } else {
                     temp.modifyInDB(parent.db);
                 }

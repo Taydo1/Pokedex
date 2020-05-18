@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.Database;
@@ -51,7 +52,7 @@ public class PokemonTopPanel extends JPanel {
         selector.setForeground(Color.WHITE);
 
         InfoButton selectorButton;
-        ArrayList<Object[]> pokemonList = db.getFromDB("SELECT id,name FROM pokemon");
+        ArrayList<Object[]> pokemonList = db.getFromDB("SELECT id,name FROM pokemon ORDER BY id ASC");
         pokemonList.add(0, new Object[]{0, ""});
         for (int i = 0; i < pokemonList.size(); i++) {
             selectorButton = new InfoButton((String) pokemonList.get(i)[1], (Integer) pokemonList.get(i)[0]);
@@ -227,5 +228,11 @@ public class PokemonTopPanel extends JPanel {
             trainer.setEnabled(false);
 
         }
+    }
+
+    public void addLastPokemonSelector() {
+        ArrayList<Object[]> lastPokemonList = db.getFromDB("SELECT id,name FROM pokemon ORDER BY id DESC LIMIT 1");
+        InfoButton selectorButton = new InfoButton((String) lastPokemonList.get(0)[1], (Integer) lastPokemonList.get(0)[0]);
+        selector.addItem(selectorButton);
     }
 }

@@ -16,9 +16,9 @@ public abstract class DBElement {
     public DBElement() {
     }
 
-    public String int2StringRequest(int i) {
+    public Object int2StringRequest(int i) {
         if (i == -1 || i == 0) {
-            return "NULL";
+            return null;
         } else {
             return String.format("%d", i);
         }

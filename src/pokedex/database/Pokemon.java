@@ -21,8 +21,8 @@ public class Pokemon extends DBElement {
     public int id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability;
     public boolean is_shiny;
 
-    public Pokemon(String name, int level, int health, boolean is_shiny, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
-        this.id = -1;
+    public Pokemon(int id,String name, int level, int health, boolean is_shiny, int id_trainer, int id_move1, int id_move2, int id_move3, int id_move4, int id_ability, int id_pokedex) {
+        this.id = id;
         this.name = name;
         this.level = level;
         this.health = health;
@@ -78,8 +78,8 @@ public class Pokemon extends DBElement {
 
     @Override
     public void modifyInDB(Database db) {
-        String[] colonnes = new String[]{"name", "level", "health", "id_trainer", "id_move1", "id_move2", "id_move3", "id_move4", "id_pokedex", "id_ability"};
-        Object [] valeurs = new Object[]{name, level, health, id_trainer, id_move1, id_move2, id_move3, id_move4, id_pokedex, id_ability};
+        String[] colonnes = new String[]{"name", "level", "health", "is_shiny","id_trainer", "id_move1", "id_move2", "id_move3", "id_move4", "id_pokedex", "id_ability"};
+        Object [] valeurs = new Object[]{name, level, health, is_shiny, int2StringRequest(id_trainer), id_move1, int2StringRequest(id_move2), int2StringRequest(id_move3), int2StringRequest(id_move4), id_pokedex, id_ability};
         db.modify("pokemon", id, colonnes, valeurs);
     }
 

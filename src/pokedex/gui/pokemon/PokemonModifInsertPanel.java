@@ -46,11 +46,11 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
     int idModif;
     boolean isInsert;
 
-    public PokemonModifInsertPanel(int id, MainPanel p) { //pokemon modification
+    public PokemonModifInsertPanel(int id, MainPanel parent) { //pokemon modification
         isInsert = false;
-        idModif = id;
-        parent = p;
-        this.setSize(new Dimension(parent.getWidth(), parent.getHeight()));
+        this.idModif = id;
+        this.parent = parent;
+        setSize(new Dimension(parent.getWidth(), parent.getHeight()));
         Pokemon currentPokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + idModif, Pokemon.class).get(0);
         initComponentsModif(currentPokemon);
         setVisible(true);
@@ -59,6 +59,12 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
 
     public PokemonModifInsertPanel(MainPanel parent) { //new pokemon
         isInsert = true;
+        this.parent = parent;
+        setSize(new Dimension(parent.getWidth(), parent.getHeight()));
+        Pokemon currentPokemon = new Pokemon(-1, "Pokemon", 0, 0, false, 0, 1, 0, 0, 0, 0, 1);
+        initComponentsModif(currentPokemon);
+        setVisible(true);
+        addComponentListener(this);
     }
 
     private void initComponentsModif(Pokemon currentPokemon) {
@@ -113,7 +119,7 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
         //La vie
         NumberFormat formatVie = NumberFormat.getInstance();
         formatVie.setMaximumFractionDigits(0);
-        formatVie.setMaximumIntegerDigits(3);
+        formatVie.setMaximumIntegerDigits(4);
         formatVie.setMinimumIntegerDigits(1);
 
         JPanel healthPanel = new JPanel();
@@ -273,34 +279,21 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 break;
 
             case SAVE_MODIFICATION:
+                boolean isShiny = Math.random() < 0.5;
+                Pokemon temp = new Pokemon(idModif, name.getText(), level.getSelectedIndex() + 1, getHp(),
+                        isShiny, trainer.getSelectedIndex() + 1,
+                        move1.getSelectedIndex() + 1, move2.getSelectedIndex(),
+                        move3.getSelectedIndex(), move4.getSelectedIndex(),
+                        getAbility(pokedex.getSelectedIndex() + 1), pokedex.getSelectedIndex() + 1);
 
-                //Vérifie que les capacités soient pas des null
-                Object c2,
-                 c3,
-                 c4;
-                if (move2.getSelectedIndex() == 0) {
-                    c2 = null;
+                if (isInsert) {
+                    parent.db.executeUpdate("INSERT INTO pokemon VALUES "+temp.getInsertSubRequest());
                 } else {
-                    c2 = move2.getSelectedIndex();
+                    temp.modifyInDB(parent.db);
                 }
-                if (move3.getSelectedIndex() == 0) {
-                    c3 = null;
-                } else {
-                    c3 = move3.getSelectedIndex();
-                }
-                if (move4.getSelectedIndex() == 0) {
-                    c4 = null;
-                } else {
-                    c4 = move4.getSelectedIndex();
-                }
-                String[] colonnes = new String[]{"name", "level", "health", "id_trainer", "id_move1", "id_move2", "id_move3", "id_move4", "id_pokedex", "id_ability"};
-                Object[] valeurs = new Object[]{name.getText(), level.getSelectedIndex() + 1, getHp(), trainer.getSelectedIndex() + 1,
-                    move1.getSelectedIndex() + 1, c2, c3, c4, pokedex.getSelectedIndex() + 1, getAbility(pokedex.getSelectedIndex() + 1)};
-                parent.db.modify("pokemon", idModif, colonnes, valeurs);
 
                 parent.pokemonPanel.setId(parent.pokemonPanel.idActuel);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
-
             case DISCARD_MODIFICATION:
                 parent.removeTab(this, parent.pokemonPanel);
                 break;
@@ -360,7 +353,7 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
             listTalent = new String[1];
             listTalent[0] = parent.db.getFromDB("SELECT * from ability WHERE id = " + pokedex.id_ability1, Ability.class).get(0).name;
         }
-        ability = new JComboBox<String>(listTalent);
+        ability = new JComboBox<>(listTalent);
     }
 
     private void updateTalent(Pokedex pokedex) {
@@ -392,11 +385,8 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
     }
 
     private int getHp() {
-        if (Integer.parseInt(health.getText()) != 0) {
-            return Integer.parseInt(health.getText());
-        } else {
-            return 1;
-        }
+        double temp = Double.valueOf(health.getValue().toString());
+        return (int) Math.abs(temp);
     }
 
     private void setMoveBox() {
@@ -412,7 +402,7 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 move3.setEnabled(false);
                 move4.setEnabled(false);
             }
-        }else{
+        } else {
             move3.setEnabled(true);
         }
         if (move3.getSelectedIndex() == 0) {
@@ -426,6 +416,5 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
         } else {
             move4.setEnabled(true);
         }
-        System.out.println("modif done");
     }
 }

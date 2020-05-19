@@ -30,6 +30,18 @@ public class Trainer extends DBElement {
         id_pokemon[4] = id_pokemon5;
         id_pokemon[5] = id_pokemon6;
     }
+    
+    public Trainer(int id, String name, int id_pokemon1, int id_pokemon2, int id_pokemon3, int id_pokemon4, int id_pokemon5, int id_pokemon6) {
+        this.id = id;
+        this.name = name;
+        id_pokemon = new int[6];
+        id_pokemon[0] = id_pokemon1;
+        id_pokemon[1] = id_pokemon2;
+        id_pokemon[2] = id_pokemon3;
+        id_pokemon[3] = id_pokemon4;
+        id_pokemon[4] = id_pokemon5;
+        id_pokemon[5] = id_pokemon6;
+    }
 
     public Trainer(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
@@ -59,7 +71,9 @@ public class Trainer extends DBElement {
 
     @Override
     public void modifyInDB(Database db) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] colonnesModifiees = new String[]{"name", "id_pokemon1", "id_pokemon2", "id_pokemon3", "id_pokemon4", "id_pokemon5", "id_pokemon6"};
+        Object[] valeursModif = new Object[]{name, id_pokemon[0], id_pokemon[1], id_pokemon[2], id_pokemon[3], id_pokemon[4], id_pokemon[5]};
+        db.modify("trainer", id, colonnesModifiees, valeursModif);
     }
 
     public ArrayList<Pokemon> getTeam(Database db) {

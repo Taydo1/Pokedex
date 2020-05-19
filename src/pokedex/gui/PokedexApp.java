@@ -26,7 +26,7 @@ public class PokedexApp extends JFrame {
     public PokedexApp() {
 
         db = new Database();
-        db.setupDB(dbName, schemaName, false);
+        db.setupDB(dbName, schemaName, true);
         testRequest();
         setupWindow();
     }

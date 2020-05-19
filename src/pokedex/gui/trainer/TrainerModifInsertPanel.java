@@ -74,6 +74,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         JPanel[] team = new JPanel[6];
         for (int i = 0; i < 6; i++){
+            team[i] = new JPanel();
             team[i].setBackground(Color.white);
             team[i].setBorder(BorderFactory.createTitledBorder("Pokémon n°" + i + " de l'équipe"));
             team[i].add(equipe[i]);
@@ -187,7 +188,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         equipe[0] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){
-            for (int i = 0; i < equipe[0].getItemCount(); i++) {
+            for (int i = 0; i < equipe[0].getItemCount()-1; i++) {
                 if (listDispo.get(i).id == currentTrainer.id_pokemon[0]) {
                     equipe[0].setSelectedItem(listDispo.get(i));
                     listDispo.remove(listDispo.get(i));
@@ -197,7 +198,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         equipe[1] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){
-            for (int i = 0; i < equipe[1].getItemCount(); i++) {
+            for (int i = 0; i < equipe[1].getItemCount()-1; i++) {
                 if (listDispo.get(i).id == currentTrainer.id_pokemon[1]) {
                     equipe[1].setSelectedItem(listDispo.get(i));
                     listDispo.remove(listDispo.get(i));
@@ -207,7 +208,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         equipe[2] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){
-            for (int i = 0; i < equipe[2].getItemCount(); i++) {
+            for (int i = 0; i < equipe[2].getItemCount()-1; i++) {
                 if (listDispo.get(i).id == currentTrainer.id_pokemon[2]) {
                     equipe[2].setSelectedItem(listDispo.get(i));
                     listDispo.remove(listDispo.get(i));
@@ -216,7 +217,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         }
         equipe[3] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){
-            for (int i = 0; i < equipe[3].getItemCount(); i++) {
+            for (int i = 0; i < equipe[3].getItemCount()-1; i++) {
                 if (listDispo.get(i).id == currentTrainer.id_pokemon[3]) {
                     equipe[3].setSelectedItem(listDispo.get(i));
                     listDispo.remove(listDispo.get(i));
@@ -226,7 +227,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         equipe[4] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){
-            for (int i = 0; i < equipe[4].getItemCount(); i++) {
+            for (int i = 0; i < equipe[4].getItemCount()-1; i++) {
                 if (listDispo.get(i).id == currentTrainer.id_pokemon[4]) {
                     equipe[4].setSelectedItem(listDispo.get(i));
                     listDispo.remove(listDispo.get(i));
@@ -236,7 +237,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         equipe[5] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){
-            for (int i = 0; i < equipe[5].getItemCount(); i++) {
+            for (int i = 0; i < equipe[5].getItemCount()-1; i++) {
                 if (listDispo.get(i).id == currentTrainer.id_pokemon[5]) {
                     equipe[5].setSelectedItem(listDispo.get(i));
                     listDispo.remove(listDispo.get(i));

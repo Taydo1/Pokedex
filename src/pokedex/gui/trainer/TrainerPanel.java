@@ -42,31 +42,6 @@ public class TrainerPanel extends JPanel implements ActionListener {
         this.parent = parent;
         teamLabel = new Label("", true);
 
-        name = new Label("", true);
-        teamLabel = new Label("Equipe de pokemon", true);
-        team = new InfoButton[6];
-        for (int i = 0; i < 6; i++) {
-            team[i] = new InfoButton("", 0, true);
-            team[i].setActionCommand(Action.GET_POKEMON.name());
-            team[i].addActionListener(parent);
-        }
-
-        blank = new Label();
-        pokemonLabel = new Label("Pokemons", true);
-        pokemonSelector = new JComboBox<>();
-        
-        blank2 = new Label();
-        add = new StyledButton("Ajouter un Pokemon", true);
-        modification = new InfoButton("", 0, true);
-        delete = new InfoButton("", 0, true);
-
-        add.addActionListener(this);
-        modification.addActionListener(this);
-        delete.addActionListener(this);
-        add.setActionCommand(Action.START_INSERTION.name());
-        modification.setActionCommand(Action.START_MODIFICATION.name());
-        delete.setActionCommand(Action.DELETE.name());
-
         selector = new JComboBox<>();
         selector.setBackground(Color.GRAY);
         selector.setForeground(Color.WHITE);
@@ -80,6 +55,32 @@ public class TrainerPanel extends JPanel implements ActionListener {
         }
         selector.setActionCommand(Action.GET_TRAINER.name());
         selector.addActionListener(this);
+
+        name = new Label("", true);
+        teamLabel = new Label("Equipe de pokemon", true);
+        team = new InfoButton[6];
+        for (int i = 0; i < 6; i++) {
+            team[i] = new InfoButton("", 0, true);
+            team[i].setActionCommand(Action.GET_POKEMON.name());
+            team[i].addActionListener(parent);
+        }
+
+        blank = new Label();
+        pokemonLabel = new Label("Pokemons", true);
+        pokemonSelector = new JComboBox<>();
+        pokemonSelector.setActionCommand(Action.GET_POKEMON.name());
+
+        blank2 = new Label();
+        add = new StyledButton("Ajouter un Pokemon", true);
+        modification = new InfoButton("", 0, true);
+        delete = new InfoButton("", 0, true);
+
+        add.addActionListener(this);
+        modification.addActionListener(this);
+        delete.addActionListener(this);
+        add.setActionCommand(Action.START_INSERTION.name());
+        modification.setActionCommand(Action.START_MODIFICATION.name());
+        delete.setActionCommand(Action.DELETE.name());
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -150,12 +151,14 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 team[i].setId(teamOfCurrentTrainer.get(i).id);
                 team[i].setText(teamOfCurrentTrainer.get(i).name);
             }
-            
+
+            pokemonSelector.removeActionListener(parent);
             ArrayList<Pokemon> pokemonsOfCurrentTrainer = currentTrainer.getPokemons(db);
             pokemonSelector.removeAllItems();
             for (Pokemon pokemon : pokemonsOfCurrentTrainer) {
                 pokemonSelector.addItem(new InfoButton(pokemon.name, pokemon.id, true));
             }
+            pokemonSelector.addActionListener(parent);
 
             modification.setText("Modifier le dresseur " + currentTrainer.name);
             modification.setId(id);
@@ -163,7 +166,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
             delete.setId(id);
             modification.setVisible(true);
             delete.setVisible(true);
-        }else{
+        } else {
             modification.setVisible(false);
             delete.setVisible(false);
         }

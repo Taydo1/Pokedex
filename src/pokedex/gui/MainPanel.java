@@ -171,9 +171,16 @@ public class MainPanel extends JPanel implements ActionListener {
                 tabbedPane.setSelectedComponent(pokedexPanel);
                 break;
             case GET_POKEMON:
-                source = (InfoButton) e.getSource();
-                pokemonPanel.setId(source.getId());
-                tabbedPane.setSelectedComponent(pokemonPanel);
+                if (e.getSource() instanceof InfoButton) {
+                    source = (InfoButton) e.getSource();
+                    pokemonPanel.setId(source.getId());
+                    tabbedPane.setSelectedComponent(pokemonPanel);
+                }else if(e.getSource() instanceof JComboBox) {
+                    JComboBox selector = (JComboBox)e.getSource();
+                    source = (InfoButton) selector.getSelectedItem();
+                    pokemonPanel.setId(source.getId());
+                    tabbedPane.setSelectedComponent(pokemonPanel);
+                }
                 break;
             case GET_TRAINER:
                 source = (InfoButton) e.getSource();

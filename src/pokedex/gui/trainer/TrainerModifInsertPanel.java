@@ -37,7 +37,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     int idModif;
     MainPanel parent;
     JTextField name;
-    JComboBox<Pokemon> equipe[];
+    JComboBox<Object> equipe[];
     ArrayList<Pokemon>listPokemon;
     JButton save, discard;
     Trainer currentTrainer;
@@ -59,6 +59,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     private void initComponentsModif() {
         
         listPokemon = currentTrainer.getPokemons(parent.db);
+        equipe = new JComboBox[6];
         
         //Le nom du dresseur
         JPanel namePanel = new JPanel();
@@ -182,6 +183,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     private void setEquipe() {
         
         ArrayList<Pokemon> listDispo = listPokemon;
+        listDispo.add(null);
         
         equipe[0] = new JComboBox(listDispo.toArray());
         if(!listDispo.isEmpty()){

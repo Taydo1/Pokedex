@@ -134,8 +134,6 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         add(savePanel, c);
         c.gridx++;
         add(discardPanel, c);
-
-        updateDimension();
     }
 
     @Override
@@ -174,6 +172,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     @Override
     public void componentResized(ComponentEvent arg0) {
         updateDimension();
+        revalidate();
     }
 
     @Override
@@ -198,7 +197,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         return -1;
     }
 
-    private void updateDimension() {
+    public void updateDimension() {
         int dimx = (this.getWidth() / 2) - 30;
         int dimy = (this.getHeight() / 6) - 70;
         name.setPreferredSize(new Dimension(dimx, dimy));
@@ -207,6 +206,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         }
         save.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
         discard.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
+        System.out.println(""+dimx+" "+dimy);
     }
 
     private void updateEquipe() {

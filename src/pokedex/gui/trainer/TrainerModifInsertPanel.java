@@ -73,20 +73,23 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         namePanel.setBorder(BorderFactory.createTitledBorder("Nom du dresseur"));
         namePanel.add(name);
 
-        //L'équipe
-        setEquipe();
-
         JPanel[] team = new JPanel[6];
         for (int i = 0; i < 6; i++) {
+            equipe[i] = new JComboBox(listPokemon.toArray());
+            equipe[i].setSelectedIndex(findSelectorId(currentTrainer.id_pokemon[i], i));
+            equipe[i].addActionListener(this);
+
+            equipe[i].setActionCommand(Action.CHANGE_TEAM.name());
+
             team[i] = new JPanel();
             team[i].setBackground(Color.white);
             int num = i + 1;
             team[i].setBorder(BorderFactory.createTitledBorder("Pokémon n°" + num + " de l'équipe"));
             team[i].add(equipe[i]);
-            equipe[i].addActionListener(this);
-            equipe[i].setActionCommand(Action.CHANGE_TEAM.name());
         }
 
+        updateEquipe();
+        
         save = new JButton("SAVE");
         save.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         save.addActionListener(this);
@@ -195,43 +198,6 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         return -1;
     }
 
-    private void setEquipe() {
-
-//        ArrayList<InfoButton> listDispo = new ArrayList<>(listPokemon);
-//        listDispo.add(new InfoButton("", 0, true));
-//        System.out.println(listDispo);
-//
-//        for (int j = 0; j < 6; j++) {
-//            equipe[j] = new JComboBox(listDispo.toArray());
-//            if (!listDispo.isEmpty()) {
-//                for (int i = listDispo.size() - 1; i >= 0; i--) {
-//                    if (listDispo.get(i).getId() == currentTrainer.id_pokemon[j]) {
-//                        equipe[j].setSelectedItem(listDispo.get(i));
-//                        listDispo.remove(i);
-//                    }
-//                }
-//                if (equipe[j].getSelectedIndex() == 0) {
-//                    equipe[j].setSelectedIndex(equipe[j].getItemCount() - 1);
-//                }
-//            } else {
-//                //equipe[j].setSelectedItem(listDispo.get(i));
-//            }
-//        }
-        ArrayList<InfoButton> listDispo = new ArrayList<>(listPokemon);
-        listDispo.add(0, new InfoButton("", 0));
-        for (int i = 0; i < listPokemon.size(); i++) {
-            equipe[i] = new JComboBox(listDispo.toArray());
-            equipe[i].setSelectedIndex(findSelectorId(listDispo.get(1).getId(), i));
-            listDispo.remove(1);
-        }
-        for (int i = listPokemon.size(); i < 6; i++) {
-            equipe[i] = new JComboBox<>();
-            equipe[i].setSelectedIndex(findSelectorId(0, i));
-        }
-
-        setEquipeAccess();
-    }
-
     private void updateDimension() {
         int dimx = (this.getWidth() / 2) - 30;
         int dimy = (this.getHeight() / 6) - 70;
@@ -265,7 +231,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
             equipe[i].removeAllItems();
 
             ArrayList<InfoButton> tmp = removeSelected(listPokemon, i);
-            tmp.add(0,new InfoButton("", 0));
+            tmp.add(0, new InfoButton("", 0));
             for (InfoButton infoButton : tmp) {
                 equipe[i].addItem(infoButton);
             }

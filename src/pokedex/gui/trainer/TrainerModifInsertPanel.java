@@ -21,7 +21,6 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import pokedex.database.Pokedex;
 import pokedex.database.Pokemon;
 import pokedex.database.Trainer;
 import pokedex.gui.Action;
@@ -60,8 +59,8 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         ArrayList<Pokemon> listPkmn = currentTrainer.getPokemons(parent.db);
         listPokemon = new ArrayList<InfoButton>();
-        for (int i = 0; i < listPokemon.size(); i++){
-            listPokemon.add(new InfoButton(listPkmn.get(i).name, listPkmn.get(i).id));
+        for (int i = 0; i < listPkmn.size(); i++){
+            listPokemon.add(new InfoButton(listPkmn.get(i).name, listPkmn.get(i).id, true));
         }
         
         equipe = new JComboBox[6];
@@ -188,16 +187,19 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     private void setEquipe() {
         
         ArrayList<InfoButton> listDispo = listPokemon;
-        listDispo.add(new InfoButton("", 0));
+        listDispo.add(new InfoButton("je sers à rien", 0, true));
         
         for (int j = 0; j < 6; j++){
           equipe[j] = new JComboBox(listDispo.toArray());
             if(!listDispo.isEmpty()){
-                for (int i = 0; i < equipe[j].getItemCount(); i++) {
+                for (int i = 0; i < equipe[j].getItemCount() - 1; i++) {
                         if (listDispo.get(i).getId() == currentTrainer.id_pokemon[j]) {
                             equipe[j].setSelectedItem(listDispo.get(i));
                             listDispo.remove(listDispo.get(i));
                         }
+                }
+                if (equipe[j].getSelectedIndex() == 0){
+                    equipe[j].setSelectedIndex(equipe[j].getItemCount() - 1);
                 }
             }  
         }
@@ -207,7 +209,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
 
     private void updateDimension() {
         int dimx = (this.getWidth() / 2) - 30;
-        int dimy = (this.getHeight() / 6) - 30;
+        int dimy = (this.getHeight() / 6) - 70;
         name.setPreferredSize(new Dimension(dimx, dimy));
         for (int i = 0; i < 6; i++){
             equipe[i].setPreferredSize(new Dimension(dimx, dimy));
@@ -219,7 +221,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     private void updateEquipe() {
         
         ArrayList<InfoButton> listDispo = listPokemon;
-        listDispo.add(new InfoButton("", 0));
+        listDispo.add(new InfoButton("", 0, true));
         
         for (int j = 0; j < 6; j++){
           equipe[j] = new JComboBox(listDispo.toArray());
@@ -229,6 +231,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
                         listDispo.remove(listDispo.get(i));
                     }
                 }
+                
             }  
         }
         
@@ -237,8 +240,9 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
 
     private void setEquipeAccess() {
         
+        InfoButton neededForTest = new InfoButton("", 0, true);
         for(int i = 0; i < 5; i++){
-            if(equipe[i].getSelectedItem() == null){
+            if(equipe[i].getSelectedItem() == neededForTest){
                 equipe[i + 1].setEnabled(false);
             } else  {
                 equipe[i + 1].setEnabled(true);

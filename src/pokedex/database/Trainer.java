@@ -72,7 +72,15 @@ public class Trainer extends DBElement {
     @Override
     public void modifyInDB(Database db) {
         String[] colonnesModifiees = new String[]{"name", "id_pokemon1", "id_pokemon2", "id_pokemon3", "id_pokemon4", "id_pokemon5", "id_pokemon6"};
-        Object[] valeursModif = new Object[]{name, id_pokemon[0], id_pokemon[1], id_pokemon[2], id_pokemon[3], id_pokemon[4], id_pokemon[5]};
+        Object[] pkmn = new Object[6];
+        for (int i = 0; i < 6; i++){
+            if(id_pokemon[i] == 0){
+                pkmn[i] = null;
+            } else {
+                pkmn[i] = id_pokemon[i];
+            }
+        }
+        Object[] valeursModif = new Object[]{name, pkmn[0], pkmn[1], pkmn[2], pkmn[3], pkmn[4], pkmn[5]};
         db.modify("trainer", id, colonnesModifiees, valeursModif);
     }
 

@@ -46,7 +46,7 @@ public class PokedexApp extends JFrame {
     private void testRequest() {
         //db.executeUpdate("TRUNCATE TABLE ");
         db.executeUpdate("TRUNCATE TABLE trainer,pokemon RESTART IDENTITY");
-        Trainer boss = new Trainer("Giga BOSS");
+        Trainer boss = new Trainer("Giga BOSS", -1, -1, -1, -1, -1, -1);
         db.executeUpdate("INSERT INTO trainer VALUES " + boss.getInsertSubRequest());
 
         Pokemon corona = new Pokemon(-1,"Coronavirus", 42, 1000, false, 1, 1, 3, 0, 0, 188, 110);

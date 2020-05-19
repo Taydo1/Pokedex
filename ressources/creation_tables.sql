@@ -69,19 +69,12 @@ CREATE TABLE pokedex(
 	image_shiny bytea,
 	image_mega bytea
 );
-
-CREATE TABlE trainer(
-	id serial PRIMARY KEY,
-	name varchar(20)
-);
-
 CREATE TABLE pokemon(
 	id serial PRIMARY KEY,
 	name varchar(20),
 	level int,
 	health int,
 	is_shiny boolean,
-	id_trainer int REFERENCES trainer(id),
 	id_move1 int REFERENCES move(id),
 	id_move2 int REFERENCES move(id),
 	id_move3 int REFERENCES move(id),
@@ -89,3 +82,17 @@ CREATE TABLE pokemon(
 	id_pokedex int REFERENCES pokedex(id),
 	id_ability int REFERENCES ability(id)
 );
+
+CREATE TABlE trainer(
+	id serial PRIMARY KEY,
+	name varchar(20),
+	id_pokemon1 int REFERENCES pokemon(id),
+	id_pokemon2 int REFERENCES pokemon(id),
+	id_pokemon3 int REFERENCES pokemon(id),
+	id_pokemon4 int REFERENCES pokemon(id),
+	id_pokemon5 int REFERENCES pokemon(id),
+	id_pokemon6 int REFERENCES pokemon(id)
+);
+
+ALTER TABLE pokemon
+ADD id_trainer int REFERENCES trainer(id)

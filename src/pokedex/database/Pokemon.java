@@ -72,8 +72,11 @@ public class Pokemon extends DBElement {
 
     @Override
     public String getInsertSubRequest() {
-        return String.format(Locale.ROOT, "(default, '%s', %d, %d, %b, %s, %d, %s, %s, %s, %d, %d)",
-                name.replace("'", "''"), level, health, is_shiny, int2StringRequest(id_trainer), id_move1, int2StringRequest(id_move2), int2StringRequest(id_move3), int2StringRequest(id_move4), id_pokedex, id_ability);
+        return String.format(Locale.ROOT, "(default, '%s', %d, %d, %b, %d, %s, %s, %s, %d, %d, %s)",
+                name.replace("'", "''"), level, health, is_shiny, 
+                id_move1, int2StringRequest(id_move2), 
+                int2StringRequest(id_move3), int2StringRequest(id_move4), 
+                id_pokedex, id_ability, int2StringRequest(id_trainer));
     }
 
     @Override

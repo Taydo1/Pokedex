@@ -6,10 +6,10 @@
 package pokedex.gui.pokemon;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.Database;
@@ -26,16 +26,19 @@ public class PokemonTopPanel extends JPanel {
 
     JComboBox<InfoButton> selector;
     InfoButton name, type1, type2, ability, trainer, move1, move2, move3, move4;
-    Label level, health, type, move;
+    Label title, level, health, type, moveLabel, abilityLabel, trainerLabel;
     Database db;
 
     public PokemonTopPanel(Database db, PokemonPanel parent) {
         super();
         this.db = db;
+        title = new Label("Pokemon", true);
         type = new Label("", true);
         level = new Label("", true);
         health = new Label("", true);
-        move = new Label("", true);
+        moveLabel = new Label("", true);
+        abilityLabel = new Label("", true);
+        trainerLabel = new Label("", true);
 
         name = new InfoButton("", 0, true);
         type1 = new InfoButton("", 0, true);
@@ -50,6 +53,7 @@ public class PokemonTopPanel extends JPanel {
         selector = new JComboBox<>();
         selector.setBackground(Color.GRAY);
         selector.setForeground(Color.WHITE);
+        selector.setPreferredSize(new Dimension(1, 20));
 
         InfoButton selectorButton;
         ArrayList<Object[]> pokemonList = db.getFromDB("SELECT id,name FROM pokemon ORDER BY id ASC");
@@ -85,22 +89,38 @@ public class PokemonTopPanel extends JPanel {
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
+        add(title, c);
+        c.gridx++;
         add(selector, c);
+        c.gridx = 0;
         c.gridy++;
+        c.gridwidth = 2;
         add(name, c);
         c.gridy++;
+        c.gridwidth = 1;
+        c.gridheight = 2;
         add(type, c);
-        c.gridy++;
+        c.gridheight = 1;
+        c.gridx++;
         add(type1, c);
         c.gridy++;
         add(type2, c);
+        c.gridx = 0;
         c.gridy++;
+        add(abilityLabel, c);
+        c.gridx++;
         add(ability, c);
+        c.gridx = 0;
         c.gridy++;
+        add(trainerLabel, c);
+        c.gridx++;
         add(trainer, c);
+        c.gridx=0;
         c.gridy++;
-        add(move, c);
-        c.gridy++;
+        c.gridheight=4;
+        add(moveLabel, c);
+        c.gridheight=1;
+        c.gridx++;
         add(move1, c);
         c.gridy++;
         add(move2, c);
@@ -108,7 +128,9 @@ public class PokemonTopPanel extends JPanel {
         add(move3, c);
         c.gridy++;
         add(move4, c);
+        c.gridx=0;
         c.gridy++;
+        c.gridwidth=2;
         add(level, c);
         c.gridy++;
         add(health, c);
@@ -165,14 +187,18 @@ public class PokemonTopPanel extends JPanel {
             } else {
                 type2.setVisible(false);
             }
-            ability.setText("Talent : " + currentPokemon.getAbilityName(db));
+            abilityLabel.setText("Talent : ");
+            ability.setText(currentPokemon.getAbilityName(db));
             ability.setId(currentPokemon.id_ability);
             if (currentPokemon.id_trainer != 0) {
                 trainer.setText(currentPokemon.getTrainerName(db));
                 trainer.setId(currentPokemon.id_trainer);
                 trainer.setVisible(true);
+                trainerLabel.setText("Dresseur : ");
+                trainerLabel.setVisible(true);
             } else {
                 trainer.setVisible(false);
+                trainerLabel.setVisible(false);
             }
 
             move1.setText(currentPokemon.getMoveName(db, 1));
@@ -201,21 +227,23 @@ public class PokemonTopPanel extends JPanel {
             level.setText("Niveau : " + currentPokemon.level);
             health.setText("Vie : " + currentPokemon.health);
             type.setText("Type : ");
-            move.setText("Attaque : ");
+            moveLabel.setText("Attaque : ");
         } else {
             level.setText("");
             health.setText("");
             type.setText("");
-            move.setText("");
+            moveLabel.setText("");
             move1.setText("");
             move2.setText("");
             move3.setText("");
             move4.setText("");
             ability.setText("");
+            abilityLabel.setText("");
             name.setText("");
             type1.setText("");
             type2.setText("");
             trainer.setText("");
+            trainerLabel.setText("");
 
             move1.setEnabled(false);
             move2.setEnabled(false);

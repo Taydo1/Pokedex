@@ -28,7 +28,7 @@ import pokedex.gui.pokedex.StyledButton;
  */
 public class TrainerPanel extends JPanel implements ActionListener {
 
-    JComboBox<InfoButton> selector;
+    JComboBox<InfoButton> selector, pokemonSelector;
     InfoButton team[], modification, delete;
     ArrayList<InfoButton> pokemons;
     Label name, teamLabel, pokemonLabel, blank, blank2;
@@ -52,9 +52,8 @@ public class TrainerPanel extends JPanel implements ActionListener {
         }
 
         blank = new Label();
-        
-        pokemons = new ArrayList<>();
-        pokemonLabel = new Label("Pokemon", true);
+        pokemonLabel = new Label("Pokemons", true);
+        pokemonSelector = new JComboBox<>();
         
         blank2 = new Label();
         add = new StyledButton("Ajouter un Pokemon", true);
@@ -103,6 +102,10 @@ public class TrainerPanel extends JPanel implements ActionListener {
         c.gridy++;
         add(blank, c);
         c.gridy++;
+        add(pokemonLabel, c);
+        c.gridy++;
+        add(pokemonSelector, c);
+        c.gridy++;
         add(blank2, c);
         c.gridy++;
         add(add, c);
@@ -135,20 +138,24 @@ public class TrainerPanel extends JPanel implements ActionListener {
         if (!currentTrainerList.isEmpty()) {
             Trainer currentTrainer = currentTrainerList.get(0);
 
+            selector.setSelectedIndex(findSelectorId(id));
             name.setText(currentTrainer.name);
 
-            ArrayList<Pokemon> pokemonOfCurrentTrainer = currentTrainer.getPokemons(db);
-            if (pokemonOfCurrentTrainer.size() > 1) {
-                teamLabel.setVisible(true);
-            } else if (pokemonOfCurrentTrainer.size() > 0) {
+            ArrayList<Pokemon> teamOfCurrentTrainer = currentTrainer.getTeam(db);
+            if (!teamOfCurrentTrainer.isEmpty()) {
                 teamLabel.setVisible(true);
             }
-            for (int i = 0; i < 6 && i < pokemonOfCurrentTrainer.size(); i++) {
+            for (int i = 0; i < teamOfCurrentTrainer.size(); i++) {
                 team[i].setVisible(true);
-                team[i].setId(pokemonOfCurrentTrainer.get(i).id);
-                team[i].setText(pokemonOfCurrentTrainer.get(i).name);
+                team[i].setId(teamOfCurrentTrainer.get(i).id);
+                team[i].setText(teamOfCurrentTrainer.get(i).name);
             }
-            selector.setSelectedIndex(findSelectorId(id));
+            
+            ArrayList<Pokemon> pokemonsOfCurrentTrainer = currentTrainer.getPokemons(db);
+            pokemonSelector.removeAllItems();
+            for (Pokemon pokemon : pokemonsOfCurrentTrainer) {
+                pokemonSelector.addItem(new InfoButton(pokemon.name, pokemon.id, true));
+            }
 
             modification.setText("Modifier le dresseur " + currentTrainer.name);
             modification.setId(id);

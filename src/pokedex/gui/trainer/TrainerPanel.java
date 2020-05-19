@@ -125,7 +125,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
         add(modification, c);
         c.gridy++;
         add(delete, c);
-        setId(-1);
+        setId(1);
     }
 
     private int findSelectorId(int id) {
@@ -198,7 +198,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 break;
             case "visiteur":
                 add.setEnabled(false);
-                modification.setEnabled(false);
+                modification.setEnabled(true);
                 delete.setEnabled(false);
                 break;
         }

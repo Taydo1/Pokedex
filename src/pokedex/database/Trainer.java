@@ -96,6 +96,6 @@ public class Trainer extends DBElement {
     }
 
     public ArrayList<Pokemon> getPokemons(Database db) {
-        return db.getFromDB("SELECT * FROM pokemon p WHERE p.id_trainer=" + id, Pokemon.class);
+        return db.getFromDB("SELECT * FROM pokemon p WHERE p.id_trainer=" + id+" ORDER BY p.id ASC", Pokemon.class);
     }
 }

@@ -198,7 +198,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 break;
             case "visiteur":
                 add.setEnabled(false);
-                modification.setEnabled(true);
+                modification.setEnabled(false);
                 delete.setEnabled(false);
                 break;
         }

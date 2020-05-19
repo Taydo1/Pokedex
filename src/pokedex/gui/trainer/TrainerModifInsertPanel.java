@@ -141,7 +141,6 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         switch (Action.valueOf(e.getActionCommand())) {
 
             case CHANGE_TEAM:
-                System.out.println("YO");
                 updateEquipe();
                 break;
 
@@ -149,11 +148,11 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
 
                 int[] equ = new int[6];
                 for (int i = 0; i < 6; i++) {
-                    if (equipe[i].getSelectedItem() == new InfoButton("je sers à rien", 0, true)) {
+                    InfoButton buttonSelect = (InfoButton) equipe[i].getSelectedItem();
+                    if (buttonSelect == null || buttonSelect.getId() == 0) {
                         equ[i] = 0;
                     } else {
                         InfoButton pkmnSelect = (InfoButton) equipe[i].getSelectedItem();
-                        System.out.println("selection : " + pkmnSelect + "; id selection :" + pkmnSelect.getId());
                         equ[i] = pkmnSelect.getId();
                     }
                 }
@@ -206,7 +205,6 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         }
         save.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
         discard.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
-        System.out.println(""+dimx+" "+dimy);
     }
 
     private void updateEquipe() {

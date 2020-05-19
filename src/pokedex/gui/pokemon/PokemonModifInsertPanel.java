@@ -279,7 +279,12 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 break;
 
             case SAVE_MODIFICATION:
-                boolean isShiny = Math.random() < 0.5;
+                boolean isShiny;
+                if (isInsert) {
+                    isShiny = Math.random() < 0.1;
+                }else{
+                    isShiny = (boolean) parent.db.getFromDB("SELECT is_shiny from pokemon WHERE id = " + idModif).get(0)[0];
+                }
                 Pokemon temp = new Pokemon(idModif, name.getText(), level.getSelectedIndex() + 1, getHp(),
                         isShiny, trainer.getSelectedIndex() + 1,
                         move1.getSelectedIndex() + 1, move2.getSelectedIndex(),

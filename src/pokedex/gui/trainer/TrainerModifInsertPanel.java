@@ -159,7 +159,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
                 parent.trainerPanel.setId(parent.trainerPanel.idActuel);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.pokemonPanel);
+                parent.removeTab(this, parent.trainerPanel);
                 break;
         }
     }
@@ -191,9 +191,11 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
           equipe[j].setSelectedItem(null);
             if(!listDispo.isEmpty()){
                 for (int i = 0; i < equipe[j].getItemCount()-1; i++) {
-                    if (listDispo.get(i).id == currentTrainer.id_pokemon[j]) {
-                        equipe[j].setSelectedItem(listDispo.get(i));
-                        listDispo.remove(listDispo.get(i));
+                    if (listDispo.get(i) != null){
+                        if (listDispo.get(i).id == currentTrainer.id_pokemon[j]) {
+                            equipe[j].setSelectedItem(listDispo.get(i));
+                            listDispo.remove(listDispo.get(i));
+                        }   
                     }
                 }
             }  

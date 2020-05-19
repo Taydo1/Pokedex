@@ -80,7 +80,8 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         for (int i = 0; i < 6; i++){
             team[i] = new JPanel();
             team[i].setBackground(Color.white);
-            team[i].setBorder(BorderFactory.createTitledBorder("Pokémon n°" + i + " de l'équipe"));
+            int num = i+1;
+            team[i].setBorder(BorderFactory.createTitledBorder("Pokémon n°" + num + " de l'équipe"));
             team[i].add(equipe[i]);
             equipe[i].addActionListener(this);
             equipe[i].setActionCommand(Action.CHANGE_TEAM.name());
@@ -146,10 +147,11 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
                 
                 int[] equ = new int[6];
                 for (int i = 0; i < 6; i++){
-                  if (equipe[i].getSelectedItem() == null){
+                  if (equipe[i].getSelectedItem() == new InfoButton("je sers à rien", 0, true)){
                         equ[i] = 0;
                     } else {
-                      InfoButton pkmnSelect = (InfoButton) equipe[i].getSelectedItem();
+                        InfoButton pkmnSelect = (InfoButton) equipe[i].getSelectedItem();
+                        System.out.println("selection : " + pkmnSelect +"; id selection :"+ pkmnSelect.getId());
                         equ[i] = pkmnSelect.getId();
                     }  
                 }
@@ -187,7 +189,8 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     private void setEquipe() {
         
         ArrayList<InfoButton> listDispo = listPokemon;
-        listDispo.add(new InfoButton("je sers à rien", 0, true));
+        listDispo.add(new InfoButton("", 0, true));
+        System.out.println(listDispo);
         
         for (int j = 0; j < 6; j++){
           equipe[j] = new JComboBox(listDispo.toArray());
@@ -222,12 +225,12 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
         
         ArrayList<InfoButton> listDispo = listPokemon;
         listDispo.add(new InfoButton("", 0, true));
-        
+        System.out.println("je fais l'update");
         for (int j = 0; j < 6; j++){
           equipe[j] = new JComboBox(listDispo.toArray());
             if(!listDispo.isEmpty()){
                 for (int i = 0; i < equipe[j].getItemCount()-1; i++) {
-                    if (listDispo.get(i) == equipe[j].getSelectedItem()) {
+                    if (listDispo.get(i) == (InfoButton) equipe[j].getSelectedItem()) {
                         listDispo.remove(listDispo.get(i));
                     }
                 }
@@ -240,13 +243,14 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
 
     private void setEquipeAccess() {
         
-        InfoButton neededForTest = new InfoButton("", 0, true);
         for(int i = 0; i < 5; i++){
-            if(equipe[i].getSelectedItem() == neededForTest){
+            InfoButton buttonSelect = (InfoButton) equipe[i].getSelectedItem();
+            if(buttonSelect.getId() == 0){
                 equipe[i + 1].setEnabled(false);
             } else  {
                 equipe[i + 1].setEnabled(true);
             }
         }
+        System.out.println("Accès changés");
     }
 }

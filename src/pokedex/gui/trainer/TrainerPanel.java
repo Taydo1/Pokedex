@@ -6,6 +6,7 @@
 package pokedex.gui.trainer;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -69,6 +70,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
         pokemonLabel = new Label("Pokemons", true);
         pokemonSelector = new JComboBox<>();
         pokemonSelector.setActionCommand(Action.GET_POKEMON.name());
+        pokemonSelector.setPreferredSize(new Dimension(1,20));
 
         blank2 = new Label();
         add = new StyledButton("Ajouter un Pokemon", true);
@@ -88,25 +90,33 @@ public class TrainerPanel extends JPanel implements ActionListener {
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 1;
+        c.gridwidth = 2;
         add(selector, c);
         c.gridy++;
         add(name, c);
         c.gridy++;
         add(teamLabel, c);
+        c.gridwidth = 1;
         for (int i = 0; i < team.length; i += 2) {
             c.gridx = 0;
             c.gridy++;
             add(team[i], c);
-            c.gridy++;
+            c.gridx++;
             add(team[i + 1], c);
         }
+        c.gridx=0;
+        c.gridwidth = 2;
         c.gridy++;
         add(blank, c);
         c.gridy++;
+        c.gridwidth = 1;
         add(pokemonLabel, c);
-        c.gridy++;
+        c.gridx++;
         add(pokemonSelector, c);
+        c.gridx = 0;
         c.gridy++;
+
+        c.gridwidth = 2;
         add(blank2, c);
         c.gridy++;
         add(add, c);

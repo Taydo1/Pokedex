@@ -53,7 +53,7 @@ public class PokedexApp extends JFrame {
         Pokemon corona2 = new Pokemon(-1,"Coronavirus d'août", 69, 10000, true, 1, 1, 3, -1, -1, 188, 110);
         db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest() + "," + corona2.getInsertSubRequest());
 
-        db.executeUpdate("UPDATE trainer SET id_pokemon1=1");
+        db.executeUpdate("UPDATE trainer SET id_pokemon1=1, id_pokemon2=2");
         /*db.printTable("trainer");
 
         boss = db.getFromDB("SELECT * FROM trainer WHERE id=1", Trainer.class).get(0);

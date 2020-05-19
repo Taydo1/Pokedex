@@ -29,8 +29,9 @@ import pokedex.gui.pokedex.StyledButton;
 public class TrainerPanel extends JPanel implements ActionListener {
 
     JComboBox<InfoButton> selector;
-    InfoButton pokemons[], modification, delete;
-    Label name, pokemonLabel, blank;
+    InfoButton team[], modification, delete;
+    ArrayList<InfoButton> pokemons;
+    Label name, teamLabel, pokemonLabel, blank, blank2;
     Database db;
     StyledButton add;
     MainPanel parent;
@@ -39,18 +40,23 @@ public class TrainerPanel extends JPanel implements ActionListener {
         super();
         this.db = db;
         this.parent = parent;
-        pokemonLabel = new Label("", true);
+        teamLabel = new Label("", true);
 
         name = new Label("", true);
-        pokemonLabel = new Label("Pokemon", true);
-        pokemons = new InfoButton[6];
+        teamLabel = new Label("Equipe de pokemon", true);
+        team = new InfoButton[6];
         for (int i = 0; i < 6; i++) {
-            pokemons[i] = new InfoButton("", 0, true);
-            pokemons[i].setActionCommand(Action.GET_POKEMON.name());
-            pokemons[i].addActionListener(parent);
+            team[i] = new InfoButton("", 0, true);
+            team[i].setActionCommand(Action.GET_POKEMON.name());
+            team[i].addActionListener(parent);
         }
 
         blank = new Label();
+        
+        pokemons = new ArrayList<>();
+        pokemonLabel = new Label("Pokemon", true);
+        
+        blank2 = new Label();
         add = new StyledButton("Ajouter un Pokemon", true);
         modification = new InfoButton("", 0, true);
         delete = new InfoButton("", 0, true);
@@ -86,16 +92,18 @@ public class TrainerPanel extends JPanel implements ActionListener {
         c.gridy++;
         add(name, c);
         c.gridy++;
-        add(pokemonLabel, c);
-        for (int i = 0; i < pokemons.length; i += 2) {
+        add(teamLabel, c);
+        for (int i = 0; i < team.length; i += 2) {
             c.gridx = 0;
             c.gridy++;
-            add(pokemons[i], c);
+            add(team[i], c);
             c.gridy++;
-            add(pokemons[i + 1], c);
+            add(team[i + 1], c);
         }
         c.gridy++;
         add(blank, c);
+        c.gridy++;
+        add(blank2, c);
         c.gridy++;
         add(add, c);
         c.gridy++;
@@ -117,12 +125,12 @@ public class TrainerPanel extends JPanel implements ActionListener {
 
     public void setId(int id) {
         for (int i = 0; i < 6; i++) {
-            pokemons[i].setVisible(false);
-            pokemons[i].setId(0);
-            pokemons[i].setText("");
+            team[i].setVisible(false);
+            team[i].setId(0);
+            team[i].setText("");
         }
         name.setText("");
-        pokemonLabel.setVisible(false);
+        teamLabel.setVisible(false);
         ArrayList<Trainer> currentTrainerList = db.getFromDB("SELECT * FROM trainer WHERE id=" + id, Trainer.class);
         if (!currentTrainerList.isEmpty()) {
             Trainer currentTrainer = currentTrainerList.get(0);
@@ -131,16 +139,14 @@ public class TrainerPanel extends JPanel implements ActionListener {
 
             ArrayList<Pokemon> pokemonOfCurrentTrainer = currentTrainer.getPokemons(db);
             if (pokemonOfCurrentTrainer.size() > 1) {
-                pokemonLabel.setVisible(true);
-                pokemonLabel.setText("Pokemons");
+                teamLabel.setVisible(true);
             } else if (pokemonOfCurrentTrainer.size() > 0) {
-                pokemonLabel.setVisible(true);
-                pokemonLabel.setText("Pokemon");
+                teamLabel.setVisible(true);
             }
             for (int i = 0; i < 6 && i < pokemonOfCurrentTrainer.size(); i++) {
-                pokemons[i].setVisible(true);
-                pokemons[i].setId(pokemonOfCurrentTrainer.get(i).id);
-                pokemons[i].setText(pokemonOfCurrentTrainer.get(i).name);
+                team[i].setVisible(true);
+                team[i].setId(pokemonOfCurrentTrainer.get(i).id);
+                team[i].setText(pokemonOfCurrentTrainer.get(i).name);
             }
             selector.setSelectedIndex(findSelectorId(id));
 

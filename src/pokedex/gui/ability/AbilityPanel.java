@@ -12,8 +12,6 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import pokedex.database.Ability;
@@ -34,6 +32,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
     JComboBox<InfoButton> selector;
     InfoButton modification;
     MainPanel parent;
+    int currentId;
 
     public AbilityPanel(Database db, MainPanel p) {
 
@@ -97,6 +96,7 @@ public class AbilityPanel extends JPanel implements ActionListener {
         description2.setText("<html>" + currentAbility.description[1] + "</html>");
         modification.setText("Modifier le talent " + currentAbility.name);
         modification.setId(id);
+        currentId=id;
     }
 
     public void setUser(String user) {
@@ -126,5 +126,9 @@ public class AbilityPanel extends JPanel implements ActionListener {
                 );
                 break;
         }
+    }
+    
+    public void update(){
+        setId(currentId);
     }
 }

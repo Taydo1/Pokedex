@@ -160,7 +160,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
                 Trainer temp = new Trainer(idModif, name.getText(), equ[0], equ[1], equ[2], equ[3], equ[4], equ[5]);
                 temp.modifyInDB(parent.db);
 
-                parent.trainerPanel.setId(parent.trainerPanel.idActuel);
+                parent.trainerPanel.setId(parent.trainerPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
             case DISCARD_MODIFICATION:
                 parent.removeTab(this, parent.trainerPanel);

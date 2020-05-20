@@ -199,7 +199,6 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
                 new Type(idModif, name.getText(), enName.getText(), vs).modifyInDB(parent.db);
 
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
-                parent.typePanel.update();
             case DISCARD_MODIFICATION:
                 parent.removeTab(this, parent.typePanel);
                 break;

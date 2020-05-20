@@ -206,7 +206,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
                         category.getSelectedItem().toString(), getSelectedPP(),
                         p, getSelectedAccuracy()).modifyInDB(parent.db);
 
-                parent.movePanel.setId(parent.movePanel.idActuel);
+                parent.movePanel.setId(parent.movePanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
             case DISCARD_MODIFICATION:

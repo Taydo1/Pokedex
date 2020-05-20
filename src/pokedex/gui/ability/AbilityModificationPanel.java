@@ -115,9 +115,10 @@ public class AbilityModificationPanel extends JPanel implements ActionListener {
                         descriptionOutFight.getText()).modifyInDB(parent.db);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.abilityPanel.setId(idModif);
-
+                parent.removeTab(this, parent.abilityPanel, true);
+                break;
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.abilityPanel);
+                parent.removeTab(this, parent.abilityPanel, false);
                 break;
         }
     }

@@ -302,8 +302,10 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
 
                 parent.pokemonPanel.setId(parent.pokemonPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+                parent.removeTab(this, parent.pokemonPanel, true);
+                break;
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.pokemonPanel);
+                parent.removeTab(this, parent.pokemonPanel, false);
                 break;
         }
     }

@@ -382,8 +382,10 @@ public class PokedexModificationPanel extends JPanel implements ActionListener, 
                 parent.pokedexPanel.setId(parent.pokedexPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
+                parent.removeTab(this, parent.pokedexPanel, true);
+                break;
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.pokedexPanel);
+                parent.removeTab(this, parent.pokedexPanel, false);
                 break;
         }
     }

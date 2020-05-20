@@ -205,16 +205,18 @@ public class MainPanel extends JPanel implements ActionListener {
         }
     }
 
-    public void removeTab(JPanel tab, JPanel tabToSelect) {
+    public void removeTab(JPanel tab, JPanel tabToSelect, boolean update) {
         tabbedPane.remove(tab);
         trainerTabs.remove(tab);
         professorTabs.remove(tab);
         tabbedPane.setSelectedComponent(tabToSelect);
-        pokedexPanel.update();
-        typePanel.update();
-        abilityPanel.update();
-        pokemonPanel.update();
-        trainerPanel.update();
-        movePanel.update();
+        if (update) {
+            pokedexPanel.update();
+            typePanel.update();
+            abilityPanel.update();
+            pokemonPanel.update();
+            trainerPanel.update();
+            movePanel.update();
+        }
     }
 }

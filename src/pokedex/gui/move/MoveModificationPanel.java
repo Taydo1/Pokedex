@@ -209,8 +209,10 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
                 parent.movePanel.setId(parent.movePanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
+                parent.removeTab(this, parent.movePanel, true);
+                break;
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.movePanel);
+                parent.removeTab(this, parent.movePanel, false);
                 break;
         }
     }

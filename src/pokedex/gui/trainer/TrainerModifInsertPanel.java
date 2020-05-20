@@ -162,8 +162,10 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
 
                 parent.trainerPanel.setId(parent.trainerPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+                parent.removeTab(this, parent.trainerPanel, true);
+                break;
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.trainerPanel);
+                parent.removeTab(this, parent.trainerPanel, false);
                 break;
         }
     }

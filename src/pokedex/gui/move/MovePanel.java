@@ -31,7 +31,7 @@ public class MovePanel extends JPanel implements ActionListener {
     JComboBox<InfoButton> selector;
     InfoButton type, modification;
     MainPanel parent;
-    int idActuel;
+    int currentId;
 
     public MovePanel(Database db, MainPanel parent) {
 
@@ -109,7 +109,7 @@ public class MovePanel extends JPanel implements ActionListener {
     public void setId(int id) {
         Move currentMove = db.getFromDB("SELECT * FROM move WHERE id=" + id, Move.class).get(0);
         
-        idActuel = id;
+        currentId = id;
 
         //name.setText(currentAbility.title+" ("+currentAbility.en_name+")");
         selector.setSelectedIndex(findSelectorId(id));
@@ -138,6 +138,10 @@ public class MovePanel extends JPanel implements ActionListener {
         
         modification.setText("Modifier la capacité "+currentMove.name);
         modification.setId(id);
+    }
+    
+    public void update(){
+        setId(currentId);
     }
 
     public void setUser(String user) {

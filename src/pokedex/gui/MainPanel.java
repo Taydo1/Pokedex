@@ -175,8 +175,8 @@ public class MainPanel extends JPanel implements ActionListener {
                     source = (InfoButton) e.getSource();
                     pokemonPanel.setId(source.getId());
                     tabbedPane.setSelectedComponent(pokemonPanel);
-                }else if(e.getSource() instanceof JComboBox) {
-                    JComboBox selector = (JComboBox)e.getSource();
+                } else if (e.getSource() instanceof JComboBox) {
+                    JComboBox selector = (JComboBox) e.getSource();
                     source = (InfoButton) selector.getSelectedItem();
                     pokemonPanel.setId(source.getId());
                     tabbedPane.setSelectedComponent(pokemonPanel);
@@ -205,10 +205,18 @@ public class MainPanel extends JPanel implements ActionListener {
         }
     }
 
-    public void removeTab(JPanel tab, JPanel tabToSelect) {
+    public void removeTab(JPanel tab, JPanel tabToSelect, boolean update) {
         tabbedPane.remove(tab);
         trainerTabs.remove(tab);
         professorTabs.remove(tab);
         tabbedPane.setSelectedComponent(tabToSelect);
+        if (update) {
+            pokedexPanel.update();
+            typePanel.update();
+            abilityPanel.update();
+            pokemonPanel.update();
+            trainerPanel.update();
+            movePanel.update();
+        }
     }
 }

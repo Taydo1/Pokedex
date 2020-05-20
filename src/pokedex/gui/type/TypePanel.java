@@ -36,6 +36,7 @@ public class TypePanel extends JPanel implements ActionListener {
     InfoButton names[], modificationType1, modificationType2;
     Label type1label, type2label, vs_type[], weakness;
     JComboBox<InfoButton> type1selector, type2selector;
+    int currentId1, currentId2;
 
     public TypePanel(Database db, MainPanel p) {
 
@@ -143,6 +144,8 @@ public class TypePanel extends JPanel implements ActionListener {
     }
 
     public void setId(int id1, int id2) {
+        currentId1 = id1;
+        currentId2 = id2;
         Type type1 = db.getFromDB("SELECT * FROM type WHERE id=" + String.valueOf(id1), Type.class).get(0);
 
         type1selector.setSelectedIndex(id1 - 1);
@@ -180,8 +183,12 @@ public class TypePanel extends JPanel implements ActionListener {
             }
         }
     }
-    
-    public void setUser(String user){
+
+    public void update() {
+        setId(currentId1, currentId2);
+    }
+
+    public void setUser(String user) {
         switch (user.toLowerCase()) {
             case "professeur":
                 modificationType1.setEnabled(true);
@@ -212,12 +219,5 @@ public class TypePanel extends JPanel implements ActionListener {
                 );
                 break;
         }
-    }
-
-    void update() {
-        InfoButton typeButton1 = (InfoButton) type1selector.getSelectedItem();
-        InfoButton typeButton2 = (InfoButton) type2selector.getSelectedItem();
-        this.setId(typeButton1.getId(), typeButton2.getId());
-        this.setNames();
     }
 }

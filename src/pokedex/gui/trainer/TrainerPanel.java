@@ -36,7 +36,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
     Database db;
     StyledButton add;
     MainPanel parent;
-    int idActuel;
+    int currentId;
 
     public TrainerPanel(Database db, MainPanel parent) {
         super();
@@ -139,7 +139,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
     }
 
     public void setId(int id) {
-        idActuel = id;
+        currentId = id;
         for (int i = 0; i < 6; i++) {
             team[i].setVisible(false);
             team[i].setId(0);
@@ -231,5 +231,8 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 break;
         }
     }
-
+    
+    public void update(){
+        setId(currentId);
+    }
 }

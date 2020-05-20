@@ -61,7 +61,7 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
         isInsert = true;
         this.parent = parent;
         setSize(new Dimension(parent.getWidth(), parent.getHeight()));
-        Pokemon currentPokemon = new Pokemon(-1, "Pokemon", 0, 0, false, 0, 1, 0, 0, 0, 0, 1);
+        Pokemon currentPokemon = new Pokemon(-1, "", 0, 0, false, 0, 1, 0, 0, 0, 0, 1);
         initComponentsModif(currentPokemon);
         setVisible(true);
         addComponentListener(this);
@@ -285,6 +285,8 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 }else{
                     isShiny = (boolean) parent.db.getFromDB("SELECT is_shiny from pokemon WHERE id = " + idModif).get(0)[0];
                 }
+                String currentPokedexName = (String) parent.db.getFromDB("SELECT name from pokedex WHERE id = " + (pokedex.getSelectedIndex() + 1)).get(0)[0];
+                if(name.getText().equals(""))name.setText(currentPokedexName);
                 Pokemon temp = new Pokemon(idModif, name.getText(), level.getSelectedIndex() + 1, getHp(),
                         isShiny, trainer.getSelectedIndex() + 1,
                         move1.getSelectedIndex() + 1, move2.getSelectedIndex(),
@@ -298,10 +300,12 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                     temp.modifyInDB(parent.db);
                 }
 
-                parent.pokemonPanel.setId(parent.pokemonPanel.idActuel);
+                parent.pokemonPanel.setId(parent.pokemonPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+                parent.removeTab(this, parent.pokemonPanel, true);
+                break;
             case DISCARD_MODIFICATION:
-                parent.removeTab(this, parent.pokemonPanel);
+                parent.removeTab(this, parent.pokemonPanel, false);
                 break;
         }
     }

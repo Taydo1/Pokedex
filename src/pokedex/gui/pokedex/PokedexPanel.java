@@ -64,6 +64,10 @@ public class PokedexPanel extends JPanel implements ActionListener {
 
         }
     }
+    
+    public void update(){
+        setId(currentId);
+    }
 
     public void setUser(String utilisateur) {
         bottomPanel.setUser(utilisateur);

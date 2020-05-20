@@ -39,23 +39,30 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
     JComboBox<InfoButton> equipe[];
     ArrayList<InfoButton> listPokemon;
     JButton save, discard;
-    Trainer currentTrainer;
+    boolean isInsert;
 
     public TrainerModifInsertPanel(int id, MainPanel parent) { //trainer modification
-
+        isInsert = false;
         this.idModif = id;
         this.parent = parent;
         setSize(new Dimension(parent.getWidth(), parent.getHeight()));
-        currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + idModif, Trainer.class).get(0);
-        initComponentsModif();
+        Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + idModif, Trainer.class).get(0);
+        initComponentsModif(currentTrainer);
         setVisible(true);
         addComponentListener(this);
     }
 
     public TrainerModifInsertPanel(MainPanel parent) { //new trainer
+        isInsert = true;
+        this.parent = parent;
+        setSize(new Dimension(parent.getWidth(), parent.getHeight()));
+        Trainer currentTrainer = new Trainer(-1, "", -1, -1, -1, -1, -1, -1);
+        initComponentsModif(currentTrainer);
+        setVisible(true);
+        addComponentListener(this);
     }
 
-    private void initComponentsModif() {
+    private void initComponentsModif(Trainer currentTrainer) {
 
         ArrayList<Pokemon> listPkmn = currentTrainer.getPokemons(parent.db);
         listPokemon = new ArrayList<>();
@@ -158,7 +165,11 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
                 }
 
                 Trainer temp = new Trainer(idModif, name.getText(), equ[0], equ[1], equ[2], equ[3], equ[4], equ[5]);
-                temp.modifyInDB(parent.db);
+                if (isInsert) {
+                    parent.db.executeUpdate("INSERT INTO trainer VALUES " + temp.getInsertSubRequest());
+                } else {
+                    temp.modifyInDB(parent.db);
+                }
 
                 parent.trainerPanel.setId(parent.trainerPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);

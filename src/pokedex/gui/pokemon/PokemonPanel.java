@@ -10,8 +10,11 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pokedex.database.Database;
+import pokedex.database.Pokedex;
+import pokedex.database.Pokemon;
 import pokedex.gui.Action;
 import pokedex.gui.ImagePanel;
 import pokedex.gui.widgets.InfoButton;
@@ -73,7 +76,44 @@ public class PokemonPanel extends JPanel implements ActionListener {
             case DELETE:
                 System.err.println("PAS ENCORE IMPLEMENTE");
                 break;
+            case EVOLUTION:
+                Pokemon currentPokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.evolution.getId(), Pokemon.class).get(0);
+                Pokedex pokedex = parent.db.getFromDB("SELECT * from pokedex WHERE id = " + currentPokemon.id_pokedex, Pokedex.class).get(0);
+                if( pokedex.id_evolution2 != 0){
+                    ArrayList<Object[]> evo1 = parent.db.getFromDB("SELECT name from pokedex WHERE id = " + pokedex.id_evolution1);
+                    ArrayList<Object[]> evo2 = parent.db.getFromDB("SELECT name from pokedex WHERE id = " + pokedex.id_evolution2);
+                    String[] evoDispo = new String[]{(String) evo1.get(0)[0], (String) evo2.get(0)[0]};
+                    JOptionPane jop = new JOptionPane();
+                    int rang = jop.showOptionDialog(null, 
+                                "Veuillez indiquer votre sexe !",
+                                "Gendarmerie nationale !",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                evoDispo,
+                                evoDispo[0]);
+                    if (rang == 0){
+                        currentPokemon.id_pokedex = pokedex.id_evolution1;
+                    } else {
+                        currentPokemon.id_pokedex = pokedex.id_evolution2;
+                    }
+                } else {
+                    currentPokemon.id_pokedex = pokedex.id_evolution1;
+                }
+                currentPokemon.health = (int) currentPokemon.health * 12 / 10;
+                currentPokemon.modifyInDB(db);
+                this.setId(bottomPanel.evolution.getId());
+                bottomPanel.repaint();
+                break;
+            case LVLUP:
+                Pokemon currentPkmn = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.lvlUp.getId(), Pokemon.class).get(0);
+                currentPkmn.level = currentPkmn.level + 1;
+                currentPkmn.health = currentPkmn.health + (int) (Math.random() * 6);
+                currentPkmn.modifyInDB(db);
+                this.setId(bottomPanel.lvlUp.getId());
+                break;
         }
+                
     }
 
     public void setId(int id) {

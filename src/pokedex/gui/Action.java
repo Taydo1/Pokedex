@@ -35,5 +35,7 @@ public enum Action {
     DELETE,
     MOVE_CHANGE,
     POKEDEX_CHANGE,
-    CHANGE_TEAM;
+    CHANGE_TEAM,
+    EVOLUTION,
+    LVLUP;
 }

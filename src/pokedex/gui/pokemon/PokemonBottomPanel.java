@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.Database;
+import pokedex.database.Pokedex;
+import pokedex.database.Pokemon;
 import pokedex.gui.Action;
 import pokedex.gui.widgets.InfoButton;
 import pokedex.gui.pokedex.StyledButton;
@@ -19,7 +21,7 @@ import pokedex.gui.pokedex.StyledButton;
  */
 public class PokemonBottomPanel extends JPanel {
 
-    InfoButton modification, delete;
+    InfoButton modification, delete, evolution, lvlUp;
     StyledButton add;
     Database db;
 
@@ -30,18 +32,26 @@ public class PokemonBottomPanel extends JPanel {
         add = new StyledButton("Ajouter un Pokemon", true);
         modification = new InfoButton("", 0, true);
         delete = new InfoButton("", 0, true);
+        evolution = new InfoButton("", 0, true);
+        lvlUp = new InfoButton("", 0, true);
 
-        setLayout(new GridLayout(3, 1));
+        setLayout(new GridLayout(5, 1));
         add(add);
         add(modification);
         add(delete);
+        add(lvlUp);
+        add(evolution);
         
         add.addActionListener(parent);
         modification.addActionListener(parent);
         delete.addActionListener(parent);
+        evolution.addActionListener(parent);
+        lvlUp.addActionListener(parent);
         add.setActionCommand(Action.START_INSERTION.name());
         modification.setActionCommand(Action.START_MODIFICATION.name());
         delete.setActionCommand(Action.DELETE.name());
+        evolution.setActionCommand(Action.EVOLUTION.name());
+        lvlUp.setActionCommand(Action.LVLUP.name());
     }
 
     public void setUser(String user) {
@@ -50,16 +60,22 @@ public class PokemonBottomPanel extends JPanel {
                 add.setEnabled(true);
                 modification.setEnabled(true);
                 delete.setEnabled(true);
+                evolution.setEnabled(true);
+                lvlUp.setEnabled(true);
                 break;
             case "dresseur":
                 add.setEnabled(true);
                 modification.setEnabled(false);
                 delete.setEnabled(true);
+                evolution.setEnabled(true);
+                lvlUp.setEnabled(true);
                 break;
             case "visiteur":
                 add.setEnabled(false);
                 modification.setEnabled(false);
                 delete.setEnabled(false);
+                evolution.setEnabled(false);
+                lvlUp.setEnabled(false);
                 break;
         }
     }
@@ -71,11 +87,24 @@ public class PokemonBottomPanel extends JPanel {
             modification.setId(id);
             delete.setText("Supprimer le Pokemon " + currentNameList.get(0)[0]);
             delete.setId(id);
+            evolution.setText("" + currentNameList.get(0)[0] + " évolue ???");
+            evolution.setId(id);
+            lvlUp.setText("Montée de niveau de " + currentNameList.get(0)[0]);
+            lvlUp.setId(id);
             modification.setVisible(true);
             delete.setVisible(true);
+            Pokemon currentPokemon = db.getFromDB("SELECT * from pokemon WHERE id = " + id, Pokemon.class).get(0);
+            if ((int) db.getFromDB("SELECT id_evolution1 from pokedex WHERE id = " + currentPokemon.id_pokedex).get(0)[0] != 0){
+                evolution.setVisible(true);
+            } else {
+                evolution.setVisible(false);
+            }
+            lvlUp.setVisible(true);
         }else{
             modification.setVisible(false);
             delete.setVisible(false);
+            evolution.setVisible(false);
+            lvlUp.setVisible(false);
         }
     }
 }

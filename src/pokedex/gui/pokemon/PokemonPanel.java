@@ -101,6 +101,45 @@ public class PokemonPanel extends JPanel implements ActionListener {
                     currentPokemon.id_pokedex = pokedex.id_evolution1;
                 }
                 currentPokemon.health = (int) currentPokemon.health * 12 / 10;
+                if (pokedex.id_ability4 != 0){
+                    switch ((int) (Math.random() * 5)){
+                        case 1:
+                            currentPokemon.id_ability = pokedex.id_ability1;
+                            break;
+                        case 2:
+                            currentPokemon.id_ability = pokedex.id_ability2;
+                            break;
+                        case 3:
+                            currentPokemon.id_ability = pokedex.id_ability3;
+                            break;
+                        case 4:
+                            currentPokemon.id_ability = pokedex.id_ability4;
+                            break;
+                    }
+                } else if (pokedex.id_ability3 != 0){
+                    switch ((int) (Math.random() * 4)){
+                        case 1:
+                            currentPokemon.id_ability = pokedex.id_ability1;
+                            break;
+                        case 2:
+                            currentPokemon.id_ability = pokedex.id_ability2;
+                            break;
+                        case 3:
+                            currentPokemon.id_ability = pokedex.id_ability3;
+                            break;
+                    }
+                } else if (pokedex.id_ability2 != 0){
+                    switch ((int) (Math.random() * 3)){
+                        case 1:
+                            currentPokemon.id_ability = pokedex.id_ability1;
+                            break;
+                        case 2:
+                            currentPokemon.id_ability = pokedex.id_ability2;
+                            break;
+                    }
+                } else {
+                    currentPokemon.id_ability = pokedex.id_ability1;
+                }
                 currentPokemon.modifyInDB(db);
                 this.setId(bottomPanel.evolution.getId());
                 bottomPanel.repaint();

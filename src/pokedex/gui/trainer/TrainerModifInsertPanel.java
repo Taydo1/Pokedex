@@ -167,6 +167,7 @@ public class TrainerModifInsertPanel extends JPanel implements ActionListener, C
                 Trainer temp = new Trainer(idModif, name.getText(), equ[0], equ[1], equ[2], equ[3], equ[4], equ[5]);
                 if (isInsert) {
                     parent.db.executeUpdate("INSERT INTO trainer VALUES " + temp.getInsertSubRequest());
+                    parent.trainerPanel.addLastTrainerSelector();
                 } else {
                     temp.modifyInDB(parent.db);
                 }

@@ -5,7 +5,6 @@
  */
 package pokedex.gui;
 
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import pokedex.database.*;

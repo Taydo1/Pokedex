@@ -235,4 +235,10 @@ public class TrainerPanel extends JPanel implements ActionListener {
     public void update(){
         setId(currentId);
     }
+
+    public void addLastTrainerSelector() {
+        ArrayList<Object[]> lastTrainerList = db.getFromDB("SELECT id,name FROM trainer ORDER BY id DESC LIMIT 1");
+        InfoButton selectorButton = new InfoButton((String) lastTrainerList.get(0)[1], (Integer) lastTrainerList.get(0)[0]);
+        selector.addItem(selectorButton);
+    }
 }

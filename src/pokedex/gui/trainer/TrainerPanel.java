@@ -74,7 +74,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
         pokemonSelector.setPreferredSize(new Dimension(1,20));
 
         blank2 = new Label();
-        add = new StyledButton("Ajouter un Pokemon", true);
+        add = new StyledButton("Ajouter un Dresseur", true);
         modification = new InfoButton("", 0, true);
         delete = new InfoButton("", 0, true);
 

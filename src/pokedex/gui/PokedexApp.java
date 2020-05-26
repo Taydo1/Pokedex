@@ -26,7 +26,7 @@ public class PokedexApp extends JFrame {
 
         db = new Database();
         db.setupDB(dbName, schemaName, false);
-        //testRequest();
+        testRequest();
         setupWindow();
     }
 
@@ -43,16 +43,42 @@ public class PokedexApp extends JFrame {
     }
 
     private void testRequest() {
-        //db.executeUpdate("TRUNCATE TABLE ");
         db.executeUpdate("TRUNCATE TABLE trainer,pokemon RESTART IDENTITY");
-        Trainer boss = new Trainer("Giga BOSS", -1, -1, -1, -1, -1, -1);
-        db.executeUpdate("INSERT INTO trainer VALUES " + boss.getInsertSubRequest());
+        Trainer sacha = new Trainer("Sacha", -1, -1, -1, -1, -1, -1);
+        Trainer red = new Trainer("Red", -1, -1, -1, -1, -1, -1);
+        db.executeUpdate("INSERT INTO trainer VALUES " + sacha.getInsertSubRequest() + "," + red.getInsertSubRequest());
 
-        Pokemon corona = new Pokemon(-1,"Coronavirus", 42, 1000, false, 1, 1, 3, 0, 0, 188, 110);
-        Pokemon corona2 = new Pokemon(-1,"Coronavirus d'août", 69, 10000, true, 1, 1, 3, -1, -1, 188, 110);
-        db.executeUpdate("INSERT INTO Pokemon VALUES " + corona.getInsertSubRequest() + "," + corona2.getInsertSubRequest());
+        Pokemon pikachuSacha = new Pokemon(-1, "Pikachu", 42, 1000, false, 1, 2, 3, 0, 0, 188, 25);
+        Pokemon evoliSacha = new Pokemon(-1, "Evoli de Sacha", 69, 10000, true, 1, 1, 3, -1, -1, 188, 133);
 
-        db.executeUpdate("UPDATE trainer SET id_pokemon1=1, id_pokemon2=2");
+        Pokemon pikachuRed = new Pokemon(-1, "Pikachu", 88, 270, false, 2, 344, 231, 98, 85, 209, 25);
+        Pokemon lokhlassRed = new Pokemon(-1, "Lokhlass", 80, 390, false, 2, 59, 362, 94, 34, 51, 131);
+        Pokemon ronflexRed = new Pokemon(-1, "Ronflex", 82, 550, false, 2, 247, 242, 59, 416, 124, 143);
+        Pokemon florizarreRed = new Pokemon(-1, "Florizarre", 84, 450, false, 2, 188, 202, 79, 338, 79, 3);
+        Pokemon dracaufeuRed = new Pokemon(-1, "Dracaufeu", 84, 320, false, 2, 394, 314, 307, 406, 35, 6);
+        Pokemon tortankRed = new Pokemon(-1, "Tortank", 84, 500, false, 2, 411, 308, 59, 430, 228, 9);
+        Pokemon mewtwoRed = new Pokemon(-1, "Mewtwo", 100, 600, false, 2, 540, 396, 377, -1, 228, 150);
+        db.executeUpdate("INSERT INTO Pokemon VALUES " + pikachuSacha.getInsertSubRequest()
+                + "," + evoliSacha.getInsertSubRequest()
+                + "," + pikachuRed.getInsertSubRequest()
+                + "," + lokhlassRed.getInsertSubRequest()
+                + "," + ronflexRed.getInsertSubRequest()
+                + "," + florizarreRed.getInsertSubRequest()
+                + "," + dracaufeuRed.getInsertSubRequest()
+                + "," + tortankRed.getInsertSubRequest()
+                + "," + mewtwoRed.getInsertSubRequest()
+        );
+
+        db.executeUpdate("UPDATE trainer SET id_pokemon1=1, id_pokemon2=2 WHERE id=1");
+        db.executeUpdate("UPDATE trainer SET "
+                + "id_pokemon1=3, "
+                + "id_pokemon2=4, "
+                + "id_pokemon3=5, "
+                + "id_pokemon4=6, "
+                + "id_pokemon5=7, "
+                + "id_pokemon6=8 "
+                + "WHERE id=2");
+
         /*db.printTable("trainer");
 
         boss = db.getFromDB("SELECT * FROM trainer WHERE id=1", Trainer.class).get(0);
@@ -62,7 +88,7 @@ public class PokedexApp extends JFrame {
         }
         System.out.println("fini");*/
 
-        /*ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
+ /*ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
         for (Pokemon pokemon : listPokemon) {
             System.out.println("" + pokemon);
         }

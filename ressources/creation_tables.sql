@@ -29,7 +29,7 @@ CREATE TABLE move(
 	id serial PRIMARY KEY,
 	name varchar(30),
 	en_name varchar(30),
-	id_type int,
+	id_type int REFERENCES type(id),
 	category varchar(10),
 	pp int,
 	power int,

@@ -6,10 +6,13 @@
 package pokedex.gui.pokemon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pokedex.database.Database;
@@ -85,8 +88,8 @@ public class PokemonPanel extends JPanel implements ActionListener {
                     String[] evoDispo = new String[]{(String) evo1.get(0)[0], (String) evo2.get(0)[0]};
                     JOptionPane jop = new JOptionPane();
                     int rang = jop.showOptionDialog(null, 
-                                "Veuillez indiquer votre sexe !",
-                                "Gendarmerie nationale !",
+                                "Veuillez indiquer en quoi " + currentPokemon.name + " évolue",
+                                "" + currentPokemon.name + " évolue !",
                                 JOptionPane.YES_NO_OPTION,
                                 JOptionPane.QUESTION_MESSAGE,
                                 null,
@@ -101,46 +104,52 @@ public class PokemonPanel extends JPanel implements ActionListener {
                     currentPokemon.id_pokedex = pokedex.id_evolution1;
                 }
                 currentPokemon.health = (int) currentPokemon.health * 12 / 10;
-                if (pokedex.id_ability4 != 0){
+                Pokedex pokedexEvo = parent.db.getFromDB("SELECT * from pokedex WHERE id = " + currentPokemon.id_pokedex, Pokedex.class).get(0);
+                if (pokedexEvo.id_ability4 != 0){
                     switch ((int) (Math.random() * 5)){
                         case 1:
-                            currentPokemon.id_ability = pokedex.id_ability1;
+                            currentPokemon.id_ability = pokedexEvo.id_ability1;
                             break;
                         case 2:
-                            currentPokemon.id_ability = pokedex.id_ability2;
+                            currentPokemon.id_ability = pokedexEvo.id_ability2;
                             break;
                         case 3:
-                            currentPokemon.id_ability = pokedex.id_ability3;
+                            currentPokemon.id_ability = pokedexEvo.id_ability3;
                             break;
                         case 4:
-                            currentPokemon.id_ability = pokedex.id_ability4;
+                            currentPokemon.id_ability = pokedexEvo.id_ability4;
                             break;
                     }
-                } else if (pokedex.id_ability3 != 0){
+                } else if (pokedexEvo.id_ability3 != 0){
                     switch ((int) (Math.random() * 4)){
                         case 1:
-                            currentPokemon.id_ability = pokedex.id_ability1;
+                            currentPokemon.id_ability = pokedexEvo.id_ability1;
                             break;
                         case 2:
-                            currentPokemon.id_ability = pokedex.id_ability2;
+                            currentPokemon.id_ability = pokedexEvo.id_ability2;
                             break;
                         case 3:
-                            currentPokemon.id_ability = pokedex.id_ability3;
+                            currentPokemon.id_ability = pokedexEvo.id_ability3;
                             break;
                     }
-                } else if (pokedex.id_ability2 != 0){
+                } else if (pokedexEvo.id_ability2 != 0){
                     switch ((int) (Math.random() * 3)){
                         case 1:
-                            currentPokemon.id_ability = pokedex.id_ability1;
+                            currentPokemon.id_ability = pokedexEvo.id_ability1;
                             break;
                         case 2:
-                            currentPokemon.id_ability = pokedex.id_ability2;
+                            currentPokemon.id_ability = pokedexEvo.id_ability2;
                             break;
                     }
                 } else {
-                    currentPokemon.id_ability = pokedex.id_ability1;
+                    currentPokemon.id_ability = pokedexEvo.id_ability1;
+                }
+                if (currentPokemon.name.equals(pokedex.name)){
+                    ArrayList<Object[]> evo1 = parent.db.getFromDB("SELECT name from pokedex WHERE id = " + currentPokemon.id_pokedex);
+                    currentPokemon.name = (String) evo1.get(0)[0];
                 }
                 currentPokemon.modifyInDB(db);
+                this.updatePokemonDispo();
                 this.setId(bottomPanel.evolution.getId());
                 bottomPanel.repaint();
                 break;
@@ -177,5 +186,16 @@ public class PokemonPanel extends JPanel implements ActionListener {
     
     public void update(){
         setId(currentId);
+    }
+
+    private void updatePokemonDispo() {
+        topPanel.selector.removeAllItems();
+        InfoButton selectorButton;
+        ArrayList<Object[]> pokemonList = db.getFromDB("SELECT id,name FROM pokemon ORDER BY id ASC");
+        pokemonList.add(0, new Object[]{0, ""});
+        for (int i = 0; i < pokemonList.size(); i++) {
+            selectorButton = new InfoButton((String) pokemonList.get(i)[1], (Integer) pokemonList.get(i)[0]);
+            topPanel.selector.addItem(selectorButton);
+        }
     }
 }

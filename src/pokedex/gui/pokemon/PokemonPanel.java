@@ -189,6 +189,7 @@ public class PokemonPanel extends JPanel implements ActionListener {
     }
 
     private void updatePokemonDispo() {
+        topPanel.selector.removeActionListener(this);
         topPanel.selector.removeAllItems();
         InfoButton selectorButton;
         ArrayList<Object[]> pokemonList = db.getFromDB("SELECT id,name FROM pokemon ORDER BY id ASC");
@@ -197,5 +198,6 @@ public class PokemonPanel extends JPanel implements ActionListener {
             selectorButton = new InfoButton((String) pokemonList.get(i)[1], (Integer) pokemonList.get(i)[0]);
             topPanel.selector.addItem(selectorButton);
         }
+        topPanel.selector.addActionListener(this);
     }
 }

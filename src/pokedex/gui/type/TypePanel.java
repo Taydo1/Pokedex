@@ -27,11 +27,11 @@ public class TypePanel extends JPanel implements ActionListener {
 
     Database db;
     MainPanel parent;
-    static Color veryStrong = Color.GRAY;
+    static Color veryStrong = Color.LIGHT_GRAY;
     static Color strong = Color.DARK_GRAY;
     static Color weak = Color.MAGENTA;
     static Color veryWeak = Color.RED;
-    static Color immune = Color.LIGHT_GRAY;
+    static Color immune = Color.WHITE;
     static Color efficace = Color.BLACK;
     InfoButton names[], modificationType1, modificationType2;
     Label type1label, type2label, vs_type[], weakness;

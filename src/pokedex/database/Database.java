@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import net.efabrika.util.DBTablePrinter;
 import pokedex.gui.*;
 
 /**
@@ -177,12 +176,7 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void printTable(String tableName) {
-        ResultSet rs = executeQuery("SELECT * FROM " + tableName);
-        DBTablePrinter.printResultSet(rs);
-    }
-
+    
     public void executeUpdate(String request) {
         //System.out.println(request);
         try {

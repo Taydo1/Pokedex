@@ -46,7 +46,11 @@ public class PokedexApp extends JFrame {
         db.executeUpdate("TRUNCATE TABLE trainer,pokemon RESTART IDENTITY");
         Trainer sacha = new Trainer("Sacha", -1, -1, -1, -1, -1, -1);
         Trainer red = new Trainer("Red", -1, -1, -1, -1, -1, -1);
-        db.executeUpdate("INSERT INTO trainer VALUES " + sacha.getInsertSubRequest() + "," + red.getInsertSubRequest());
+        Trainer ruiz = new Trainer("Ruiz (World Chmpn)", -1, -1, -1, -1, -1, -1);
+        db.executeUpdate("INSERT INTO trainer VALUES " + sacha.getInsertSubRequest()
+                + "," + red.getInsertSubRequest()
+                + "," + ruiz.getInsertSubRequest()
+        );
 
         Pokemon pikachuSacha = new Pokemon(-1, "Pikachu", 42, 1000, false, 1, 2, 3, 0, 0, 188, 25);
         Pokemon evoliSacha = new Pokemon(-1, "Evoli de Sacha", 69, 10000, true, 1, 1, 3, -1, -1, 188, 133);
@@ -58,6 +62,14 @@ public class PokedexApp extends JFrame {
         Pokemon dracaufeuRed = new Pokemon(-1, "Dracaufeu", 84, 320, false, 2, 394, 314, 307, 406, 35, 6);
         Pokemon tortankRed = new Pokemon(-1, "Tortank", 84, 500, false, 2, 411, 308, 59, 430, 228, 9);
         Pokemon mewtwoRed = new Pokemon(-1, "Mewtwo", 100, 600, false, 2, 540, 396, 377, -1, 228, 150);
+        
+        Pokemon tapu = new Pokemon(-1, "Tapu Koko", 50, 178, false, 3, 85, 605, 521, 435, 61, 785);
+        Pokemon salamence = new Pokemon(-1, "Salamence", 50, 231, false, 3, 38, 350, 355, 182, 123, 373);
+        Pokemon snorlex = new Pokemon(-1, "Snorlex", 50, 276, false, 3, 218, 187, 278, 182, 104, 143);
+        Pokemon incineroar = new Pokemon(-1, "Incineroar", 50, 198, true, 3, 394, 555, 289, 252, 123, 727);
+        Pokemon gastrodon = new Pokemon(-1, "Gastrodon", 50, 217, false, 3, 414, 58, 105, 182, 126, 423);
+        Pokemon kartana = new Pokemon(-1, "Kartana", 50, 181, true, 3, 348, 533, 366, 182, 32, 798);
+        
         db.executeUpdate("INSERT INTO Pokemon VALUES " + pikachuSacha.getInsertSubRequest()
                 + "," + evoliSacha.getInsertSubRequest()
                 + "," + pikachuRed.getInsertSubRequest()
@@ -67,6 +79,12 @@ public class PokedexApp extends JFrame {
                 + "," + dracaufeuRed.getInsertSubRequest()
                 + "," + tortankRed.getInsertSubRequest()
                 + "," + mewtwoRed.getInsertSubRequest()
+                + "," + tapu.getInsertSubRequest()
+                + "," + salamence.getInsertSubRequest()
+                + "," + snorlex.getInsertSubRequest()
+                + "," + incineroar.getInsertSubRequest()
+                + "," + gastrodon.getInsertSubRequest()
+                + "," + kartana.getInsertSubRequest()
         );
 
         db.executeUpdate("UPDATE trainer SET id_pokemon1=1, id_pokemon2=2 WHERE id=1");
@@ -78,6 +96,14 @@ public class PokedexApp extends JFrame {
                 + "id_pokemon5=7, "
                 + "id_pokemon6=8 "
                 + "WHERE id=2");
+        db.executeUpdate("UPDATE trainer SET "
+                + "id_pokemon1=10, "
+                + "id_pokemon2=11, "
+                + "id_pokemon3=12, "
+                + "id_pokemon4=13, "
+                + "id_pokemon5=14, "
+                + "id_pokemon6=15 "
+                + "WHERE id=3");
 
         /*db.printTable("trainer");
 

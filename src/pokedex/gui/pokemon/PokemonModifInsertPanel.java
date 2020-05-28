@@ -30,6 +30,7 @@ import pokedex.database.Pokemon;
 import pokedex.database.Trainer;
 import pokedex.gui.Action;
 import pokedex.gui.MainPanel;
+import pokedex.gui.widgets.InfoButton;
 
 /**
  *
@@ -285,6 +286,7 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 }else{
                     isShiny = (boolean) parent.db.getFromDB("SELECT is_shiny from pokemon WHERE id = " + idModif).get(0)[0];
                 }
+                
                 String currentPokedexName = (String) parent.db.getFromDB("SELECT name from pokedex WHERE id = " + (pokedex.getSelectedIndex() + 1)).get(0)[0];
                 if(name.getText().equals(""))name.setText(currentPokedexName);
                 Pokemon temp = new Pokemon(idModif, name.getText(), level.getSelectedIndex() + 1, getHp(),
@@ -299,7 +301,7 @@ public class PokemonModifInsertPanel extends JPanel implements ActionListener, C
                 } else {
                     temp.modifyInDB(parent.db);
                 }
-
+                parent.pokemonPanel.updatePokemonDispo();
                 parent.pokemonPanel.setId(parent.pokemonPanel.currentId);
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
                 parent.removeTab(this, parent.pokemonPanel, true);

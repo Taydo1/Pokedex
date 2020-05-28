@@ -207,7 +207,7 @@ public class PokemonPanel extends JPanel implements ActionListener {
         setId(currentId);
     }
 
-    private void updatePokemonDispo() {
+    public void updatePokemonDispo() {
         topPanel.selector.removeActionListener(this);
         topPanel.selector.removeAllItems();
         InfoButton selectorButton;

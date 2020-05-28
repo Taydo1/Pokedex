@@ -153,7 +153,6 @@ public class TrainerPanel extends JPanel implements ActionListener {
         if (!currentTrainerList.isEmpty()) {
             Trainer currentTrainer = currentTrainerList.get(0);
 
-        
             selector.removeActionListener(this);
             selector.setSelectedIndex(findSelectorId(id));
             name.setText(currentTrainer.name);
@@ -184,6 +183,12 @@ public class TrainerPanel extends JPanel implements ActionListener {
         } else {
             modification.setVisible(false);
             delete.setVisible(false);
+            ArrayList<Pokemon> pokemonsSauvage = db.getFromDB("SELECT * FROM pokemon WHERE id_trainer IS NULL", Pokemon.class);
+            for (Pokemon pokemon : pokemonsSauvage) {
+                pokemonSelector.addItem(new InfoButton(pokemon.name, pokemon.id, true));
+            }
+            pokemonSelector.addActionListener(parent);
+
         }
     }
 

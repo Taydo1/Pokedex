@@ -112,6 +112,8 @@ public class PokedexApp extends JFrame {
         Pokemon lougaroc = new Pokemon(-1, "Lougaroc", 43, 153, false, 1, 444, 157, 317, 439, 193, 745);
         Pokemon melmetal = new Pokemon(-1, "Melmetal", 47, 191, false, 1, 742, 9, 430, 276, 174, 809);
         
+        Pokemon pedobear = new Pokemon(-1, "Pedours", 42, 42, true, -1, 1, 122, 43, 34, 34, 760);
+        
         db.executeUpdate("INSERT INTO Pokemon VALUES " + pikachuSacha.getInsertSubRequest()
                 + "," + pikachuRed.getInsertSubRequest()
                 + "," + lokhlassRed.getInsertSubRequest()
@@ -168,6 +170,7 @@ public class PokedexApp extends JFrame {
                 + "," + matoufeu.getInsertSubRequest()
                 + "," + lougaroc.getInsertSubRequest()
                 + "," + melmetal.getInsertSubRequest()
+                + "," + pedobear.getInsertSubRequest()
         );
 
         db.executeUpdate("UPDATE trainer SET "

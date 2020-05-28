@@ -227,7 +227,8 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 );
                 break;
             case DELETE:
-                System.err.println("PAS ENCORE IMPLEMENTE");
+                int del_id[] = {delete.getId()};
+                db.deleteFromID("trainer", del_id);
                 break;
         }
     }

@@ -136,7 +136,7 @@ public class PokemonTopPanel extends JPanel {
         add(health, c);
     }
 
-    private int findSelectorId(int id) {
+    int findSelectorId(int id) {
         for (int i = 0; i < selector.getItemCount(); i++) {
             InfoButton item = selector.getItemAt(i);
             if (item.getId() == id) {

@@ -178,7 +178,7 @@ public class Database {
     }
     
     public void executeUpdate(String request) {
-        //System.out.println(request);
+        System.out.println(request);
         try {
             st.executeUpdate(request);
         } catch (SQLException ex) {

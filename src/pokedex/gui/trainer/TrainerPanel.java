@@ -71,7 +71,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
         pokemonLabel = new Label("Pokemons", true);
         pokemonSelector = new JComboBox<>();
         pokemonSelector.setActionCommand(Action.GET_POKEMON.name());
-        pokemonSelector.setPreferredSize(new Dimension(1,20));
+        pokemonSelector.setPreferredSize(new Dimension(1, 20));
 
         blank2 = new Label();
         add = new StyledButton("Ajouter un Dresseur", true);
@@ -105,7 +105,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
             c.gridx++;
             add(team[i + 1], c);
         }
-        c.gridx=0;
+        c.gridx = 0;
         c.gridwidth = 2;
         c.gridy++;
         add(blank, c);
@@ -147,12 +147,17 @@ public class TrainerPanel extends JPanel implements ActionListener {
         }
         name.setText("");
         teamLabel.setVisible(false);
+        pokemonSelector.removeActionListener(parent);
+        pokemonSelector.removeAllItems();
         ArrayList<Trainer> currentTrainerList = db.getFromDB("SELECT * FROM trainer WHERE id=" + id, Trainer.class);
         if (!currentTrainerList.isEmpty()) {
             Trainer currentTrainer = currentTrainerList.get(0);
 
+        
+            selector.removeActionListener(this);
             selector.setSelectedIndex(findSelectorId(id));
             name.setText(currentTrainer.name);
+            selector.addActionListener(this);
 
             ArrayList<Pokemon> teamOfCurrentTrainer = currentTrainer.getTeam(db);
             if (!teamOfCurrentTrainer.isEmpty()) {
@@ -164,9 +169,7 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 team[i].setText(teamOfCurrentTrainer.get(i).name);
             }
 
-            pokemonSelector.removeActionListener(parent);
             ArrayList<Pokemon> pokemonsOfCurrentTrainer = currentTrainer.getPokemons(db);
-            pokemonSelector.removeAllItems();
             for (Pokemon pokemon : pokemonsOfCurrentTrainer) {
                 pokemonSelector.addItem(new InfoButton(pokemon.name, pokemon.id, true));
             }
@@ -232,8 +235,8 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 break;
         }
     }
-    
-    public void update(){
+
+    public void update() {
         setId(currentId);
     }
 

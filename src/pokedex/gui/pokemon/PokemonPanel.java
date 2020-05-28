@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import pokedex.database.Database;
 import pokedex.database.Pokedex;
 import pokedex.database.Pokemon;
+import pokedex.database.Trainer;
 import pokedex.gui.Action;
 import pokedex.gui.ImagePanel;
 import pokedex.gui.widgets.InfoButton;
@@ -77,7 +78,22 @@ public class PokemonPanel extends JPanel implements ActionListener {
                 );
                 break;
             case DELETE:
-                System.err.println("PAS ENCORE IMPLEMENTE");
+                Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + topPanel.trainer.getId(), Trainer.class).get(0);
+                Pokemon Del_pokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.delete.getId(), Pokemon.class).get(0);
+                String Nothing[] = {null};
+                int del_id[] = {bottomPanel.delete.getId()};
+                for(int k=0; k<6; k++){
+                     System.out.println("Pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                    if(bottomPanel.delete.getId()==currentTrainer.id_pokemon[k]){
+                        String PokeModif[] = {"id_pokemon"+(k+1)};
+                        System.out.println("Pokemon de "+currentTrainer.name+" supprimer : "+PokeModif[0]+"="+currentTrainer.id_pokemon[k]);
+                        currentTrainer.id_pokemon[k] = -1;
+                        db.modify("trainer",topPanel.trainer.getId(), PokeModif , Nothing);
+                        System.out.println("Nouveau pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                    }
+                }
+                topPanel.selector.removeItemAt(topPanel.findSelectorId(bottomPanel.delete.getId()));
+                db.deleteFromID("pokemon", del_id);
                 break;
             case EVOLUTION:
                 Pokemon currentPokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.evolution.getId(), Pokemon.class).get(0);

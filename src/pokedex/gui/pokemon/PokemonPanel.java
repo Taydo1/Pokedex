@@ -78,18 +78,21 @@ public class PokemonPanel extends JPanel implements ActionListener {
                 );
                 break;
             case DELETE:
-                Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + topPanel.trainer.getId(), Trainer.class).get(0);
-                Pokemon Del_pokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.delete.getId(), Pokemon.class).get(0);
-                String Nothing[] = {null};
                 int del_id[] = {bottomPanel.delete.getId()};
-                for(int k=0; k<6; k++){
-                     System.out.println("Pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
-                    if(bottomPanel.delete.getId()==currentTrainer.id_pokemon[k]){
-                        String PokeModif[] = {"id_pokemon"+(k+1)};
-                        System.out.println("Pokemon de "+currentTrainer.name+" supprimer : "+PokeModif[0]+"="+currentTrainer.id_pokemon[k]);
-                        currentTrainer.id_pokemon[k] = -1;
-                        db.modify("trainer",topPanel.trainer.getId(), PokeModif , Nothing);
-                        System.out.println("Nouveau pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                Pokemon Del_pokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.delete.getId(), Pokemon.class).get(0);
+                if(Del_pokemon.id_trainer!=0)
+                {
+                    Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + topPanel.trainer.getId(), Trainer.class).get(0);
+                    String Nothing[] = {null};
+                    for(int k=0; k<6; k++){
+                            System.out.println("Pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                        if(bottomPanel.delete.getId()==currentTrainer.id_pokemon[k]){
+                            String PokeModif[] = {"id_pokemon"+(k+1)};
+                            System.out.println("Pokemon de "+currentTrainer.name+" supprimer : "+PokeModif[0]+"="+currentTrainer.id_pokemon[k]);
+                            currentTrainer.id_pokemon[k] = -1;
+                            db.modify("trainer",topPanel.trainer.getId(), PokeModif , Nothing);
+                            System.out.println("Nouveau pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                        }
                     }
                 }
                 topPanel.selector.removeItemAt(topPanel.findSelectorId(bottomPanel.delete.getId()));

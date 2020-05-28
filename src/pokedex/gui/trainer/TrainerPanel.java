@@ -235,6 +235,10 @@ public class TrainerPanel extends JPanel implements ActionListener {
                 );
                 break;
             case DELETE:
+                Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + delete.getId(), Trainer.class).get(0);
+                db.executeUpdate("UPDATE pokemon SET id_trainer = NULL WHERE id_trainer = " + currentTrainer.id);
+                selector.removeItemAt(findSelectorId(currentTrainer.id));
+                //Pokemon currentPokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.delete.getId(), Pokemon.class).get(0);
                 int del_id[] = {delete.getId()};
                 db.deleteFromID("trainer", del_id);
                 break;

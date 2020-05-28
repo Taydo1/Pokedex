@@ -85,13 +85,13 @@ public class PokemonPanel extends JPanel implements ActionListener {
                     Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + topPanel.trainer.getId(), Trainer.class).get(0);
                     String Nothing[] = {null};
                     for(int k=0; k<6; k++){
-                            System.out.println("Pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                            //System.out.println("Pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
                         if(bottomPanel.delete.getId()==currentTrainer.id_pokemon[k]){
                             String PokeModif[] = {"id_pokemon"+(k+1)};
-                            System.out.println("Pokemon de "+currentTrainer.name+" supprimer : "+PokeModif[0]+"="+currentTrainer.id_pokemon[k]);
+                            //System.out.println("Pokemon de "+currentTrainer.name+" supprimer : "+PokeModif[0]+"="+currentTrainer.id_pokemon[k]);
                             currentTrainer.id_pokemon[k] = -1;
                             db.modify("trainer",topPanel.trainer.getId(), PokeModif , Nothing);
-                            System.out.println("Nouveau pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                            //System.out.println("Nouveau pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
                         }
                     }
                 }

@@ -6,12 +6,13 @@
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokemon/PokemonBottomPanel.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokemon/PokemonTopPanel.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/trainer/TrainerPanel.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/database/Pokemon.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/database/Database.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/ressources/creation_tables.sql</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/Action.java</file>
-            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/widgets/InfoButton.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokemon/PokemonPanel.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/database/Trainer.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokedex/PokedexPanel.java</file>
         </group>
     </open-files>
 </project-private>

@@ -73,7 +73,7 @@ CREATE TABLE pokedex(
 CREATE TABLE pokemon(
 	id serial PRIMARY KEY,
 	name varchar(20),
-	level int,
+	level int CHECK (level <= 100),
 	health int,
 	is_shiny boolean,
 	id_move1 int REFERENCES move(id),

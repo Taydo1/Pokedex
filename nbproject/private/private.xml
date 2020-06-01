@@ -4,14 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/MainPanel.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokemon/PokemonBottomPanel.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/PokedexApp.java</file>
-            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/PokeSon.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/database/Database.java</file>
-            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/ImagePanel.java</file>
-            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/Action.java</file>
-            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokemon/PokemonPanel.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokedex/PokedexBottomPanel.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/database/Trainer.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokemon/PokemonPanel.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/trainer/TrainerPanel.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/Action.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/widgets/InfoButton.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/widgets/PasswordPanel.java</file>
             <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/pokedex/PokedexPanel.java</file>
+            <file>file:/D:/INSA/SIBD/Pokedex/src/pokedex/gui/type/TypeModificationPanel.java</file>
         </group>
     </open-files>
 </project-private>

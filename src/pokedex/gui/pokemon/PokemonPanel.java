@@ -6,13 +6,10 @@
 package pokedex.gui.pokemon;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import pokedex.database.Database;
@@ -31,7 +28,7 @@ import pokedex.gui.MainPanel;
 public class PokemonPanel extends JPanel implements ActionListener {
 
     PokemonTopPanel topPanel;
-    PokemonBottomPanel bottomPanel;
+    public PokemonBottomPanel bottomPanel;
     ImagePanel imagePanel;
     MainPanel parent;
     Database db;
@@ -173,11 +170,14 @@ public class PokemonPanel extends JPanel implements ActionListener {
                 bottomPanel.repaint();
                 break;
             case LVLUP:
+                
                 Pokemon currentPkmn = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.lvlUp.getId(), Pokemon.class).get(0);
                 currentPkmn.level = currentPkmn.level + 1;
                 currentPkmn.health = currentPkmn.health + (int) (Math.random() * 6);
                 currentPkmn.modifyInDB(db);
+                bottomPanel.setLVL(currentPkmn.level);
                 this.setId(bottomPanel.lvlUp.getId());
+                
                 break;
         }
                 

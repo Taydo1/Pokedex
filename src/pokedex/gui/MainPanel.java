@@ -110,6 +110,7 @@ public class MainPanel extends JPanel implements ActionListener {
                 typePanel.setUser(user);
                 abilityPanel.setUser(user);
                 pokemonPanel.setUser(user);
+                pokemonPanel.bottomPanel.updatelvl();
                 trainerPanel.setUser(user);
                 movePanel.setUser(user);
             } else if (password != null) {

@@ -23,11 +23,10 @@ public class PokedexApp extends JFrame {
     JTabbedPane tabbedPane;
 
     public PokedexApp() {
-
-        db = new Database();
-        db.setupDB(dbName, schemaName, false);
-        testRequest();
-        setupWindow();
+        db = new Database(); //creation du lien avec postgre
+        db.setupDB(dbName, schemaName, false); // on se connecte à la bdd (on la crée si elle n'existe pas ou si on lui envoie true)
+        startRequest(); //ajout d'autres données dans la bdd
+        setupWindow(); //on initialise la fenetre
     }
 
     private void setupWindow() {
@@ -38,12 +37,13 @@ public class PokedexApp extends JFrame {
 
         mainPanel = new MainPanel(db, this);
         setContentPane(mainPanel);
-
         setVisible(true);
     }
 
-    private void testRequest() {
+    private void startRequest() {
         db.executeUpdate("TRUNCATE TABLE trainer,pokemon RESTART IDENTITY");
+        
+        //creation de 3 dresseurs
         Trainer sacha = new Trainer("Sacha Ketchum", -1, -1, -1, -1, -1, -1);
         Trainer red = new Trainer("Red", -1, -1, -1, -1, -1, -1);
         Trainer ruiz = new Trainer("Ruiz (World Chmpn)", -1, -1, -1, -1, -1, -1);
@@ -52,8 +52,7 @@ public class PokedexApp extends JFrame {
                 + "," + ruiz.getInsertSubRequest()
         );
 
-        Pokemon pikachuSacha = new Pokemon(-1, " Pikachu ", 100, 999, false, 1, 2, 3, 0, 0, 188, 25);
-
+        //creation de plein de pokemons
         Pokemon pikachuRed = new Pokemon(-1, "Pikachu", 88, 270, false, 2, 344, 231, 98, 85, 209, 25);
         Pokemon lokhlassRed = new Pokemon(-1, "Lokhlass", 80, 390, false, 2, 59, 362, 94, 34, 51, 131);
         Pokemon ronflexRed = new Pokemon(-1, "Ronflex", 82, 550, false, 2, 247, 242, 59, 416, 124, 143);
@@ -69,6 +68,7 @@ public class PokedexApp extends JFrame {
         Pokemon gastrodon = new Pokemon(-1, "Gastrodon", 50, 217, false, 3, 414, 58, 105, 182, 126, 423);
         Pokemon kartana = new Pokemon(-1, "Kartana", 50, 181, true, 3, 348, 533, 366, 182, 32, 798);
         
+        Pokemon pikachuSacha = new Pokemon(-1, " Pikachu ", 100, 999, false, 1, 2, 3, 0, 0, 188, 25);
         Pokemon dracaufeuSacha = new Pokemon(-1, "Dracaufeu", 96, 402, false, 1, 53, 19, 69, 126, 35, 6);
         Pokemon ronflexSacha = new Pokemon(-1, "Ronflex", 75, 482, false, 1, 416, 156, 63, 34, 124, 143);
         Pokemon bulbizarre = new Pokemon(-1, "Bulbizarre", 24, 55, false, 1, 33, 22, 21, 43, 79, 1);
@@ -112,8 +112,7 @@ public class PokedexApp extends JFrame {
         Pokemon lougaroc = new Pokemon(-1, "Lougaroc", 43, 153, false, 1, 444, 157, 317, 439, 193, 745);
         Pokemon melmetal = new Pokemon(-1, "Melmetal", 47, 191, false, 1, 742, 9, 430, 276, 174, 809);
         
-        Pokemon pedobear = new Pokemon(-1, "Pedours", 42, 42, true, -1, 1, 122, 43, 34, 34, 760);
-        
+        //insertion de tous les pokemons dans la bdd
         db.executeUpdate("INSERT INTO Pokemon VALUES " + pikachuSacha.getInsertSubRequest()
                 + "," + pikachuRed.getInsertSubRequest()
                 + "," + lokhlassRed.getInsertSubRequest()
@@ -170,9 +169,9 @@ public class PokedexApp extends JFrame {
                 + "," + matoufeu.getInsertSubRequest()
                 + "," + lougaroc.getInsertSubRequest()
                 + "," + melmetal.getInsertSubRequest()
-                + "," + pedobear.getInsertSubRequest()
         );
 
+        //modification des equipe de chaque dresseur
         db.executeUpdate("UPDATE trainer SET "
                 + "id_pokemon1=1, "
                 + "id_pokemon2=15, "
@@ -197,67 +196,9 @@ public class PokedexApp extends JFrame {
                 + "id_pokemon5=13, "
                 + "id_pokemon6=14 "
                 + "WHERE id=3");
-
-        /*db.printTable("trainer");
-
-        boss = db.getFromDB("SELECT * FROM trainer WHERE id=1", Trainer.class).get(0);
-        ArrayList<Pokemon> pokeDeSamet = boss.getPokemons(db);
-        for (Pokemon pokemon : pokeDeSamet) {
-            System.out.println("" + pokemon);
-        }
-        System.out.println("fini");*/
-
- /*ArrayList<Pokemon> listPokemon = db.getFromDB("SELECT * FROM pokemon WHERE id<=2", Pokemon.class);
-        for (Pokemon pokemon : listPokemon) {
-            System.out.println("" + pokemon);
-        }
-        ArrayList<Pokedex> listPokedex = db.getFromDB("SELECT * FROM pokedex WHERE id<=2", Pokedex.class);
-        for (Pokedex pokedex : listPokedex) {
-            System.out.println("" + pokedex);
-        }
-        ArrayList<pokedex.database.Type> listType = db.getFromDB("SELECT * FROM type WHERE id<=2", pokedex.database.Type.class);
-        for (pokedex.database.Type type : listType) {
-            System.out.println("" + type);
-        }
-        ArrayList<Ability> listTalent = db.getFromDB("SELECT * FROM ability WHERE id<=2", Ability.class);
-        for (Ability talent : listTalent) {
-            System.out.println("" + talent);
-        }
-        ArrayList<Move> listAttaque = db.getFromDB("SELECT * FROM move WHERE id<=2", Move.class);
-        for (Move attaque : listAttaque) {
-            System.out.println("" + attaque);
-        }
-
-        ArrayList<Object[]> listPokemonPokedex = db.getFromDB("SELECT pokemon.name ,pokedex.name, ability.name  FROM pokemon JOIN pokedex ON pokemon.id_pokedex = pokedex.id JOIN ability ON pokemon.id_ability=ability.id");
-        for (Object[] row : listPokemonPokedex) {
-            System.out.println("" + row);
-        }*/
-
- /*//Test de la fonction modification
-        int[] tableau = {1, 1};
-        String[] tableau2 = {"level", "name"};
-        Object[] tableau3 = {4, "Coronovarus"};
-        db.modify("Pokemon", 1, tableau2, tableau3);
-        
-        //test delete
-        db.printTable("Pokemon");
-        int[] suppression = {2,3};
-        db.deleteFromID("Pokemon",suppression);
-        db.printTable("Pokemon");
-        db.deleteFromCondition("Pokemon", "name", "Coronavirus");
-        db.printTable("Pokemon");
-        
-        listPokemon = db.getFromDB("SELECT * FROM pokemon", Pokemon.class);
-        for (Pokemon pokemon : listPokemon) {
-            System.out.println("" + pokemon);
-        }*/
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         new PokedexApp();
     }
 }

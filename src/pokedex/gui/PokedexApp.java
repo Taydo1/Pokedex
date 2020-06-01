@@ -29,7 +29,7 @@ public class PokedexApp extends JFrame {
         testRequest();
         setupWindow();
     }
-
+    
     private void setupWindow() {
         setTitle("Pokedex 4.0");
         setSize(600, 700);

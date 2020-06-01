@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import pokedex.database.Move;
-import pokedex.database.Pokedex;
 import pokedex.gui.Action;
 import pokedex.gui.MainPanel;
 
@@ -32,6 +31,10 @@ import pokedex.gui.MainPanel;
  *
  * @author Leon
  */
+
+// Les composants qui sont utilisés pour faire les modifications sont placés dans des Panels
+// avec une bordure et un titre indiquant ce à quoi correspond le composant
+
 public class MoveModificationPanel extends JPanel implements ActionListener, ComponentListener {
     
     
@@ -45,38 +48,51 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
     
     public MoveModificationPanel(int id, MainPanel p) {
         
+        // On enregistre l'id de la capacité que l'on modifie pour pouvoir le réutiliser
         idModif = id;
+        
+        // On enregistre la fenêtre qui contient l'onglet de modification/création pour pouvoir accéder à la database
         parent = p;
+        
+        // On change les dimensions pour qu'elles correspondent à celles de la fenêtre
         this.setSize(new Dimension(parent.getWidth(), parent.getHeight()));
+        
+        // On crée et ajoute les composants nécessaires à la modification
         this.initComponents();
+        
         this.setVisible(true);
         addComponentListener(this);
     }
 
     private void initComponents() {
         
+        // On récupère la liste des types actuels de la database
         ArrayList<pokedex.database.Type> list = parent.db.getFromDB("SELECT * from type ORDER BY id ASC", pokedex.database.Type.class);
+        
+        // Passe les noms des types dans un tableau utilisable dans des JComboBox
         String[] listType = new String[list.size()];
         for (int i = 0; i < list.size(); i++){
             listType[i] = list.get(i).name; 
         }
+        
+        // On récupère la capacité que l'on veut modifier depuis la database
         Move currentMove = parent.db.getFromDB("SELECT * from move WHERE id = " + idModif, Move.class).get(0);
         
-        //Le nom français
+        // Création du Panel contenant un champ de texte pour le nom français
         JPanel namePanel = new JPanel();
         namePanel.setBackground(Color.white);
         name = new JTextField(currentMove.name);
         namePanel.setBorder(BorderFactory.createTitledBorder("Nom de la capacité"));
         namePanel.add(name);
         
-        //Le nom anglais
+        // Création du Panel contenant un champ de texte pour le nom anglais
         JPanel enNamePanel = new JPanel();
         enNamePanel.setBackground(Color.white);
         enName = new JTextField(currentMove.en_name);
         enNamePanel.setBorder(BorderFactory.createTitledBorder("Nom anglais de la capacité"));
         enNamePanel.add(enName);
         
-        //Le type de la capacité
+        // Création du Panel contenant une liste déroulante pour le type de la capacité
         JPanel typePanel = new JPanel();
         typePanel.setBackground(Color.white);
         type = new JComboBox<>(listType);
@@ -84,9 +100,10 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         typePanel.setBorder(BorderFactory.createTitledBorder("Type de la capacité"));
         typePanel.add(type);
         
+        // Création d'un tableau pour choisir la catégorie de la capacité
         String[] listCategory = new String[]{"Physique", "Spéciale", "Statut"};
         
-        //Catégorie de la capacité
+        // Création du Panel contenant une liste déroulante pour la catégorie de la capacité
         JPanel categoryPanel = new JPanel();
         categoryPanel.setBackground(Color.white);
         category = new JComboBox<>(listCategory);
@@ -94,9 +111,10 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         categoryPanel.setBorder(BorderFactory.createTitledBorder("Catégorie de la capacité"));
         categoryPanel.add(category);
         
+        // Création d'un tableau pour choisir le nombre de pp de la capacité
         Object[] possibilitePP = new Object[]{0, 1, 5, 10, 15, 20, 25, 30, 35, 40};
         
-        //PP de la capacité
+        // Création du Panel contenant une liste déroulante pour le nombre de pp de la capacité (nombre d''utilisations possibles)
         JPanel ppPanel = new JPanel();
         ppPanel.setBackground(Color.white);
         pp = new JComboBox<>(possibilitePP);
@@ -104,10 +122,11 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         ppPanel.setBorder(BorderFactory.createTitledBorder("PP de base de la capacité"));
         ppPanel.add(pp);
         
+        // Création du format de donnée entrable dans le champ de texte correspondant à la puissance
         NumberFormat formatPuissance = NumberFormat.getInstance();
         formatPuissance.setMaximumFractionDigits(0);
         
-        //Puissance de la capacité
+        // Création du Panel contenant un champ de texte formatté pour la puissance de la capacité
         JPanel powerPanel = new JPanel();
         powerPanel.setBackground(Color.white);
         power = new JFormattedTextField(formatPuissance);
@@ -119,9 +138,10 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         powerPanel.setBorder(BorderFactory.createTitledBorder("Puissance de la capacité"));
         powerPanel.add(power);
         
+        // Création d'un tableau pour les possiblités de précision de la capacité (multiple de 5 ou ne rate jamais)
         Object[] possibiliteAccuracy = new Object[]{"Ne rate jamais", 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
         
-        //Précision de la capacité
+        // Création du Panel contenant une liste déroulante pour la précision de la capacité
         JPanel accuracyPanel = new JPanel();
         accuracyPanel.setBackground(Color.white);
         accuracy = new JComboBox<>(possibiliteAccuracy);
@@ -129,22 +149,29 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         accuracyPanel.setBorder(BorderFactory.createTitledBorder("Précision de la capacité"));
         accuracyPanel.add(accuracy);
         
+        // Création et configuration du bouton de sauvegarde
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveButton.addActionListener(this);
         saveButton.setActionCommand(Action.SAVE_MODIFICATION.name());
+        
+        // Création et configuration du bouton d'annulation
         discardButton = new JButton("DISCARD");
         discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardButton.addActionListener(this);
         discardButton.setActionCommand(Action.DISCARD_MODIFICATION.name());
 
+        // Placement du bouton de sauvergade dans un Panel
         JPanel savePanel = new JPanel();
         savePanel.add(saveButton);
         savePanel.setBackground(Color.white);
+        
+        // Placement du bouton d'annulation dans un Panel
         JPanel discardPanel = new JPanel();
         discardPanel.add(discardButton);
         discardPanel.setBackground(Color.white);
         
+        // Ajout des Panels suivant un GridBagLayout
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         setBackground(Color.white);
@@ -173,12 +200,17 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         c.gridx++;
         add(discardPanel, c);
         
+        // Redimensionne les différents composants pour que les dimensions soient adaptées à la fenêtre
         updateDimension();
     }
     
+    // Fonction pour adapter les composants à la fenêtre
     public void updateDimension() {
+        // Calcul de valeurs de base pour les dimensions
         int dimx = (this.getWidth() / 3) - 30;
         int dimy = (this.getHeight() / 4) - 30;
+        
+        // Changements des dimensions des composants
         name.setPreferredSize(new Dimension(dimx, dimy));
         enName.setPreferredSize(new Dimension(dimx, dimy));
         type.setPreferredSize(new Dimension(dimx, dimy));
@@ -190,11 +222,15 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         discardButton.setPreferredSize(new Dimension(dimx + 20, (int) (dimy * 1.5)));
     }
     
+    // Permet de définir les actions et fonctions du bouton sur lequel on appuie
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         switch (Action.valueOf(e.getActionCommand())) {
+            // Ce qui est fait lorsque l'on appuie sur le bouton de modification
             case SAVE_MODIFICATION:
                 
+                // Traduit la valeur de puissance rentrée
                 int p;
                 if (Integer.parseInt(power.getText()) == 0){
                     p = -1;
@@ -202,21 +238,31 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
                     p = Integer.parseInt(power.getText());
                 }
                 
+                // Application des changements sur la capacité
                 new Move(idModif, name.getText(), enName.getText(), type.getSelectedIndex() + 1,
                         category.getSelectedItem().toString(), getSelectedPP(),
                         p, getSelectedAccuracy()).modifyInDB(parent.db);
 
+                // Sélectionne la capacité qui vient d'être modifiée dans l'onglet des capacités
                 parent.movePanel.setId(parent.movePanel.currentId);
+                
+                // Affichage d'un message disant que les modifications ont été effectuées
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
 
+                // Supprime l'onglet de modification et se place sur l'onglet des capacités
                 parent.removeTab(this, parent.movePanel, true);
+                
                 break;
+                
+            // Ce qui est fait lorsque l'on appuie sur le bouton d'annulation  
             case DISCARD_MODIFICATION:
+                // Supprime l'onglet de modification et se place sur l'onglet des talents
                 parent.removeTab(this, parent.movePanel, false);
                 break;
         }
     }
     
+    // Change la taille des composants lorsque la taille de la fenêtre change
     @Override
     public void componentResized(ComponentEvent arg0) {
         updateDimension();
@@ -234,6 +280,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
     public void componentHidden(ComponentEvent arg0) {
     }
 
+    // Permet de sélectionner la précision
     private void setSelectedAccuracy(int a) {
         switch (a) {
             case -100 :
@@ -304,6 +351,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         }
     }
     
+    // Permet de récupérer la précision sélectionnée
     private float getSelectedAccuracy() {
         int a = accuracy.getSelectedIndex();
         switch (a) {
@@ -354,6 +402,7 @@ public class MoveModificationPanel extends JPanel implements ActionListener, Com
         }
     }
     
+    // Permet de récupérer le nombre de pp sélectionné
     private int getSelectedPP() {
         int a = pp.getSelectedIndex();
         switch (a) {

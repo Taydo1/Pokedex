@@ -23,13 +23,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import pokedex.database.Type;
 import pokedex.gui.Action;
-import pokedex.gui.widgets.InfoButton;
 import pokedex.gui.MainPanel;
 
 /**
  *
  * @author Spectan
  */
+
+// Les composants qui sont utilisés pour faire les modifications sont placés dans des Panels
+// avec une bordure et un titre indiquant ce à quoi correspond le composant
+
 public class TypeModificationPanel extends JPanel implements ActionListener, ComponentListener {
 
     JTextField name, enName;
@@ -41,36 +44,48 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
 
     public TypeModificationPanel(int id, MainPanel p) {
 
+        // On enregistre l'id du type que l'on modifie pour pouvoir le réutiliser
         idModif = id;
+        
+        // On enregistre la fenêtre qui contient l'onglet de modification/création pour pouvoir accéder à la database
         parent = p;
+        
+        // On change les dimensions pour qu'elles correspondent à celles de la fenêtre
         this.setSize(new Dimension(parent.getWidth(), parent.getHeight()));
+        
+        // On crée et ajoute les composants nécessaires à la modification
         this.initComponents();
+        
         this.setVisible(true);
         addComponentListener(this);
     }
 
     private void initComponents() {
 
+        // Récupère la liste de tous les types de la database
         ArrayList<pokedex.database.Type> list = parent.db.getFromDB("SELECT * from type ORDER BY id ASC", pokedex.database.Type.class);
+        
+        // Récupère le type que l'on modifie
         pokedex.database.Type currentType = parent.db.getFromDB("SELECT * from type WHERE id = " + idModif, pokedex.database.Type.class).get(0);
 
-        //Pour le nom français
+        // Création du Panel contenant un champ de texte pour le nom français
         JPanel panName = new JPanel();
         panName.setBackground(Color.white);
         name = new JTextField(currentType.name);
         panName.setBorder(BorderFactory.createTitledBorder("Nom du type"));
         panName.add(name);
 
-        //Pour le nom anglais
+        // Création du Panel contenant un champ de texte pour le nom anglais
         JPanel panEnName = new JPanel();
         panEnName.setBackground(Color.white);
         enName = new JTextField(currentType.en_name);
         panEnName.setBorder(BorderFactory.createTitledBorder("Nom anglais du type"));
         panEnName.add(enName);
 
+        // Création d'un tableau pour le choix de la faiblesse face aux autres types
         String[] listFaiblesse = new String[]{"Immunisé", "Résistant", "Efficace", "Vulnérable"};
 
-        //Pour les faiblesses dans l'ordre (même si le nom du type a été changé)
+        // Création des Panels contenants une liste déroulante pour les faiblesses
         vsSelectors = new JComboBox[18];
         panVs = new JPanel[18];
         for (int i = 0; i < 18; i++) {
@@ -82,15 +97,19 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
             panVs[i].add(vsSelectors[i]);
         }
 
+        // Création et configuration du bouton de sauvegarde
         saveButton = new JButton("SAVE");
         saveButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         saveButton.addActionListener(this);
         saveButton.setActionCommand(Action.SAVE_MODIFICATION.name());
+        
+        // Création et configuration du bouton d'annulation
         discardButton = new JButton("DISCARD");
         discardButton.setCursor(Cursor.getPredefinedCursor((Cursor.HAND_CURSOR)));
         discardButton.addActionListener(this);
         discardButton.setActionCommand(Action.DISCARD_MODIFICATION.name());
 
+        // Ajout des Panels suivant un GridBagLayout
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
@@ -148,12 +167,17 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
         c.gridx = 2;
         add(discardButton, c);
 
+        // Redimensionne les différents composants pour que les dimensions soient adaptées à la fenêtre
         updateDimension();
     }
 
+    // Fonction pour adapter les composants à la fenêtre
     public void updateDimension() {
+        // Calcul de valeurs de base pour les dimensions
         int dimx = (this.getWidth() / 4) - 60;
         int dimy = (this.getHeight() / 7) - 70;
+        
+        // Changements des dimensions des composants
         name.setPreferredSize(new Dimension(dimx, dimy));
         enName.setPreferredSize(new Dimension(dimx, dimy));
         for (int i = 0; i < 18; i++) {
@@ -161,6 +185,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
         }
     }
 
+    // Convertit la valeur de la faiblesse en texte
     public String faiblesseToString(float valeurFaiblesse) {
         if (valeurFaiblesse == 2) {
             return "Vulnérable";
@@ -174,6 +199,7 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
         return "Efficace";
     }
 
+    // Convertit le texte d'une faiblesse en réel
     public float stringToFaiblesse(String value) {
         if (value.equals("Vulnérable")) {
             return 2;
@@ -189,24 +215,38 @@ public class TypeModificationPanel extends JPanel implements ActionListener, Com
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        InfoButton source;
+        
         switch (Action.valueOf(e.getActionCommand())) {
+            
+            // Ce qui est fait lorsque l'on appuie sur le bouton de modification
             case SAVE_MODIFICATION:
+                
+                // Crée un tableau de réel avec les valeurs de chaque faiblesse
                 float[] vs = new float[18];
                 for (int i = 0; i < 18; i++) {
                     vs[i] = stringToFaiblesse(vsSelectors[i].getSelectedItem().toString());
                 }
+                
+                // Application des changements sur le type
                 new Type(idModif, name.getText(), enName.getText(), vs).modifyInDB(parent.db);
 
+                // Affichage d'un message disant que les modifications/la création ont été effectuées
                 JOptionPane.showMessageDialog(null, "Modification sauvegardée", "Information", JOptionPane.INFORMATION_MESSAGE);
+                
+                // Supprime l'onglet de modification et se place sur l'onglet des types
                 parent.removeTab(this, parent.typePanel, true);
+                
                 break;
+                
+            // Ce qui est fait lorsque l'on appuie sur le bouton d'annulation
             case DISCARD_MODIFICATION:
+                // Supprime l'onglet de modification et se place sur l'onglet des types
                 parent.removeTab(this, parent.typePanel, false);
                 break;
         }
     }
 
+    // Change la taille des composants lorsque la taille de la fenêtre change
     @Override
     public void componentResized(ComponentEvent arg0) {
         updateDimension();

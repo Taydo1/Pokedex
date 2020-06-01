@@ -9,7 +9,6 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import pokedex.database.Database;
-import pokedex.database.Pokedex;
 import pokedex.database.Pokemon;
 import pokedex.gui.Action;
 import pokedex.gui.widgets.InfoButton;
@@ -24,6 +23,7 @@ public class PokemonBottomPanel extends JPanel {
     InfoButton modification, delete, evolution, lvlUp;
     StyledButton add;
     Database db;
+    int idActuel;
 
     public PokemonBottomPanel(Database db, PokemonPanel parent) {
         super();
@@ -81,6 +81,7 @@ public class PokemonBottomPanel extends JPanel {
     }
 
     public void setId(int id) {
+        idActuel = id;
         ArrayList<Object[]> currentNameList = db.getFromDB("SELECT name FROM pokemon WHERE id=" + id);
         if (!currentNameList.isEmpty()) {
             modification.setText("Modifier le Pokemon " + currentNameList.get(0)[0]);
@@ -105,6 +106,25 @@ public class PokemonBottomPanel extends JPanel {
             delete.setVisible(false);
             evolution.setVisible(false);
             lvlUp.setVisible(false);
+        }
+        ArrayList<Pokemon> currentPokemonList = db.getFromDB("SELECT * FROM pokemon WHERE id=" + idActuel, Pokemon.class);
+        if (!currentPokemonList.isEmpty()) {
+            setLVL((int) (currentPokemonList.get(0).level));
+        }
+    }
+
+    void setLVL(int level) {
+        if (level == 100){
+            lvlUp.setEnabled(false);
+        } else {
+            lvlUp.setEnabled(true);
+        }
+    }
+
+    public void updatelvl() {
+        ArrayList<Pokemon> currentPokemonList = db.getFromDB("SELECT * FROM pokemon WHERE id=" + idActuel, Pokemon.class);
+        if (!currentPokemonList.isEmpty()) {
+            setLVL((int) (currentPokemonList.get(0).level));
         }
     }
 }

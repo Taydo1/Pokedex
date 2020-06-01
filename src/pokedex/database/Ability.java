@@ -23,6 +23,7 @@ public class Ability extends DBElement {
     public Ability() {
     }
 
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Ability(int id, String name, String en_name, String description1, String description2) {
         this.id = id;
         this.name = name;
@@ -30,6 +31,7 @@ public class Ability extends DBElement {
         this.description = new String[]{description1, description2};
     }
 
+    //constructeur recevant une ligne de la réponse à la requete et qui doit en extraire chaque info
     public Ability(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
@@ -37,6 +39,7 @@ public class Ability extends DBElement {
         this.description = new String[]{rs.getString("description1"), rs.getString("description2")};
     }
 
+    //constructeur recevant une ligne du fichier cvs et qui doit la "parser"
     public Ability(String cvsLign, Map<String, Integer> abilityid) {
         String[] infos = cvsLign.split(";");
         this.id = idCounter++;
@@ -51,12 +54,14 @@ public class Ability extends DBElement {
         return "Ability{" + "id=" + id + ", name=" + name + ", en_name=" + en_name + ", description=" + Arrays.toString(description) + '}';
     }
 
+    //renvoie la parentèse utilisée dans l'insertion avec toutes la valeurs stockées dans les variables
     @Override
     public String getInsertSubRequest() {
         return String.format("(default, '%s', '%s', '%s', '%s')",
                 name.replace("'", "''"), en_name.replace("'", "''"), description[0].replace("'", "''"), description[1].replace("'", "''"));
     }
 
+    //remplace toutes la valeurs de la ligne {id} dans la table ability avec les valeurs stockées dans les variables
     @Override
     public void modifyInDB(Database db) {
         String[] colonnes = new String[]{"name", "en_name", "description1", "description2"};

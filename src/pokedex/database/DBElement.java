@@ -16,6 +16,7 @@ public abstract class DBElement {
     public DBElement() {
     }
 
+    //convertit les 0 ou -1 en null pour les insertions/modifications dans la bdd
     public Object int2StringRequest(int i) {
         if (i == -1 || i == 0) {
             return null;
@@ -23,7 +24,7 @@ public abstract class DBElement {
             return String.format("%d", i);
         }
     }
-
+    //convertit les 0 ou -1 en null pour les insertions/modifications dans la bdd
     public String float2StringRequest(float f) {
         if (f == -1) {
             return "NULL";
@@ -32,6 +33,7 @@ public abstract class DBElement {
         }
     }
 
+    //convertie des String en int et renvoie -1 pour les null
     public int StringToIntParse(String str) {
         try {
             return Integer.parseInt(str);
@@ -40,6 +42,7 @@ public abstract class DBElement {
         }
     }
 
+    //convertie des String en float et renvoie -1 pour les null
     public float StringToFloatParse(String str) {
         try {
             return Float.parseFloat(str);

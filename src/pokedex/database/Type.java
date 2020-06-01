@@ -22,6 +22,7 @@ public class Type extends DBElement {
     public int id;
     public float[] vs;
 
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Type(int id, String name, String en_name,
             float vs_bug, float vs_dark,
             float vs_dragon, float vs_electric,
@@ -57,6 +58,7 @@ public class Type extends DBElement {
         vs[17] = vs_water;
     }
 
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Type(int id, String name, String en_name, float[] vs) {
         this.id = id;
         this.name = name;
@@ -64,6 +66,7 @@ public class Type extends DBElement {
         this.vs = vs;
     }
 
+    //constructeur recevant une ligne de la réponse à la requete et qui doit en extraire chaque info
     public Type(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
@@ -74,6 +77,7 @@ public class Type extends DBElement {
         }
     }
 
+    //constructeur recevant une ligne du fichier cvs et qui doit la "parser"
     public Type(String cvsLign, Map<String, Integer> type2id) {
         String[] infos = cvsLign.split(";");
         this.id = idCounter++;
@@ -91,12 +95,14 @@ public class Type extends DBElement {
         return "Type{" + "name=" + name + ", en_name=" + en_name + ", id=" + id + ", vs=" + Arrays.toString(vs) + '}';
     }
 
+    //renvoie la parentèse utilisée dans l'insertion avec toutes la valeurs stockées dans les variables
     @Override
     public String getInsertSubRequest() {
         return String.format(Locale.ROOT, "(default, '%s', '%s', %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f, %.1f)",
                 name.replace("'", "''"), en_name.replace("'", "''"), vs[0], vs[1], vs[2], vs[3], vs[4], vs[5], vs[6], vs[7], vs[8], vs[9], vs[10], vs[11], vs[12], vs[13], vs[14], vs[15], vs[16], vs[17]);
     }
 
+    //remplace toutes la valeurs de la ligne {id} dans la table type avec les valeurs stockées dans les variables
     @Override
     public void modifyInDB(Database db) {
         db.executeUpdate(String.format(Locale.ROOT, "UPDATE type SET name='%s', en_name='%s', "

@@ -19,18 +19,12 @@ public class Trainer extends DBElement {
     public String name;
     public int id, id_pokemon[];
 
+    //constructeur recevant toutes les variables sauf l'id et devant les stocker directement
     public Trainer(String name, int id_pokemon1, int id_pokemon2, int id_pokemon3, int id_pokemon4, int id_pokemon5, int id_pokemon6) {
-        this.id = -1;
-        this.name = name;
-        id_pokemon = new int[6];
-        id_pokemon[0] = id_pokemon1;
-        id_pokemon[1] = id_pokemon2;
-        id_pokemon[2] = id_pokemon3;
-        id_pokemon[3] = id_pokemon4;
-        id_pokemon[4] = id_pokemon5;
-        id_pokemon[5] = id_pokemon6;
+        this(-1, name, id_pokemon1, id_pokemon2, id_pokemon3, id_pokemon4, id_pokemon5, id_pokemon6);
     }
     
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Trainer(int id, String name, int id_pokemon1, int id_pokemon2, int id_pokemon3, int id_pokemon4, int id_pokemon5, int id_pokemon6) {
         this.id = id;
         this.name = name;
@@ -43,6 +37,7 @@ public class Trainer extends DBElement {
         id_pokemon[5] = id_pokemon6;
     }
 
+    //constructeur recevant une ligne de la réponse à la requete et qui doit en extraire chaque info
     public Trainer(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
@@ -60,6 +55,7 @@ public class Trainer extends DBElement {
         return "Trainer{" + "name=" + name + ", id=" + id + '}';
     }
 
+    //renvoie la parentèse utilisée dans l'insertion avec toutes la valeurs stockées dans les variables
     @Override
     public String getInsertSubRequest() {
         return String.format(Locale.ROOT, "(default, '%s', %s, %s, %s, %s, %s, %s)",
@@ -69,6 +65,7 @@ public class Trainer extends DBElement {
                 int2StringRequest(id_pokemon[4]), int2StringRequest(id_pokemon[5]));
     }
 
+    //remplace toutes la valeurs de la ligne {id} dans la table pokedex avec les valeurs stockées dans les variables
     @Override
     public void modifyInDB(Database db) {
         String[] colonnesModifiees = new String[]{"name", "id_pokemon1", "id_pokemon2", "id_pokemon3", "id_pokemon4", "id_pokemon5", "id_pokemon6"};
@@ -84,6 +81,7 @@ public class Trainer extends DBElement {
         db.modify("trainer", id, colonnesModifiees, valeursModif);
     }
 
+    //renvoie tous les pokemon de l'equipe du dresseur
     public ArrayList<Pokemon> getTeam(Database db) {
         ArrayList<Pokemon> team = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
@@ -95,6 +93,7 @@ public class Trainer extends DBElement {
         return team;
     }
 
+    //renvoie tous les pokemon du dresseur
     public ArrayList<Pokemon> getPokemons(Database db) {
         return db.getFromDB("SELECT * FROM pokemon p WHERE p.id_trainer=" + id+" ORDER BY p.id ASC", Pokemon.class);
     }

@@ -24,17 +24,12 @@ public class Move extends DBElement {
     public Move() {
     }
 
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Move(String name, String en_name, int id_type, String category, int pp, int power, float accuracy) {
-        this.id = -1;
-        this.name = name;
-        this.en_name = en_name;
-        this.id_type = id_type;
-        this.category = category;
-        this.pp = pp;
-        this.power = power;
-        this.accuracy = accuracy;
+        this(-1, name, en_name, id_type, category, pp, power, accuracy);
     }
     
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Move(int id, String name, String en_name, int id_type, String category, int pp, int power, float accuracy) {
         this.id = id;
         this.name = name;
@@ -46,9 +41,9 @@ public class Move extends DBElement {
         this.accuracy = accuracy;
     }
 
+    //constructeur recevant une ligne du fichier cvs et qui doit la "parser"
     public Move(String cvsLign, Map<String, Integer> type2id) {
         String[] infos = cvsLign.split(";");
-        //System.out.println(""+cvsLign);
         this.id = -1;
         this.name = infos[0];
         this.en_name = infos[1];
@@ -59,6 +54,7 @@ public class Move extends DBElement {
         this.accuracy = Float.parseFloat(infos[6]);
     }
 
+    //constructeur recevant une ligne de la réponse à la requete et qui doit en extraire chaque info
     public Move(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
@@ -75,12 +71,14 @@ public class Move extends DBElement {
         return "Move{" + "name=" + name + ", en_name=" + en_name + ", category=" + category + ", id=" + id + ", id_type=" + id_type + ", pp=" + pp + ", power=" + power + ", accuracy=" + accuracy + '}';
     }
 
+    //renvoie la parentèse utilisée dans l'insertion avec toutes la valeurs stockées dans les variables
     @Override
     public String getInsertSubRequest() {
         return String.format(Locale.ROOT,"(default, '%s', '%s', %d, '%s', %d, %d, %f)",
                 name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy);
     }
 
+    //remplace toutes la valeurs de la ligne {id} dans la table pokedex avec les valeurs stockées dans les variables
     @Override
     public void modifyInDB(Database db) {
         db.executeUpdate(String.format(Locale.ROOT, "UPDATE move SET name='%s', en_name='%s', "
@@ -89,6 +87,7 @@ public class Move extends DBElement {
                 name.replace("'", "''"), en_name.replace("'", "''"), id_type, category.replace("'", "''"), pp, power, accuracy, id));
     }
 
+    //renvoie le nom du type de la capacité
     public String getTypeName(Database db) {
         ArrayList<Object[]> list = db.getFromDB("Select t.name from type t join move m on m.id_type = t.id WHERE m.id =" + id);
         String valeurDonne = (String) list.get(0)[0];

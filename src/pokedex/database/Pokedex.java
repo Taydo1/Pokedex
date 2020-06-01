@@ -26,6 +26,7 @@ public class Pokedex extends DBElement {
     public Pokedex() {
     }
 
+    //constructeur recevant toutes les variables et devant les stocker directement
     public Pokedex(int id, String name, String en_name, String classification, int id_type1, int id_type2, int id_ability1, int id_ability2, int id_ability3, int id_ability4, int generation, int id_lower_evolution, int id_evolution1, int id_evolution2, float height, float weight, float percentage_male, int is_legendary, boolean has_shiny, boolean has_mega) {
         this.id = id;
         this.name = name;
@@ -48,6 +49,7 @@ public class Pokedex extends DBElement {
         this.has_shiny = has_shiny;
         this.has_mega = has_mega;
 
+        //inversion possible pour remplir d'abord les types/evolution 1 avant les 2
         if (this.id_type1 == 0 && this.id_type2 != 0) {
             this.id_type1 = this.id_type2;
             this.id_type2 = 0;
@@ -57,6 +59,7 @@ public class Pokedex extends DBElement {
             this.id_evolution2 = 0;
         }
 
+        //tri par bulle pour remplir les colonnes dans l'ordre
         boolean good;
         do {
             good = true;
@@ -78,9 +81,9 @@ public class Pokedex extends DBElement {
         } while (!good);
     }
 
+    //constructeur recevant une ligne du fichier cvs et qui doit la "parser"
     public Pokedex(String cvsLign, Map<String, Integer> type2id, Map<String, Integer> ability2id) {
         String[] infos = cvsLign.split(";");
-        //System.out.println(""+cvsLign);
         this.id = -1;
         this.name = infos[1];
         this.en_name = infos[2];
@@ -93,7 +96,7 @@ public class Pokedex extends DBElement {
         this.id_ability4 = ability2id.get(infos[9]);
         this.height = Float.parseFloat(infos[10]);
         this.weight = Float.parseFloat(infos[11]);
-        this.percentage_male = StringToFloatParse(infos[12]);
+        this.percentage_male = StringToFloatParse(infos[12]); //utilisation de StringToFloatParse et StringToIntParse si la valeur peut etre null
         this.generation = Integer.parseInt(infos[13]);
         this.is_legendary = Integer.parseInt(infos[14]);
         this.has_shiny = Boolean.parseBoolean(infos[15]);
@@ -104,6 +107,7 @@ public class Pokedex extends DBElement {
 
     }
 
+    //constructeur recevant une ligne de la réponse à la requete et qui doit en extraire chaque info
     public Pokedex(ResultSet rs) throws SQLException {
         this.id = rs.getInt("id");
         this.name = rs.getString("name");
@@ -132,6 +136,7 @@ public class Pokedex extends DBElement {
         return "Pokedex{" + "name=" + name + ", en_name=" + en_name + ", classification=" + classification + ", id=" + id + ", id_type1=" + id_type1 + ", id_type2=" + id_type2 + ", id_ability1=" + id_ability1 + ", id_ability2=" + id_ability2 + ", id_ability3=" + id_ability3 + ", id_ability4=" + id_ability4 + ", is_legendary=" + is_legendary + ", generation=" + generation + ", id_lower_evolution=" + id_lower_evolution + ", id_evolution1=" + id_evolution1 + ", id_evolution2=" + id_evolution2 + ", height=" + height + ", weight=" + weight + ", percentage_male=" + percentage_male + ", has_shiny=" + has_shiny + ", has_mega=" + has_mega + '}';
     }
 
+    //renvoie la parentèse utilisée dans l'insertion avec toutes la valeurs stockées dans les variables
     @Override
     public String getInsertSubRequest() {
         return String.format(Locale.ROOT, "(default, '%s', '%s', '%s', %d, %s, %s, %s, %s, %s, %f, %f, %s, %d, %d,%s, %s, %s, %b, %b)",
@@ -144,6 +149,7 @@ public class Pokedex extends DBElement {
                 has_shiny, has_mega);
     }
 
+    //remplace toutes la valeurs de la ligne {id} dans la table pokedex avec les valeurs stockées dans les variables
     @Override
     public void modifyInDB(Database db) {
         db.executeUpdate(String.format(Locale.ROOT, "UPDATE pokedex SET name='%s', en_name='%s', "
@@ -161,24 +167,28 @@ public class Pokedex extends DBElement {
                 has_shiny, has_mega, id));
     }
 
+    //renvoie le nom du typeNb-ième type
     public String getTypeName(Database db, int typeNb) {
         ArrayList<Object[]> list = db.getFromDB("Select t.name from type t join pokedex p on p.id_type" + typeNb + " = t.id WHERE p.id =" + id);
         String valeurDonne = (String) list.get(0)[0];
         return valeurDonne;
     }
 
+    //renvoie le nom du abilityNb-ième talent
     public String getAbilityName(Database db, int abilityNb) {
         ArrayList<Object[]> list = db.getFromDB("Select a.name from ability a join pokedex p on p.id_ability" + abilityNb + " = a.id WHERE p.id =" + id);
         String valeurDonne = (String) list.get(0)[0];
         return valeurDonne;
     }
 
+    //renvoie le nom de la pré-evolution
     public String getLowerEvolutionName(Database db) {
         ArrayList<Object[]> list = db.getFromDB("Select p2.name from pokedex p1 join pokedex p2 on p1.id_lower_evolution=p2.id WHERE p1.id =" + id);
         String valeurDonne = (String) list.get(0)[0];
         return valeurDonne;
     }
 
+    //renvoie le nom de la evolutionNb-ième evolution
     public String getEvolutionName(Database db, int evolutionNb) {
         ArrayList<Object[]> list = db.getFromDB("Select p2.name from pokedex p1 join pokedex p2 on p1.id_evolution" + evolutionNb + "=p2.id WHERE p1.id =" + id);
         String valeurDonne = list.get(0)[0].toString();

@@ -24,7 +24,7 @@ public class PokedexApp extends JFrame {
 
     public PokedexApp() {
         db = new Database(); //creation du lien avec postgre
-        db.setupDB(dbName, schemaName, false); // on se connecte à la bdd (on la crée si elle n'existe pas ou si on lui envoie true)
+        db.setupDB(dbName, schemaName, true); // on se connecte à la bdd (on la crée si elle n'existe pas ou si on lui envoie true)
         setupWindow(); //on initialise la fenetre
     }
     

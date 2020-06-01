@@ -90,20 +90,24 @@ public class PokedexPanel extends JPanel implements ActionListener {
                 }
                 break;
             }
+            
+            //Action menée lorsque l'on appuie sur le bouton "Search name"
             case GO_NOM: {
                 try {
-                    setId(bottomPanel.getIDFromNom(db));
-
+                    setId(bottomPanel.getIDFromNom(db)); //On se place à l'ID du pokémon recherché
+                    
+                //Si aucun ID n'est trouvé, et donc aucun nombre rentré, c'est que le pokémon n'existe pas.
+                //On attrape alors l'exception et on fait apparaitre un pop-up d'erreur à l'utilisateur pour lui signaler le problème.
                 } catch (NumberFormatException | IndexOutOfBoundsException ex) {
                     System.out.println("Pokemon inexistant");
                     JFrame frame = new JFrame("");
                     ImageIcon icon = new ImageIcon(getClass().getResource("/images/icones/PikachuGif.gif"));
-                    Object[] options = {"Get coroned", "OK Boomer"};
+                    Object[] options = {"Get coroned", "OK Boomer"}; //On apprécie l'humour avant tout évidemment
                     JOptionPane.showOptionDialog(frame, "Le Pokemon '" + bottomPanel.goName.getText() + "' n'existe pas\n"
                             + "Veuillez entrer un nom valide", "Pokemon introuvable", JOptionPane.YES_NO_CANCEL_OPTION,
                             JOptionPane.QUESTION_MESSAGE, icon, options, options[1]);
                 }
-                bottomPanel.clearGoNom();
+                bottomPanel.clearGoNom(); //Une fois la recherhce terminée, on réinitialise le texte du champ de saisie
                 break;
             }
             case IMAGE_NORMAL:

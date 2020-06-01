@@ -234,12 +234,25 @@ public class TrainerPanel extends JPanel implements ActionListener {
                         MainPanel.PROFESSOR_TAB
                 );
                 break;
+                
+                //Action de suppression d'un dresseur
             case DELETE:
+                
+                //On récupère le dresseur à supprimer dans la base de donnée
                 Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + delete.getId(), Trainer.class).get(0);
+                
+                //De même que pour la suppression des pkms, il faut faire attention aux problèmes liés au clés étrangères.
+                //On rend donc sauvage tous les pokemons de ce dresseur (ils apparaitront d'ailleurs dans l'onglet sans 
+                //nom de la liste déroulante de la page Trainer)
                 db.executeUpdate("UPDATE pokemon SET id_trainer = NULL WHERE id_trainer = " + currentTrainer.id);
+                
+                //On supprime ensuite le dresseur de la db
                 int del_id[] = {delete.getId()};
                 db.deleteFromID("trainer", del_id);
+                
+                //Et enfin on l'enlève de la liste déroulante.
                 selector.removeItemAt(findSelectorId(currentTrainer.id));
+                
                 break;
         }
     }

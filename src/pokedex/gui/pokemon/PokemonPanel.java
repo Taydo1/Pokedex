@@ -74,27 +74,36 @@ public class PokemonPanel extends JPanel implements ActionListener {
                         MainPanel.PROFESSOR_TAB
                 );
                 break;
+                
+                //Action de suppression d'un pokemon
             case DELETE:
-                int del_id[] = {bottomPanel.delete.getId()};
-                Pokemon Del_pokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.delete.getId(), Pokemon.class).get(0);
-                if(Del_pokemon.id_trainer!=0)
+                
+                int del_id[] = {bottomPanel.delete.getId()};    //on récupère l'ID du pokémon à supprimer
+                Pokemon Del_pokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.delete.getId(), Pokemon.class).get(0); // On récupère le pokémon à supprimer
+                
+                // On test ensuite le pokémon appartient à un dresseur, si c'est le cas, on va devoir le supprimer de son équipe avant de le supprimer lui-même
+                if(Del_pokemon.id_trainer!=0) 
                 {
+                    // C'est le cas, on récupère donc ce dresseur 
                     Trainer currentTrainer = parent.db.getFromDB("SELECT * from trainer WHERE id = " + topPanel.trainer.getId(), Trainer.class).get(0);
-                    String Nothing[] = {null};
+                    String Nothing[] = {null};  // Valeur "null" qui sert pour l'action modify ci-dessous et qui requiert un tableau de string
+                    
+                    //On va ici parcourir tous les pokemons dans l'équipe dresseur afin  
+                    //de supprimer le pokémon de son equipe pour éviter les erreurs d'appel de clé étrangères
                     for(int k=0; k<6; k++){
-                            //System.out.println("Pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
                         if(bottomPanel.delete.getId()==currentTrainer.id_pokemon[k]){
-                            String PokeModif[] = {"id_pokemon"+(k+1)};
-                            //System.out.println("Pokemon de "+currentTrainer.name+" supprimer : "+PokeModif[0]+"="+currentTrainer.id_pokemon[k]);
-                            currentTrainer.id_pokemon[k] = -1;
-                            db.modify("trainer",topPanel.trainer.getId(), PokeModif , Nothing);
-                            //System.out.println("Nouveau pokemon de "+currentTrainer.name+" n°"+(k+1)+" : "+currentTrainer.id_pokemon[k]);
+                            String PokeModif[] = {"id_pokemon"+(k+1)};  //La ligne qui correspond à l'ID du pkm dans Trainer (numéroté de 1 à 6
+                            currentTrainer.id_pokemon[k] = -1;  //La valeur -1 est ensuite transformée en null automatiquement
+                            db.modify("trainer",topPanel.trainer.getId(), PokeModif , Nothing);//Modification de la table Trainer pour metre null à la place de l'id du pkm à supprimer
                         }
                     }
                 }
-                topPanel.selector.removeItemAt(topPanel.findSelectorId(bottomPanel.delete.getId()));
-                db.deleteFromID("pokemon", del_id);
+                
+                topPanel.selector.removeItemAt(topPanel.findSelectorId(bottomPanel.delete.getId()));    //On retire le Pokémon de la barre de la liste déroulante.
+                db.deleteFromID("pokemon", del_id);    //Et enfin on peut supprimer le Pokémon de la base de données.
+                
                 break;
+                
             case EVOLUTION:
                 Pokemon currentPokemon = parent.db.getFromDB("SELECT * from pokemon WHERE id = " + bottomPanel.evolution.getId(), Pokemon.class).get(0);
                 Pokedex pokedex = parent.db.getFromDB("SELECT * from pokedex WHERE id = " + currentPokemon.id_pokedex, Pokedex.class).get(0);

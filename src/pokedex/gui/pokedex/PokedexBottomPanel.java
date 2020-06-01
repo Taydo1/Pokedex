@@ -170,10 +170,13 @@ public class PokedexBottomPanel extends JPanel {
         return Integer.parseInt(goId.getText());
     }
     
+    //Fonction pour réinitialiser un champ de saisi
     public void clearGoId() {
         goId.setText("");
     }
     
+    //Fonction pour récupérer l'id du pokemon à partir de son nom 
+    //Il est possible de n'entrer que les premières lettres du nom d'un pokémon, le premier ayant un nom commençant par ces lettres sera alors sélectionné
     public int getIDFromNom(Database db) {
         int id = (int) db.getFromDB("SELECT id FROM pokedex WHERE UPPER(name) LIKE UPPER('" + goName.getText() + "%') ORDER BY id ASC").get(0)[0];
         System.out.println("ID récupéré : " + id);
